@@ -3,3 +3,14 @@
 body {
   @apply bg-gray-950 text-gray-50;
 }
+
+.bg-blur {
+  @apply bg-gray-900/60 ps-4 backdrop-blur-lg;
+}
+
+.categories-item {
+  @apply relative flex items-center gap-1 rounded-full px-3 transition-all delay-75 duration-300 select-none hover:bg-gray-800;
+}
+.categories-item .chevron-down {
+  @apply mt-0.5 size-5 transition-all duration-300 group-hover:rotate-180;
+}
