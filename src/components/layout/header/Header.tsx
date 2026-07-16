@@ -3,13 +3,13 @@ import Categories from "../../shared/categories";
 
 const Header = () => {
   return (
-    <header className="inset-x-0 top-2 container mx-auto h-12 xl:fixed xl:px-2">
-      <div className="bg-blur flex size-full items-center xl:justify-between xl:rounded-full">
+    <header className="inset-x-0 z-50 container mx-auto h-12 xl:fixed xl:top-2 xl:px-2">
+      <div className="bg-blur flex size-full items-center justify-center border-gray-50/10 xl:justify-between xl:rounded-full xl:border xl:ps-4">
         <Logo />
 
         <Categories />
 
-        <div className="h-full w-48"></div>
+        <div className="hidden h-full w-48 xl:block"></div>
       </div>
     </header>
   );

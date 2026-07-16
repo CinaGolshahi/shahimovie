@@ -5,7 +5,7 @@ body {
 }
 
 .bg-blur {
-  @apply bg-gray-900/60 ps-4 backdrop-blur-lg;
+  @apply bg-gray-900/60 backdrop-blur-lg;
 }
 
 .categories-item {

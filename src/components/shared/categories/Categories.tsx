@@ -2,7 +2,7 @@ import { ChevronDown } from "lucide-react";
 
 const Categories = () => {
   return (
-    <ul className="flex h-full gap-4 py-1.5 font-semibold">
+    <ul className="hidden h-full gap-4 py-1.5 font-semibold xl:flex">
       <li className="group categories-item">
         <span>Movies</span>
         <ChevronDown className="chevron-down" />
