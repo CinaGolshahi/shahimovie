@@ -1,0 +1,7 @@
+:root {
+  --swiper-theme-color: #2563eb !important;
+}
+
+.swiper-slide:not(.swiper-slide-active) {
+  pointer-events: none;
+}
