@@ -14,3 +14,9 @@ body {
 .categories-item .chevron-down {
   @apply mt-0.5 size-5 transition-all duration-300 group-hover:rotate-180;
 }
+
+@media (width <= 80rem) {
+  .bg-blur {
+    @apply bg-gray-900/0 backdrop-blur-none;
+  }
+}

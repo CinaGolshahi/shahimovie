@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./styles/style.css";
 
-import mockMovies from "./data/movies.mock.";
+import mockMovies from "../../../../data/movies.mock.";
 import { Link } from "react-router-dom";
 
 const HeroSlider = () => {
@@ -43,7 +43,10 @@ const HeroSlider = () => {
       className="container"
     >
       {mockMovies.map((movie) => (
-        <SwiperSlide key={movie.id} className="group relative w-2/3!">
+        <SwiperSlide
+          key={movie.id}
+          className="group relative w-2/3! rounded-lg"
+        >
           <picture>
             <source media="(min-width: 1280px)" srcSet={movie.backdropSrc} />
 
