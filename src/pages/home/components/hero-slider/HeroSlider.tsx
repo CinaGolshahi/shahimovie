@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./styles/style.css";
 
-import mockMovies from "../../../../data/movies.mock.";
+import { mockMovies } from "../../../../data/movies.mock.";
 import { Link } from "react-router-dom";
 
 const HeroSlider = () => {

@@ -97,4 +97,4 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
   },
 ];
-export default mockMovies;
+export { mockMovies, type IMovie };
