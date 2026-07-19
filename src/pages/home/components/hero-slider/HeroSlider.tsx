@@ -59,7 +59,7 @@ const HeroSlider = () => {
 
           <Link
             to={"/"}
-            className="bg-blur invisible absolute inset-0 hidden flex-col items-start justify-end gap-1 rounded-lg p-20 pb-16 opacity-0 transition-all delay-100 duration-300 group-hover:visible group-hover:pb-20 group-hover:opacity-100 xl:flex"
+            className="invisible absolute inset-0 hidden flex-col items-start justify-end gap-1 rounded-lg bg-gray-900/60 p-20 pb-16 opacity-0 backdrop-blur-lg transition-all delay-100 duration-300 group-hover:visible group-hover:pb-20 group-hover:opacity-100 xl:flex"
           >
             <p className="text-4xl font-bold">{movie.title}</p>
             <span className="text-2xl font-bold">{`(${movie.releaseYear})`}</span>

@@ -9,7 +9,7 @@ const Home = () => {
     <div className="pbs-10 xl:pbs-20">
       <HeroSlider />
 
-      <div className="container mx-auto mt-20 flex flex-col gap-4 bg-gray-900/50 p-4 xl:rounded-lg">
+      <div className="container mx-auto mt-20 flex flex-col gap-4 bg-gray-900/50 p-4 xl:rounded-4xl">
         <div className="flex items-center justify-between px-2">
           <p className="text-lg font-semibold">New movies</p>
           <Link to={"/"} className="flex items-center gap-0.5 text-blue-500">
@@ -23,7 +23,9 @@ const Home = () => {
             <MovieCard
               title={movie.title}
               releaseYear={movie.releaseYear}
+              overview={movie.overview}
               posterSrc={movie.posterSrc}
+              className="min-w-2/3"
             />
           ))}
         </div>

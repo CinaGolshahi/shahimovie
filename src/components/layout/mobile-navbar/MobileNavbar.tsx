@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const MobileNavbar = () => {
   return (
-    <nav className="bg-blur fixed inset-x-2 bottom-2 z-50 grid grid-cols-4 justify-between gap-1 rounded-full border border-gray-50/10 p-1 xl:hidden">
+    <nav className="fixed inset-x-2 bottom-2 z-50 grid grid-cols-4 justify-between gap-1 rounded-full border border-gray-50/10 bg-gray-900/60 p-1 backdrop-blur-lg xl:hidden">
       <NavLink
         to={"/"}
         end
