@@ -24,7 +24,7 @@ const UpdatedShows = () => {
       </div>
       <Link
         to={"/"}
-        className="flex items-center justify-center gap-0.5 rounded-2xl border-2 border-blue-500 py-4 text-blue-500 active:bg-blue-500 active:text-gray-50 xl:hidden"
+        className="flex items-center justify-center gap-0.5 rounded-2xl border-2 border-blue-500 py-4 text-blue-500 transition-all duration-300 active:bg-blue-500 active:text-gray-50 xl:hidden"
       >
         <span>See more</span>
         <ChevronRight className="mt-0.5 size-5" />
