@@ -16,7 +16,7 @@ const MovieCard = (props: IMovieCardProps) => {
       />
       <Link
         to={"/"}
-        className="inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl transition-all duration-300 group-hover:visible group-hover:opacity-100 hover:py-2 xl:invisible xl:absolute xl:bg-gray-900/60 xl:p-2 xl:py-0 xl:opacity-0 xl:backdrop-blur-lg"
+        className="inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl transition-all duration-300 group-hover:visible group-hover:opacity-100 xl:invisible xl:absolute xl:bg-gray-900/60 xl:p-2 xl:pb-0 xl:opacity-0 xl:backdrop-blur-lg xl:group-hover:pb-2"
       >
         <p className="rounded-md px-2 py-1 font-bold xl:bg-gray-900">
           {movie.title}{" "}

@@ -3,7 +3,7 @@ import Categories from "../../shared/categories";
 
 const Header = () => {
   return (
-    <header className="inset-x-0 z-50 container mx-auto h-12 xl:fixed xl:top-2 xl:px-2">
+    <header className="inset-x-0 z-50 mx-auto h-12 w-full xl:fixed xl:top-2 xl:container xl:px-2">
       <div className="flex size-full items-center justify-center border-gray-50/10 bg-gray-900/60 backdrop-blur-lg xl:justify-between xl:rounded-full xl:border xl:ps-4">
         <Logo />
 

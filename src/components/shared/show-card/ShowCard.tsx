@@ -7,7 +7,7 @@ const ShowCard = (props: IShowCardProps) => {
   return (
     <div
       key={show.id}
-      className={`group relative flex flex-col gap-2 rounded-2xl border-2 border-transparent bg-gray-900 p-2 transition-all duration-300 hover:border-blue-600 xl:border-transparent xl:p-0 ${className}`}
+      className={`${className} group relative flex flex-col gap-2 rounded-2xl border-2 border-transparent bg-gray-900 p-2 transition-all duration-300 hover:border-blue-600 xl:border-transparent xl:p-0`}
     >
       <img
         src={show.backdropSrc}
@@ -16,7 +16,7 @@ const ShowCard = (props: IShowCardProps) => {
       />
       <Link
         to={"/"}
-        className="inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl transition-all duration-300 group-hover:visible group-hover:pb-9 group-hover:opacity-100 xl:invisible xl:absolute xl:bg-gray-900/60 xl:p-2 xl:pb-0 xl:opacity-0 xl:backdrop-blur-lg"
+        className="inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl transition-all duration-300 group-hover:visible group-hover:opacity-100 xl:invisible xl:absolute xl:bg-gray-900/60 xl:p-2 xl:pb-0 xl:opacity-0 xl:backdrop-blur-lg xl:group-hover:pb-9"
       >
         <p className="rounded-lg bg-transparent px-2 py-1 font-bold xl:rounded-md xl:bg-gray-900">
           {show.title}
