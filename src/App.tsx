@@ -2,7 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/layout/header";
 import MobileNavbar from "./components/layout/mobile-navbar";
 import Home from "./pages/home";
-import MoviesPage from "./pages/movies/MoviesPage";
+import MoviesPage from "./pages/movies";
+import ShowsPage from "./pages/shows";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
 
           <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/shows" element={<ShowsPage />} />
         </Routes>
       </main>
     </div>
