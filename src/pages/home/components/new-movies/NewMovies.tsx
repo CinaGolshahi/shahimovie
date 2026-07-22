@@ -17,7 +17,7 @@ const NewMovies = () => {
         </Link>
       </div>
 
-      <div className="grid scrollbar-none grid-cols-2 gap-4 overflow-auto md:grid-cols-3 xl:grid-cols-6">
+      <div className="flex scrollbar-none gap-4 overflow-auto md:grid md:grid-cols-3 xl:grid-cols-6">
         {mockMovies.slice(0, 6).map((movie) => (
           <MovieCard key={movie.id} movie={movie} className="min-w-2/3" />
         ))}
