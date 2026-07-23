@@ -4,6 +4,7 @@ import MobileNavbar from "./components/layout/mobile-navbar";
 import Home from "./pages/home";
 import MoviesPage from "./pages/movies";
 import ShowsPage from "./pages/shows";
+import Footer from "./components/layout/footer";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
           <Route path="/shows" element={<ShowsPage />} />
         </Routes>
       </main>
+
+      <Footer />
     </div>
   );
 };
