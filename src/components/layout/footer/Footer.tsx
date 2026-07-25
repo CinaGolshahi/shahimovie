@@ -3,9 +3,9 @@ import Logo from "../../ui/logo";
 
 const Footer = () => {
   return (
-    <footer className="h- mt-10 w-full bg-gray-900/50">
-      <div className="container mx-auto flex justify-between gap-10 border-b border-dashed border-gray-500 p-6">
-        <div className="flex w-1/5 flex-col gap-4 ps-2">
+    <footer className="mt-10 w-full bg-gray-900/50 pbe-20 xl:pbe-0">
+      <div className="container mx-auto flex flex-col items-start justify-between gap-6 border-b border-dashed border-gray-500 p-6 md:flex-row md:gap-0">
+        <div className="flex flex-col gap-4 md:w-1/3 xl:w-1/5">
           <Logo />
           <span>
             Your gateway to your favorite movies and shows, anytime, anywhere.
@@ -93,57 +93,66 @@ const Footer = () => {
         <div className="flex justify-center gap-10">
           <ul>
             <li>
-              <Link to={"/"} className="hover:underline">
+              <Link to={"/"} className="hover:underline active:underline">
                 Home
               </Link>
             </li>
             <li>
-              <Link to={"/movies"} className="hover:underline">
+              <Link to={"/movies"} className="hover:underline active:underline">
                 Movies
               </Link>
             </li>
             <li>
-              <Link to={"/shows"} className="hover:underline">
+              <Link to={"/shows"} className="hover:underline active:underline">
                 TV Shows
               </Link>
             </li>
             <li>
-              <Link to={"/shows"} className="hover:underline">
+              <Link to={"/shows"} className="hover:underline active:underline">
                 Top Movies
               </Link>
             </li>
           </ul>
           <ul>
             <li>
-              <Link to={"/faq"} className="hover:underline">
+              <Link to={"/faq"} className="hover:underline active:underline">
                 FAQ
               </Link>
             </li>
             <li>
-              <Link to={"/contact-us"} className="hover:underline">
+              <Link
+                to={"/contact-us"}
+                className="hover:underline active:underline"
+              >
                 Contact us
               </Link>
             </li>
             <li>
-              <Link to={"/privacy-policy"} className="hover:underline">
+              <Link
+                to={"/privacy-policy"}
+                className="hover:underline active:underline"
+              >
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link to={"/terms-of-service"} className="hover:underline">
+              <Link
+                to={"/terms-of-service"}
+                className="hover:underline active:underline"
+              >
                 Terms of Service
               </Link>
             </li>
           </ul>
         </div>
-        <div className="flex w-1/5 items-start justify-end">
-          <button className="flex cursor-pointer items-center gap-1 rounded-full bg-gray-800 px-4 py-2 transition-all delay-75 duration-300 hover:bg-gray-800/80">
+        <div className="flex items-start justify-end md:w-1/3 xl:w-1/5">
+          <button className="flex cursor-pointer items-center gap-1 rounded-full bg-gray-800 px-4 py-2 transition-all delay-75 duration-300 hover:bg-gray-800/80 active:bg-gray-800/80">
             <span className="font-bold">English</span>
             <span>United State</span>
           </button>
         </div>
       </div>
-      <div className="container mx-auto flex justify-between p-4">
+      <div className="container mx-auto flex flex-col justify-between gap-2 p-4 md:flex-row">
         <p>© 2026 ShahiMovie, All Rights Reserved</p>
         <p>
           Designed by{" "}

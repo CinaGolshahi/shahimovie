@@ -8,7 +8,7 @@ import Footer from "./components/layout/footer";
 
 const App = () => {
   return (
-    <div className="pbe-20 xl:pbs-20 xl:pbe-0">
+    <div className="xl:pbs-20">
       <Header />
       <MobileNavbar />
 
