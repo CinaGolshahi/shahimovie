@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import MoviesPage from "./pages/movies";
 import ShowsPage from "./pages/shows";
 import Footer from "./components/layout/footer";
+import NotFoundPage from "./pages/not-found";
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
 
       <main>
         <Routes>
+          <Route path="*" element={<NotFoundPage />} />
+
           <Route path="/" element={<Home />} />
 
           <Route path="/movies" element={<MoviesPage />} />
