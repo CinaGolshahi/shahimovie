@@ -4,15 +4,18 @@ import Logo from "../../ui/logo";
 const Footer = () => {
   return (
     <footer className="h- mt-10 w-full bg-gray-900/50">
-      <div className="container mx-auto flex gap-10 border-b border-dashed border-gray-500 py-6">
-        <div className="flex w-1/3 flex-col gap-4">
+      <div className="container mx-auto flex justify-between gap-10 border-b border-dashed border-gray-500 p-6">
+        <div className="flex w-1/5 flex-col gap-4 ps-2">
           <Logo />
+          <span>
+            Your gateway to your favorite movies and shows, anytime, anywhere.
+          </span>
 
-          <div className="flex items-center justify-start gap-2">
+          <div className="-ms-2 flex items-center justify-start gap-2">
             <Link
               to={"https://www.t.me/shahimovie"}
               target="_blank"
-              className="rounded-full border border-gray-700 bg-gray-800 p-2 transition-all delay-75 duration-300 hover:bg-gray-800/50"
+              className="rounded-full border border-transparent p-2 transition-all delay-75 duration-300 hover:bg-gray-800"
             >
               <svg
                 width="20"
@@ -31,7 +34,7 @@ const Footer = () => {
             <Link
               to={"https://www.instagram.com/shahimovie"}
               target="_blank"
-              className="rounded-full border border-gray-700 bg-gray-800 p-2 transition-all delay-75 duration-300 hover:bg-gray-800/50"
+              className="rounded-full border border-transparent p-2 transition-all delay-75 duration-300 hover:bg-gray-800"
             >
               <svg
                 width="20"
@@ -50,7 +53,7 @@ const Footer = () => {
             <Link
               to={"https://www.x.com/shahimovie"}
               target="_blank"
-              className="rounded-full border border-gray-700 bg-gray-800 p-2 transition-all delay-75 duration-300 hover:bg-gray-800/50"
+              className="rounded-full border border-transparent p-2 transition-all delay-75 duration-300 hover:bg-gray-800"
             >
               <svg
                 width="14"
@@ -67,9 +70,9 @@ const Footer = () => {
               </svg>
             </Link>
             <Link
-              to={"https://www.youtube.com/@miaplays"}
+              to={"https://www.youtube.com/@shahimovie"}
               target="_blank"
-              className="rounded-full border border-gray-700 bg-gray-800 p-2 transition-all delay-75 duration-300 hover:bg-gray-800/50"
+              className="rounded-full border border-transparent p-2 transition-all delay-75 duration-300 hover:bg-gray-800"
             >
               <svg
                 width="20"
@@ -87,7 +90,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <div className="flex w-1/3 justify-center gap-6">
+        <div className="flex justify-center gap-10">
           <ul>
             <li>
               <Link to={"/"} className="hover:underline">
@@ -104,6 +107,11 @@ const Footer = () => {
                 TV Shows
               </Link>
             </li>
+            <li>
+              <Link to={"/shows"} className="hover:underline">
+                Top Movies
+              </Link>
+            </li>
           </ul>
           <ul>
             <li>
@@ -117,13 +125,23 @@ const Footer = () => {
               </Link>
             </li>
             <li>
+              <Link to={"/privacy-policy"} className="hover:underline">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
               <Link to={"/terms-of-service"} className="hover:underline">
                 Terms of Service
               </Link>
             </li>
           </ul>
         </div>
-        <div className="w-1/3"></div>
+        <div className="flex w-1/5 items-start justify-end">
+          <button className="flex cursor-pointer items-center gap-1 rounded-full bg-gray-800 px-4 py-2 transition-all delay-75 duration-300 hover:bg-gray-800/80">
+            <span className="font-bold">English</span>
+            <span>United State</span>
+          </button>
+        </div>
       </div>
       <div className="container mx-auto flex justify-between p-4">
         <p>© 2026 ShahiMovie, All Rights Reserved</p>
