@@ -10,3 +10,20 @@ body {
 .categories-item .chevron-down {
   @apply mt-0.5 size-5 transition-all duration-300 group-hover:rotate-180;
 }
+
+.btn-sm {
+  @apply px-2 py-1 text-sm;
+}
+.btn-md {
+  @apply px-4 py-2 text-base;
+}
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+.btn-primary {
+  @apply bg-gray-50 text-gray-950 hover:bg-gray-300 active:outline-gray-50;
+}
+.btn-secondary {
+  @apply bg-gray-800 text-gray-50 hover:bg-gray-900 active:outline-gray-800;
+}
