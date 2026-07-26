@@ -12,7 +12,7 @@ const Button = (props: IButtonProps) => {
   return (
     <button
       {...props}
-      className={`${className} ${size} ${variant} flex cursor-pointer items-center gap-1 rounded-full outline-2 outline-offset-2 outline-transparent transition-all delay-75 duration-300 select-none`}
+      className={`${className} ${size} ${variant} flex cursor-pointer items-center gap-2 rounded-full outline-2 outline-offset-2 outline-transparent transition-all delay-75 duration-300 select-none justify-center`}
     >
       {title ?? children}
     </button>

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../ui/logo";
+import Button from "../../ui/button";
+import { Languages } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -146,10 +148,10 @@ const Footer = () => {
           </ul>
         </div>
         <div className="flex items-start justify-end md:w-1/3 xl:w-1/5">
-          <button className="flex cursor-pointer items-center gap-1 rounded-full bg-gray-800 px-4 py-2 transition-all delay-75 duration-300 hover:bg-gray-800/80 active:bg-gray-800/80">
+          <Button variant="btn-secondary">
             <span className="font-bold">English</span>
-            <span>United State</span>
-          </button>
+            <Languages className="mt-0.5 size-5" />
+          </Button>
         </div>
       </div>
       <div className="container mx-auto flex flex-col justify-between gap-2 p-4 md:flex-row">
