@@ -6,6 +6,7 @@ import MoviesPage from "./pages/movies";
 import ShowsPage from "./pages/shows";
 import Footer from "./components/layout/footer";
 import NotFoundPage from "./pages/not-found";
+import MoviePage from "./pages/movie-details";
 
 const App = () => {
   return (
@@ -21,6 +22,8 @@ const App = () => {
 
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/shows" element={<ShowsPage />} />
+
+          <Route path="/movie/:id" element={<MoviePage />} />
         </Routes>
       </main>
 

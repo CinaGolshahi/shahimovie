@@ -15,7 +15,7 @@ const MovieCard = (props: IMovieCardProps) => {
         className="rounded-2xl object-cover"
       />
       <Link
-        to={"/"}
+        to={`/movie/${movie.id}`}
         className="inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl transition-all duration-300 group-hover:visible group-hover:opacity-100 xl:invisible xl:absolute xl:bg-gray-900/60 xl:p-2 xl:pb-0 xl:opacity-0 xl:backdrop-blur-lg xl:group-hover:pb-2"
       >
         <p className="rounded-md px-2 py-1 font-bold xl:bg-gray-900">
@@ -28,7 +28,7 @@ const MovieCard = (props: IMovieCardProps) => {
       </Link>
       <div className="inset-be-0 flex w-full items-center justify-center p-2 xl:absolute xl:hidden">
         <Link
-          to={"/"}
+          to={`/movie/${movie.id}`}
           className="flex w-full items-center justify-between rounded-lg bg-blue-500 px-2 py-1"
         >
           <span>Watch</span>
