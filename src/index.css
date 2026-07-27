@@ -5,6 +5,10 @@
 @import "@fontsource/inter/600.css";
 @import "@fontsource/inter/700.css";
 
+html {
+  @apply scrollbar-none scroll-smooth;
+}
+
 body {
   @apply bg-gray-950 font-sans text-gray-50;
 }
