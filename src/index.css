@@ -36,3 +36,6 @@ body {
 .btn-secondary {
   @apply bg-gray-800 text-gray-50 hover:bg-gray-900 active:outline-gray-800;
 }
+.btn-text {
+  @apply text-gray-50 hover:bg-gray-800 active:outline-gray-800;
+}

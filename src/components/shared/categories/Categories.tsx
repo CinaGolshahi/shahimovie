@@ -1,20 +1,18 @@
-import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import Button from "../../ui/button";
 
 const Categories = () => {
   return (
-    <ul className="hidden h-full gap-4 py-1.5 font-semibold xl:flex">
-      <li className="group categories-item">
-        <span>Movies</span>
-        <ChevronDown className="chevron-down" />
-      </li>
-      <li className="group categories-item">
-        <span>TV Shows</span>
-        <ChevronDown className="chevron-down" />
-      </li>
-      <li className="group categories-item">
-        <span>Artists</span>
-        <ChevronDown className="chevron-down" />
-      </li>
+    <ul className="hidden h-full gap-2 py-1.5 xl:flex">
+      <Button variant="btn-text" size="btn-sm">
+        <Link to={"/moviees"}>Movies</Link>
+      </Button>
+      <Button variant="btn-text" size="btn-sm">
+        <Link to={"/shows"}>TV Shows</Link>
+      </Button>
+      <Button variant="btn-text" size="btn-sm">
+        <Link to={"/artists"}>Artists</Link>
+      </Button>
     </ul>
   );
 };
