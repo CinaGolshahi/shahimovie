@@ -9,7 +9,7 @@ const NewMovies = () => {
       <div className="flex items-center justify-between px-2">
         <p className="text-lg font-semibold">New movies</p>
         <Link
-          to={"/"}
+          to={"/movies"}
           className="flex items-center gap-0.5 text-blue-500 hover:underline"
         >
           <span>See more</span>

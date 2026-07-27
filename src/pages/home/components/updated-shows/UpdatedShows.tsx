@@ -9,7 +9,7 @@ const UpdatedShows = () => {
       <div className="flex items-center justify-between px-2">
         <p className="text-lg font-semibold">Updated Shows</p>
         <Link
-          to={"/"}
+          to={"/shows"}
           className="hidden items-center gap-0.5 text-blue-500 hover:underline xl:flex"
         >
           <span>See more</span>
@@ -23,7 +23,7 @@ const UpdatedShows = () => {
         ))}
       </div>
       <Link
-        to={"/"}
+        to={"/shows"}
         className="flex items-center justify-center gap-0.5 rounded-2xl border-2 border-blue-500 py-4 text-blue-500 transition-all duration-300 active:bg-blue-500 active:text-gray-50 xl:hidden"
       >
         <span>See more</span>
