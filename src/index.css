@@ -34,6 +34,16 @@ body {
   @apply px-6 py-3 text-lg;
 }
 
+.btn-squ-sm {
+  @apply p-1 text-sm;
+}
+.btn-squ-md {
+  @apply p-2 text-base;
+}
+.btn-squ-lg {
+  @apply p-3 text-lg;
+}
+
 .btn-primary {
   @apply bg-gray-50 text-gray-950 hover:bg-gray-300 active:outline-gray-50;
 }
