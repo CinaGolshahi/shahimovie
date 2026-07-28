@@ -13,7 +13,7 @@ const MovieDetails = () => {
     <NotFoundPage />
   ) : (
     <div className="xl:-mt-20">
-      <div className="relative h-screen">
+      <div className="relative h-screen select-none">
         <picture>
           <source
             media="(min-width: 1280px)"
@@ -25,8 +25,8 @@ const MovieDetails = () => {
             className="size-full object-cover"
           />
         </picture>
-        <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-2xl">
-          <div className="container mx-auto flex h-full flex-col items-center gap-4 pt-6 xl:flex-row xl:justify-start xl:gap-10 xl:px-10">
+        <div className="absolute inset-0 flex items-center bg-gray-900/60 backdrop-blur-2xl">
+          <div className="container mx-auto flex flex-col items-center gap-4 pt-6 xl:flex-row xl:justify-start xl:gap-10 xl:px-10 xl:pt-0">
             <div className="mx-auto flex w-2/3 flex-col items-center gap-2 xl:m-0 xl:w-1/4">
               <img
                 src={targetMovie.posterSrc}
@@ -34,22 +34,50 @@ const MovieDetails = () => {
                 className="rounded-lg object-cover"
               />
             </div>
-            <div className="flex flex-col items-center gap-4 px-4 text-center xl:w-1/3 xl:items-start xl:gap-6 xl:px-0 xl:text-start">
+            <div className="flex flex-col items-center gap-2 px-4 text-center xl:w-1/3 xl:items-start xl:gap-4 xl:px-0 xl:text-start">
               <div className="flex flex-col gap-1">
                 <p className="text-xl xl:text-4xl">
                   <span className="font-bold">{targetMovie.title}</span>
                   <span>{` (${targetMovie.releaseYear})`}</span>
                 </p>
-                <p className="text-sm text-gray-50">
+                <p className="text-sm text-gray-300">
                   {targetMovie.genre.map((genre, index) => (
                     <>
-                      <Link key={index} to={"/"}>
+                      <Link
+                        key={index}
+                        to={"/"}
+                        className="transition-all delay-75 duration-300 hover:text-gray-50"
+                      >
                         {" "}
                         {genre}
                       </Link>
                       {index < targetMovie.genre.length - 1 && ","}
                     </>
                   ))}
+                </p>
+              </div>
+              <div>
+                <p className="inline xl:block">
+                  <span className="hidden font-bold xl:inline">Run time: </span>
+                  <span className="text-sm text-gray-300">{`${targetMovie.runtime} min`}</span>
+                </p>
+                <span className="text-sm text-gray-300 xl:hidden"> • </span>
+                <p className="inline xl:block">
+                  <span className="hidden font-bold xl:inline">Country: </span>
+                  <span className="text-sm text-gray-300">
+                    {targetMovie.country.map((country, index) => (
+                      <>
+                        <Link
+                          key={index}
+                          to={"/"}
+                          className="transition-all delay-75 duration-300 hover:text-gray-50"
+                        >
+                          {country}
+                        </Link>
+                        {index < targetMovie.country.length - 1 && ", "}
+                      </>
+                    ))}
+                  </span>
                 </p>
               </div>
               <p className="text-gray-200">{targetMovie.overview}</p>
@@ -60,6 +88,7 @@ const MovieDetails = () => {
                 </Button>
               </div>
             </div>
+            <div className=""></div>
           </div>
         </div>
       </div>
