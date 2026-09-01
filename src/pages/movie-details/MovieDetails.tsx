@@ -89,7 +89,7 @@ const MovieDetails = () => {
                       rating={targetMovie.ratings.shahimovie}
                       className="text-4xl font-bold"
                     />
-                    <span className="text-gray-300">/5</span>
+                    <span className="text-xs text-gray-300">/5</span>
                   </div>
                   <span className="text-xs">SHAHIMOVIE</span>
                 </div>
@@ -101,7 +101,7 @@ const MovieDetails = () => {
                     </span>
                     <span>
                       <RatingColorFrom10 rating={targetMovie.ratings.imdb} />
-                      <span className="text-gray-300"> / 10</span>
+                      <span className="text-xs text-gray-300"> / 10</span>
                     </span>
                   </p>
                   <p className="relative flex justify-between gap-2">
@@ -111,7 +111,7 @@ const MovieDetails = () => {
                     </span>
                     <span>
                       <RatingColorFrom10 rating={targetMovie.ratings.tmdb} />
-                      <span className="text-gray-300"> / 10</span>
+                      <span className="text-xs text-gray-300"> / 10</span>
                     </span>
                   </p>
                   <p className="relative flex justify-between gap-2">
@@ -123,7 +123,7 @@ const MovieDetails = () => {
                       <RatingColorFrom100
                         rating={targetMovie.ratings.rottenTomatoes}
                       />
-                      <span className="text-gray-300"> / 100</span>
+                      <span className="text-xs text-gray-300"> / 100</span>
                     </span>
                   </p>
                 </div>
@@ -140,6 +140,13 @@ const MovieDetails = () => {
                 <p className="flex items-center justify-between">
                   <span className="flex items-center gap-1 font-bold text-gray-300">
                     <ShieldAlert className="size-4" />
+                    Release:
+                  </span>
+                  <span>{targetMovie.releaseDate}</span>
+                </p>
+                <p className="flex items-center justify-between">
+                  <span className="flex items-center gap-1 font-bold text-gray-300">
+                    <ShieldAlert className="size-4" />
                     Age Rating:
                   </span>
                   <span>+{targetMovie.ageRating}</span>
@@ -147,7 +154,7 @@ const MovieDetails = () => {
                 <p className="flex items-center justify-between">
                   <span className="flex items-center gap-1 font-bold text-gray-300">
                     <Languages className="size-4" />
-                    Original Language:
+                    Language:
                   </span>
                   <span>{targetMovie.originalLanguage}</span>
                 </p>
