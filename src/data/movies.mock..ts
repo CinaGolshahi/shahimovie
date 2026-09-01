@@ -8,6 +8,11 @@ interface IMovie {
   country: string[];
   backdropSrc: string;
   posterSrc: string;
+  ratings: {
+    imdb: number; // out of 10
+    tmdb: number; // out of 10
+    rottenTomatoes: number; // percentage (0-100)
+  };
 }
 
 const mockMovies: IMovie[] = [
@@ -24,6 +29,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/e1qJyp8AE5ejXAaQjxWPTsWeTb.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    ratings: {
+      imdb: 6.8,
+      tmdb: 7.1,
+      rottenTomatoes: 72,
+    },
   },
   {
     id: 2,
@@ -38,6 +48,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/91er8S2vFCZZz3Wp1YorZH9e256.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/eTp7gSPkSF3Aw79mNx1NkBP1PZT.jpg",
+    ratings: {
+      imdb: 6.4,
+      tmdb: 6.9,
+      rottenTomatoes: 65,
+    },
   },
   {
     id: 3,
@@ -52,6 +67,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/Ys8UIGWJpd2TMuQk8fU77W3mBz.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/nrSaXF39nDfAAeLKksRCyvSzI2a.jpg",
+    ratings: {
+      imdb: 8.7,
+      tmdb: 8.5,
+      rottenTomatoes: 87,
+    },
   },
   {
     id: 4,
@@ -66,6 +86,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/xP6AGo53wymWp1shXu0X7zDZBqZ.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/cWsBscZzwu5brg9YjNkGewRUvJX.jpg",
+    ratings: {
+      imdb: 6.9,
+      tmdb: 7.2,
+      rottenTomatoes: 74,
+    },
   },
   {
     id: 5,
@@ -80,6 +105,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/nSK1cQXskN6UPNXZfGFhlnbaadt.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/rFhKkXhk7ClU03jQ5rHIApJDwev.jpg",
+    ratings: {
+      imdb: 6.5,
+      tmdb: 6.8,
+      rottenTomatoes: 68,
+    },
   },
   {
     id: 6,
@@ -94,6 +124,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/cUIqZd6jJCbO94Txt1CkTs7MSeP.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    ratings: {
+      imdb: 8.3,
+      tmdb: 8.1,
+      rottenTomatoes: 93,
+    },
   },
   {
     id: 7,
@@ -108,6 +143,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/9m1ua4lJrS27WCEdMeJLAkkLitl.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/nR6KKQPc5iu0D0bRV1c1b4CKAiO.jpg",
+    ratings: {
+      imdb: 7.6,
+      tmdb: 7.8,
+      rottenTomatoes: 83,
+    },
   },
   {
     id: 8,
@@ -122,6 +162,11 @@ const mockMovies: IMovie[] = [
       "https://image.tmdb.org/t/p/original/dZuTTYM86A4ggtrbdvfKOzxigp7.jpg",
     posterSrc:
       "https://image.tmdb.org/t/p/original/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+    ratings: {
+      imdb: 8.0,
+      tmdb: 7.5,
+      rottenTomatoes: 88,
+    },
   },
 ];
 
