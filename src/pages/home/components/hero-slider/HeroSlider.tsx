@@ -47,7 +47,7 @@ const HeroSlider = () => {
       {movies?.slice(0, 8).map((movie) => (
         <SwiperSlide
           key={movie.id}
-          className="group relative w-2/3! rounded-lg"
+          className="group relative w-2/3! rounded-lg xl:w-3/4! 2xl:w-2/3!"
         >
           <picture>
             <source
@@ -58,20 +58,20 @@ const HeroSlider = () => {
             <img
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={`${movie.title} (${movie.release_date.slice(0, 4)})`}
-              className="size-full rounded-lg object-cover"
+              className="w-full rounded-lg object-cover lg:h-[573.75px]! xl:h-[573.65px]!"
             />
           </picture>
 
           <Link
             to={`/movie/${movie.id}`}
-            className="invisible absolute inset-0 hidden items-end justify-start gap-6 rounded-lg bg-gray-900/60 p-20 pb-16 opacity-0 backdrop-blur-lg transition-all delay-100 duration-300 group-hover:visible group-hover:pb-20 group-hover:opacity-100 xl:flex"
+            className="absolute inset-0 items-end justify-start gap-6 rounded-lg p-20 pb-16 transition-all delay-100 duration-300 group-hover:pb-20 group-hover:opacity-100 xl:flex xl:bg-gray-900/60 xl:opacity-0 xl:backdrop-blur-lg"
           >
             <img
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt=""
-              className="w-1/5 rounded-xl"
+              className="hidden w-1/5 rounded-xl xl:block"
             />
-            <div className="flex flex-col gap-2 pb-6">
+            <div className="hidden flex-col gap-2 pb-6 xl:flex">
               <p className="text-4xl font-bold">{movie.title}</p>
               <span className="text-2xl font-bold">{`(${movie.release_date.slice(0, 4)})`}</span>
             </div>
