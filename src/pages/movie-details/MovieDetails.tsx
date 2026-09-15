@@ -1,8 +1,3 @@
-import { Link, useParams } from "react-router-dom";
-import { mockMovies } from "../../data/movies.mock.";
-import NotFoundPage from "../not-found";
-import React from "react";
-import Button from "../../components/ui/button";
 import {
   BadgeDollarSign,
   Bookmark,
@@ -11,26 +6,35 @@ import {
   Play,
   ShieldAlert,
 } from "lucide-react";
-import {
-  RatingColorFrom5,
-  RatingColorFrom10,
-  RatingColorFrom100,
-} from "../../components/common/rating-color";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Button from "../../components/ui/button";
+import tmdbApi from "../../services/tmdb";
+import type { IMovie } from "../../types/movies";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const [movie, setMovie] = useState<IMovie>();
 
-  const targetMovie = mockMovies.find((movie) => movie.id === Number(id));
+  useEffect(() => {
+    const fetchMovieById = async () => {
+      try {
+        const response = await tmdbApi.get(`/movie/${id}`);
+        setMovie(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchMovieById();
+  }, []);
 
-  return !targetMovie ? (
-    <NotFoundPage />
-  ) : (
+  return (
     <div className="-mt-20">
       <div className="relative h-screen w-full">
         {/* Background */}
         <div className="absolute inset-0 bg-linear-to-b to-gray-950 backdrop-blur-md backdrop-brightness-50"></div>
         <img
-          src={targetMovie.backdropSrc}
+          src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
           alt=""
           className="size-full object-cover"
         />
@@ -41,15 +45,15 @@ const MovieDetails = () => {
             <div className="flex basis-2/3 gap-8">
               <div className="w-1/3 shrink-0">
                 <img
-                  src={targetMovie.posterSrc}
+                  src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
                   className="rounded-3xl object-cover outline outline-gray-800"
                   alt=""
                 />
               </div>
               <div className="flex flex-1 flex-col justify-center gap-2">
-                <p className="text-4xl font-bold">{targetMovie.title}</p>
+                <p className="text-4xl font-bold">{movie?.title}</p>
                 <p className="ps-1 text-sm text-gray-300">
-                  {targetMovie.genre.map((genre, index) => (
+                  {/* {movie?.genre.map((genre, index) => (
                     <React.Fragment key={index}>
                       <Link
                         to={"/"}
@@ -57,18 +61,18 @@ const MovieDetails = () => {
                       >
                         {genre}
                       </Link>
-                      {index < targetMovie.genre.length - 1 && ","}
+                      {index < movie?.genre.length - 1 && ","}
                     </React.Fragment>
-                  ))}
+                  ))} */}
                 </p>
                 <p className="ps-1 text-sm text-gray-400">
-                  <span>{targetMovie.releaseYear}</span>
+                  <span>{movie?.release_date.slice(0, 4)}</span>
                   <> • </>
-                  <span>{targetMovie.runtime} min</span>
+                  <span>{movie?.runtime} min</span>
                   <> • </>
-                  <span>{targetMovie.country}</span>
+                  {/* <span>{movie?.country}</span> */}
                 </p>
-                <p className="ps-1">{targetMovie.overview}</p>
+                <p className="ps-1">{movie?.overview}</p>
                 <div className="flex gap-2 py-4">
                   <Button>
                     <Play className="size-5" />
@@ -85,10 +89,10 @@ const MovieDetails = () => {
               <div className="flex items-center gap-4 pb-2">
                 <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-50/30 bg-gray-50/10 p-3">
                   <div>
-                    <RatingColorFrom5
-                      rating={targetMovie.ratings.shahimovie}
+                    {/* <RatingColorFrom5
+                      rating={movie?.ratings.shahimovie}
                       className="text-4xl font-bold"
-                    />
+                    /> */}
                     <span className="text-xs text-gray-300">/5</span>
                   </div>
                   <span className="text-xs">SHAHIMOVIE</span>
@@ -100,7 +104,7 @@ const MovieDetails = () => {
                       IMDb:
                     </span>
                     <span>
-                      <RatingColorFrom10 rating={targetMovie.ratings.imdb} />
+                      {/* <RatingColorFrom10 rating={movie?.ratings.imdb} /> */}
                       <span className="text-xs text-gray-300"> / 10</span>
                     </span>
                   </p>
@@ -110,7 +114,7 @@ const MovieDetails = () => {
                       TMDB:
                     </span>
                     <span>
-                      <RatingColorFrom10 rating={targetMovie.ratings.tmdb} />
+                      {/* <RatingColorFrom10 rating={movie?.ratings.tmdb} /> */}
                       <span className="text-xs text-gray-300"> / 10</span>
                     </span>
                   </p>
@@ -120,9 +124,9 @@ const MovieDetails = () => {
                       Rotten Tomatoes:
                     </span>
                     <span>
-                      <RatingColorFrom100
-                        rating={targetMovie.ratings.rottenTomatoes}
-                      />
+                      {/* <RatingColorFrom100
+                        rating={movie?.ratings.rottenTomatoes}
+                      /> */}
                       <span className="text-xs text-gray-300"> / 100</span>
                     </span>
                   </p>
@@ -135,35 +139,35 @@ const MovieDetails = () => {
                     <Clapperboard className="size-4" />
                     Director:
                   </span>
-                  <span>{targetMovie.director}</span>
+                  {/* <span>{movie?.director}</span> */}
                 </p>
                 <p className="flex items-center justify-between">
                   <span className="flex items-center gap-1 font-bold text-gray-300">
                     <ShieldAlert className="size-4" />
                     Release:
                   </span>
-                  <span>{targetMovie.releaseDate}</span>
+                  <span>{movie?.release_date.slice(0, 4)}</span>
                 </p>
                 <p className="flex items-center justify-between">
                   <span className="flex items-center gap-1 font-bold text-gray-300">
                     <ShieldAlert className="size-4" />
                     Age Rating:
                   </span>
-                  <span>+{targetMovie.ageRating}</span>
+                  {/* <span>+{movie?.ageRating}</span> */}
                 </p>
                 <p className="flex items-center justify-between">
                   <span className="flex items-center gap-1 font-bold text-gray-300">
                     <Languages className="size-4" />
                     Language:
                   </span>
-                  <span>{targetMovie.originalLanguage}</span>
+                  <span>{movie?.original_language}</span>
                 </p>
                 <p className="flex items-center justify-between">
                   <span className="flex items-center gap-1 font-bold text-gray-300">
                     <BadgeDollarSign className="size-4" />
                     Budget:
                   </span>
-                  <span>{targetMovie.budget}</span>
+                  <span>{movie?.budget} $</span>
                 </p>
               </div>
 
@@ -172,7 +176,7 @@ const MovieDetails = () => {
                   <Play className="size-10 rounded-full bg-gray-900 p-2" />
                 </div>
                 <img
-                  src={targetMovie.backdropSrc}
+                  src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
                   className="h-full rounded-lg object-cover"
                   alt=""
                 />
