@@ -15,7 +15,7 @@ import "./styles/style.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useTrendingMoviesWeekly from "../../../../services/useTrendingMoviesWeekly";
-import getTmdbImageUrl from "../../../../utils/tmdbImage";
+import { getTmdbImageUrl, getYearFromDate } from "../../../../utils";
 
 const HeroSlider = () => {
   const { movies } = useTrendingMoviesWeekly();
@@ -60,7 +60,7 @@ const HeroSlider = () => {
 
             <img
               src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
-              alt={`${movie.title} (${movie.release_date.slice(0, 4)})`}
+              alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
               className="w-full rounded-lg object-cover lg:h-[573.75px]! xl:h-[573.65px]!"
               onLoad={() => setIsLoading(false)}
             />
@@ -77,7 +77,7 @@ const HeroSlider = () => {
             />
             <div className="hidden flex-col gap-2 pb-6 xl:flex">
               <p className="text-4xl font-bold">{movie.title}</p>
-              <span className="text-2xl font-bold">{`(${movie.release_date.slice(0, 4)})`}</span>
+              <span className="text-2xl font-bold">{`(${getYearFromDate(movie.release_date)})`}</span>
             </div>
           </Link>
         </SwiperSlide>
