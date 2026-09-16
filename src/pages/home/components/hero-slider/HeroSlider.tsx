@@ -14,6 +14,7 @@ import "./styles/style.css";
 
 import { Link } from "react-router-dom";
 import useTrendingMoviesWeekly from "../../../../services/useTrendingMoviesWeekly";
+import getTmdbImageUrl from "../../../../utils/tmdbImage";
 
 const HeroSlider = () => {
   const { movies } = useTrendingMoviesWeekly();
@@ -52,11 +53,11 @@ const HeroSlider = () => {
           <picture>
             <source
               media="(min-width: 1280px)"
-              srcSet={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+              srcSet={`${getTmdbImageUrl(movie.backdrop_path, "original")}${movie.backdrop_path}`}
             />
 
             <img
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
               alt={`${movie.title} (${movie.release_date.slice(0, 4)})`}
               className="w-full rounded-lg object-cover lg:h-[573.75px]! xl:h-[573.65px]!"
             />
@@ -67,7 +68,7 @@ const HeroSlider = () => {
             className="absolute inset-0 items-end justify-start gap-6 rounded-lg p-20 pb-16 transition-all delay-100 duration-300 group-hover:pb-20 group-hover:opacity-100 xl:flex xl:bg-gray-900/60 xl:opacity-0 xl:backdrop-blur-lg"
           >
             <img
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
               alt=""
               className="hidden w-1/5 rounded-xl xl:block"
             />

@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/ui/button";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie } from "../../types/movies";
+import getTmdbImageUrl from "../../utils/tmdbImage";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,7 +27,7 @@ const MovieDetails = () => {
       }
     };
     fetchMovieById();
-  }, []);
+  }, [id]);
 
   return (
     <div className="-mt-20">
@@ -34,7 +35,7 @@ const MovieDetails = () => {
         {/* Background */}
         <div className="absolute inset-0 bg-linear-to-b to-gray-950 backdrop-blur-md backdrop-brightness-50"></div>
         <img
-          src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+            src={`${getTmdbImageUrl(movie?.backdrop_path, "w500")}`}
           alt=""
           className="size-full object-cover"
         />
@@ -45,9 +46,8 @@ const MovieDetails = () => {
             <div className="flex basis-2/3 gap-8">
               <div className="w-1/3 shrink-0">
                 <img
-                  src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-                  className="rounded-3xl object-cover outline outline-gray-800"
-                  alt=""
+                    src={`${getTmdbImageUrl(movie?.poster_path, "w500")}`}
+                    className="size-full rounded-3xl object-cover"
                 />
               </div>
               <div className="flex flex-1 flex-col justify-center gap-2">
@@ -176,7 +176,7 @@ const MovieDetails = () => {
                   <Play className="size-10 rounded-full bg-gray-900 p-2" />
                 </div>
                 <img
-                  src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+                    src={`${getTmdbImageUrl(movie?.backdrop_path, "w500")}`}
                   className="h-full rounded-lg object-cover"
                   alt=""
                 />
