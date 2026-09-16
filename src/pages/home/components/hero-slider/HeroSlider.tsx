@@ -12,12 +12,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./styles/style.css";
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useTrendingMoviesWeekly from "../../../../services/useTrendingMoviesWeekly";
 import getTmdbImageUrl from "../../../../utils/tmdbImage";
 
 const HeroSlider = () => {
   const { movies } = useTrendingMoviesWeekly();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
     <Swiper
@@ -48,7 +50,7 @@ const HeroSlider = () => {
       {movies?.slice(0, 8).map((movie) => (
         <SwiperSlide
           key={movie.id}
-          className="group relative w-2/3! rounded-lg xl:w-3/4! 2xl:w-2/3!"
+          className={`group relative w-2/3! rounded-lg bg-gray-800 xl:w-3/4! 2xl:w-2/3! ${isLoading && "animate-pulse"}`}
         >
           <picture>
             <source
@@ -60,6 +62,7 @@ const HeroSlider = () => {
               src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
               alt={`${movie.title} (${movie.release_date.slice(0, 4)})`}
               className="w-full rounded-lg object-cover lg:h-[573.75px]! xl:h-[573.65px]!"
+              onLoad={() => setIsLoading(false)}
             />
           </picture>
 
