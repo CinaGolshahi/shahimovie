@@ -14,6 +14,7 @@ import {
   RatingColorFrom5,
 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
+import useGetCreditsOfMovieId from "../../hooks/useGetCreditsOfMovieId";
 import useGetMovieById from "../../hooks/useGetMovieById";
 import {
   formatCurrency,
@@ -25,8 +26,9 @@ import LoadingScreen from "./components/LoadingScreen";
 
 const MovieDetails = () => {
   const { movie, isLoading } = useGetMovieById();
+  const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
 
-  if (isLoading) {
+  if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
   } else {
     return (
@@ -41,7 +43,7 @@ const MovieDetails = () => {
           />
 
           {/* Content */}
-          <div className="absolute inset-0 flex items-center">
+          <div className="absolute inset-0 flex flex-col justify-center gap-4 xl:mt-10">
             <div className="container mx-auto flex items-center justify-between px-14">
               <div className="flex basis-2/3 gap-8">
                 <div className="aspect-2/3 w-1/3 shrink-0 rounded-3xl bg-gray-800 p-px">
@@ -86,64 +88,6 @@ const MovieDetails = () => {
                         <Bookmark />
                       </Button>
                     </div>
-                  </div>
-
-                  <div className="grid grid-cols-5 gap-2">
-                    <Link
-                      to={`/artist/`}
-                      className="flex flex-col items-center gap-1 rounded-3xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:bg-blue-500/20"
-                    >
-                      <img
-                        src="https://i.pinimg.com/736x/cf/12/52/cf1252c7fd6d17f01600d8765e95be87.jpg"
-                        alt=""
-                        className="aspect-square rounded-full object-cover"
-                      />
-                      <span>Sydney Sweeney</span>
-                    </Link>
-                    <Link
-                      to={`/artist/`}
-                      className="flex flex-col items-center gap-1 rounded-3xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:bg-blue-500/20"
-                    >
-                      <img
-                        src="https://i.pinimg.com/736x/cf/12/52/cf1252c7fd6d17f01600d8765e95be87.jpg"
-                        alt=""
-                        className="aspect-square rounded-full object-cover"
-                      />
-                      <span>Sydney Sweeney</span>
-                    </Link>
-                    <Link
-                      to={`/artist/`}
-                      className="flex flex-col items-center gap-1 rounded-3xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:bg-blue-500/20"
-                    >
-                      <img
-                        src="https://i.pinimg.com/736x/cf/12/52/cf1252c7fd6d17f01600d8765e95be87.jpg"
-                        alt=""
-                        className="aspect-square rounded-full object-cover"
-                      />
-                      <span>Sydney Sweeney</span>
-                    </Link>
-                    <Link
-                      to={`/artist/`}
-                      className="flex flex-col items-center gap-1 rounded-3xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:bg-blue-500/20"
-                    >
-                      <img
-                        src="https://i.pinimg.com/736x/cf/12/52/cf1252c7fd6d17f01600d8765e95be87.jpg"
-                        alt=""
-                        className="aspect-square rounded-full object-cover"
-                      />
-                      <span>Sydney Sweeney</span>
-                    </Link>
-                    <Link
-                      to={`/artist/`}
-                      className="flex flex-col items-center gap-1 rounded-3xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:bg-blue-500/20"
-                    >
-                      <img
-                        src="https://i.pinimg.com/736x/cf/12/52/cf1252c7fd6d17f01600d8765e95be87.jpg"
-                        alt=""
-                        className="aspect-square rounded-full object-cover"
-                      />
-                      <span>Sydney Sweeney</span>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -220,7 +164,7 @@ const MovieDetails = () => {
                       <Clapperboard className="size-4" />
                       Director:
                     </span>
-                    {/* <span>{movie?.director}</span> */}
+                    <span></span>
                   </p>
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">
@@ -241,6 +185,22 @@ const MovieDetails = () => {
                   />
                 </div>
               </div>
+            </div>
+            <div className="container mx-auto grid grid-cols-10 gap-2 px-16">
+              {cast?.slice(0, 10).map((artist, index) => (
+                <Link
+                  key={index}
+                  to={`/artist/`}
+                  className="flex aspect-9/16 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                >
+                  <img
+                    src={`${getTmdbImageUrl(artist.profile_path, "original")}`}
+                    alt=""
+                    className="aspect-2/3 rounded-xl object-cover"
+                  />
+                  <span>{artist.name}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
