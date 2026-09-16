@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { IMovie, IResponseTrendingMovies } from "../types/movies";
-import tmdbApi from "./tmdb";
+import tmdbApi from "../../services/tmdb";
+import type { IMovie, IResponseTrendingMovies } from "../../types/movies";
 
 const useTrendingMoviesWeekly = () => {
   const [movies, setMovies] = useState<IMovie[]>();
