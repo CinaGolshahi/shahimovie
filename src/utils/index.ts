@@ -1,3 +1,4 @@
+import formatReleaseDate from "./formatReleaseDate";
 import getTmdbImageUrl from "./tmdbImage";
 import getYearFromDate from "./yearFromDate";
-export { getTmdbImageUrl, getYearFromDate };
+export { formatReleaseDate, getTmdbImageUrl, getYearFromDate };

@@ -11,7 +11,11 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/ui/button";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie } from "../../types/movies";
-import { getTmdbImageUrl, getYearFromDate } from "../../utils";
+import {
+  formatReleaseDate,
+  getTmdbImageUrl,
+  getYearFromDate,
+} from "../../utils";
 import LoadingScreen from "./components/LoadingScreen";
 
 const MovieDetails = () => {
@@ -151,7 +155,7 @@ const MovieDetails = () => {
                       <ShieldAlert className="size-4" />
                       Release:
                     </span>
-                    <span>{getYearFromDate(movie?.release_date)}</span>
+                    <span>{formatReleaseDate(movie?.release_date)}</span>
                   </p>
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">
