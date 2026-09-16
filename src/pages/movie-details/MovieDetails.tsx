@@ -6,10 +6,14 @@ import {
   Info,
   Languages,
   Play,
-  ShieldAlert,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {
+  RatingColorFrom10,
+  RatingColorFrom100,
+  RatingColorFrom5,
+} from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie } from "../../types/movies";
@@ -102,10 +106,10 @@ const MovieDetails = () => {
                 <div className="flex items-center gap-4 pb-2">
                   <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-50/30 bg-gray-50/10 p-3">
                     <div>
-                      {/* <RatingColorFrom5
-                      rating={movie?.ratings.shahimovie}
+                      <RatingColorFrom5
+                      rating={4}
                       className="text-4xl font-bold"
-                    /> */}
+                    />
                       <span className="text-xs text-gray-300">/5</span>
                     </div>
                     <span className="text-xs">SHAHIMOVIE</span>
@@ -117,7 +121,7 @@ const MovieDetails = () => {
                         IMDb:
                       </span>
                       <span>
-                        {/* <RatingColorFrom10 rating={movie?.ratings.imdb} /> */}
+                        <RatingColorFrom10 rating={8} />
                         <span className="text-xs text-gray-300"> / 10</span>
                       </span>
                     </p>
@@ -127,7 +131,7 @@ const MovieDetails = () => {
                         TMDB:
                       </span>
                       <span>
-                        {/* <RatingColorFrom10 rating={movie?.ratings.tmdb} /> */}
+                        <RatingColorFrom10 rating={4} />
                         <span className="text-xs text-gray-300"> / 10</span>
                       </span>
                     </p>
@@ -137,9 +141,7 @@ const MovieDetails = () => {
                         Rotten Tomatoes:
                       </span>
                       <span>
-                        {/* <RatingColorFrom100
-                        rating={movie?.ratings.rottenTomatoes}
-                      /> */}
+                        <RatingColorFrom100 rating={78} />
                         <span className="text-xs text-gray-300"> / 100</span>
                       </span>
                     </p>
@@ -159,13 +161,6 @@ const MovieDetails = () => {
                       Release:
                     </span>
                     <span>{formatReleaseDate(movie?.release_date)}</span>
-                  </p>
-                  <p className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 font-bold text-gray-300">
-                      <ShieldAlert className="size-4" />
-                      Age Rating:
-                    </span>
-                    {/* <span>+{movie?.ageRating}</span> */}
                   </p>
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">
