@@ -60,26 +60,26 @@ const MovieDetails = () => {
                 <div className="flex flex-1 flex-col justify-center gap-2">
                   <p className="text-4xl font-bold">{movie?.title}</p>
                   <p className="text-sm text-gray-300">
-                    {/* {movie?.genre.map((genre, index) => (
-                    <React.Fragment key={index}>
-                      <Link
-                        to={"/"}
-                        className="transition-all delay-75 duration-300 hover:text-gray-50"
-                      >
-                        {genre}
-                      </Link>
-                      {index < movie?.genre.length - 1 && ","}
-                    </React.Fragment>
-                  ))} */}
+                    {movie?.genres.map((genre, index) => (
+                      <>
+                        <span>{genre.name}</span>
+                        {index < movie?.genres.length - 1 && ", "}
+                      </>
+                    ))}
                   </p>
                   <p className="text-sm text-gray-400">
                     <span>{getYearFromDate(movie?.release_date)}</span>
                     <> • </>
                     <span>{movie?.runtime} min</span>
                     <> • </>
-                    {/* <span>{movie?.country}</span> */}
+                    {movie?.production_countries.map((country, index) => (
+                      <>
+                        <span key={index}>{country.name}</span>
+                        {index < movie?.production_countries.length - 1 && ", "}
+                      </>
+                    ))}
                   </p>
-                  <p className="pe-20">{movie?.overview}</p>
+                  <p className="pe-20 text-gray-200">{movie?.overview}</p>
                   <div className="flex gap-2 py-4">
                     <Button>
                       <Play className="size-5" />
@@ -165,7 +165,7 @@ const MovieDetails = () => {
                       <Languages className="size-4" />
                       Language:
                     </span>
-                    <span>{movie?.original_language}</span>
+                    <span>{movie?.spoken_languages[0].name}</span>
                   </p>
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">

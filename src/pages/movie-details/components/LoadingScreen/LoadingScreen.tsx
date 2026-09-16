@@ -10,9 +10,9 @@ const LoadingScreen = () => {
             <p className="mb-2 h-4 w-32 animate-pulse rounded-xl bg-gray-800"></p>
 
             <p className="flex flex-col items-start gap-2 text-sm">
-              <p className="h-5 w-80 animate-pulse rounded-xl bg-gray-800"></p>
-              <p className="h-5 w-80 animate-pulse rounded-xl bg-gray-800"></p>
-              <p className="h-5 w-72 animate-pulse rounded-xl bg-gray-800"></p>
+              <span className="h-5 w-80 animate-pulse rounded-xl bg-gray-800"></span>
+              <span className="h-5 w-80 animate-pulse rounded-xl bg-gray-800"></span>
+              <span className="h-5 w-72 animate-pulse rounded-xl bg-gray-800"></span>
             </p>
             <div className="flex gap-2 py-4">
               <div className="h-10 w-28 animate-pulse rounded-full bg-gray-800 text-transparent"></div>
