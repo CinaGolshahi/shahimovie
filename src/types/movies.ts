@@ -31,11 +31,11 @@ interface ICountry {
   name: string;
 }
 
-interface IResponseTrendingMovies {
+interface IPaginatedResponse {
   page: number;
   results: IMovie[];
   total_pages: number;
   total_results: number;
 }
 
-export type { IGenre, IMovie, IResponseTrendingMovies };
+export type { IGenre, IMovie, IPaginatedResponse };

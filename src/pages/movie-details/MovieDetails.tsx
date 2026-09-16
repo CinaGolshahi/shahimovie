@@ -7,16 +7,14 @@ import {
   Languages,
   Play,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   RatingColorFrom10,
   RatingColorFrom100,
   RatingColorFrom5,
 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
-import tmdbApi from "../../services/tmdb";
-import type { IMovie } from "../../types/movies";
+import useGetMovieById from "../../hooks/useGetMovieById";
 import {
   formatCurrency,
   formatReleaseDate,
@@ -26,23 +24,7 @@ import {
 import LoadingScreen from "./components/LoadingScreen";
 
 const MovieDetails = () => {
-  const { id } = useParams<{ id: string }>();
-  const [movie, setMovie] = useState<IMovie>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchMovieById = async () => {
-      setIsLoading(true);
-      try {
-        const response = await tmdbApi.get(`/movie/${id}`);
-        setMovie(response.data);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchMovieById();
-  }, [id]);
+  const { movie, isLoading } = useGetMovieById();
 
   if (isLoading) {
     return <LoadingScreen />;
