@@ -1,7 +1,9 @@
 import {
   BadgeDollarSign,
   Bookmark,
+  CalendarDays,
   Clapperboard,
+  Info,
   Languages,
   Play,
   ShieldAlert,
@@ -12,6 +14,7 @@ import Button from "../../components/ui/button";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie } from "../../types/movies";
 import {
+  formatCurrency,
   formatReleaseDate,
   getTmdbImageUrl,
   getYearFromDate,
@@ -95,7 +98,7 @@ const MovieDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex h-[450.13px] basis-1/4 flex-col divide-y divide-gray-600 rounded-2xl border border-gray-600 bg-gray-600/50 p-2">
+              <div className="flex h-[477.95px] basis-1/4 flex-col divide-y divide-gray-600 rounded-2xl border border-gray-600 bg-gray-600/50 p-2">
                 <div className="flex items-center gap-4 pb-2">
                   <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-50/30 bg-gray-50/10 p-3">
                     <div>
@@ -145,14 +148,14 @@ const MovieDetails = () => {
                 <div className="flex w-full flex-col gap-2 px-1 py-2 text-sm">
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">
-                      <Clapperboard className="size-4" />
-                      Director:
+                      <Info className="size-4" />
+                      Status:
                     </span>
-                    {/* <span>{movie?.director}</span> */}
+                    <span>{movie?.status}</span>
                   </p>
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">
-                      <ShieldAlert className="size-4" />
+                      <CalendarDays className="size-4" />
                       Release:
                     </span>
                     <span>{formatReleaseDate(movie?.release_date)}</span>
@@ -173,10 +176,17 @@ const MovieDetails = () => {
                   </p>
                   <p className="flex items-center justify-between">
                     <span className="flex items-center gap-1 font-bold text-gray-300">
+                      <Clapperboard className="size-4" />
+                      Director:
+                    </span>
+                    {/* <span>{movie?.director}</span> */}
+                  </p>
+                  <p className="flex items-center justify-between">
+                    <span className="flex items-center gap-1 font-bold text-gray-300">
                       <BadgeDollarSign className="size-4" />
                       Budget:
                     </span>
-                    <span>{movie?.budget} $</span>
+                    <span>{formatCurrency(movie?.budget)}</span>
                   </p>
                 </div>
                 <div className="relative mt-2 h-full">
