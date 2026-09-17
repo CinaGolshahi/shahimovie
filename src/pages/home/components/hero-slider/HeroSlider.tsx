@@ -2,7 +2,6 @@ import { Autoplay, EffectCards, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/effect-cards";
 import "swiper/css/navigation";
 import "./styles/style.css";
 
@@ -18,7 +17,7 @@ const HeroSlider = () => {
   return (
     <Swiper
       effect={"cards"}
-      grabCursor={true}
+      grabCursor={false}
       centeredSlides={true}
       slidesPerView={"auto"}
       modules={[Autoplay, EffectCards, Navigation]}
@@ -27,10 +26,9 @@ const HeroSlider = () => {
         disableOnInteraction: true,
         pauseOnMouseEnter: true,
       }}
-      cardsEffect={{
-        rotate: true,
+      pagination={{
+        dynamicBullets: true,
       }}
-
       navigation={{}}
       className="container"
     >
