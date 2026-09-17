@@ -1,15 +1,9 @@
-import {
-  Autoplay,
-  EffectCoverflow,
-  Navigation,
-  Pagination,
-} from "swiper/modules";
+import { Autoplay, EffectCards, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/effect-coverflow";
+import "swiper/css/effect-cards";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "./styles/style.css";
 
 import { useState } from "react";
@@ -23,27 +17,20 @@ const HeroSlider = () => {
 
   return (
     <Swiper
-      effect={"coverflow"}
-      grabCursor={false}
+      effect={"cards"}
+      grabCursor={true}
       centeredSlides={true}
       slidesPerView={"auto"}
-      loop={true}
-      modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
+      modules={[Autoplay, EffectCards, Navigation]}
       autoplay={{
         delay: 6000,
         disableOnInteraction: true,
         pauseOnMouseEnter: true,
       }}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 0,
-        depth: 500,
-        modifier: 1,
-        slideShadows: true,
+      cardsEffect={{
+        rotate: true,
       }}
-      pagination={{
-        dynamicBullets: true,
-      }}
+
       navigation={{}}
       className="container"
     >
