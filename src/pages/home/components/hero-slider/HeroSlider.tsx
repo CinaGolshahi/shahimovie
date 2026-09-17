@@ -30,7 +30,7 @@ const HeroSlider = () => {
       loop={true}
       modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
       autoplay={{
-        delay: 60000,
+        delay: 6000,
         disableOnInteraction: true,
         pauseOnMouseEnter: true,
       }}
