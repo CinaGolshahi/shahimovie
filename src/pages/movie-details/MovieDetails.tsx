@@ -35,7 +35,7 @@ const MovieDetails = () => {
       <div>
         <div
           style={{
-            backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "original") ?? ""})`,
+            backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "w200") ?? ""})`,
           }}
           className="w-full bg-cover bg-fixed bg-center xl:-mt-20"
         >
@@ -171,7 +171,7 @@ const MovieDetails = () => {
                       <Play className="size-14 rounded-full bg-gray-900 p-2 outline outline-gray-600" />
                     </div>
                     <img
-                      src={`${getTmdbImageUrl(movie?.backdrop_path, "w500")}`}
+                      src={`${getTmdbImageUrl(movie?.backdrop_path, "w200")}`}
                       className="h-full rounded-lg object-cover"
                       alt=""
                     />
@@ -186,7 +186,7 @@ const MovieDetails = () => {
                     className="flex aspect-9/16 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
                   >
                     <img
-                      src={`${getTmdbImageUrl(artist.profile_path, "original")}`}
+                      src={`${getTmdbImageUrl(artist.profile_path, "w200")}`}
                       alt=""
                       className="aspect-2/3 h-44 rounded-xl object-cover"
                     />

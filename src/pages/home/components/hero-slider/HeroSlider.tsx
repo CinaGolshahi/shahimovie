@@ -30,7 +30,7 @@ const HeroSlider = () => {
       loop={true}
       modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
       autoplay={{
-        delay: 6000,
+        delay: 60000,
         disableOnInteraction: true,
         pauseOnMouseEnter: true,
       }}
@@ -55,7 +55,7 @@ const HeroSlider = () => {
           <picture>
             <source
               media="(min-width: 1280px)"
-              srcSet={`${getTmdbImageUrl(movie.backdrop_path, "original")}${movie.backdrop_path}`}
+              srcSet={`${getTmdbImageUrl(movie.backdrop_path, "w780")}${movie.backdrop_path}`}
             />
 
             <img
@@ -71,7 +71,7 @@ const HeroSlider = () => {
             className="absolute inset-0 items-end justify-start gap-6 rounded-lg p-20 pb-16 transition-all delay-100 duration-300 group-hover:pb-20 group-hover:opacity-100 xl:flex xl:bg-gray-900/60 xl:opacity-0 xl:backdrop-blur-lg"
           >
             <img
-              src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
+              src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
               alt=""
               className="hidden w-1/5 rounded-xl xl:block"
             />
