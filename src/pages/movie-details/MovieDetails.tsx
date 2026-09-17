@@ -37,56 +37,54 @@ const MovieDetails = () => {
           style={{
             backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "original") ?? ""})`,
           }}
-          className="-mt-20 w-full bg-cover bg-fixed bg-center"
+          className="w-full bg-cover bg-fixed bg-center xl:-mt-20"
         >
-          <div className="w-full bg-linear-to-b to-gray-950 py-20 backdrop-blur-md backdrop-brightness-50">
-            <div className="container mx-auto flex flex-col gap-4 px-10">
-              <div className="flex items-center">
-                <div className="flex w-3/4 gap-8">
-                  <div className="aspect-2/3 w-1/3 shrink-0 rounded-3xl bg-gray-800 p-px">
+          <div className="w-full bg-linear-to-b to-gray-950 pt-10 backdrop-blur-md backdrop-brightness-50 xl:py-20">
+            <div className="container mx-auto flex flex-col gap-4 xl:px-10">
+              <div className="flex flex-col items-center xl:flex-row">
+                <div className="flex flex-col items-center gap-2 text-center xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
+                  <div className="aspect-2/3 w-2/3 shrink-0 rounded-3xl bg-gray-800 p-px xl:w-1/3">
                     <img
                       src={`${getTmdbImageUrl(movie?.poster_path, "w500")}`}
                       className="size-full rounded-3xl object-cover"
                     />
                   </div>
-                  <div className="flex flex-col justify-center gap-6">
-                    <div className="flex flex-col justify-center gap-2">
-                      <p className="text-4xl font-bold">{movie?.title}</p>
-                      <p className="text-sm text-gray-300">
-                        {movie?.genres.map((genre, index) => (
-                          <>
-                            <span>{genre.name}</span>
-                            {index < movie?.genres.length - 1 && ", "}
-                          </>
-                        ))}
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        <span>{getYearFromDate(movie?.release_date)}</span>
-                        <> • </>
-                        <span>{movie?.runtime} min</span>
-                        <> • </>
-                        {movie?.production_countries.map((country, index) => (
-                          <>
-                            <span key={index}>{country.name}</span>
-                            {index < movie?.production_countries.length - 1 &&
-                              ", "}
-                          </>
-                        ))}
-                      </p>
-                      <p className="pe-20 text-gray-200">{movie?.overview}</p>
-                      <div className="flex gap-2 py-4">
-                        <Button>
-                          <Play className="size-5" />
-                          <span className="">Watch</span>
-                        </Button>
-                        <Button variant="btn-secondary" size="btn-squ-md">
-                          <Bookmark />
-                        </Button>
-                      </div>
+                  <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
+                    <p className="text-4xl font-bold">{movie?.title}</p>
+                    <p className="text-sm text-gray-300">
+                      {movie?.genres.map((genre, index) => (
+                        <>
+                          <span>{genre.name}</span>
+                          {index < movie?.genres.length - 1 && ", "}
+                        </>
+                      ))}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      <span>{getYearFromDate(movie?.release_date)}</span>
+                      <> • </>
+                      <span>{movie?.runtime} min</span>
+                      <> • </>
+                      {movie?.production_countries.map((country, index) => (
+                        <>
+                          <span key={index}>{country.name}</span>
+                          {index < movie?.production_countries.length - 1 &&
+                            ", "}
+                        </>
+                      ))}
+                    </p>
+                    <p className="text-gray-200 xl:pe-36">{movie?.overview}</p>
+                    <div className="flex gap-2 py-4">
+                      <Button>
+                        <Play className="size-5" />
+                        <span className="">Watch</span>
+                      </Button>
+                      <Button variant="btn-secondary" size="btn-squ-md">
+                        <Bookmark />
+                      </Button>
                     </div>
                   </div>
                 </div>
-                <div className="flex w-1/4 flex-col divide-y divide-gray-600 rounded-2xl border border-gray-600 bg-gray-600/50 p-2">
+                <div className="hidden w-1/4 flex-col divide-y divide-gray-600 rounded-2xl border border-gray-600 bg-gray-600/50 p-2 xl:flex">
                   <div className="flex items-center gap-4 pb-2">
                     <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-50/30 bg-gray-50/10 p-3">
                       <div>
@@ -180,7 +178,7 @@ const MovieDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-8 gap-2">
+              <div className="hidden grid-cols-8 gap-2 xl:grid">
                 {cast?.slice(0, 8).map((artist, index) => (
                   <Link
                     key={index}
