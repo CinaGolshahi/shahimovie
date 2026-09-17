@@ -73,9 +73,7 @@ const MovieDetails = () => {
                           </>
                         ))}
                       </p>
-                      <p className="line-clamp-3 pe-20 text-gray-200">
-                        {movie?.overview}
-                      </p>
+                      <p className="pe-20 text-gray-200">{movie?.overview}</p>
                       <div className="flex gap-2 py-4">
                         <Button>
                           <Play className="size-5" />
@@ -182,8 +180,8 @@ const MovieDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-10 gap-2">
-                {cast?.slice(0, 10).map((artist, index) => (
+              <div className="grid grid-cols-8 gap-2">
+                {cast?.slice(0, 8).map((artist, index) => (
                   <Link
                     key={index}
                     to={`/artist/`}
