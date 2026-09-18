@@ -53,7 +53,7 @@ const HeroSlider = () => {
 
           <Link
             to={`/movie/${movie.id}`}
-            className="absolute inset-0 items-end justify-start gap-6 rounded-lg p-20 pb-16 transition-all delay-100 duration-300 group-hover:pb-20 group-hover:opacity-100 xl:flex xl:bg-gray-900/60 xl:opacity-0 xl:backdrop-blur-lg"
+            className="absolute inset-0 items-end justify-start gap-6 rounded-lg xl:p-20 xl:pb-16 transition-all delay-100 duration-300 group-hover:pb-20 group-hover:opacity-100 xl:flex xl:bg-gray-900/60 xl:opacity-0 xl:backdrop-blur-lg"
           >
             <img
               src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
