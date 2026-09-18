@@ -35,34 +35,35 @@ const HeroSlider = () => {
       {movies?.slice(0, 8).map((movie) => (
         <SwiperSlide
           key={movie.id}
-          className={`group relative w-2/3! rounded-lg bg-gray-800 xl:w-3/4! 2xl:w-2/3! ${isLoading && "animate-pulse"}`}
+          className={`aspect-2/3 w-2/3! rounded-lg bg-gray-800 xl:aspect-video xl:w-3/4! 2xl:w-2/3! ${isLoading && "animate-pulse"}`}
         >
-          <picture>
-            <source
-              media="(min-width: 1280px)"
-              srcSet={`${getTmdbImageUrl(movie.backdrop_path, "w780")}${movie.backdrop_path}`}
-            />
-
-            <img
-              src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
-              alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
-              className="w-full rounded-lg object-cover lg:h-[573.75px]! xl:h-[573.65px]!"
-              onLoad={() => setIsLoading(false)}
-            />
-          </picture>
-
           <Link
             to={`/movie/${movie.id}`}
-            className="absolute inset-0 items-end justify-start gap-6 rounded-lg xl:p-20 xl:pb-16 transition-all delay-100 duration-300 group-hover:pb-20 group-hover:opacity-100 xl:flex xl:bg-gray-900/60 xl:opacity-0 xl:backdrop-blur-lg"
+            className="group relative w-full rounded-lg"
           >
-            <img
-              src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
-              alt=""
-              className="hidden w-1/5 rounded-xl xl:block"
-            />
-            <div className="hidden flex-col gap-2 pb-6 xl:flex">
-              <p className="text-4xl font-bold">{movie.title}</p>
-              <span className="text-2xl font-bold">{`(${getYearFromDate(movie.release_date)})`}</span>
+            <picture>
+              <source
+                media="(min-width: 1280px)"
+                srcSet={`${getTmdbImageUrl(movie.backdrop_path, "w780")}${movie.backdrop_path}`}
+              />
+
+              <img
+                src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
+                alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
+                className="size-full rounded-lg object-cover"
+                onLoad={() => setIsLoading(false)}
+              />
+            </picture>
+            <div className="absolute inset-0 hidden items-end justify-start gap-6 rounded-lg bg-linear-to-b from-transparent to-gray-950/80 p-20 pb-16 opacity-0 transition-all delay-75 duration-300 group-hover:pb-20 group-hover:opacity-100 group-hover:backdrop-blur-lg xl:flex">
+              <img
+                src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
+                alt=""
+                className="hidden w-1/5 rounded-xl xl:block"
+              />
+              <div className="hidden flex-col gap-2 pb-6 xl:flex">
+                <p className="text-4xl font-bold">{movie.title}</p>
+                <span className="text-2xl font-bold">{`(${getYearFromDate(movie.release_date)})`}</span>
+              </div>
             </div>
           </Link>
         </SwiperSlide>
