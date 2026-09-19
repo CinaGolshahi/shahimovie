@@ -6,8 +6,8 @@ const MoviesPage = () => {
     useNewMovies();
 
   return (
-    <div className="container mx-auto flex flex-col gap-4 p-2 px-8">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
+    <div className="container mx-auto flex flex-col gap-4 p-2 xl:px-8">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
         {newMovies.map((movie) => (
           <MovieCard movie={movie} />
         ))}

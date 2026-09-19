@@ -1,6 +1,5 @@
 import HeroSlider from "./components/hero-slider";
 import NewMovies from "./components/new-movies";
-import UpdatedShows from "./components/updated-shows";
 
 const Home = () => {
   return (
@@ -8,7 +7,6 @@ const Home = () => {
       <HeroSlider />
 
       <NewMovies />
-      <UpdatedShows />
     </div>
   );
 };
