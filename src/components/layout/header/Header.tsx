@@ -1,5 +1,5 @@
-import Logo from "../../ui/logo";
 import Categories from "../../shared/categories";
+import Logo from "../../ui/logo";
 
 const Header = () => {
   return (

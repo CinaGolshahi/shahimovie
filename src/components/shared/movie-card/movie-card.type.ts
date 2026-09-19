@@ -1,4 +1,4 @@
-import type { IMovie } from "../../../data/movies.mock.";
+import type { IMovie } from "../../../types/movies";
 
 interface IMovieCardProps {
   movie: IMovie;
