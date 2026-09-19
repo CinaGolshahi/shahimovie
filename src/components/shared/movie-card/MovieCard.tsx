@@ -16,7 +16,7 @@ const MovieCard = (props: IMovieCardProps) => {
         <img
           src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
           alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
-          className="h-full rounded-2xl object-cover"
+          className="size-full rounded-2xl object-cover"
         />
       ) : (
         <div className="flex size-full items-center justify-center">
