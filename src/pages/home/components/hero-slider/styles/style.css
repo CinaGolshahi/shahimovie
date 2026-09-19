@@ -8,17 +8,3 @@
 .swiper-slide-active {
   border: 2px solid var(--swiper-theme-color);
 }
-.swiper-button-prev {
-  transform: translateX(-72px);
-  -webkit-transform: translateX(-72px);
-  -moz-transform: translateX(-72px);
-  -ms-transform: translateX(-72px);
-  -o-transform: translateX(-72px);
-}
-.swiper-button-next {
-  transform: translateX(72px);
-  -webkit-transform: translateX(72px);
-  -moz-transform: translateX(72px);
-  -ms-transform: translateX(72px);
-  -o-transform: translateX(72px);
-}

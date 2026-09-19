@@ -36,7 +36,7 @@ const HeroSlider = () => {
               <picture>
                 <source
                   media="(min-width: 1280px)"
-                  srcSet={`${getTmdbImageUrl(movie.backdrop_path, "w780")}${movie.backdrop_path}`}
+                  srcSet={`${getTmdbImageUrl(movie.backdrop_path, "w780")}`}
                 />
 
                 <img
