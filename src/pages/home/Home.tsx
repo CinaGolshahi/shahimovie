@@ -7,8 +7,8 @@ const Home = () => {
     <div className="pbs-6 xl:pbs-0">
       <HeroSlider />
 
-      <UpdatedShows />
       <NewMovies />
+      <UpdatedShows />
     </div>
   );
 };
