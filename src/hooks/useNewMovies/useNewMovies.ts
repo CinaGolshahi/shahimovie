@@ -16,8 +16,10 @@ const useNewMovies = () => {
           "/discover/movie",
           {
             params: {
-              sort_by: "release_date.desc",
-              "release_date.lte": new Date().toISOString().split("T")[0],
+              sort_by: "primary_release_date.desc",
+              "primary_release_date.lte": new Date()
+                .toISOString()
+                .split("T")[0],
               page,
             },
           },
