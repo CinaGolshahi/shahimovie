@@ -19,6 +19,7 @@ import {
 import Button from "../../components/ui/button";
 import useGetCreditsOfMovieId from "../../hooks/useGetCreditsOfMovieId";
 import useGetMovieById from "../../hooks/useGetMovieById";
+import useMovieDirectors from "../../hooks/useMovieDirectors";
 import {
   formatCurrency,
   formatReleaseDate,
@@ -30,6 +31,7 @@ import LoadingScreen from "./components/LoadingScreen";
 const MovieDetails = () => {
   const { movie, isLoading } = useGetMovieById();
   const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
+  const { directors } = useMovieDirectors();
 
   if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
@@ -159,7 +161,13 @@ const MovieDetails = () => {
                         <Clapperboard className="size-4" />
                         Director:
                       </span>
-                      <span></span>
+                      {directors.length > 0 && (
+                        <span>
+                          {directors
+                            .map((director) => director.name)
+                            .join(", ")}
+                        </span>
+                      )}
                     </p>
                     <p className="flex items-center justify-between">
                       <span className="flex items-center gap-1 font-bold text-gray-300">
