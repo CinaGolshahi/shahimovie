@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
+
 import {
   BadgeDollarSign,
   Bookmark,
   CalendarDays,
   Clapperboard,
+  ImageOff,
   Info,
   Languages,
   Play,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+
 import {
   RatingColorFrom10,
   RatingColorFrom100,
@@ -178,27 +181,38 @@ const MovieDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="hidden grid-cols-8 gap-2 xl:grid">
+
+              <div className="hidden grid-cols-8 items-stretch gap-4 xl:grid">
                 {cast?.slice(0, 8).map((artist, index) => (
                   <Link
                     key={index}
-                    to={`/artist/`}
-                    className="flex aspect-9/16 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                    to={`/artist/${artist.id}`}
+                    className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
                   >
-                    <img
-                      src={`${getTmdbImageUrl(artist.profile_path, "w200")}`}
-                      alt=""
-                      className="aspect-2/3 h-44 rounded-xl object-cover"
-                    />
-                    <span>{artist.name}</span>
-                    <span className="text-gray-500">{artist.character}</span>
+                    {artist.profile_path ? (
+                      <img
+                        src={`${getTmdbImageUrl(artist.profile_path, "w200")}`}
+                        alt=""
+                        className="aspect-square w-full rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex aspect-square w-full items-center justify-center rounded-full bg-gray-800">
+                        <ImageOff className="size-8 stroke-gray-700" />
+                      </div>
+                    )}
+                    <span className="line-clamp-1 font-semibold">
+                      {artist.name}
+                    </span>
+                    <span className="line-clamp-1 text-gray-500">
+                      {artist.character}
+                    </span>
                   </Link>
                 ))}
               </div>
             </div>
           </div>
         </div>
-        <div className=""></div>
+        <div className="w-full"></div>
       </div>
     );
   }
