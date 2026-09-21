@@ -49,35 +49,48 @@ const MovieDetails = () => {
               <div className="flex flex-col items-center xl:flex-row">
                 <div className="flex flex-col items-center gap-2 text-center xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
                   <div className="aspect-2/3 w-2/3 shrink-0 rounded-3xl bg-gray-800 p-px xl:w-1/3">
-                    <img
-                      src={`${getTmdbImageUrl(movie?.poster_path, "w500")}`}
-                      className="size-full rounded-3xl object-cover"
-                    />
+                    {movie?.poster_path ? (
+                      <img
+                        src={`${getTmdbImageUrl(movie?.poster_path, "w500")}`}
+                        className="size-full rounded-3xl object-cover"
+                      />
+                    ) : (
+                      <div className="flex size-full items-center justify-center rounded-full bg-gray-800">
+                        <ImageOff className="size-8 stroke-gray-700" />
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
                     <p className="text-4xl font-bold">{movie?.title}</p>
                     <p className="text-sm text-gray-300">
-                      {movie?.genres.map((genre, index) => (
-                        <>
-                          <span>{genre.name}</span>
-                          {index < movie?.genres.length - 1 && ", "}
-                        </>
-                      ))}
+                      {movie?.genres &&
+                        movie?.genres.map((genre, index) => (
+                          <>
+                            <span>{genre.name}</span>
+                            {index < movie?.genres.length - 1 && ", "}
+                          </>
+                        ))}
                     </p>
                     <p className="text-sm text-gray-400">
-                      <span>{getYearFromDate(movie?.release_date)}</span>
+                      <span>
+                        {getYearFromDate(movie?.release_date ?? "Unknown")}
+                      </span>
                       <> • </>
-                      <span>{movie?.runtime} min</span>
+                      <span>{movie?.runtime ?? "Unknown"} min</span>
                       <> • </>
-                      {movie?.production_countries.map((country, index) => (
-                        <>
-                          <span key={index}>{country.name}</span>
-                          {index < movie?.production_countries.length - 1 &&
-                            ", "}
-                        </>
-                      ))}
+                      {movie?.production_countries
+                        ? movie?.production_countries.map((country, index) => (
+                            <>
+                              <span key={index}>{country.name}</span>
+                              {index < movie?.production_countries.length - 1 &&
+                                ", "}
+                            </>
+                          ))
+                        : "Unknown"}
                     </p>
-                    <p className="text-gray-200 xl:pe-36">{movie?.overview}</p>
+                    <p className="text-gray-200 xl:pe-36">
+                      {movie?.overview ?? "Unknown"}
+                    </p>
                     <div className="flex gap-2 py-4">
                       <Button>
                         <Play className="size-5" />
@@ -140,7 +153,7 @@ const MovieDetails = () => {
                         <Info className="size-4" />
                         Status:
                       </span>
-                      <span>{movie?.status}</span>
+                      <span>{movie?.status ?? "Unknown"}</span>
                     </p>
                     <p className="flex items-center justify-between">
                       <span className="flex items-center gap-1 font-bold text-gray-300">
@@ -154,19 +167,23 @@ const MovieDetails = () => {
                         <Languages className="size-4" />
                         Language:
                       </span>
-                      <span>{movie?.spoken_languages[0].name}</span>
+                      <span>
+                        {movie?.spoken_languages?.[0]?.name ?? "Unknown"}
+                      </span>
                     </p>
                     <p className="flex items-center justify-between">
                       <span className="flex items-center gap-1 font-bold text-gray-300">
                         <Clapperboard className="size-4" />
                         Director:
                       </span>
-                      {directors.length > 0 && (
+                      {directors.length > 0 ? (
                         <span>
                           {directors
                             .map((director) => director.name)
                             .join(", ")}
                         </span>
+                      ) : (
+                        "Unknown"
                       )}
                     </p>
                     <p className="flex items-center justify-between">
@@ -182,7 +199,7 @@ const MovieDetails = () => {
                       <Play className="size-14 rounded-full bg-gray-900 p-2 outline outline-gray-600" />
                     </div>
                     <img
-                      src={`${getTmdbImageUrl(movie?.backdrop_path, "w200")}`}
+                      src={`${movie?.backdrop_path && getTmdbImageUrl(movie?.backdrop_path, "w200")}`}
                       className="h-full rounded-lg object-cover"
                       alt=""
                     />
