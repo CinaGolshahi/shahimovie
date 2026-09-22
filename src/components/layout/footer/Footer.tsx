@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import Logo from "../../ui/logo";
-import Button from "../../ui/button";
 import { Languages } from "lucide-react";
+import { Link } from "react-router-dom";
+import Button from "../../ui/button";
+import Logo from "../../ui/logo";
 
 const Footer = () => {
   return (
@@ -157,11 +157,14 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col justify-between gap-2 p-4 md:flex-row">
         <p>© 2026 ShahiMovie, All Rights Reserved</p>
         <p>
-          Designed by{" "}
-          <Link to={"https://linktr.ee/cinagolshahi"} className="text-blue-500">
+          <span>Coding by </span>
+          <Link
+            to={"https://linktr.ee/cinagolshahi"}
+            target="_blank"
+            className="text-blue-500 hover:underline"
+          >
             Cina Golshahi
-          </Link>{" "}
-          with love 💙
+          </Link>
         </p>
       </div>
     </footer>
