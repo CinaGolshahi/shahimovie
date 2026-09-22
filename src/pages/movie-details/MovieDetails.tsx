@@ -237,7 +237,9 @@ const MovieDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-full"></div>
+        <div className="w-full 2xl:px-10">
+          <TabsPattern />
+        </div>
       </div>
     );
   }
