@@ -1,37 +1,18 @@
 import { Link } from "react-router-dom";
 
-import {
-  BadgeDollarSign,
-  Bookmark,
-  CalendarDays,
-  Clapperboard,
-  ImageOff,
-  Info,
-  Languages,
-  Play,
-} from "lucide-react";
+import { Bookmark, ImageOff, Play } from "lucide-react";
 
-import {
-  RatingColorFrom10,
-  RatingColorFrom100,
-  RatingColorFrom5,
-} from "../../components/common/rating-color";
+import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
+import { RatingColorFrom10 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
 import useGetCreditsOfMovieId from "../../hooks/useGetCreditsOfMovieId";
 import useGetMovieById from "../../hooks/useGetMovieById";
-import useMovieDirectors from "../../hooks/useMovieDirectors";
-import {
-  formatCurrency,
-  formatReleaseDate,
-  getTmdbImageUrl,
-  getYearFromDate,
-} from "../../utils";
+import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { LoadingScreen, TabsPattern } from "./components";
 
 const MovieDetails = () => {
   const { movie, isLoading } = useGetMovieById();
   const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
-  const { directors } = useMovieDirectors();
 
   if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
@@ -90,6 +71,25 @@ const MovieDetails = () => {
                           ))
                         : "Unknown"}
                     </p>
+                    <div className="-ms-2 flex cursor-pointer divide-x divide-gray-500 rounded-full py-1 transition-all delay-75 duration-300 *:px-2 hover:bg-amber-50/10">
+                      <div className="flex items-center gap-2">
+                        <RottenTomatoes className="size-5" />
+                        <span>80 / 100</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Imdb className="size-5 bg-[#F5C518] fill-black" />
+                        <span>8 / 10</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <TheMovieDatabase className="size-5" />
+                        <span>
+                          <RatingColorFrom10
+                            rating={Number(movie?.vote_average.toFixed(1))}
+                          />
+                          <span> / 10</span>
+                        </span>
+                      </div>
+                    </div>
                     <p className="text-gray-200 xl:pe-36">
                       {movie?.overview ?? "Unknown"}
                     </p>
@@ -102,109 +102,6 @@ const MovieDetails = () => {
                         <Bookmark />
                       </Button>
                     </div>
-                  </div>
-                </div>
-                <div className="my-4 flex w-full flex-col divide-y divide-gray-700 rounded-2xl border border-gray-700 bg-gray-600/20 p-2 xl:my-0 xl:w-1/4">
-                  <div className="flex items-center gap-4 pb-2">
-                    <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-700 bg-gray-600/20 p-3">
-                      <div>
-                        <RatingColorFrom5
-                          rating={4}
-                          className="text-4xl font-bold"
-                        />
-                        <span className="text-xs text-gray-300">/5</span>
-                      </div>
-                      <span className="text-xs">SHAHIMOVIE</span>
-                    </div>
-                    <div className="flex w-2/3 flex-col gap-2 text-sm">
-                      <p className="relative flex justify-between gap-2">
-                        <span className="flex items-center gap-2 font-bold">
-                          <span className="size-2 rounded-full bg-yellow-500"></span>
-                          IMDb:
-                        </span>
-                        <span>
-                          <RatingColorFrom10 rating={8} />
-                          <span className="text-xs text-gray-300"> / 10</span>
-                        </span>
-                      </p>
-                      <p className="relative flex justify-between gap-2">
-                        <span className="flex items-center gap-2 font-bold">
-                          <span className="size-2 rounded-full bg-blue-500"></span>
-                          TMDB:
-                        </span>
-                        <span>
-                          <RatingColorFrom10 rating={4} />
-                          <span className="text-xs text-gray-300"> / 10</span>
-                        </span>
-                      </p>
-                      <p className="relative flex justify-between gap-2">
-                        <span className="flex items-center gap-2 font-bold">
-                          <span className="size-2 rounded-full bg-red-500"></span>
-                          Rotten Tomatoes:
-                        </span>
-                        <span>
-                          <RatingColorFrom100 rating={78} />
-                          <span className="text-xs text-gray-300"> / 100</span>
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex w-full flex-col gap-2 px-1 py-2 text-sm">
-                    <p className="flex items-center justify-between">
-                      <span className="flex items-center gap-1 font-bold text-gray-300">
-                        <Info className="size-4" />
-                        Status:
-                      </span>
-                      <span>{movie?.status ?? "Unknown"}</span>
-                    </p>
-                    <p className="flex items-center justify-between">
-                      <span className="flex items-center gap-1 font-bold text-gray-300">
-                        <CalendarDays className="size-4" />
-                        Release:
-                      </span>
-                      <span>{formatReleaseDate(movie?.release_date)}</span>
-                    </p>
-                    <p className="flex items-center justify-between">
-                      <span className="flex items-center gap-1 font-bold text-gray-300">
-                        <Languages className="size-4" />
-                        Language:
-                      </span>
-                      <span>
-                        {movie?.spoken_languages?.[0]?.name ?? "Unknown"}
-                      </span>
-                    </p>
-                    <p className="flex items-center justify-between">
-                      <span className="flex items-center gap-1 font-bold text-gray-300">
-                        <Clapperboard className="size-4" />
-                        Director:
-                      </span>
-                      {directors.length > 0 ? (
-                        <span>
-                          {directors
-                            .map((director) => director.name)
-                            .join(", ")}
-                        </span>
-                      ) : (
-                        "Unknown"
-                      )}
-                    </p>
-                    <p className="flex items-center justify-between">
-                      <span className="flex items-center gap-1 font-bold text-gray-300">
-                        <BadgeDollarSign className="size-4" />
-                        Budget:
-                      </span>
-                      <span>{formatCurrency(movie?.budget)}</span>
-                    </p>
-                  </div>
-                  <div className="relative mt-2 aspect-video">
-                    <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-gray-950/50">
-                      <Play className="size-14 rounded-full bg-gray-900 p-2 outline outline-gray-600" />
-                    </div>
-                    <img
-                      src={`${movie?.backdrop_path && getTmdbImageUrl(movie?.backdrop_path, "w200")}`}
-                      className="h-full rounded-lg object-cover"
-                      alt=""
-                    />
                   </div>
                 </div>
               </div>

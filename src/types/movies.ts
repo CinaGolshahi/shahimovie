@@ -12,6 +12,7 @@ interface IMovie {
   release_date: string;
   runtime: number | null;
   budget: number;
+  vote_average: number;
   poster_path: string | null;
   backdrop_path: string | null;
   genres: IGenre[];
