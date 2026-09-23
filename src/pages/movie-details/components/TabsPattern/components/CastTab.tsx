@@ -14,9 +14,6 @@ const CastTab = () => {
         </div>
       ) : (
         <>
-          <p className="ms-2 mb-6 inline-block border-b-4 border-blue-500 pe-6 pb-2 text-2xl font-bold">
-            Cast
-          </p>
           <div className="hidden gap-x-4 xl:grid xl:grid-cols-8 2xl:grid-cols-10">
             {cast?.map((star, index) => (
               <Link
