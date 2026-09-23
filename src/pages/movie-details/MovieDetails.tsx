@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Bookmark, ImageOff, Play } from "lucide-react";
+import { Bookmark, ChevronRight, ImageOff, Play } from "lucide-react";
 
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
 import { RatingColorFrom10 } from "../../components/common/rating-color";
@@ -71,7 +71,7 @@ const MovieDetails = () => {
                           ))
                         : "Unknown"}
                     </p>
-                    <div className="-ms-2 flex cursor-pointer divide-x divide-gray-500 rounded-full py-1 transition-all delay-75 duration-300 *:px-2 hover:bg-amber-50/10">
+                    <div className="-ms-2 flex cursor-pointer rounded-full py-1 transition-all delay-75 duration-300 gap-4 hover:bg-amber-50/10 items-center">
                       <div className="flex items-center gap-2">
                         <RottenTomatoes className="size-5" />
                         <span>80 / 100</span>
@@ -89,6 +89,7 @@ const MovieDetails = () => {
                           <span> / 10</span>
                         </span>
                       </div>
+                      <ChevronRight className="size-5"/>
                     </div>
                     <p className="text-gray-200 xl:pe-36">
                       {movie?.overview ?? "Unknown"}
