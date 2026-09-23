@@ -1,5 +1,5 @@
 interface IRatingColorProps {
-  rating: number;
+  rating: number | undefined | null;
   className?: string;
 }
 

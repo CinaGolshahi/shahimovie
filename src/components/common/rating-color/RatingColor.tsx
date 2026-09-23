@@ -24,6 +24,7 @@ function getRatingColorClassFrom100(rating: number): string {
 
 const RatingColorFrom5 = (props: IRatingColorProps) => {
   const { rating, className } = props;
+  if (!rating) return "Unknown";
   return (
     <span className={`${className} ${getRatingColorClassFrom5(rating)}`}>
       {rating}
@@ -33,6 +34,7 @@ const RatingColorFrom5 = (props: IRatingColorProps) => {
 
 const RatingColorFrom10 = (props: IRatingColorProps) => {
   const { rating, className } = props;
+  if (!rating) return "Unknown";
   return (
     <span className={`${className} ${getRatingColorClassFrom10(rating)}`}>
       {rating}
@@ -42,6 +44,7 @@ const RatingColorFrom10 = (props: IRatingColorProps) => {
 
 const RatingColorFrom100 = (props: IRatingColorProps) => {
   const { rating, className } = props;
+  if (!rating) return "Unknown";
   return (
     <span className={`${className} ${getRatingColorClassFrom100(rating)}`}>
       {rating}
@@ -49,4 +52,4 @@ const RatingColorFrom100 = (props: IRatingColorProps) => {
   );
 };
 
-export { RatingColorFrom5, RatingColorFrom10, RatingColorFrom100 };
+export { RatingColorFrom10, RatingColorFrom100, RatingColorFrom5 };
