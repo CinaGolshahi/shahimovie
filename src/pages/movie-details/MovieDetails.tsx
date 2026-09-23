@@ -61,7 +61,9 @@ const MovieDetails = () => {
                     )}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
-                    <p className="text-4xl font-bold">{movie?.title}</p>
+                    <p className="text-xl font-bold xl:text-4xl">
+                      {movie?.title}
+                    </p>
                     <p className="text-sm text-gray-300">
                       {movie?.genres &&
                         movie?.genres.map((genre, index) => (
@@ -102,9 +104,9 @@ const MovieDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="hidden w-1/4 flex-col divide-y divide-gray-600 rounded-2xl border border-gray-600 bg-gray-600/50 p-2 xl:flex">
+                <div className="my-4 flex w-full flex-col divide-y divide-gray-700 rounded-2xl border border-gray-700 bg-gray-600/20 p-2 xl:my-0 xl:w-1/4">
                   <div className="flex items-center gap-4 pb-2">
-                    <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-50/30 bg-gray-50/10 p-3">
+                    <div className="flex w-1/3 shrink-0 flex-col items-center rounded-xl border border-gray-700 bg-gray-600/20 p-3">
                       <div>
                         <RatingColorFrom5
                           rating={4}

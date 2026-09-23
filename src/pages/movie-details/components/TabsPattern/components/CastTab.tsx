@@ -14,7 +14,7 @@ const CastTab = () => {
         </div>
       ) : (
         <>
-          <div className="hidden gap-x-4 xl:grid xl:grid-cols-8 2xl:grid-cols-10">
+          <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-8 2xl:grid-cols-10">
             {cast?.map((star, index) => (
               <Link
                 key={index}

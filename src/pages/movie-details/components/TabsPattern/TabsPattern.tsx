@@ -6,7 +6,7 @@ const TabsPattern = () => {
   const [tabSelected, setTabSelected] = useState(tabItems[0]);
 
   return (
-    <div className="container mx-auto flex flex-col gap-4 bg-gray-900 p-2 2xl:rounded-2xl">
+    <div className="container mx-auto flex flex-col gap-4 bg-gray-900 p-2 2xl:rounded-2xl md:rounded-2xl xl:rounded-none">
       <div className="flex gap-2">
         {tabItems.map((item, index) => (
           <button
