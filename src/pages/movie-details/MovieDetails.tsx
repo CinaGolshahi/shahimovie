@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { Bookmark, ChevronRight, ImageOff, Play } from "lucide-react";
 
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
-import { RatingColorFrom10 } from "../../components/common/rating-color";
+import {
+  RatingColorFrom10,
+  RatingColorFrom100,
+} from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
 import useGetCreditsOfMovieId from "../../hooks/useGetCreditsOfMovieId";
 import useGetMovieById from "../../hooks/useGetMovieById";
@@ -82,23 +85,23 @@ const MovieDetails = () => {
                       <div className="-ms-2 flex cursor-pointer items-center gap-4 rounded-full px-2 py-1 transition-all delay-75 duration-300 hover:bg-gray-50/10">
                         <div className="flex items-center gap-2">
                           <RottenTomatoes className="size-5" />
-                          <span>{movieScores?.Ratings?.[1].Value}</span>
+                          <RatingColorFrom100
+                            rating={Number(
+                              movieScores?.Ratings?.[1].Value.slice(0, -1),
+                            )}
+                          />
                         </div>
                         <div className="flex items-center gap-2">
                           <Imdb className="size-5 bg-[#F5C518] fill-black" />
-                          <span>
-                            {movieScores?.imdbRating}
-                            <span> / 10</span>
-                          </span>
+                          <RatingColorFrom10
+                            rating={Number(movieScores?.imdbRating)}
+                          />
                         </div>
                         <div className="flex items-center gap-2">
                           <TheMovieDatabase className="size-5" />
-                          <span>
-                            <RatingColorFrom10
-                              rating={Number(movie?.vote_average.toFixed(1))}
-                            />
-                            <span> / 10</span>
-                          </span>
+                          <RatingColorFrom10
+                            rating={Number(movie?.vote_average.toFixed(1))}
+                          />
                         </div>
                         <ChevronRight className="size-5" />
                       </div>
