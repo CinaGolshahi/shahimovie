@@ -26,8 +26,11 @@ const RatingColorFrom5 = (props: IRatingColorProps) => {
   const { rating, className } = props;
   if (!rating) return "Unknown";
   return (
-    <span className={`${className} ${getRatingColorClassFrom5(rating)}`}>
-      {rating}
+    <span>
+      <span className={`${className} ${getRatingColorClassFrom5(rating)}`}>
+        {rating}
+      </span>
+      <span> / 5</span>
     </span>
   );
 };
@@ -36,8 +39,11 @@ const RatingColorFrom10 = (props: IRatingColorProps) => {
   const { rating, className } = props;
   if (!rating) return "Unknown";
   return (
-    <span className={`${className} ${getRatingColorClassFrom10(rating)}`}>
-      {rating}
+    <span>
+      <span className={`${className} ${getRatingColorClassFrom10(rating)}`}>
+        {rating}
+      </span>
+      <span> / 10</span>
     </span>
   );
 };
@@ -46,8 +52,11 @@ const RatingColorFrom100 = (props: IRatingColorProps) => {
   const { rating, className } = props;
   if (!rating) return "Unknown";
   return (
-    <span className={`${className} ${getRatingColorClassFrom100(rating)}`}>
-      {rating}
+    <span>
+      <span className={`${className} ${getRatingColorClassFrom100(rating)}`}>
+        {rating}
+      </span>
+      <span> / 100</span>
     </span>
   );
 };
