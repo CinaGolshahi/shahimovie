@@ -10,6 +10,7 @@ interface IMovie {
     | "Released"
     | "Canceled";
   release_date: string;
+  imdb_id: string;
   runtime: number | null;
   budget: number;
   vote_average: number;
