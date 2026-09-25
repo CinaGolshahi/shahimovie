@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Bookmark, ChevronRight, ImageOff, Play } from "lucide-react";
+import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
 import {
@@ -16,10 +16,10 @@ import { LoadingScreen, TabsPattern } from "./components";
 
 const MovieDetails = () => {
   const { movie, isLoading } = useGetMovieById();
+  const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
   const { movieScores, movieScoresIsLoading } = useMovieScores(
     movie?.imdb_id ?? "",
   );
-  const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
 
   if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
@@ -35,7 +35,7 @@ const MovieDetails = () => {
           <div className="w-full bg-linear-to-b to-gray-950 pt-10 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
             <div className="container mx-auto flex flex-col gap-4 xl:px-10">
               <div className="flex flex-col items-center xl:flex-row">
-                <div className="flex flex-col items-center gap-2 text-center xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
+                <div className="flex flex-col items-center gap-2 text-center select-none xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
                   <div className="aspect-2/3 w-2/3 shrink-0 rounded-3xl bg-gray-800 p-px xl:w-1/3">
                     {movie?.poster_path ? (
                       <img
@@ -80,9 +80,9 @@ const MovieDetails = () => {
                     </p>
 
                     {movieScoresIsLoading ? (
-                      <div className="h-6 w-64 animate-pulse rounded-full bg-gray-50/10"></div>
+                      <div className="my-1 h-6 w-64 animate-pulse rounded-full bg-gray-50/10"></div>
                     ) : (
-                      <div className="-ms-2 flex cursor-pointer items-center gap-4 rounded-full px-2 py-1 transition-all delay-75 duration-300 hover:bg-gray-50/10">
+                      <div className="my-1 flex items-center gap-4 transition-all delay-75 duration-300">
                         <div className="flex items-center gap-2">
                           <RottenTomatoes className="size-5" />
                           <RatingColorFrom100
@@ -103,7 +103,6 @@ const MovieDetails = () => {
                             rating={Number(movie?.vote_average.toFixed(1))}
                           />
                         </div>
-                        <ChevronRight className="size-5" />
                       </div>
                     )}
                     <p className="text-gray-200 xl:pe-36">
@@ -111,8 +110,8 @@ const MovieDetails = () => {
                     </p>
                     <div className="flex gap-2 py-4">
                       <Button>
-                        <Play className="size-5" />
-                        <span className="">Watch</span>
+                        <Film className="size-5" />
+                        <span className="">Trailer</span>
                       </Button>
                       <Button variant="btn-secondary" size="btn-squ-md">
                         <Bookmark />
@@ -121,7 +120,6 @@ const MovieDetails = () => {
                   </div>
                 </div>
               </div>
-
               <div className="hidden grid-cols-8 items-stretch gap-4 xl:grid">
                 {cast?.slice(0, 8).map((artist, index) => (
                   <Link
