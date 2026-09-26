@@ -12,7 +12,7 @@ const DetailsTab = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 gap-y-2 divide-gray-800 *:flex *:justify-between *:px-2 xl:grid-cols-4 xl:divide-x *:text-end">
+          <div className="grid grid-cols-1 gap-y-2 divide-gray-800 *:flex *:justify-between *:px-2 *:text-end xl:grid-cols-4 xl:divide-x">
             <p>
               <span>Status:</span>
               <span className="text-gray-400">{movie?.status ?? "N/A"}</span>
