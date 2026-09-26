@@ -10,6 +10,7 @@ interface IMovie {
     | "Released"
     | "Canceled";
   release_date: string;
+  tagline: string;
   imdb_id: string;
   runtime: number | null;
   budget: number;
@@ -28,6 +29,7 @@ interface IGenre {
 
 interface ILanguage {
   name: string;
+  english_name: string;
 }
 interface ICountry {
   name: string;
