@@ -14,7 +14,7 @@ const CastTab = () => {
         </div>
       ) : (
         <>
-          <div className="flex overflow-auto xl:grid xl:grid-cols-8 2xl:grid-cols-10">
+          <div className="flex overflow-auto xl:grid xl:grid-cols-8">
             {cast?.map((star, index) => (
               <Link
                 key={index}
