@@ -1,5 +1,5 @@
 const formatCurrency = (amount: number | undefined | null): string => {
-  if (!amount) return "Unknown";
+  if (!amount) return "N/A";
 
   return `$${amount.toLocaleString("en-US")}`;
 };
