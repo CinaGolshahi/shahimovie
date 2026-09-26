@@ -14,12 +14,12 @@ const CastTab = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-8 2xl:grid-cols-10">
+          <div className="flex overflow-auto xl:grid xl:grid-cols-8 2xl:grid-cols-10">
             {cast?.map((star, index) => (
               <Link
                 key={index}
                 to={`/star/${star.id}`}
-                className="flex w-full flex-col items-center gap-1 p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 xl:text-sm"
               >
                 {star.profile_path ? (
                   <img
