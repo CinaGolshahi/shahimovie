@@ -19,12 +19,13 @@ const CastTab = () => {
               <Link
                 key={index}
                 to={`/star/${star.id}`}
+                title={`${star.name}: ${star.character}`}
                 className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 xl:text-sm"
               >
                 {star.profile_path ? (
                   <img
                     src={`${getTmdbImageUrl(star.profile_path, "w200")}`}
-                    alt=""
+                    alt={star.name}
                     className="aspect-2/3 w-full rounded-lg object-cover"
                   />
                 ) : (
