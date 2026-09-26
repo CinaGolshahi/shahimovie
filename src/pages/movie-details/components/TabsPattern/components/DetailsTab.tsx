@@ -1,9 +1,12 @@
 import { Loader2 } from "lucide-react";
 import useGetMovieById from "../../../../../hooks/useGetMovieById";
+import useMovieDirectors from "../../../../../hooks/useMovieDirectors";
 import { formatCurrency, formatReleaseDate } from "../../../../../utils";
 
 const DetailsTab = () => {
   const { movie, isLoading } = useGetMovieById();
+  const { directors } = useMovieDirectors();
+
   return (
     <>
       {isLoading ? (
@@ -12,7 +15,7 @@ const DetailsTab = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 gap-y-2 divide-gray-800 *:flex *:justify-between *:px-2 *:text-end xl:grid-cols-4 xl:divide-x">
+          <div className="grid grid-cols-1 gap-y-2 divide-gray-800 *:flex *:justify-between *:px-4 *:text-end xl:grid-cols-4 xl:divide-x">
             <p>
               <span>Status:</span>
               <span className="text-gray-400">{movie?.status ?? "N/A"}</span>
@@ -35,6 +38,19 @@ const DetailsTab = () => {
                       <span key={index}>
                         <span>{genre.name}</span>
                         {index < movie?.genres.length - 1 && ", "}
+                      </span>
+                    ))
+                  : "N/A"}
+              </span>
+            </p>
+            <p>
+              <span>Director:</span>
+              <span className="text-gray-400">
+                {directors.length
+                  ? directors.map((director, index) => (
+                      <span key={index}>
+                        <span>{director.name}</span>
+                        {index < directors.length - 1 && ", "}
                       </span>
                     ))
                   : "N/A"}
