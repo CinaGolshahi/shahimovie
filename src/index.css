@@ -17,11 +17,8 @@ body {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-.categories-item {
-  @apply relative flex items-center gap-1 rounded-full px-3 transition-all delay-75 duration-300 select-none hover:bg-gray-800;
-}
-.categories-item .chevron-down {
-  @apply mt-0.5 size-5 transition-all duration-300 group-hover:rotate-180;
+.navbar-item {
+  @apply flex items-center gap-1 rounded-full px-3 py-2 transition-all delay-75 duration-300 select-none hover:bg-gray-50/10;
 }
 
 .btn-sm {

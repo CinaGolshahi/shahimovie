@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchModal from "../../shared/Search/SearchModal";
 import SearchTrigger from "../../shared/Search/SearchTrigger";
 import Logo from "../../ui/logo";
+import MenuNavbar from "../MenuNavbar/MenuNavbar";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -15,9 +16,12 @@ const Header = () => {
         <Logo />
 
         <div className="hidden h-full items-center xl:flex">
+          <MenuNavbar />
+        </div>
+
+        <div className="relative hidden h-full w-48 items-center justify-end px-2 xl:flex">
           <SearchTrigger openModal={openModal} />
         </div>
-        <div className="relative hidden h-full w-48 items-center justify-end px-2 xl:flex"></div>
 
         {isSearchOpen && <SearchModal closeModal={closeModal} />}
       </div>
