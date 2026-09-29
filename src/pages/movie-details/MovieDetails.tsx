@@ -87,7 +87,7 @@ const MovieDetails = () => {
                           <RottenTomatoes className="size-5" />
                           <RatingColorFrom100
                             rating={Number(
-                              movieScores?.Ratings?.[1].Value.slice(0, -1),
+                              movieScores?.Ratings?.[1]?.Value.slice(0, -1),
                             )}
                           />
                         </div>
