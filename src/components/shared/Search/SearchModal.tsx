@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { ChevronRight, Search } from "lucide-react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import useSearch from "../../../hooks/useSearch";
@@ -30,7 +30,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
           <Search />
         </button>
       </div>
-      <div className="divide-y divide-gray-800 rounded-2xl bg-gray-950 outline-2 outline-gray-900 *:h-40 *:p-2">
+      <div className="divide-y divide-gray-800 rounded-2xl bg-gray-950 outline-2 outline-gray-900 *:not-last:h-40 *:not-last:p-2">
         {searchResults.slice(0, 3).map((item, index) => (
           <div key={index}>
             <Link
@@ -54,6 +54,13 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
             </Link>
           </div>
         ))}
+        <Link
+          to={`/search/`}
+          className="flex items-center justify-center py-2 transition-all delay-75 duration-300 hover:text-blue-500"
+        >
+          <span>Find more</span>
+          <ChevronRight className="mt-0.5 size-5" />
+        </Link>
       </div>
     </div>,
     document.body,
