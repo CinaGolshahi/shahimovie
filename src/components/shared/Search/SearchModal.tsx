@@ -23,7 +23,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
   return createPortal(
     <div
       onClick={closeModal}
-      className="fixed inset-0 z-50 flex flex-col items-center gap-4 bg-gray-950/80 pt-36 backdrop-blur-lg *:w-1/3"
+      className="fixed inset-0 z-30 flex flex-col items-center gap-4 bg-gray-950/80 px-4 pt-10 backdrop-blur-lg *:w-full xl:pt-36 xl:*:w-1/3"
     >
       <div
         onClick={(event) => event.stopPropagation()}
@@ -70,7 +70,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
         ))}
         <Link
           to={`/search/`}
-          className="flex items-center justify-center py-2 transition-all delay-75 duration-300 hover:text-blue-500"
+          className="flex items-center justify-center px-4 py-2 transition-all delay-75 duration-300 hover:text-blue-500"
         >
           <span>Find more</span>
           <ChevronRight className="mt-0.5 size-5" />
