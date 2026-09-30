@@ -1,12 +1,9 @@
+import { Home } from "lucide-react";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./components/layout/footer";
 import Header from "./components/layout/header";
 import MobileNavbar from "./components/layout/mobile-navbar";
-import Home from "./pages/home";
-import MoviesPage from "./pages/movies";
-import ShowsPage from "./pages/shows";
-import Footer from "./components/layout/footer";
-import NotFoundPage from "./pages/not-found";
-import MoviePage from "./pages/movie-details";
+import { MoviesPage, NotFoundPage, SearchPage, ShowsPage } from "./pages";
 
 const App = () => {
   return (
@@ -21,9 +18,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
 
           <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movie/:id" element={<MoviesPage />} />
+
           <Route path="/shows" element={<ShowsPage />} />
 
-          <Route path="/movie/:id" element={<MoviePage />} />
+          <Route path="/search" element={<SearchPage />} />
         </Routes>
       </main>
 
