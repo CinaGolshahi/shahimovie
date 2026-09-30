@@ -1,4 +1,5 @@
 import { ChevronRight, Search } from "lucide-react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import useSearch from "../../../hooks/useSearch";
@@ -6,7 +7,18 @@ import { getTmdbImageUrl, getYearFromDate } from "../../../utils";
 import type { ISearchModal } from "./SearchModal.type";
 
 const SearchModal = ({ closeModal }: ISearchModal) => {
-  const { searchResults } = useSearch();
+  const [searchValue, setSearchValue] = useState("");
+  const [query, setQuery] = useState("");
+
+  const { searchResults } = useSearch(query);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setQuery(searchValue);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchValue]);
 
   return createPortal(
     <div
@@ -24,6 +36,8 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
           id="searchBox"
           inputMode="search"
           placeholder="Search..."
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value)}
           className="w-full p-4 focus:outline-blue-600"
         />
         <button className="flex aspect-square h-full cursor-pointer place-content-center items-center delay-75 hover:outline-blue-600">

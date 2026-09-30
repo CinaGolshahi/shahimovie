@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie, IPaginatedResponse } from "../../types/movies";
 
-const useSearch = () => {
+const useSearch = (query: string) => {
   const [searchResults, setSearchResults] = useState<IMovie[]>([]);
 
   useEffect(() => {
+    if (!query) return;
+
     const fetchSearch = async () => {
       try {
         const response = await tmdbApi.get<IPaginatedResponse>(
           "/search/movie",
           {
-            params: { query: `Avengers` },
+            params: { query: `${query}` },
           },
         );
         setSearchResults(response.data.results);
@@ -21,7 +23,7 @@ const useSearch = () => {
     };
 
     fetchSearch();
-  }, []);
+  }, [query]);
 
   return { searchResults };
 };
