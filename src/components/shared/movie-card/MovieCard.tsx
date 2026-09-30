@@ -9,7 +9,6 @@ const MovieCard = (props: IMovieCardProps) => {
     <Link
       to={`/movie/${movie.id}`}
       key={movie.id}
-      target="_blank"
       className={`${className} group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
     >
       {movie.poster_path ? (

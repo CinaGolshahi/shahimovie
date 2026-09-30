@@ -55,10 +55,10 @@ const MovieDetails = () => {
                     <p className="text-sm text-gray-300">
                       {movie?.genres &&
                         movie?.genres.map((genre, index) => (
-                          <>
+                          <span key={index}>
                             <span>{genre.name}</span>
                             {index < movie?.genres.length - 1 && ", "}
-                          </>
+                          </span>
                         ))}
                     </p>
                     <p className="text-sm text-gray-400">
@@ -70,11 +70,11 @@ const MovieDetails = () => {
                       <> • </>
                       {movie?.production_countries
                         ? movie?.production_countries.map((country, index) => (
-                            <>
-                              <span key={index}>{country.name}</span>
+                            <span key={index}>
+                              <span>{country.name}</span>
                               {index < movie?.production_countries.length - 1 &&
                                 ", "}
-                            </>
+                            </span>
                           ))
                         : "Unknown"}
                     </p>
