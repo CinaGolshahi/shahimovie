@@ -1,4 +1,4 @@
-import { ChevronRight, Search } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -25,25 +25,18 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
       onClick={closeModal}
       className="fixed inset-0 z-30 flex flex-col items-center gap-4 bg-gray-950/80 px-4 pt-10 backdrop-blur-lg *:w-full xl:pt-36 xl:*:w-1/3"
     >
-      <div
+      <input
+        autoFocus
+        type="text"
+        name="searchBox"
+        id="searchBox"
+        inputMode="search"
+        placeholder="Search..."
+        value={searchValue}
         onClick={(event) => event.stopPropagation()}
-        className="flex justify-center gap-2 *:rounded-full *:bg-gray-950/80 *:outline-2 *:outline-gray-900 *:transition-all *:duration-300"
-      >
-        <input
-          autoFocus
-          type="text"
-          name="searchBox"
-          id="searchBox"
-          inputMode="search"
-          placeholder="Search..."
-          value={searchValue}
-          onChange={(event) => setSearchValue(event.target.value)}
-          className="w-full p-4 focus:outline-blue-600"
-        />
-        <button className="flex aspect-square h-full cursor-pointer place-content-center items-center delay-75 hover:outline-blue-600">
-          <Search />
-        </button>
-      </div>
+        onChange={(event) => setSearchValue(event.target.value)}
+        className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
+      />
       <div className="divide-y divide-gray-800 rounded-2xl bg-gray-950 outline-2 outline-gray-900 *:not-last:h-40 *:not-last:p-2">
         {searchResults.slice(0, 3).map((item, index) => (
           <div key={index}>
