@@ -2,7 +2,7 @@ import SearchModal from "../../components/shared/Search/SearchModal";
 
 const SearchPage = () => {
   return (
-    <div>
+    <div className="h-screen">
       <SearchModal />
     </div>
   );
