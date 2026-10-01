@@ -11,6 +11,7 @@ import {
   SearchPage,
   ShowsPage,
 } from "./pages";
+import SearchResultsPage from "./pages/search/SearchResultsPage";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/shows" element={<ShowsPage />} />
 
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/:search" element={<SearchResultsPage />} />
         </Routes>
       </main>
 
