@@ -3,7 +3,7 @@ import tmdbApi from "../../services/tmdb";
 import type { IMovie, IPaginatedResponse } from "../../types/movies";
 
 const useTrendingMoviesWeekly = () => {
-  const [movies, setMovies] = useState<IMovie[]>();
+  const [movies, setMovies] = useState<IMovie[]>([]);
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
