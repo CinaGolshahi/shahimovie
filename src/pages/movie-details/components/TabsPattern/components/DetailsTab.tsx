@@ -28,7 +28,7 @@ const DetailsTab = () => {
             </p>
             <p>
               <span>Runtime:</span>
-              <span className="text-gray-400">{movie?.runtime ?? "N/A"}</span>
+              <span className="text-gray-400">{movie?.runtime ?? "N/A"} min</span>
             </p>
             <p>
               <span>Genres:</span>
