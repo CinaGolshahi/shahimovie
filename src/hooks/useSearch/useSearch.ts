@@ -8,11 +8,22 @@ const useSearch = (query: string | undefined | null) => {
   const [totalPage, setTotalPage] = useState(1);
   const [isLoadingSearchResults, setIsLoadingSearchResults] =
     useState<boolean>(true);
+  const [prevQuery, setPrevQuery] = useState(query);
+
+  if (query !== prevQuery) {
+    setPrevQuery(query);
+    setSearchResults([]);
+    setPage(1);
+    setTotalPage(1);
+  }
 
   useEffect(() => {
-    if (!query) return;
-
     const fetchSearch = async () => {
+      if (!query) {
+        setIsLoadingSearchResults(false);
+        return;
+      }
+
       setIsLoadingSearchResults(true);
       try {
         const response = await tmdbApi.get<IPaginatedResponse>(
