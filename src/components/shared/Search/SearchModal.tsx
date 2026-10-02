@@ -1,4 +1,4 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -20,23 +20,38 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
     return () => clearTimeout(timer);
   }, [searchValue]);
 
+  const clearSearch = () => {
+    setSearchValue("");
+    setQuery("");
+  };
+
   return createPortal(
     <div
       onClick={closeModal}
       className="fixed inset-0 z-30 flex flex-col items-center gap-4 bg-gray-950/80 px-4 pt-10 backdrop-blur-lg *:w-full xl:pt-36 xl:*:w-1/3"
     >
-      <input
-        autoFocus
-        type="text"
-        name="searchBox"
-        id="searchBox"
-        inputMode="search"
-        placeholder="Search..."
-        value={searchValue}
+      <div
         onClick={(event) => event.stopPropagation()}
-        onChange={(event) => setSearchValue(event.target.value)}
-        className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
-      />
+        className="relative flex items-center"
+      >
+        <input
+          autoFocus
+          type="text"
+          name="searchBox"
+          id="searchBox"
+          inputMode="search"
+          placeholder="Search..."
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value)}
+          className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
+        />
+        <button
+          onClick={clearSearch}
+          className="group absolute inset-e-3 cursor-pointer rounded-full p-1"
+        >
+          <X className="size-5 stroke-gray-400 transition-all duration-300 group-hover:stroke-gray-50" />
+        </button>
+      </div>
       {searchValue && searchResults && (
         <div className="divide-y divide-gray-800 rounded-2xl bg-gray-950 outline-2 outline-gray-900 *:not-last:h-40 *:not-last:p-2">
           {searchResults.slice(0, 3).map((item, index) => (
@@ -63,7 +78,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
             </div>
           ))}
           <Link
-            to={`/search/${searchValue}`}
+            to={`/search/${query}`}
             className="flex items-center justify-center px-4 py-2 transition-all delay-75 duration-300 hover:text-blue-500"
           >
             <span>Find more</span>
