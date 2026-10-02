@@ -1,4 +1,4 @@
-import { ChevronRight, X } from "lucide-react";
+import { ChevronRight, ImageOff, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -60,11 +60,17 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
                 to={`/movie/${item.id}`}
                 className="flex h-full gap-4 rounded-xl p-2 transition-all delay-75 duration-300 hover:bg-gray-900"
               >
-                <img
-                  src={`${getTmdbImageUrl(item.poster_path, "w500")}`}
-                  alt=""
-                  className="aspect-2/3 h-full rounded-lg object-cover outline outline-gray-900"
-                />
+                {item.poster_path ? (
+                  <img
+                    src={`${getTmdbImageUrl(item.poster_path, "w500")}`}
+                    alt=""
+                    className="aspect-2/3 h-full rounded-lg object-cover outline outline-gray-900"
+                  />
+                ) : (
+                  <div className="flex aspect-2/3 h-full items-center justify-center rounded-lg outline outline-gray-900">
+                    <ImageOff className="stroke-gray-500" />
+                  </div>
+                )}
                 <div>
                   <p>
                     <span className="font-bold">{item.title}</span>
