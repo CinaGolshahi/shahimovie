@@ -5,7 +5,7 @@ import type {
   ICastMember,
   ICrewMember,
   IMovieCredits,
-} from "../../types/credits";
+} from "../../types/tmdb";
 
 const useGetCreditsOfMovieId = () => {
   const { id } = useParams<{ id: string }>();

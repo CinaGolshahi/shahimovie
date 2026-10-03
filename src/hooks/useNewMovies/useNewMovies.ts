@@ -12,7 +12,7 @@ const useNewMovies = () => {
     const fetchTrendingMovies = async () => {
       setNewMoviesIsLoading(true);
       try {
-        const response = await tmdbApi.get<IPaginatedResponse>(
+        const response = await tmdbApi.get<IPaginatedResponse<IMovie>>(
           "/discover/movie",
           {
             params: {

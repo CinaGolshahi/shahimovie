@@ -26,7 +26,7 @@ const useSearch = (query: string | undefined | null) => {
 
       setIsLoadingSearchResults(true);
       try {
-        const response = await tmdbApi.get<IPaginatedResponse>(
+        const response = await tmdbApi.get<IPaginatedResponse<IMovie>>(
           "/search/movie",
           {
             params: { query: `${query}`, page },

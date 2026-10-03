@@ -1,6 +1,6 @@
-interface IPaginatedResponse {
+interface IPaginatedResponse<T> {
   page: number;
-  results: IMovie[];
+  results: T[];
   total_pages: number;
   total_results: number;
 }

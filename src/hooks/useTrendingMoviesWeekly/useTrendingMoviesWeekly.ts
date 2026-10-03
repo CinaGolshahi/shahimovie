@@ -7,7 +7,7 @@ const useTrendingMoviesWeekly = () => {
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
-      const response = await tmdbApi.get<IPaginatedResponse>(
+      const response = await tmdbApi.get<IPaginatedResponse<IMovie>>(
         "/trending/movie/week",
       );
       setMovies(response.data.results);
