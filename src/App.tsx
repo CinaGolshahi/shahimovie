@@ -14,7 +14,7 @@ import {
 
 const App = () => {
   return (
-    <div className="xl:pbs-20">
+    <div className="xl:pbs-20 pbs-10">
       <Header />
       <MobileNavbar />
 
