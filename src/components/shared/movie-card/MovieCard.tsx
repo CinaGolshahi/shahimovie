@@ -14,7 +14,7 @@ const MovieCard = (props: IMovieCardProps) => {
       {movie.poster_path ? (
         <img
           src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
-          alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
+          alt={`${movie.title} ${movie.release_date && `(${getYearFromDate(movie.release_date)})`}`}
           className="size-full rounded-2xl object-cover"
         />
       ) : (
@@ -25,7 +25,9 @@ const MovieCard = (props: IMovieCardProps) => {
       <div className="absolute inset-0 flex flex-col items-center justify-end gap-1 rounded-2xl bg-linear-to-b from-transparent to-gray-900 p-2 text-center transition-all duration-300 xl:items-start xl:p-4 xl:pb-0 xl:text-start xl:opacity-0 xl:group-hover:pb-4 xl:group-hover:opacity-100">
         <p className="line-clamp-2 text-sm font-bold xl:text-base">
           {movie.title}{" "}
-          <span className="text-xs font-normal xl:text-sm">{`(${getYearFromDate(movie.release_date)})`}</span>
+          <span className="text-xs font-normal xl:text-sm">
+            {movie.release_date && `(${getYearFromDate(movie.release_date)})`}
+          </span>
         </p>
         <span className="line-clamp-2 text-sm">
           {movie.overview || "Unknown"}
