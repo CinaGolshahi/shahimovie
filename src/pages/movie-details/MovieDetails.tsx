@@ -30,9 +30,9 @@ const MovieDetails = () => {
           style={{
             backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "w200") ?? ""})`,
           }}
-          className="w-full bg-cover bg-fixed bg-center xl:-mt-20"
+          className="w-full bg-cover bg-fixed bg-center -mt-20"
         >
-          <div className="w-full bg-linear-to-b to-gray-950 pt-10 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
+          <div className="w-full bg-linear-to-b to-gray-950 pt-32 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
             <div className="container mx-auto flex flex-col gap-4 xl:px-10">
               <div className="flex flex-col items-center xl:flex-row">
                 <div className="flex flex-col items-center gap-2 text-center select-none xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
