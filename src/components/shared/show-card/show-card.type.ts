@@ -1,7 +1,7 @@
-import type { ITVShows } from "../../../data/tvshows.mock";
+import type { ITVShow } from "../../../types/tmdb";
 
 interface IShowCardProps {
-  show: ITVShows;
+  show: ITVShow;
   className?: string;
 }
 
