@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMovie, IPaginatedResponse } from "../../types/movies";
+import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
 
 const useSearch = (query: string | undefined | null) => {
   const [searchResults, setSearchResults] = useState<IMovie[]>([]);

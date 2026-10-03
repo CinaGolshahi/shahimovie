@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
-import type { IMovie } from "../../types/movies";
+import type { IMovie } from "../../types/tmdb";
 
 const useGetMovieById = () => {
   const { id } = useParams<{ id: string }>();

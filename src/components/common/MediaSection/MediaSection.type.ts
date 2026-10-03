@@ -1,4 +1,4 @@
-import type { IMovie } from "../../../types/movies";
+import type { IMovie } from "../../../types/tmdb";
 
 interface IMediaSection {
   title: string;
