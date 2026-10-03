@@ -1,46 +1,36 @@
-import { ChevronRight } from "lucide-react";
+import { ImageOff } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getTmdbImageUrl } from "../../../utils";
 import type IShowCardProps from "./show-card.type";
 
 const ShowCard = (props: IShowCardProps) => {
-  const { show, className } = props;
+  const { show } = props;
   return (
-    <div
+    <Link
+      to={`/show/${show.id}`}
       key={show.id}
-      className={`${className} group relative flex flex-col gap-2 rounded-2xl border-2 border-transparent bg-gray-900 p-2 transition-all duration-300 hover:border-blue-600 xl:border-transparent xl:p-0`}
+      className="group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600"
     >
-      <img
-        src={`${getTmdbImageUrl(show.backdrop_path, "w500")}`}
-        alt={`${show.name}`}
-        className="rounded-lg object-cover xl:rounded-2xl"
-      />
-      <Link
-        to={"/"}
-        className="inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl transition-all duration-300 group-hover:visible group-hover:opacity-100 xl:invisible xl:absolute xl:bg-gray-900/60 xl:p-2 xl:pb-0 xl:opacity-0 xl:backdrop-blur-lg xl:group-hover:pb-9"
-      >
-        <p className="rounded-lg bg-transparent px-2 py-1 font-bold xl:rounded-md xl:bg-gray-900">
+      {show.poster_path ? (
+        <img
+          src={`${getTmdbImageUrl(show.poster_path, "w500")}`}
+          className="size-full rounded-2xl object-cover"
+          alt=""
+        />
+      ) : (
+        <div className="flex size-full items-center justify-center">
+          <ImageOff className="size-10 stroke-gray-700" />
+        </div>
+      )}
+      <div className="absolute inset-0 flex flex-col items-center justify-end gap-1 rounded-2xl bg-linear-to-b from-transparent to-gray-900 p-2 text-center transition-all duration-300 xl:items-start xl:p-4 xl:pb-0 xl:text-start xl:opacity-0 xl:group-hover:pb-4 xl:group-hover:opacity-100">
+        <span className="line-clamp-2 rounded-md bg-gray-950 px-2 py-1 text-sm font-bold xl:text-base">
           {show.name}
-        </p>
-
-        <span className="line-clamp-2 rounded-lg bg-transparent px-2 py-1 text-sm xl:rounded-md xl:bg-gray-900">
-          {show.overview}
         </span>
-      </Link>
-
-      <div className="inset-be-0 flex w-full items-center justify-between p-2 xl:absolute">
-        <span className="rounded-lg bg-transparent text-xs xl:rounded-md xl:bg-gray-900 xl:px-2 xl:py-1">
-          {/* {`Update: Season ${show.seasons.length} Eposode ${show.seasons.at(-1)?.episodeCount} Just Added!`} */}
+        <span className="line-clamp-2 rounded-md bg-gray-950 px-2 py-1 text-sm">
+          {show.overview || "Unknown"}
         </span>
-        <Link
-          to={"/"}
-          className="flex rounded-lg bg-blue-500 px-2 py-1 xl:hidden"
-        >
-          <span>Watch</span>
-          <ChevronRight className="mt-0.5 size-5" />
-        </Link>
       </div>
-    </div>
+    </Link>
   );
 };
 
