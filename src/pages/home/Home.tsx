@@ -1,10 +1,7 @@
 import MediaSection from "../../components/common/MediaSection";
-import useShows from "../../hooks/useShows";
 import HeroSlider from "./components/hero-slider";
 
 const Home = () => {
-  const { shows } = useShows();
-
   return (
     <div className="pbs-6 xl:pbs-0">
       <HeroSlider />
@@ -12,15 +9,17 @@ const Home = () => {
       <MediaSection
         title="New Movies"
         link="/movies"
+        type="movie"
         sort="primary_release_date.desc"
       />
       <MediaSection
         title="Popular Movies"
         link="/movies"
+        type="movie"
         sort="popularity.desc"
       />
 
-      <MediaSection title="Shows" link="/shows" show={shows} />
+      <MediaSection title="Shows" link="/shows" type="show" />
     </div>
   );
 };
