@@ -171,4 +171,11 @@ interface ITVShow {
   vote_count: number;
 }
 
-export type { IMovie, IMovieCredits, IPaginatedResponse, ITVShow };
+export type {
+  ICastMember,
+  ICrewMember,
+  IMovie,
+  IMovieCredits,
+  IPaginatedResponse,
+  ITVShow,
+};
