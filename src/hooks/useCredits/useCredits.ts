@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
-import type {
-  ICastMember,
-  ICrewMember,
-  IMovieCredits,
-} from "../../types/tmdb";
+import type { ICastMember, ICrewMember, IMovieCredits } from "../../types/tmdb";
 
-const useGetCreditsOfMovieId = () => {
+interface ICredits {
+  mediaType: "movie" | "tv";
+  creditsType: "credits" | "aggregate_credits";
+}
+
+const useCredits = ({ creditsType, mediaType }: ICredits) => {
   const { id } = useParams<{ id: string }>();
   const [isLoadingCredits, setIsLoadingCredits] = useState<boolean>();
   const [cast, setCast] = useState<ICastMember[]>();
@@ -19,7 +20,7 @@ const useGetCreditsOfMovieId = () => {
 
       try {
         const response = await tmdbApi.get<IMovieCredits>(
-          `/movie/${id}/credits`,
+          `/${mediaType}/${id}/${creditsType}`,
         );
 
         setCast(response.data.cast);
@@ -34,9 +35,9 @@ const useGetCreditsOfMovieId = () => {
     };
 
     fetchCredits();
-  }, [id]);
+  }, [id, mediaType, creditsType]);
 
   return { cast, crew, isLoadingCredits };
 };
 
-export default useGetCreditsOfMovieId;
+export default useCredits;
