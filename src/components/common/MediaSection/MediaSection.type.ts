@@ -1,8 +1,10 @@
+import type { MovieSortBy } from "../../../hooks/useMovies";
 import type { IMovie, ITVShow } from "../../../types/tmdb";
 
 interface IMediaSection {
   title: string;
   link: string;
+  sort?: MovieSortBy;
   movie?: IMovie[] | undefined | null;
   show?: ITVShow[] | undefined | null;
 }
