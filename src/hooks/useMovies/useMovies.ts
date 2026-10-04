@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
 
-type MovieSortBy =
-  | "popularity.desc"
-  | "primary_release_date.desc"
-  | "vote_average.desc"
-  | "revenue.desc";
+type MovieSortField = "popularity" | "primary_release_date" | "original_title";
+type SortDirection = "asc" | "desc";
+type MovieSortBy = `${MovieSortField}.${SortDirection}`;
 
 interface IUseDiscoverMoviesOptions {
   sortBy?: MovieSortBy;
