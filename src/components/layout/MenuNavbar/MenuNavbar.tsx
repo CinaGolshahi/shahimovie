@@ -8,6 +8,11 @@ const MenuNavbar = () => {
           Movies
         </Link>
       </li>
+      <li>
+        <Link to={"/shows"} className="navbar-item">
+          Shows
+        </Link>
+      </li>
     </ul>
   );
 };
