@@ -9,7 +9,7 @@ const Home = () => {
     <div className="pbs-6 xl:pbs-0">
       <HeroSlider />
 
-      <MediaSection title="New Movies" link="/movies/new" media={movies} />
+      <MediaSection title="New Movies" link="/movies" media={movies} />
     </div>
   );
 };
