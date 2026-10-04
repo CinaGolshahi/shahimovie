@@ -1,9 +1,10 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { mockTVShows } from "../../../../data/tvshows.mock";
 import ShowCard from "../../../../components/shared/show-card";
+import useShows from "../../../../hooks/useShows";
 
 const UpdatedShows = () => {
+  const { shows } = useShows();
   return (
     <div className="mx-auto mt-20 flex w-full flex-col gap-4 bg-gray-900/50 p-4 xl:container 2xl:rounded-4xl">
       <div className="flex items-center justify-between px-2">
@@ -18,7 +19,7 @@ const UpdatedShows = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {mockTVShows.slice(0, 8).map((show) => (
+        {shows.slice(0, 8).map((show) => (
           <ShowCard key={show.id} show={show} />
         ))}
       </div>
