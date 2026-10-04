@@ -9,12 +9,13 @@ import {
   MoviesPage,
   NotFoundPage,
   SearchPage,
+  ShowDetails,
   ShowsPage,
 } from "./pages";
 
 const App = () => {
   return (
-    <div className="xl:pbs-20 pbs-10">
+    <div className="pbs-10 xl:pbs-20">
       <Header />
       <MobileNavbar />
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/movie/:id" element={<MovieDetails />} />
 
           <Route path="/shows" element={<ShowsPage />} />
+          <Route path="/show/:id" element={<ShowDetails />} />
 
           <Route path="/search" element={<SearchPage />} />
           <Route path="/search/:search" element={<SearchPage />} />
