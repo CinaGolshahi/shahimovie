@@ -1,10 +1,13 @@
 import { ImageOff, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import useGetCreditsOfMovieId from "../../../../../hooks/useGetCreditsOfMovieId";
+import useCredits from "../../../../../hooks/useCredits";
 import { getTmdbImageUrl } from "../../../../../utils";
 
 const CastTab = () => {
-  const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
+  const { cast, isLoadingCredits } = useCredits({
+    mediaType: "movie",
+    creditsType: "credits",
+  });
 
   return (
     <>

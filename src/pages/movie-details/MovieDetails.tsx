@@ -8,7 +8,7 @@ import {
   RatingColorFrom100,
 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
-import useGetCreditsOfMovieId from "../../hooks/useGetCreditsOfMovieId";
+import useCredits from "../../hooks/useCredits";
 import useGetMovieById from "../../hooks/useGetMovieById";
 import useMovieScores from "../../hooks/useMovieScores/useMovieScores";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
@@ -16,7 +16,10 @@ import { LoadingScreen, TabsPattern } from "./components";
 
 const MovieDetails = () => {
   const { movie, isLoading } = useGetMovieById();
-  const { cast, isLoadingCredits } = useGetCreditsOfMovieId();
+  const { cast, isLoadingCredits } = useCredits({
+    mediaType: "movie",
+    creditsType: "credits",
+  });
   const { movieScores, movieScoresIsLoading } = useMovieScores(
     movie?.imdb_id ?? "",
   );
@@ -30,7 +33,7 @@ const MovieDetails = () => {
           style={{
             backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "w200") ?? ""})`,
           }}
-          className="w-full bg-cover bg-fixed bg-center -mt-20"
+          className="-mt-20 w-full bg-cover bg-fixed bg-center"
         >
           <div className="w-full bg-linear-to-b to-gray-950 pt-32 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
             <div className="container mx-auto flex flex-col gap-4 xl:px-10">
