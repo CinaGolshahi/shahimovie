@@ -1,25 +1,21 @@
-import MediaSection from "../../components/common/MediaSection";
+import {
+  MoviesSection,
+  ShowsSection,
+} from "../../components/common/MoviesSection";
 import HeroSlider from "./components/hero-slider";
 
 const Home = () => {
   return (
-    <div className="pbs-6 xl:pbs-0">
+    <div className="flex flex-col gap-20 pbs-6 xl:pbs-0">
       <HeroSlider />
 
-      <MediaSection
+      <MoviesSection
         title="New Movies"
         link="/movies"
-        type="movie"
         sort="primary_release_date.desc"
       />
-      <MediaSection
-        title="Popular Movies"
-        link="/movies"
-        type="movie"
-        sort="popularity.desc"
-      />
 
-      <MediaSection title="Shows" link="/shows" type="show" />
+      <ShowsSection title="TV Shows" link="/shows" />
     </div>
   );
 };
