@@ -2,7 +2,15 @@ import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IPaginatedResponse, ITVShow } from "../../types/tmdb";
 
-const useShows = () => {
+type TvSortField = "popularity" | "first_air_date" | "original_name";
+type SortDirection = "asc" | "desc";
+export type TVSortBy = `${TvSortField}.${SortDirection}`;
+
+interface IUseDiscoverShowsOptions {
+  sortBy?: TVSortBy;
+}
+
+const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
   const [shows, setShows] = useState<ITVShow[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -14,7 +22,13 @@ const useShows = () => {
       try {
         const response = await tmdbApi.get<IPaginatedResponse<ITVShow>>(
           "/discover/tv",
-          { params: { page } },
+          {
+            params: {
+              sort_by: sortBy,
+              "first_air_date.lte": new Date().toISOString().split("T")[0],
+              page,
+            },
+          },
         );
         setShows((prev) => [...prev, ...response.data.results]);
         setTotalPages(response.data.total_pages);
@@ -24,15 +38,15 @@ const useShows = () => {
     };
 
     fetchShows();
-  }, [page]);
+  }, [page, sortBy]);
 
-  const showsLoadMore = () => {
+  const loadMoreShows = () => {
     setPage((prev) => prev + 1);
   };
 
-  const hasMore = page < totalPages;
+  const hasMoreShows = page < totalPages;
 
-  return { shows, showsIsLoading, showsLoadMore, hasMore };
+  return { shows, showsIsLoading, loadMoreShows, hasMoreShows };
 };
 
 export default useShows;

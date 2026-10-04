@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
 
-type MovieSortField = "popularity" | "primary_release_date" | "original_title";
+type MovieSortField = "popularity" | "primary_release_date" | "title";
 type SortDirection = "asc" | "desc";
-type MovieSortBy = `${MovieSortField}.${SortDirection}`;
+export type MovieSortBy = `${MovieSortField}.${SortDirection}`;
 
 interface IUseDiscoverMoviesOptions {
   sortBy?: MovieSortBy;
@@ -44,14 +44,13 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
     fetchMovies();
   }, [page, sortBy]);
 
-  const movieLoadMore = () => {
+  const loadMoreMovies = () => {
     setPage((prev) => prev + 1);
   };
 
   const hasMoreMovies = page < totalPages;
 
-  return { movies, moviesIsLoading, movieLoadMore, hasMoreMovies };
+  return { movies, moviesIsLoading, loadMoreMovies, hasMoreMovies };
 };
 
-export type { MovieSortBy };
 export default useMovies;
