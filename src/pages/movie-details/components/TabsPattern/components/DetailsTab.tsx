@@ -15,24 +15,22 @@ const DetailsTab = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 gap-y-2 divide-gray-800 *:flex *:justify-between xl:*:px-4 *:text-end xl:grid-cols-4 xl:divide-x">
+          <div className="grid grid-cols-1 gap-y-2 divide-gray-800 *:flex *:items-center *:justify-between *:gap-2 *:text-end **:first:text-gray-50 **:last:text-gray-400 xl:grid-cols-4 xl:divide-x xl:*:px-4 [&>*:nth-child(4n)]:border-0">
             <p>
               <span>Status:</span>
-              <span className="text-gray-400">{movie?.status ?? "N/A"}</span>
+              <span>{movie?.status ?? "N/A"}</span>
             </p>
             <p>
               <span>Release Date:</span>
-              <span className="text-gray-400">
-                {formatReleaseDate(movie?.release_date)}
-              </span>
+              <span>{formatReleaseDate(movie?.release_date)}</span>
             </p>
             <p>
               <span>Runtime:</span>
-              <span className="text-gray-400">{movie?.runtime ?? "N/A"} min</span>
+              <span>{movie?.runtime ?? "N/A"} min</span>
             </p>
             <p>
               <span>Genres:</span>
-              <span className="text-gray-400">
+              <span>
                 {movie?.genres?.length
                   ? movie?.genres.map((genre, index) => (
                       <span key={index}>
@@ -45,7 +43,7 @@ const DetailsTab = () => {
             </p>
             <p>
               <span>Director:</span>
-              <span className="text-gray-400">
+              <span>
                 {directors.length
                   ? directors.map((director, index) => (
                       <span key={index}>
@@ -58,7 +56,7 @@ const DetailsTab = () => {
             </p>
             <p>
               <span>Countries:</span>
-              <span className="text-gray-400">
+              <span>
                 {movie?.production_countries?.length
                   ? movie?.production_countries.map((country, index) => (
                       <span key={index}>
@@ -71,7 +69,7 @@ const DetailsTab = () => {
             </p>
             <p>
               <span>Languages:</span>
-              <span className="text-gray-400">
+              <span>
                 {movie?.spoken_languages?.length
                   ? movie?.spoken_languages.map((language, index) => (
                       <span key={index}>
@@ -84,13 +82,15 @@ const DetailsTab = () => {
             </p>
             <p>
               <span>Budget:</span>
-              <span className="text-gray-400">
-                {formatCurrency(movie?.budget)}
-              </span>
+              <span>{formatCurrency(movie?.budget)}</span>
             </p>
             <p>
               <span>Tagline:</span>
-              <span className="text-gray-400">{movie?.tagline ?? "N/A"}</span>
+              <span>{movie?.tagline ?? "N/A"}</span>
+            </p>
+            <p>
+              <span>Collection:</span>
+              <span>{movie?.belongs_to_collection?.name ?? "N/A"}</span>
             </p>
           </div>
         </>
