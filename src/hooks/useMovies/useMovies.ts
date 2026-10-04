@@ -2,7 +2,19 @@ import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
 
-const useMovies = () => {
+type MovieSortBy =
+  | "popularity.desc"
+  | "primary_release_date.desc"
+  | "vote_average.desc"
+  | "revenue.desc";
+
+interface IUseDiscoverMoviesOptions {
+  sortBy?: MovieSortBy;
+}
+
+const useMovies = (props: IUseDiscoverMoviesOptions) => {
+  const { sortBy = "popularity.desc" } = props;
+
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -16,6 +28,10 @@ const useMovies = () => {
           "/discover/movie",
           {
             params: {
+              sort_by: sortBy,
+              "primary_release_date.lte": new Date()
+                .toISOString()
+                .split("T")[0],
               page,
             },
           },
@@ -28,7 +44,7 @@ const useMovies = () => {
     };
 
     fetchMovies();
-  }, [page]);
+  }, [page, sortBy]);
 
   const movieLoadMore = () => {
     setPage((prev) => prev + 1);

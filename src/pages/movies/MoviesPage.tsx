@@ -2,7 +2,9 @@ import MovieCard from "../../components/shared/movie-card";
 import useMovies from "../../hooks/useMovies";
 
 const MoviesPage = () => {
-  const { hasMoreMovies, movieLoadMore, movies, moviesIsLoading } = useMovies();
+  const { hasMoreMovies, movieLoadMore, movies, moviesIsLoading } = useMovies(
+    {},
+  );
 
   return (
     <div className="container mx-auto flex flex-col gap-4 p-2 xl:px-8">
