@@ -23,10 +23,10 @@ const ShowCard = (props: IShowCardProps) => {
         </div>
       )}
       <div className="absolute inset-0 flex flex-col items-center justify-end gap-1 rounded-2xl bg-linear-to-b from-transparent to-gray-900 p-2 text-center transition-all duration-300 xl:items-start xl:p-4 xl:pb-0 xl:text-start xl:opacity-0 xl:group-hover:pb-4 xl:group-hover:opacity-100">
-        <span className="line-clamp-2 rounded-md bg-gray-950 px-2 py-1 text-sm font-bold xl:text-base">
+        <span className="line-clamp-2 text-sm font-bold xl:text-base">
           {show.name}
         </span>
-        <span className="line-clamp-2 rounded-md bg-gray-950 px-2 py-1 text-sm">
+        <span className="line-clamp-2 text-sm">
           {show.overview || "Unknown"}
         </span>
       </div>
