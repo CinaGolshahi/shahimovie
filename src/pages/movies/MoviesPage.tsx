@@ -2,7 +2,7 @@ import MovieCard from "../../components/shared/movie-card";
 import useMovies from "../../hooks/useMovies";
 
 const MoviesPage = () => {
-  const { hasMoreMovies, movieLoadMore, movies, moviesIsLoading } = useMovies(
+  const { hasMoreMovies, loadMoreMovies, movies, moviesIsLoading } = useMovies(
     {},
   );
 
@@ -15,7 +15,7 @@ const MoviesPage = () => {
       </div>
       {hasMoreMovies && (
         <button
-          onClick={movieLoadMore}
+          onClick={loadMoreMovies}
           disabled={moviesIsLoading}
           className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
         >
