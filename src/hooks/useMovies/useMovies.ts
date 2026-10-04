@@ -55,4 +55,5 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
   return { movies, moviesIsLoading, movieLoadMore, hasMoreMovies };
 };
 
+export type { MovieSortBy };
 export default useMovies;
