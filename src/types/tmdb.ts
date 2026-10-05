@@ -171,11 +171,61 @@ interface ITVShow {
   vote_count: number;
 }
 
+interface ISearchMovieResult {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+interface ISearchTVShowResult {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  first_air_date: string;
+  name: string;
+  vote_average: number;
+  vote_count: number;
+}
+interface ISearchPersonResult {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+}
+type IMultiSearchResult =
+  | (ISearchMovieResult & { media_type: "movie" })
+  | (ISearchTVShowResult & { media_type: "tv" })
+  | (ISearchPersonResult & { media_type: "person" });
 export type {
   ICastMember,
   ICrewMember,
   IMovie,
   IMovieCredits,
+  IMultiSearchResult,
   IPaginatedResponse,
+  ISearchMovieResult,
+  ISearchPersonResult,
+  ISearchTVShowResult,
   ITVShow,
 };
