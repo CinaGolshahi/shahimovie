@@ -18,17 +18,17 @@ const CastTab = () => {
       ) : (
         <>
           <div className="flex overflow-auto xl:grid xl:grid-cols-8">
-            {cast?.map((star, index) => (
+            {cast?.map((artist, index) => (
               <Link
                 key={index}
-                to={`/star/${star.id}`}
-                title={`${star.name}: ${star.character}`}
+                to={`/artist/${artist.id}`}
+                title={`${artist.name}: ${artist.character}`}
                 className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 xl:text-sm"
               >
-                {star.profile_path ? (
+                {artist.profile_path ? (
                   <img
-                    src={`${getTmdbImageUrl(star.profile_path, "w200")}`}
-                    alt={star.name}
+                    src={`${getTmdbImageUrl(artist.profile_path, "w200")}`}
+                    alt={artist.name}
                     className="aspect-2/3 w-full rounded-lg object-cover"
                   />
                 ) : (
@@ -36,8 +36,15 @@ const CastTab = () => {
                     <ImageOff className="size-8 stroke-gray-700" />
                   </div>
                 )}
-                <span className="line-clamp-1 font-semibold">{star.name}</span>
-                <span className="line-clamp-1 text-gray-500"></span>
+                <span className="line-clamp-1 font-semibold">{artist.name}</span>
+                <span className="line-clamp-1 text-gray-500">
+                  {artist.roles.map((item, index) => (
+                    <span key={index}>
+                      <span>{item.character}</span>
+                      {index < artist.roles.length - 1 && " / "}
+                    </span>
+                  ))}
+                </span>
               </Link>
             ))}
           </div>

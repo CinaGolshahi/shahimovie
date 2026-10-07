@@ -125,7 +125,7 @@ const ShowDetails = () => {
                   <Link
                     key={index}
                     to={`/artist/${artist.id}`}
-                    className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                    className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:scale-105"
                   >
                     {artist.profile_path ? (
                       <img
@@ -141,7 +141,14 @@ const ShowDetails = () => {
                     <span className="line-clamp-1 font-semibold">
                       {artist.name}
                     </span>
-                    <span className="line-clamp-1 text-gray-500"></span>
+                    <span className="line-clamp-1 text-gray-500">
+                      {artist.roles.map((item, index) => (
+                        <span key={index}>
+                          <span>{item.character}</span>
+                          {index < artist.roles.length - 1 && " / "}
+                        </span>
+                      ))}
+                    </span>
                   </Link>
                 ))}
               </div>
