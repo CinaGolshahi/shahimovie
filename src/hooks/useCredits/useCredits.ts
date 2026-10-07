@@ -23,7 +23,11 @@ const useCredits = ({ creditsType, mediaType }: ICredits) => {
           `/${mediaType}/${id}/${creditsType}`,
         );
 
-        setCast(response.data.cast);
+        setCast(
+          response.data.cast.toSorted(
+            (a: ICastMember, b: ICastMember) => a.order - b.order,
+          ),
+        );
         setCrew(response.data.crew);
 
         setIsLoadingCredits(false);
