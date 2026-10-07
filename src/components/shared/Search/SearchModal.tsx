@@ -1,7 +1,7 @@
 import { ChevronRight, ImageOff, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useSearch from "../../../hooks/useSearch";
 import { getTmdbImageUrl, getYearFromDate } from "../../../utils";
 import type { ISearchModal } from "./SearchModal.type";
@@ -12,10 +12,12 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
 
   const { searchResults } = useSearch(query);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setQuery(searchValue.trim());
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [searchValue]);
@@ -43,6 +45,12 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
           placeholder="Search..."
           value={searchValue}
           onChange={(event) => setSearchValue(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.nativeEvent.key === "Enter" && query) {
+              navigate(`/search/${encodeURIComponent(query)}`);
+              closeModal?.();
+            }
+          }}
           className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
         />
         <button
