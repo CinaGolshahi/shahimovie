@@ -61,6 +61,11 @@ interface IMovie {
   vote_count: number;
 }
 
+interface IRole {
+  credit_id:string
+  character:string
+  episode_count:number
+}
 interface ICastMember {
   adult: boolean;
   gender: number;
@@ -73,7 +78,9 @@ interface ICastMember {
   cast_id: number;
   character: string;
   credit_id: string;
+  roles: IRole[]
   order: number;
+  
 }
 interface ICrewMember {
   adult: boolean;
