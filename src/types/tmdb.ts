@@ -181,7 +181,7 @@ interface ITVShow {
 interface ISearchMovieResult {
   adult: boolean;
   backdrop_path: string | null;
-  genre_ids: number[];
+  // genre_ids: number[];
   id: number;
   original_language: string;
   original_title: string;
@@ -197,7 +197,7 @@ interface ISearchMovieResult {
 interface ISearchTVShowResult {
   adult: boolean;
   backdrop_path: string | null;
-  genre_ids: number[];
+  // genre_ids: number[];
   id: number;
   origin_country: string[];
   original_language: string;
