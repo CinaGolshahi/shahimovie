@@ -29,19 +29,6 @@ const DetailsTab = () => {
               <span>{movie?.runtime ?? "N/A"} min</span>
             </p>
             <p>
-              <span>Genres:</span>
-              <span>
-                {movie?.genres?.length
-                  ? movie?.genres.map((genre, index) => (
-                      <span key={index}>
-                        <span>{genre.name}</span>
-                        {index < movie?.genres.length - 1 && ", "}
-                      </span>
-                    ))
-                  : "N/A"}
-              </span>
-            </p>
-            <p>
               <span>Director:</span>
               <span>
                 {directors.length
@@ -83,10 +70,6 @@ const DetailsTab = () => {
             <p>
               <span>Budget:</span>
               <span>{formatCurrency(movie?.budget)}</span>
-            </p>
-            <p>
-              <span>Tagline:</span>
-              <span>{movie?.tagline ?? "N/A"}</span>
             </p>
             <p>
               <span>Collection:</span>

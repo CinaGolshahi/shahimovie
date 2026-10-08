@@ -33,9 +33,9 @@ const MovieDetails = () => {
           style={{
             backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "w200") ?? ""})`,
           }}
-          className="-mt-20 w-full bg-cover bg-fixed bg-center"
+          className="-mt-20 w-full bg-cover bg-center"
         >
-          <div className="w-full bg-linear-to-b to-gray-950 pt-32 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
+          <div className="w-full bg-linear-to-b to-gray-950 pt-28 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
             <div className="container mx-auto flex flex-col gap-4 xl:px-10">
               <div className="flex flex-col items-center xl:flex-row">
                 <div className="flex flex-col items-center gap-2 text-center select-none xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
@@ -52,8 +52,13 @@ const MovieDetails = () => {
                     )}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
-                    <p className="text-xl font-bold xl:text-4xl">
-                      {movie?.title}
+                    <p className="flex flex-col gap-1">
+                      <p className="text-xl font-bold xl:text-4xl">
+                        {movie?.title}
+                      </p>
+                      <p className="text-sm text-gray-300 italic">
+                        {movie?.tagline ?? ""}
+                      </p>
                     </p>
                     <p className="text-sm text-gray-300">
                       {movie?.genres &&
@@ -128,7 +133,7 @@ const MovieDetails = () => {
                   <Link
                     key={index}
                     to={`/artist/${artist.id}`}
-                    className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                    className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:scale-105"
                   >
                     {artist.profile_path ? (
                       <img
