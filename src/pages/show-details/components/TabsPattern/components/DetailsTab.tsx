@@ -19,24 +19,22 @@ const DetailsTab = () => {
               <span>{show?.status ?? "N/A"}</span>
             </p>
             <p>
-              <span>First Air Date</span>
+              <span>First Air Date: </span>
               <span>{formatReleaseDate(show?.first_air_date)}</span>
             </p>
             <p>
-              <span>Last Air Date</span>
+              <span>Last Air Date: </span>
               <span>{formatReleaseDate(show?.last_air_date)}</span>
             </p>
             <p>
-              <span>Genres:</span>
+              <span>Created By:</span>
               <span>
-                {show?.genres?.length
-                  ? show?.genres.map((genre, index) => (
-                      <span key={index}>
-                        <span>{genre.name}</span>
-                        {index < show?.genres.length - 1 && ", "}
-                      </span>
-                    ))
-                  : "N/A"}
+                {show?.created_by.map((creator, index) => (
+                  <span key={index}>
+                    <span>{creator.name}</span>
+                    {index < show?.created_by.length - 1 && ", "}
+                  </span>
+                ))}
               </span>
             </p>
             <p>

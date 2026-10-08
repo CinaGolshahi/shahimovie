@@ -45,8 +45,13 @@ const ShowDetails = () => {
                     )}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
-                    <p className="text-xl font-bold xl:text-4xl">
-                      {show?.name}
+                    <p className="flex flex-col gap-1">
+                      <p className="text-xl font-bold xl:text-4xl">
+                        {show?.name}
+                      </p>
+                      <p className="text-sm text-gray-300 italic">
+                        {show?.tagline}
+                      </p>
                     </p>
                     <p className="text-sm text-gray-300">
                       {show?.genres &&
@@ -63,7 +68,14 @@ const ShowDetails = () => {
                       </span>
                       <> • </>
                       <span>
-                        {show?.number_of_seasons ?? "Unknown"} Seasons
+                        {show?.number_of_seasons ? (
+                          <>
+                            {show.number_of_seasons}
+                            {show.seasons.length > 1 ? " Seasons" : " Season"}
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </span>
                       <> • </>
                       {show?.production_countries
