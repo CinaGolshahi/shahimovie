@@ -26,7 +26,7 @@ const ShowDetails = () => {
           style={{
             backgroundImage: `url(${getTmdbImageUrl(show?.backdrop_path, "w200") ?? ""})`,
           }}
-          className="-mt-20 w-full bg-cover bg-fixed bg-center"
+          className="-mt-20 w-full bg-cover bg-center"
         >
           <div className="w-full bg-linear-to-b to-gray-950 pt-28 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
             <div className="container mx-auto flex flex-col gap-4 xl:px-10">
