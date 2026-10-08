@@ -4,12 +4,12 @@ import { getTmdbImageUrl } from "../../../utils";
 import type IShowCardProps from "./show-card.type";
 
 const ShowCard = (props: IShowCardProps) => {
-  const { show } = props;
+  const { show, className } = props;
   return (
     <Link
       to={`/show/${show.id}`}
       key={show.id}
-      className="group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600"
+      className={`${className} group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
     >
       {show.poster_path ? (
         <img
