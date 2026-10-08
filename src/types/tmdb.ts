@@ -224,6 +224,7 @@ type IMultiSearchResult =
   | (ISearchMovieResult & { media_type: "movie" })
   | (ISearchTVShowResult & { media_type: "tv" })
   | (ISearchPersonResult & { media_type: "person" });
+  
 export type {
   ICastMember,
   ICrewMember,

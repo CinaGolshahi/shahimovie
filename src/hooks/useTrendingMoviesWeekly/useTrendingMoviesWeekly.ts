@@ -9,11 +9,6 @@ const useTrendingMoviesWeekly = () => {
     const fetchTrendingMovies = async () => {
       const response = await tmdbApi.get<IPaginatedResponse<IMovie>>(
         "/trending/movie/week",
-        {
-          params: {
-            "primary_release_date.lte": new Date().toISOString().split("T")[0],
-          },
-        },
       );
       setMovies(response.data.results);
     };
