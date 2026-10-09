@@ -46,12 +46,12 @@ const ShowDetails = () => {
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
                     <p className="flex flex-col gap-1">
-                      <p className="text-xl font-bold xl:text-4xl">
+                      <span className="text-xl font-bold xl:text-4xl">
                         {show?.name}
-                      </p>
-                      <p className="text-sm text-gray-300 italic">
+                      </span>
+                      <span className="text-sm text-gray-300 italic">
                         {show?.tagline}
-                      </p>
+                      </span>
                     </p>
                     <p className="text-sm text-gray-300">
                       {show?.genres &&
