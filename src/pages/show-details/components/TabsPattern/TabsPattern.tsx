@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CastTab, DetailsTab } from "./components";
+import { CastTab, DetailsTab, SeasonsTab } from "./components";
 
 const TabsPattern = () => {
-  const tabItems = ["Details", "Cast"];
-  const [tabSelected, setTabSelected] = useState(tabItems[0]);
+  const tabItems = ["Details", "Seasons", "Cast"];
+  const [tabSelected, setTabSelected] = useState(tabItems[1]);
 
   return (
     <div className="container mx-auto flex flex-col gap-4 bg-gray-900 p-2 md:rounded-2xl xl:rounded-none 2xl:rounded-2xl">
@@ -21,6 +21,7 @@ const TabsPattern = () => {
       <div className="w-full rounded-xl bg-gray-950 p-4">
         {tabSelected === "Details" && <DetailsTab />}
         {tabSelected === "Cast" && <CastTab />}
+        {tabSelected === "Seasons" && <SeasonsTab />}
       </div>
     </div>
   );
