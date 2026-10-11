@@ -48,15 +48,32 @@ const SeasonsTab = () => {
       ) : (
         <div className="grid grid-cols-4 gap-4">
           {season?.episodes.map((episode) => (
-            <div key={episode.id} className="flex flex-col gap-1">
+            <div
+              key={episode.id}
+              className="flex flex-col gap-2 rounded-xl bg-gray-900 p-2"
+            >
               <img
                 src={`${getTmdbImageUrl(episode.still_path, "w500")}`}
                 alt=""
                 className="aspect-video rounded-lg object-cover"
               />
-              <div className="px-1">
+              <div className="flex flex-col gap-1 px-1">
                 <p className="font-bold">{episode.name}</p>
-                <p className="line-clamp-2 text-gray-300">{episode.overview}</p>
+                <p className="line-clamp-3 text-gray-300">{episode.overview}</p>
+              </div>
+              <div className="flex justify-start gap-1 pt-2 text-sm *:rounded-full *:border *:border-gray-800 *:px-2">
+                <span>
+                  <span>S{episode.season_number}</span>
+                  <span> • </span>
+                  <span>E{episode.episode_number}</span>
+                </span>
+                <span>{episode.runtime} min</span>
+                {episode.episode_type === "finale" && (
+                  <span className="flex items-center gap-2 border-red-500">
+                    <span className="size-1.5 rounded-full bg-red-500"></span>
+                    <span>Finale</span>
+                  </span>
+                )}
               </div>
             </div>
           ))}

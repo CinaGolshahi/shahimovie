@@ -6,7 +6,7 @@ const TabsPattern = () => {
   const [tabSelected, setTabSelected] = useState(tabItems[1]);
 
   return (
-    <div className="container mx-auto flex flex-col gap-4 bg-gray-900 p-2 md:rounded-2xl xl:rounded-none 2xl:rounded-2xl">
+    <div className="container mx-auto flex flex-col gap-4 bg-gray-900 p-2 md:rounded-2xl xl:rounded-none 2xl:rounded-3xl">
       <div className="flex gap-2">
         {tabItems.map((item, index) => (
           <button
@@ -18,7 +18,7 @@ const TabsPattern = () => {
           </button>
         ))}
       </div>
-      <div className="w-full rounded-xl bg-gray-950 p-4">
+      <div className="w-full rounded-2xl bg-gray-950 p-4">
         {tabSelected === "Details" && <DetailsTab />}
         {tabSelected === "Cast" && <CastTab />}
         {tabSelected === "Seasons" && <SeasonsTab />}
