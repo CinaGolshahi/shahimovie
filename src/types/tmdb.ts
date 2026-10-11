@@ -62,9 +62,9 @@ interface IMovie {
 }
 
 interface IRole {
-  credit_id:string
-  character:string
-  episode_count:number
+  credit_id: string;
+  character: string;
+  episode_count: number;
 }
 interface ICastMember {
   adult: boolean;
@@ -78,9 +78,8 @@ interface ICastMember {
   cast_id: number;
   character: string;
   credit_id: string;
-  roles: IRole[]
+  roles: IRole[];
   order: number;
-  
 }
 interface ICrewMember {
   adult: boolean;
@@ -137,6 +136,35 @@ interface ISeason {
   id: number;
   name: string;
   overview: string;
+  poster_path: string | null;
+  season_number: number;
+  vote_average: number;
+}
+
+interface IGuestStar {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+interface ISeasonEpisode extends IEpisode {
+  crew: ICrewMember[];
+  guest_stars: IGuestStar[];
+}
+interface ISeasonDetails {
+  _id: string;
+  air_date: string | null;
+  episodes: ISeasonEpisode[];
+  name: string;
+  overview: string;
+  id: number;
   poster_path: string | null;
   season_number: number;
   vote_average: number;
@@ -224,10 +252,11 @@ type IMultiSearchResult =
   | (ISearchMovieResult & { media_type: "movie" })
   | (ISearchTVShowResult & { media_type: "tv" })
   | (ISearchPersonResult & { media_type: "person" });
-  
+
 export type {
   ICastMember,
   ICrewMember,
+  IGuestStar,
   IMovie,
   IMovieCredits,
   IMultiSearchResult,
@@ -235,5 +264,7 @@ export type {
   ISearchMovieResult,
   ISearchPersonResult,
   ISearchTVShowResult,
+  ISeasonDetails,
+  ISeasonEpisode,
   ITVShow,
 };
