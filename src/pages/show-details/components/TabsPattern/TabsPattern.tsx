@@ -3,7 +3,7 @@ import { CastTab, DetailsTab, SeasonsTab } from "./components";
 
 const TabsPattern = () => {
   const tabItems = ["Details", "Seasons", "Cast"];
-  const [tabSelected, setTabSelected] = useState(tabItems[1]);
+  const [tabSelected, setTabSelected] = useState(tabItems[0]);
 
   return (
     <div className="container mx-auto flex flex-col gap-4 bg-gray-900 p-2 md:rounded-2xl xl:rounded-none 2xl:rounded-3xl">
