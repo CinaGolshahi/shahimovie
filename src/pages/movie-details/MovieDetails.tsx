@@ -11,14 +11,14 @@ import {
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/TabsPattern";
 import useCredits from "../../hooks/useCredits";
-import useGetMovieById from "../../hooks/useGetMovieById";
+import useMovie from "../../hooks/useMovie";
 import useMovieRecommendations from "../../hooks/useMovieRecommendations";
 import useMovieScores from "../../hooks/useMovieScores/useMovieScores";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen } from "./components";
 
 const MovieDetails = () => {
-  const { movie, isLoading } = useGetMovieById();
+  const { movie, isLoading } = useMovie();
   const { cast, isLoadingCredits } = useCredits({
     mediaType: "movie",
     creditsType: "credits",

@@ -1,10 +1,10 @@
 import { Loader2 } from "lucide-react";
-import useGetMovieById from "../../../../hooks/useGetMovieById";
+import useMovie from "../../../../hooks/useMovie";
 import useMovieDirectors from "../../../../hooks/useMovieDirectors";
 import { formatCurrency, formatReleaseDate } from "../../../../utils";
 
 const DetailsTab = () => {
-  const { movie, isLoading } = useGetMovieById();
+  const { movie, isLoading } = useMovie();
   const { directors } = useMovieDirectors();
 
   return (
