@@ -1,8 +1,8 @@
 import { ImageOff, Loader2 } from "lucide-react";
 import { useState } from "react";
-import useSeason from "../../../../../hooks/useSeason";
-import useShowById from "../../../../../hooks/useShowById";
-import { formatReleaseDate, getTmdbImageUrl } from "../../../../../utils";
+import useSeason from "../../../../hooks/useSeason";
+import useShowById from "../../../../hooks/useShowById";
+import { formatReleaseDate, getTmdbImageUrl } from "../../../../utils";
 
 const SeasonsTab = () => {
   const [selectedSeason, setSelectedSeason] = useState(1);

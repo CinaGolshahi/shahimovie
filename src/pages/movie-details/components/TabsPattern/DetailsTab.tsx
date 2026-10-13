@@ -1,7 +1,7 @@
 import { Loader2 } from "lucide-react";
-import useGetMovieById from "../../../../../hooks/useGetMovieById";
-import useMovieDirectors from "../../../../../hooks/useMovieDirectors";
-import { formatCurrency, formatReleaseDate } from "../../../../../utils";
+import useGetMovieById from "../../../../hooks/useGetMovieById";
+import useMovieDirectors from "../../../../hooks/useMovieDirectors";
+import { formatCurrency, formatReleaseDate } from "../../../../utils";
 
 const DetailsTab = () => {
   const { movie, isLoading } = useGetMovieById();

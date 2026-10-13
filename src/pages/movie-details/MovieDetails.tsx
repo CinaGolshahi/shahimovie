@@ -8,11 +8,12 @@ import {
   RatingColorFrom100,
 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
+import TabsPattern from "../../components/ui/TabsPattern";
 import useCredits from "../../hooks/useCredits";
 import useGetMovieById from "../../hooks/useGetMovieById";
 import useMovieScores from "../../hooks/useMovieScores/useMovieScores";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
-import { LoadingScreen, TabsPattern } from "./components";
+import { CastTab, DetailsTab, LoadingScreen } from "./components";
 
 const MovieDetails = () => {
   const { movie, isLoading } = useGetMovieById();
@@ -159,7 +160,12 @@ const MovieDetails = () => {
           </div>
         </div>
         <div className="w-full 2xl:px-10">
-          <TabsPattern />
+          <TabsPattern
+            tabs={[
+              { label: "Details", content: <DetailsTab /> },
+              { label: "Cast", content: <CastTab /> },
+            ]}
+          />
         </div>
       </div>
     );

@@ -1,4 +1,4 @@
 import LoadingScreen from "./LoadingScreen";
-import TabsPattern from "./TabsPattern";
+import { CastTab, DetailsTab } from "./TabsPattern";
 
-export { LoadingScreen, TabsPattern };
+export { CastTab, DetailsTab, LoadingScreen };

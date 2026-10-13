@@ -1,7 +1,7 @@
 import { ImageOff, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import useCredits from "../../../../../hooks/useCredits";
-import { getTmdbImageUrl } from "../../../../../utils";
+import useCredits from "../../../../hooks/useCredits";
+import { getTmdbImageUrl } from "../../../../utils";
 
 const CastTab = () => {
   const { cast, isLoadingCredits } = useCredits({

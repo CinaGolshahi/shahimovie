@@ -2,10 +2,11 @@ import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Link } from "react-router-dom";
 import Button from "../../components/ui/button";
+import TabsPattern from "../../components/ui/TabsPattern";
 import useCredits from "../../hooks/useCredits";
 import useShowById from "../../hooks/useShowById";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
-import { LoadingScreen, TabsPattern } from "./components";
+import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
 const ShowDetails = () => {
   const { show, isLoadingShow } = useShowById();
@@ -168,7 +169,13 @@ const ShowDetails = () => {
           </div>
         </div>
         <div className="w-full 2xl:px-10">
-          <TabsPattern />
+          <TabsPattern
+            tabs={[
+              { label: "Details", content: <DetailsTab /> },
+              { label: "Seasons", content: <SeasonsTab /> },
+              { label: "Cast", content: <CastTab /> },
+            ]}
+          />
         </div>
       </div>
     );
