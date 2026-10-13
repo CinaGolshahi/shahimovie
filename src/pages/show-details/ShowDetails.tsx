@@ -1,10 +1,12 @@
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Link } from "react-router-dom";
+import { ShowsSection } from "../../components/common/MoviesSection";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/TabsPattern";
 import useCredits from "../../hooks/useCredits";
 import useShowById from "../../hooks/useShowById";
+import useShowRecommendations from "../../hooks/useShowRecommendations";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
@@ -17,12 +19,13 @@ const ShowDetails = () => {
   // const { movieScores, movieScoresIsLoading } = useMovieScores(
   //   show?.imdb_id ?? "",
   // );
+  const { showRecommendations } = useShowRecommendations();
 
   if (isLoadingShow) {
     return <LoadingScreen />;
   } else {
     return (
-      <div>
+      <div className="flex flex-col gap-10">
         <div
           style={{
             backgroundImage: `url(${getTmdbImageUrl(show?.backdrop_path, "w200") ?? ""})`,
@@ -168,7 +171,7 @@ const ShowDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-full 2xl:px-10">
+        <div className="w-full">
           <TabsPattern
             tabs={[
               { label: "Details", content: <DetailsTab /> },
@@ -177,6 +180,8 @@ const ShowDetails = () => {
             ]}
           />
         </div>
+
+        <ShowsSection title="Recommendations" shows={showRecommendations} />
       </div>
     );
   }

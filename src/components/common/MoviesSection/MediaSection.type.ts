@@ -8,7 +8,7 @@ interface IMoviesSection {
 
 interface IShowsSection {
   title: string;
-  link: string;
+  link?: string;
   shows: ITVShow[];
 }
 
