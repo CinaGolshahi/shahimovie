@@ -1,5 +1,5 @@
 import MovieCard from "../../components/shared/movie-card";
-import useMovies from "../../hooks/useMovies";
+import { useMovies } from "../../hooks";
 
 const MoviesPage = () => {
   const { hasMoreMovies, loadMoreMovies, movies, moviesIsLoading } = useMovies(

@@ -10,10 +10,12 @@ import {
 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/TabsPattern";
-import useCredits from "../../hooks/useCredits";
-import useMovie from "../../hooks/useMovie";
-import useMovieRecommendations from "../../hooks/useMovieRecommendations";
-import useMovieScores from "../../hooks/useMovieScores/useMovieScores";
+import {
+  useCredits,
+  useMovie,
+  useMovieRecommendations,
+  useMovieScores,
+} from "../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen } from "./components";
 

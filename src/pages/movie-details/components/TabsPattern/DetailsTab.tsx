@@ -1,6 +1,5 @@
 import { Loader2 } from "lucide-react";
-import useMovie from "../../../../hooks/useMovie";
-import useMovieDirectors from "../../../../hooks/useMovieDirectors";
+import { useMovie, useMovieDirectors } from "../../../../hooks";
 import { formatCurrency, formatReleaseDate } from "../../../../utils";
 
 const DetailsTab = () => {

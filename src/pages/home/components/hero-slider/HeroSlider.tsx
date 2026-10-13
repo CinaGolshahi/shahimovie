@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import useTrendingMoviesWeekly from "../../../../hooks/useTrendingMoviesWeekly";
+import { useTrendingMoviesWeekly } from "../../../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../../../utils";
 
 import { Autoplay, EffectCards, Navigation } from "swiper/modules";

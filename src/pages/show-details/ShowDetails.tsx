@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import { ShowsSection } from "../../components/common/MoviesSection";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/TabsPattern";
-import useCredits from "../../hooks/useCredits";
-import useShow from "../../hooks/useShow";
-import useShowRecommendations from "../../hooks/useShowRecommendations";
+import { useCredits, useShow, useShowRecommendations } from "../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 

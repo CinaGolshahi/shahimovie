@@ -2,8 +2,7 @@ import {
   MoviesSection,
   ShowsSection,
 } from "../../components/common/MoviesSection";
-import useMovies from "../../hooks/useMovies";
-import useShows from "../../hooks/useShows";
+import { useMovies, useShows } from "../../hooks";
 import HeroSlider from "./components/hero-slider";
 
 const Home = () => {

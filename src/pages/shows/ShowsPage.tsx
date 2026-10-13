@@ -1,5 +1,5 @@
 import ShowCard from "../../components/shared/show-card";
-import useShows from "../../hooks/useShows";
+import { useShows } from "../../hooks";
 
 const ShowsPage = () => {
   const { hasMoreShows, shows, showsIsLoading, loadMoreShows } = useShows({});

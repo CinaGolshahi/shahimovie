@@ -2,7 +2,7 @@ import { ChevronRight, ImageOff, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useNavigate } from "react-router-dom";
-import useSearch from "../../../hooks/useSearch";
+import { useSearch } from "../../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../../utils";
 import type { ISearchModal } from "./SearchModal.type";
 

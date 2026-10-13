@@ -1,5 +1,5 @@
 import { Loader2 } from "lucide-react";
-import useShow from "../../../../hooks/useShow";
+import { useShow } from "../../../../hooks";
 import { formatReleaseDate } from "../../../../utils";
 
 const DetailsTab = () => {
