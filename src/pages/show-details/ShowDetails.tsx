@@ -5,13 +5,13 @@ import { ShowsSection } from "../../components/common/MoviesSection";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/TabsPattern";
 import useCredits from "../../hooks/useCredits";
-import useShowById from "../../hooks/useShowById";
+import useShow from "../../hooks/useShow";
 import useShowRecommendations from "../../hooks/useShowRecommendations";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
 const ShowDetails = () => {
-  const { show, isLoadingShow } = useShowById();
+  const { show, isLoadingShow } = useShow();
   const { cast } = useCredits({
     mediaType: "tv",
     creditsType: "aggregate_credits",

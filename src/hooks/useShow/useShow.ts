@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
 import type { ITVShow } from "../../types/tmdb";
 
-const useShowById = () => {
+const useShow = () => {
   const { id } = useParams<{ id: string }>();
   const [show, setShow] = useState<ITVShow>();
   const [isLoadingShow, setIsLoadingShow] = useState<boolean>(true);
@@ -24,4 +24,4 @@ const useShowById = () => {
   return { show, isLoadingShow };
 };
 
-export default useShowById;
+export default useShow;

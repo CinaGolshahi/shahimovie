@@ -1,9 +1,9 @@
 import { Loader2 } from "lucide-react";
-import useShowById from "../../../../hooks/useShowById";
+import useShow from "../../../../hooks/useShow";
 import { formatReleaseDate } from "../../../../utils";
 
 const DetailsTab = () => {
-  const { show, isLoadingShow } = useShowById();
+  const { show, isLoadingShow } = useShow();
 
   return (
     <>

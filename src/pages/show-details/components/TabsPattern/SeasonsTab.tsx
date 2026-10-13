@@ -1,13 +1,13 @@
 import { ImageOff, Loader2 } from "lucide-react";
 import { useState } from "react";
 import useSeason from "../../../../hooks/useSeason";
-import useShowById from "../../../../hooks/useShowById";
+import useShow from "../../../../hooks/useShow";
 import { formatReleaseDate, getTmdbImageUrl } from "../../../../utils";
 
 const SeasonsTab = () => {
   const [selectedSeason, setSelectedSeason] = useState(1);
 
-  const { isLoadingShow, show } = useShowById();
+  const { isLoadingShow, show } = useShow();
   const { season, seasonIsLoading } = useSeason(selectedSeason);
 
   return (
