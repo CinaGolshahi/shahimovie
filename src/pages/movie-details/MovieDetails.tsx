@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
-import { MoviesSection } from "../../components/common/MoviesSection";
+import { MoviesSection } from "../../components/common/movies-section";
 import {
   RatingColorFrom10,
   RatingColorFrom100,
 } from "../../components/common/rating-color";
 import Button from "../../components/ui/button";
-import TabsPattern from "../../components/ui/TabsPattern";
+import TabsPattern from "../../components/ui/tabs-pattern";
 import {
   useCredits,
   useMovie,

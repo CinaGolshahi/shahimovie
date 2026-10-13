@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import MovieCard from "../../components/shared/movie-card";
-import SearchModal from "../../components/shared/Search/SearchModal";
+import SearchModal from "../../components/shared/search/SearchModal";
 import ShowCard from "../../components/shared/show-card";
 import { useSearch } from "../../hooks";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SearchModal from "../../shared/Search/SearchModal";
-import SearchTrigger from "../../shared/Search/SearchTrigger";
+import SearchModal from "../../shared/search/SearchModal";
+import SearchTrigger from "../../shared/search/SearchTrigger";
 import Logo from "../../ui/logo";
-import MenuNavbar from "../MenuNavbar/MenuNavbar";
+import MenuNavbar from "../menu-navbar/MenuNavbar";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -11,7 +11,7 @@ const Header = () => {
   const openModal = () => setIsSearchOpen(true);
 
   return (
-    <header className="fixed inset-x-0 z-30 mx-auto h-12 w-full xl:top-2 top-0 xl:container xl:px-2">
+    <header className="fixed inset-x-0 top-0 z-30 mx-auto h-12 w-full xl:top-2 xl:container xl:px-2">
       <div className="flex size-full items-center justify-center border-gray-50/10 bg-gray-900/60 backdrop-blur-lg xl:justify-between xl:rounded-full xl:border xl:ps-4">
         <Logo />
 

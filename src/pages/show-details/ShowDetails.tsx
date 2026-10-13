@@ -1,9 +1,9 @@
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Link } from "react-router-dom";
-import { ShowsSection } from "../../components/common/MoviesSection";
+import { ShowsSection } from "../../components/common/movies-section";
 import Button from "../../components/ui/button";
-import TabsPattern from "../../components/ui/TabsPattern";
+import TabsPattern from "../../components/ui/tabs-pattern";
 import { useCredits, useShow, useShowRecommendations } from "../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";

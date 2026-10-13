@@ -1,6 +1,6 @@
-import formatCurrency from "./formatCurrency";
-import formatReleaseDate from "./formatReleaseDate";
-import getTmdbImageUrl from "./tmdbImage";
-import getYearFromDate from "./yearFromDate";
+import formatCurrency from "./format-currency";
+import formatReleaseDate from "./format-release-date";
+import getTmdbImageUrl from "./tmdb-image";
+import getYearFromDate from "./year-from-date";
 
 export { formatCurrency, formatReleaseDate, getTmdbImageUrl, getYearFromDate };

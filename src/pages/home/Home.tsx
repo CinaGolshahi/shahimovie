@@ -1,7 +1,7 @@
 import {
   MoviesSection,
   ShowsSection,
-} from "../../components/common/MoviesSection";
+} from "../../components/common/movies-section";
 import { useMovies, useShows } from "../../hooks";
 import HeroSlider from "./components/hero-slider";
 
