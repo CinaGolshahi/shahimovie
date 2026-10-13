@@ -1,16 +1,15 @@
-import type { MovieSortBy } from "../../../hooks/useMovies";
-import type { TVSortBy } from "../../../hooks/useShows";
+import type { IMovie, ITVShow } from "../../../types/tmdb";
 
 interface IMoviesSection {
   title: string;
-  link: string;
-  sort?: MovieSortBy;
+  link?: string;
+  movies: IMovie[];
 }
 
 interface IShowsSection {
   title: string;
   link: string;
-  sort?: TVSortBy;
+  shows: ITVShow[];
 }
 
 export type { IMoviesSection, IShowsSection };
