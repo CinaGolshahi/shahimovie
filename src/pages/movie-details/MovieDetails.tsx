@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
+import { MoviesSection } from "../../components/common/MoviesSection";
 import {
   RatingColorFrom10,
   RatingColorFrom100,
@@ -11,6 +12,7 @@ import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/TabsPattern";
 import useCredits from "../../hooks/useCredits";
 import useGetMovieById from "../../hooks/useGetMovieById";
+import useMovieRecommendations from "../../hooks/useMovieRecommendations";
 import useMovieScores from "../../hooks/useMovieScores/useMovieScores";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen } from "./components";
@@ -24,12 +26,13 @@ const MovieDetails = () => {
   const { movieScores, movieScoresIsLoading } = useMovieScores(
     movie?.imdb_id ?? "",
   );
+  const { movieRecommendations } = useMovieRecommendations();
 
   if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
   } else {
     return (
-      <div>
+      <div className="flex flex-col gap-10">
         <div
           style={{
             backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "w200") ?? ""})`,
@@ -159,7 +162,7 @@ const MovieDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-full 2xl:px-10">
+        <div className="w-full">
           <TabsPattern
             tabs={[
               { label: "Details", content: <DetailsTab /> },
@@ -167,6 +170,8 @@ const MovieDetails = () => {
             ]}
           />
         </div>
+
+        <MoviesSection title="Recommendation" movies={movieRecommendations} />
       </div>
     );
   }
