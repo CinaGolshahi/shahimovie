@@ -1,6 +1,5 @@
 import { useState } from "react";
-import SearchModal from "../../shared/search/SearchModal";
-import SearchTrigger from "../../shared/search/SearchTrigger";
+import { SearchModal, SearchTrigger } from "../../shared/search";
 import Logo from "../../ui/logo";
 import MenuNavbar from "../menu-navbar/MenuNavbar";
 
