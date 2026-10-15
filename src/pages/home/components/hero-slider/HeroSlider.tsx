@@ -47,11 +47,11 @@ const HeroSlider = () => {
                     <picture>
                       <source
                         media="(min-width: 1280px)"
-                        srcSet={`${getTmdbImageUrl(movie.backdrop_path, "w780")}`}
+                        srcSet={`${getTmdbImageUrl(movie.backdrop_path, "original")}`}
                       />
 
                       <img
-                        src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
+                        src={`${getTmdbImageUrl(movie.poster_path, "w780")}`}
                         alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
                         className="size-full rounded-lg object-cover"
                       />
@@ -59,7 +59,7 @@ const HeroSlider = () => {
 
                     <div className="absolute inset-0 hidden items-end justify-start gap-6 rounded-lg bg-linear-to-b from-transparent to-gray-950/80 p-20 pb-16 opacity-0 transition-all delay-75 duration-300 group-hover:pb-20 group-hover:opacity-100 group-hover:backdrop-blur-lg xl:flex">
                       <img
-                        src={`${getTmdbImageUrl(movie.poster_path, "w300")}`}
+                        src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
                         alt=""
                         className="hidden w-1/5 rounded-xl xl:block"
                       />
