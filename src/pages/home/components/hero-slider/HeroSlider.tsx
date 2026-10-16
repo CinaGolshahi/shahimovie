@@ -10,17 +10,16 @@ import { ImageOff } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/navigation";
-import FalseHeroSlider from "./FalseHeroSlider";
+import HeroSliderLoader from "./HeroSliderLoader";
 import "./styles/style.css";
 
 const HeroSlider = () => {
-  const { trendingMovies, trendingMoviesIsLoading, trendingMoviesError } =
-    useTrendingMoviesWeekly();
+  const { trendingMovies, trendingMoviesIsLoading } = useTrendingMoviesWeekly();
 
   return (
     <div className="container mx-auto overflow-hidden">
-      {trendingMoviesError ? (
-        <FalseHeroSlider />
+      {trendingMoviesIsLoading ? (
+        <HeroSliderLoader />
       ) : (
         <Swiper
           effect={"cards"}
@@ -36,7 +35,7 @@ const HeroSlider = () => {
           {trendingMovies?.slice(0, 8).map((movie) => (
             <SwiperSlide
               key={movie.id}
-              className={`size-full rounded-lg bg-gray-800 ${trendingMoviesIsLoading && "animate-pulse"}`}
+              className="size-full rounded-lg bg-gray-800"
             >
               <Link
                 to={`/movie/${movie.id}`}

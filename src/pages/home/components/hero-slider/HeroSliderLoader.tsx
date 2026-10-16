@@ -3,7 +3,7 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const FalseHeroSlider = () => {
+const HeroSliderLoader = () => {
   return (
     <Swiper
       effect={"cards"}
@@ -14,11 +14,11 @@ const FalseHeroSlider = () => {
       mousewheel={false}
       className="pointer-events-none aspect-2/3 w-2/3! xl:aspect-video"
     >
-      <SwiperSlide className="size-full rounded-lg bg-gray-900"></SwiperSlide>
-      <SwiperSlide className="size-full rounded-lg bg-gray-900"></SwiperSlide>
-      <SwiperSlide className="size-full rounded-lg bg-gray-900"></SwiperSlide>
+      <SwiperSlide className="size-full animate-pulse rounded-lg bg-gray-900"></SwiperSlide>
+      <SwiperSlide className="size-full animate-pulse rounded-lg bg-gray-900"></SwiperSlide>
+      <SwiperSlide className="size-full animate-pulse rounded-lg bg-gray-900"></SwiperSlide>
     </Swiper>
   );
 };
 
-export default FalseHeroSlider;
+export default HeroSliderLoader;
