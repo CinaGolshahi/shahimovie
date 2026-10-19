@@ -1,24 +1,24 @@
-import { Link } from "react-router-dom";
-
-import { useTrendingMoviesWeekly } from "../../../../hooks";
-import { getTmdbImageUrl, getYearFromDate } from "../../../../utils";
+import { useTrendingWeekly } from "../../../../hooks";
 
 import { Autoplay, EffectCards, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { ImageOff } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/navigation";
+
 import HeroSliderLoader from "./HeroSliderLoader";
+
+import MovieSlide from "./components/MovieSlide";
+import TVShowSlide from "./components/TVShowSlide";
 import "./styles/style.css";
 
 const HeroSlider = () => {
-  const { trendingMovies, trendingMoviesIsLoading } = useTrendingMoviesWeekly();
+  const { trendingWeekly, trendingWeeklyIsLoading } = useTrendingWeekly();
 
   return (
     <div className="container mx-auto overflow-hidden">
-      {trendingMoviesIsLoading ? (
+      {trendingWeeklyIsLoading ? (
         <HeroSliderLoader />
       ) : (
         <Swiper
@@ -30,50 +30,16 @@ const HeroSlider = () => {
             pauseOnMouseEnter: true,
           }}
           navigation={{}}
+          loop={true}
           className="aspect-2/3 w-2/3! xl:aspect-video"
         >
-          {trendingMovies?.slice(0, 8).map((movie) => (
+          {trendingWeekly?.slice(0, 10).map((item) => (
             <SwiperSlide
-              key={movie.id}
+              key={item.id}
               className="size-full rounded-lg bg-gray-800"
             >
-              <Link
-                to={`/movie/${movie.id}`}
-                className="group relative size-full rounded-lg"
-              >
-                {movie.backdrop_path && movie.poster_path ? (
-                  <>
-                    <picture>
-                      <source
-                        media="(min-width: 1280px)"
-                        srcSet={`${getTmdbImageUrl(movie.backdrop_path, "original")}`}
-                      />
-
-                      <img
-                        src={`${getTmdbImageUrl(movie.poster_path, "w780")}`}
-                        alt={`${movie.title} (${getYearFromDate(movie.release_date)})`}
-                        className="size-full rounded-lg object-cover"
-                      />
-                    </picture>
-
-                    <div className="absolute inset-0 hidden items-end justify-start gap-6 rounded-lg bg-linear-to-b from-transparent to-gray-950/80 p-20 pb-16 opacity-0 transition-all delay-75 duration-300 group-hover:pb-20 group-hover:opacity-100 group-hover:backdrop-blur-lg xl:flex">
-                      <img
-                        src={`${getTmdbImageUrl(movie.poster_path, "w500")}`}
-                        alt=""
-                        className="hidden w-1/5 rounded-xl xl:block"
-                      />
-                      <div className="hidden flex-col gap-2 pb-6 xl:flex">
-                        <p className="text-4xl font-bold">{movie.title}</p>
-                        <span className="text-2xl font-bold">{`(${getYearFromDate(movie.release_date)})`}</span>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex size-full items-center justify-center">
-                    <ImageOff className="size-10 stroke-gray-700" />
-                  </div>
-                )}
-              </Link>
+              {item.media_type === "movie" && <MovieSlide item={item} />}
+              {item.media_type === "tv" && <TVShowSlide item={item} />}
             </SwiperSlide>
           ))}
         </Swiper>
