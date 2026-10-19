@@ -1,7 +1,7 @@
-import type { ISearchTVShowResult } from "../../../types/tmdb";
+import type { ITVShowSummary } from "../../../types/tmdb";
 
 interface IShowCardProps {
-  show: ISearchTVShowResult;
+  show: ITVShowSummary;
   className?: string;
 }
 
