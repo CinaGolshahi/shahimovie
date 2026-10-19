@@ -2,6 +2,7 @@ import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import { Link } from "react-router-dom";
 import { ShowsSection } from "../../components/common/movies-section";
+import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
 import { useCredits, useShow, useShowRecommendations } from "../../hooks";
@@ -30,8 +31,15 @@ const ShowDetails = () => {
           }}
           className="-mt-20 w-full bg-cover bg-center"
         >
-          <div className="w-full bg-linear-to-b to-gray-950 pt-28 backdrop-blur-md backdrop-brightness-50 xl:pt-20 xl:pb-10">
-            <div className="container mx-auto flex flex-col gap-4 xl:px-10">
+          <div className="w-full bg-linear-to-b to-gray-950 px-2 pt-24 backdrop-blur-md backdrop-brightness-50 xl:px-0 xl:pt-18 xl:pb-10">
+            <div className="container mx-auto flex flex-col gap-2 xl:px-10">
+              <Breadcrumb
+                items={[
+                  { label: "Home", link: "/" },
+                  { label: "Shows", link: "/shows" },
+                  { label: show?.name, link: `/movie/${show?.id}` },
+                ]}
+              />
               <div className="flex flex-col items-center xl:flex-row">
                 <div className="flex flex-col items-center gap-2 text-center select-none xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
                   <div className="aspect-2/3 w-2/3 shrink-0 rounded-3xl bg-gray-800 p-px xl:w-1/3">
