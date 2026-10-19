@@ -1,4 +1,4 @@
-import { Film, Home, Search, UserCircle } from "lucide-react";
+import { Clapperboard, Home, Tv, UserCircle } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const MobileNavbar = () => {
@@ -30,13 +30,13 @@ const MobileNavbar = () => {
           <div
             className={`${isActive ? "font-bold text-gray-50" : "text-gray-400"}`}
           >
-            <Film className="size-5" />
+            <Clapperboard className="size-5" />
             <span>Movies</span>
           </div>
         )}
       </NavLink>
       <NavLink
-        to={"/search"}
+        to={"/shows"}
         className={({ isActive }) =>
           `${isActive ? `bg-blue-600/0 before:inset-0 before:opacity-100` : `before:inset-4 before:opacity-0`}`
         }
@@ -45,8 +45,8 @@ const MobileNavbar = () => {
           <div
             className={`${isActive ? "font-bold text-gray-50" : "text-gray-400"}`}
           >
-            <Search className="size-5" />
-            <span>Search</span>
+            <Tv className="size-5" />
+            <span>Shows</span>
           </div>
         )}
       </NavLink>
