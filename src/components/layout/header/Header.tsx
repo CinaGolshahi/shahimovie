@@ -10,20 +10,20 @@ const Header = () => {
   const openModal = () => setIsSearchOpen(true);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 mx-auto h-12 w-full xl:top-2 xl:container xl:px-2">
-      <div className="flex size-full items-center justify-center border-gray-50/10 bg-gray-900/60 backdrop-blur-lg xl:justify-between xl:rounded-full xl:border xl:ps-4">
+    <header className="fixed inset-x-0 top-2 z-30 container mx-auto flex items-center justify-between rounded-full bg-gray-900/50 px-2 outline outline-gray-50/10 backdrop-blur-lg *:flex *:h-full ps-3">
+      <div>
         <Logo />
-
-        <div className="hidden h-full items-center xl:flex">
-          <MenuNavbar />
-        </div>
-
-        <div className="relative hidden h-full w-48 items-center justify-end px-2 xl:flex">
-          <SearchTrigger openModal={openModal} />
-        </div>
-
-        {isSearchOpen && <SearchModal closeModal={closeModal} />}
       </div>
+
+      <div className="hidden">
+        <MenuNavbar />
+      </div>
+
+      <div className="relative hidden w-48 justify-end">
+        <SearchTrigger openModal={openModal} />
+      </div>
+
+      {isSearchOpen && <SearchModal closeModal={closeModal} />}
     </header>
   );
 };
