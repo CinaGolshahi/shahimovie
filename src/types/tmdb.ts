@@ -206,7 +206,7 @@ interface ITVShow {
   vote_count: number;
 }
 
-interface ISearchMovieResult {
+interface IMovieSummary {
   adult: boolean;
   backdrop_path: string | null;
   // genre_ids: number[];
@@ -222,7 +222,7 @@ interface ISearchMovieResult {
   vote_average: number;
   vote_count: number;
 }
-interface ISearchTVShowResult {
+interface ITVShowSummary {
   adult: boolean;
   backdrop_path: string | null;
   // genre_ids: number[];
@@ -238,7 +238,7 @@ interface ISearchTVShowResult {
   vote_average: number;
   vote_count: number;
 }
-interface ISearchPersonResult {
+interface IPersonSummary {
   adult: boolean;
   gender: number;
   id: number;
@@ -248,23 +248,23 @@ interface ISearchPersonResult {
   popularity: number;
   profile_path: string | null;
 }
-type IMultiSearchResult =
-  | (ISearchMovieResult & { media_type: "movie" })
-  | (ISearchTVShowResult & { media_type: "tv" })
-  | (ISearchPersonResult & { media_type: "person" });
+type IMediaSummary =
+  | (IMovieSummary & { media_type: "movie" })
+  | (ITVShowSummary & { media_type: "tv" })
+  | (IPersonSummary & { media_type: "person" });
 
 export type {
   ICastMember,
   ICrewMember,
   IGuestStar,
+  IMediaSummary,
   IMovie,
   IMovieCredits,
-  IMultiSearchResult,
+  IMovieSummary,
   IPaginatedResponse,
-  ISearchMovieResult,
-  ISearchPersonResult,
-  ISearchTVShowResult,
+  IPersonSummary,
   ISeasonDetails,
   ISeasonEpisode,
   ITVShow,
+  ITVShowSummary,
 };

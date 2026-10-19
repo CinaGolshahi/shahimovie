@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMultiSearchResult, IPaginatedResponse } from "../../types/tmdb";
+import type { IMediaSummary, IPaginatedResponse } from "../../types/tmdb";
 
 const useSearch = (query: string | undefined | null) => {
-  const [searchResults, setSearchResults] = useState<IMultiSearchResult[]>([]);
+  const [searchResults, setSearchResults] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
   const [isLoadingSearchResults, setIsLoadingSearchResults] =
@@ -26,11 +26,12 @@ const useSearch = (query: string | undefined | null) => {
 
       setIsLoadingSearchResults(true);
       try {
-        const response = await tmdbApi.get<
-          IPaginatedResponse<IMultiSearchResult>
-        >("/search/multi", {
-          params: { query: `${query}`, page },
-        });
+        const response = await tmdbApi.get<IPaginatedResponse<IMediaSummary>>(
+          "/search/multi",
+          {
+            params: { query: `${query}`, page },
+          },
+        );
         setSearchResults((prev) => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
         setIsLoadingSearchResults(false);
