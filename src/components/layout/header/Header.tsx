@@ -10,7 +10,7 @@ const Header = () => {
   const openModal = () => setIsSearchOpen(true);
 
   return (
-    <header className="fixed inset-x-0 top-2 z-30 container mx-auto flex items-center justify-between rounded-full bg-gray-900/50 px-2 outline outline-gray-50/10 backdrop-blur-lg *:flex *:h-full ps-3">
+    <header className="fixed inset-x-0 top-0 z-30 container mx-auto flex h-12 items-center justify-between bg-gray-900/50 px-2 ps-3 outline outline-gray-50/10 backdrop-blur-lg *:flex xl:top-2 xl:rounded-full">
       <div>
         <Logo />
       </div>
