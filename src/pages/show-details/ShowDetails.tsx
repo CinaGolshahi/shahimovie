@@ -31,8 +31,8 @@ const ShowDetails = () => {
           }}
           className="-mt-20 w-full bg-cover bg-center"
         >
-          <div className="w-full bg-linear-to-b to-gray-950 px-2 pt-24 backdrop-blur-md backdrop-brightness-50 xl:px-0 xl:pt-18 xl:pb-10">
-            <div className="container mx-auto flex flex-col gap-2 xl:px-10">
+          <div className="w-full bg-linear-to-b to-gray-950 px-2 pt-24 backdrop-blur-md backdrop-brightness-50 xl:px-0 xl:pt-16 xl:pb-10">
+            <div className="container mx-auto flex flex-col gap-2.5 xl:px-10">
               <Breadcrumb
                 items={[
                   { label: "Home", link: "/" },
