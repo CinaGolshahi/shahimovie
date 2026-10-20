@@ -21,7 +21,7 @@ const SeasonsTab = () => {
             <button
               key={season.id}
               onClick={() => setSelectedSeason(season.season_number)}
-              className={`flex min-w-1/3 cursor-pointer flex-col items-start gap-1 transition-all duration-300 md:w-full ${selectedSeason === season.season_number ? "opacity-100 grayscale-0" : "opacity-50 grayscale-75"}`}
+              className={`flex w-1/3 min-w-1/3 cursor-pointer flex-col items-start gap-1 transition-all duration-300 md:w-full ${selectedSeason === season.season_number ? "opacity-100 grayscale-0" : "opacity-50 grayscale-75"}`}
             >
               {season.poster_path ? (
                 <img
