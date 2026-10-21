@@ -2,6 +2,7 @@ import { ImageOff, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useSeason, useShow } from "../../../../hooks";
 import { formatReleaseDate, getTmdbImageUrl } from "../../../../utils";
+import EpisodeLoader from "./EpisodeLoader";
 
 const SeasonsTab = () => {
   const [selectedSeason, setSelectedSeason] = useState(1);
@@ -27,7 +28,7 @@ const SeasonsTab = () => {
                 <img
                   src={`${getTmdbImageUrl(season.poster_path, "w500")}`}
                   alt=""
-                  className="aspect-2/3 rounded-lg object-cover"
+                  className="aspect-2/3 w-full rounded-lg object-cover"
                 />
               ) : (
                 <div className="flex aspect-2/3 w-full items-center justify-center rounded-lg bg-gray-900">
@@ -41,8 +42,11 @@ const SeasonsTab = () => {
       )}
 
       {seasonIsLoading ? (
-        <div className="flex h-20 w-full items-center justify-center">
-          <Loader2 className="animate-spin stroke-blue-500 duration-300" />
+        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-2 xl:grid-cols-4">
+          <EpisodeLoader />
+          <EpisodeLoader />
+          <EpisodeLoader />
+          <EpisodeLoader />
         </div>
       ) : (
         <div className="flex gap-4 overflow-auto md:grid md:grid-cols-2 xl:grid-cols-4">
@@ -56,7 +60,7 @@ const SeasonsTab = () => {
                   <img
                     src={`${getTmdbImageUrl(episode.still_path, "w500")}`}
                     alt=""
-                    className="aspect-video rounded-lg object-cover"
+                    className="aspect-video w-full rounded-lg bg-gray-950 object-cover"
                   />
                   {episode.episode_type === "finale" && (
                     <span className="absolute inset-e-2 bottom-2 flex items-center gap-2 rounded-full border border-gray-50/20 bg-gray-50/10 px-2 text-sm">
