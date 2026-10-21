@@ -13,9 +13,13 @@ const Breadcrumb = ({ items }: IBreadcrumb) => {
       <p className="line-clamp-1 text-gray-400 select-none **:transition-all **:delay-75 **:duration-300 *:last:text-gray-100">
         {items.map((item, index) => (
           <span key={index}>
-            <Link to={`${item.link}`} className="hover:text-gray-50">
-              {item.label}
-            </Link>
+            {index !== items.length - 1 ? (
+              <Link to={`${item.link}`} className="hover:text-gray-200">
+                {item.label}
+              </Link>
+            ) : (
+              <span>{item.label}</span>
+            )}
             {index < items.length - 1 && " / "}
           </span>
         ))}
