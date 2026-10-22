@@ -1,23 +1,33 @@
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
-import { Link } from "react-router-dom";
+import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
+import { Link, useParams } from "react-router-dom";
 import { ShowsSection } from "../../components/common/movies-section";
+import {
+  RatingColorFrom10,
+  RatingColorFrom100,
+} from "../../components/common/rating-color";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
-import { useCredits, useShow, useShowRecommendations } from "../../hooks";
+import {
+  useCredits,
+  useScores,
+  useShow,
+  useShowRecommendations,
+} from "../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
 const ShowDetails = () => {
+  const { id } = useParams<{ id: string }>();
+
   const { show, isLoadingShow } = useShow();
   const { cast } = useCredits({
     mediaType: "tv",
     creditsType: "aggregate_credits",
   });
-  // const { movieScores, movieScoresIsLoading } = useMovieScores(
-  //   show?.imdb_id ?? "",
-  // );
+  const { scores, scoresIsLoading } = useScores("tv", id ?? "");
   const { showRecommendations, showRecommendationsIsLoading } =
     useShowRecommendations();
 
@@ -102,7 +112,7 @@ const ShowDetails = () => {
                         : "Unknown"}
                     </p>
 
-                    {/* {movieScoresIsLoading ? (
+                    {scoresIsLoading ? (
                       <div className="my-1 h-6 w-64 animate-pulse rounded-full bg-gray-50/10"></div>
                     ) : (
                       <div className="my-1 flex items-center gap-4 transition-all delay-75 duration-300">
@@ -110,14 +120,14 @@ const ShowDetails = () => {
                           <RottenTomatoes className="size-5" />
                           <RatingColorFrom100
                             rating={Number(
-                              movieScores?.Ratings?.[1]?.Value.slice(0, -1),
+                              scores?.Ratings?.[1]?.Value.slice(0, -1),
                             )}
                           />
                         </div>
                         <div className="flex items-center gap-2">
                           <Imdb className="size-5 bg-[#F5C518] fill-black" />
                           <RatingColorFrom10
-                            rating={Number(movieScores?.imdbRating)}
+                            rating={Number(scores?.imdbRating)}
                           />
                         </div>
                         <div className="flex items-center gap-2">
@@ -127,7 +137,7 @@ const ShowDetails = () => {
                           />
                         </div>
                       </div>
-                    )} */}
+                    )}
                     <p className="text-gray-200 xl:pe-36">
                       {show?.overview ?? "Unknown"}
                     </p>

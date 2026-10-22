@@ -2,8 +2,8 @@ import useCredits from "./useCredits";
 import useMovie from "./useMovie";
 import useMovieDirectors from "./useMovieDirectors";
 import useMovieRecommendations from "./useMovieRecommendations";
-import useMovieScores from "./useMovieScores/useMovieScores";
 import useMovies from "./useMovies";
+import useScores from "./useScores";
 import useSearch from "./useSearch";
 import useSeason from "./useSeason";
 import useShow from "./useShow";
@@ -17,7 +17,7 @@ export {
   useMovieDirectors,
   useMovieRecommendations,
   useMovies,
-  useMovieScores,
+  useScores,
   useSearch,
   useSeason,
   useShow,

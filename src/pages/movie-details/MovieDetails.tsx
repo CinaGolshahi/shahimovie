@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
@@ -15,20 +15,19 @@ import {
   useCredits,
   useMovie,
   useMovieRecommendations,
-  useMovieScores,
+  useScores,
 } from "../../hooks";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 import { CastTab, DetailsTab, LoadingScreen } from "./components";
 
 const MovieDetails = () => {
+  const { id } = useParams<{ id: string }>();
   const { movie, isLoading } = useMovie();
   const { cast, isLoadingCredits } = useCredits({
     mediaType: "movie",
     creditsType: "credits",
   });
-  const { movieScores, movieScoresIsLoading } = useMovieScores(
-    movie?.imdb_id ?? "",
-  );
+  const { scores, scoresIsLoading } = useScores("movie", id ?? "");
   const { movieRecommendations, movieRecommendationsIsLoading } =
     useMovieRecommendations();
 
@@ -105,7 +104,7 @@ const MovieDetails = () => {
                         : "Unknown"}
                     </p>
 
-                    {movieScoresIsLoading ? (
+                    {scoresIsLoading ? (
                       <div className="my-1 h-6 w-64 animate-pulse rounded-full bg-gray-50/10"></div>
                     ) : (
                       <div className="my-1 flex items-center gap-4 transition-all delay-75 duration-300">
@@ -113,14 +112,14 @@ const MovieDetails = () => {
                           <RottenTomatoes className="size-5" />
                           <RatingColorFrom100
                             rating={Number(
-                              movieScores?.Ratings?.[1]?.Value.slice(0, -1),
+                              scores?.Ratings?.[1]?.Value.slice(0, -1),
                             )}
                           />
                         </div>
                         <div className="flex items-center gap-2">
                           <Imdb className="size-5 bg-[#F5C518] fill-black" />
                           <RatingColorFrom10
-                            rating={Number(movieScores?.imdbRating)}
+                            rating={Number(scores?.imdbRating)}
                           />
                         </div>
                         <div className="flex items-center gap-2">

@@ -206,6 +206,11 @@ interface ITVShow {
   vote_count: number;
 }
 
+interface IExternalIds {
+  id: number;
+  imdb_id: string;
+}
+
 interface IMovieSummary {
   adult: boolean;
   backdrop_path: string | null;
@@ -256,6 +261,7 @@ type IMediaSummary =
 export type {
   ICastMember,
   ICrewMember,
+  IExternalIds,
   IGuestStar,
   IMediaSummary,
   IMovie,
