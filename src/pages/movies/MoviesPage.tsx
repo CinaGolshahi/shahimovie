@@ -1,4 +1,4 @@
-import MovieCard from "../../components/shared/movie-card";
+import { MovieCard, MovieCardLoader } from "../../components/shared/movie-card";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import { useMovies } from "../../hooks";
 
@@ -9,20 +9,39 @@ const MoviesPage = () => {
 
   return (
     <div className="container mx-auto flex flex-col gap-4 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
-      <Breadcrumb items={[{ label: "Home", link: "/" }, { label: "Movies" }]} />
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-      {hasMoreMovies && (
-        <button
-          onClick={loadMoreMovies}
-          disabled={moviesIsLoading}
-          className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
-        >
-          {moviesIsLoading ? "Loading..." : "See More"}
-        </button>
+      {moviesIsLoading ? (
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+          <MovieCardLoader />
+        </div>
+      ) : (
+        <>
+          <Breadcrumb
+            items={[{ label: "Home", link: "/" }, { label: "Movies" }]}
+          />
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+          {hasMoreMovies && (
+            <button
+              onClick={loadMoreMovies}
+              disabled={moviesIsLoading}
+              className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
+            >
+              {moviesIsLoading ? "Loading..." : "See More"}
+            </button>
+          )}
+        </>
       )}
     </div>
   );

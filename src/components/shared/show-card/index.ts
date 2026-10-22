@@ -1,3 +1,4 @@
 import ShowCard from "./ShowCard";
+import ShowCardLoader from "./ShowCardLoader";
 
-export default ShowCard;
+export { ShowCard, ShowCardLoader };

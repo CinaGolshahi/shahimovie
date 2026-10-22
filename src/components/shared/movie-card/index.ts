@@ -1,3 +1,4 @@
 import MovieCard from "./MovieCard";
+import MovieCardLoader from "./MovieCardLoader";
 
-export default MovieCard;
+export { MovieCard, MovieCardLoader };
