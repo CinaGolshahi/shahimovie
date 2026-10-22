@@ -19,7 +19,6 @@ const useMovieRecommendations = () => {
           `/movie/${id}/recommendations`,
         );
         setMovieRecommendations(response.data.results);
-        setMovieRecommendationsIsLoading(false);
       } catch (error) {
         console.log(error);
       } finally {

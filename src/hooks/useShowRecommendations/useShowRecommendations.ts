@@ -17,7 +17,6 @@ const useShowRecommendations = () => {
           `/tv/${id}/recommendations`,
         );
         setShowRecommendations(response.data.results);
-        setShowRecommendationsIsLoading(false);
       } catch (error) {
         console.log(error);
       } finally {
