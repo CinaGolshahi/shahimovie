@@ -29,7 +29,8 @@ const MovieDetails = () => {
   const { movieScores, movieScoresIsLoading } = useMovieScores(
     movie?.imdb_id ?? "",
   );
-  const { movieRecommendations } = useMovieRecommendations();
+  const { movieRecommendations, movieRecommendationsIsLoading } =
+    useMovieRecommendations();
 
   if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
@@ -184,7 +185,11 @@ const MovieDetails = () => {
           />
         </div>
 
-        <MoviesSection title="Recommendation" movies={movieRecommendations} />
+        <MoviesSection
+          title="Recommendation"
+          loading={movieRecommendationsIsLoading}
+          movies={movieRecommendations}
+        />
       </div>
     );
   }

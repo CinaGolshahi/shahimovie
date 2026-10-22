@@ -18,7 +18,8 @@ const ShowDetails = () => {
   // const { movieScores, movieScoresIsLoading } = useMovieScores(
   //   show?.imdb_id ?? "",
   // );
-  const { showRecommendations } = useShowRecommendations();
+  const { showRecommendations, showRecommendationsIsLoading } =
+    useShowRecommendations();
 
   if (isLoadingShow) {
     return <LoadingScreen />;
@@ -187,7 +188,11 @@ const ShowDetails = () => {
           />
         </div>
 
-        <ShowsSection title="Recommendations" shows={showRecommendations} />
+        <ShowsSection
+          title="Recommendations"
+          loading={showRecommendationsIsLoading}
+          shows={showRecommendations}
+        />
       </div>
     );
   }
