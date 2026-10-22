@@ -14,9 +14,10 @@ const useMovie = () => {
       try {
         const response = await tmdbApi.get(`/movie/${id}`);
         setMovie(response.data);
-        setIsLoading(false);
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchMovieById();

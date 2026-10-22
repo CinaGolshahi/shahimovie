@@ -14,9 +14,10 @@ const useShow = () => {
       try {
         const response = await tmdbApi.get(`/tv/${id}`);
         setShow(response.data);
-        setIsLoadingShow(false);
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoadingShow(false);
       }
     };
     fetchShowById();
