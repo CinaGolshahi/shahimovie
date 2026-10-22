@@ -48,7 +48,7 @@ const ShowDetails = () => {
                 items={[
                   { label: "Home", link: "/" },
                   { label: "Shows", link: "/shows" },
-                  { label: show?.name, link: `/movie/${show?.id}` },
+                  { label: show?.name },
                 ]}
               />
               <div className="flex flex-col items-center xl:flex-row">

@@ -48,10 +48,7 @@ const MovieDetails = () => {
                 items={[
                   { label: "Home", link: "/" },
                   { label: "Movies", link: "/movies" },
-                  {
-                    label: `${movie?.title} (${getYearFromDate(movie?.release_date)})`,
-                    link: `/movie/${movie?.id}`,
-                  },
+                  { label: movie?.title },
                 ]}
               />
               <div className="flex flex-col items-center xl:flex-row">
