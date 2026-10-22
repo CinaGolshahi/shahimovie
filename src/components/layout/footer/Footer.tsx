@@ -5,9 +5,9 @@ import Logo from "../../ui/logo";
 
 const Footer = () => {
   return (
-    <footer className="mt-10 w-full bg-gray-900/50 pbe-20 xl:pbe-0">
-      <div className="container mx-auto flex flex-col items-start justify-between gap-6 border-b border-dashed border-gray-500 p-6 md:flex-row md:gap-0">
-        <div className="flex flex-col gap-4 md:w-1/3 xl:w-1/5">
+    <footer className="mt-10 w-full bg-gray-900/50 pbe-20 text-center xl:pbe-0 xl:text-start">
+      <div className="container mx-auto flex flex-col items-center justify-between gap-6 border-b border-dashed border-gray-500 p-6 md:flex-row md:gap-0">
+        <div className="flex flex-col items-center gap-4 md:w-1/3 xl:w-1/5 xl:items-start">
           <Logo />
           <span>
             Your gateway to your favorite movies and shows, anytime, anywhere.
