@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { ICastMember, ICrewMember, IMovieCredits } from "../../types/tmdb";
+import type { ICastMember, ICredits, ICrewMember } from "../../types/tmdb";
 
-interface ICredits {
+interface ICreditsProps {
   id: string;
   mediaType: "movie" | "tv";
   creditsType: "credits" | "aggregate_credits";
 }
 
-const useCredits = ({ id, creditsType, mediaType }: ICredits) => {
+const useCredits = ({ id, creditsType, mediaType }: ICreditsProps) => {
   const [isLoadingCredits, setIsLoadingCredits] = useState<boolean>();
   const [cast, setCast] = useState<ICastMember[]>();
   const [crew, setCrew] = useState<ICrewMember[]>();
@@ -18,7 +18,7 @@ const useCredits = ({ id, creditsType, mediaType }: ICredits) => {
       setIsLoadingCredits(true);
 
       try {
-        const response = await tmdbApi.get<IMovieCredits>(
+        const response = await tmdbApi.get<ICredits>(
           `/${mediaType}/${id}/${creditsType}`,
         );
 

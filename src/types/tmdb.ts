@@ -94,7 +94,7 @@ interface ICrewMember {
   department: string;
   job: string;
 }
-interface IMovieCredits {
+interface ICredits {
   id: number;
   cast: ICastMember[];
   crew: ICrewMember[];
@@ -260,12 +260,12 @@ type IMediaSummary =
 
 export type {
   ICastMember,
+  ICredits,
   ICrewMember,
   IExternalIds,
   IGuestStar,
   IMediaSummary,
   IMovie,
-  IMovieCredits,
   IMovieSummary,
   IPaginatedResponse,
   IPersonSummary,
