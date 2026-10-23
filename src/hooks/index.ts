@@ -9,7 +9,7 @@ import useSeason from "./useSeason";
 import useShow from "./useShow";
 import useShowRecommendations from "./useShowRecommendations";
 import useShows from "./useShows";
-import useTrendingWeekly from "./useTrendingWeekly";
+import useTrending from "./useTrending";
 
 export {
   useCredits,
@@ -23,5 +23,5 @@ export {
   useShow,
   useShowRecommendations,
   useShows,
-  useTrendingWeekly,
+  useTrending,
 };

@@ -1,4 +1,4 @@
-import { useTrendingWeekly } from "../../../../hooks";
+import { useTrending } from "../../../../hooks";
 
 import { Autoplay, EffectCards, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,11 +14,11 @@ import TVShowSlide from "./components/TVShowSlide";
 import "./styles/style.css";
 
 const HeroSlider = () => {
-  const { trendingWeekly, trendingWeeklyIsLoading } = useTrendingWeekly();
+  const { trending, trendingIsLoading } = useTrending("week");
 
   return (
     <div className="container mx-auto overflow-hidden">
-      {trendingWeeklyIsLoading ? (
+      {trendingIsLoading ? (
         <HeroSliderLoader />
       ) : (
         <Swiper
@@ -33,7 +33,7 @@ const HeroSlider = () => {
           loop={true}
           className="aspect-2/3 w-2/3! xl:aspect-video"
         >
-          {trendingWeekly?.slice(0, 10).map((item) => (
+          {trending?.slice(0, 10).map((item) => (
             <SwiperSlide
               key={item.id}
               className="size-full rounded-lg bg-gray-800"
