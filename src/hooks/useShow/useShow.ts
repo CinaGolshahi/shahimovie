@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
 import type { ITVShow } from "../../types/tmdb";
 
-const useShow = () => {
-  const { id } = useParams<{ id: string }>();
+interface IUseShow {
+  id: string;
+}
+
+const useShow = (props: IUseShow) => {
+  const { id } = props;
   const [show, setShow] = useState<ITVShow>();
   const [isLoadingShow, setIsLoadingShow] = useState<boolean>(true);
 

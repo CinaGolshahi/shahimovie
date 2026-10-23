@@ -1,7 +1,8 @@
-import { Bookmark, Film, ImageOff } from "lucide-react";
+import { Link, useParams } from "react-router-dom";
 
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
-import { Link, useParams } from "react-router-dom";
+import { Bookmark, Film, ImageOff } from "lucide-react";
+
 import { ShowsSection } from "../../components/common/movies-section";
 import {
   RatingColorFrom10,
@@ -10,26 +11,29 @@ import {
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
+import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
+
 import {
   useCredits,
   useScores,
   useShow,
   useShowRecommendations,
 } from "../../hooks";
+
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
-import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
 const ShowDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { show, isLoadingShow } = useShow();
+  const { show, isLoadingShow } = useShow({ id: id ?? "" });
   const { cast } = useCredits({
+    id: id ?? "",
     mediaType: "tv",
     creditsType: "aggregate_credits",
   });
   const { scores, scoresIsLoading } = useScores("tv", id ?? "");
   const { showRecommendations, showRecommendationsIsLoading } =
-    useShowRecommendations();
+    useShowRecommendations({ id: id ?? "" });
 
   if (isLoadingShow) {
     return <LoadingScreen />;
@@ -191,9 +195,9 @@ const ShowDetails = () => {
         <div className="w-full">
           <TabsPattern
             tabs={[
-              { label: "Details", content: <DetailsTab /> },
-              { label: "Seasons", content: <SeasonsTab /> },
-              { label: "Cast", content: <CastTab /> },
+              { label: "Details", content: <DetailsTab id={`${id}`} /> },
+              { label: "Seasons", content: <SeasonsTab id={`${id}`} /> },
+              { label: "Cast", content: <CastTab id={`${id}`} /> },
             ]}
           />
         </div>

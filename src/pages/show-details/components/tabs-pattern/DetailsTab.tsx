@@ -2,8 +2,13 @@ import { Loader2 } from "lucide-react";
 import { useShow } from "../../../../hooks";
 import { formatReleaseDate } from "../../../../utils";
 
-const DetailsTab = () => {
-  const { show, isLoadingShow } = useShow();
+interface IDetailsTab {
+  id: string;
+}
+
+const DetailsTab = (props: IDetailsTab) => {
+  const { id } = props;
+  const { show, isLoadingShow } = useShow({ id: id });
 
   return (
     <>

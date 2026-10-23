@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
 
-const useMovieRecommendations = () => {
-  const { id } = useParams<{ id: string }>();
+interface IUseMovieRecommendations {
+  id: string;
+}
+
+const useMovieRecommendations = (props: IUseMovieRecommendations) => {
+  const { id } = props;
   const [movieRecommendations, setMovieRecommendations] = useState<IMovie[]>(
     [],
   );

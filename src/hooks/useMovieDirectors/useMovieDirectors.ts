@@ -1,7 +1,16 @@
 import useCredits from "../useCredits";
 
-const useMovieDirectors = () => {
-  const { crew } = useCredits({ mediaType: "movie", creditsType: "credits" });
+interface IUseMovieDirectors {
+  id: string;
+}
+
+const useMovieDirectors = (props: IUseMovieDirectors) => {
+  const { id } = props;
+  const { crew } = useCredits({
+    id: id,
+    mediaType: "movie",
+    creditsType: "credits",
+  });
 
   const directors = crew?.filter((member) => member.job === "Director") ?? [];
 

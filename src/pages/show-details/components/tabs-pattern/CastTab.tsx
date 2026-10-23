@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import { useCredits } from "../../../../hooks";
 import { getTmdbImageUrl } from "../../../../utils";
 
-const CastTab = () => {
+interface ICastTab {
+  id: string;
+}
+
+const CastTab = (props: ICastTab) => {
+  const { id } = props;
   const { cast, isLoadingCredits } = useCredits({
+    id: id,
     mediaType: "tv",
     creditsType: "aggregate_credits",
   });

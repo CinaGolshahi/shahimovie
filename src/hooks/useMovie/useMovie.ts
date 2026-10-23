@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie } from "../../types/tmdb";
 
-const useMovie = () => {
-  const { id } = useParams<{ id: string }>();
+interface IUseMovie {
+  id: string;
+}
+
+const useMovie = (props: IUseMovie) => {
+  const { id } = props;
   const [movie, setMovie] = useState<IMovie>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

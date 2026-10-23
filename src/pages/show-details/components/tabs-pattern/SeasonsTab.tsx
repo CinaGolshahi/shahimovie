@@ -4,11 +4,19 @@ import { useSeason, useShow } from "../../../../hooks";
 import { formatReleaseDate, getTmdbImageUrl } from "../../../../utils";
 import EpisodeLoader from "./EpisodeLoader";
 
-const SeasonsTab = () => {
+interface ISeasonTab {
+  id: string;
+}
+
+const SeasonsTab = (props: ISeasonTab) => {
+  const { id } = props;
   const [selectedSeason, setSelectedSeason] = useState(1);
 
-  const { isLoadingShow, show } = useShow();
-  const { season, seasonIsLoading } = useSeason(selectedSeason);
+  const { isLoadingShow, show } = useShow({ id: id });
+  const { season, seasonIsLoading } = useSeason({
+    id: id,
+    seasonNumber: selectedSeason,
+  });
 
   return (
     <div className="flex flex-col gap-10">

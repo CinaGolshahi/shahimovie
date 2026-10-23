@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
 import type { IPaginatedResponse, ITVShow } from "../../types/tmdb";
 
-const useShowRecommendations = () => {
-  const { id } = useParams<{ id: string }>();
+interface IUseShowRecommendations {
+  id: string;
+}
+
+const useShowRecommendations = (props: IUseShowRecommendations) => {
+  const { id } = props;
   const [showRecommendations, setShowRecommendations] = useState<ITVShow[]>([]);
   const [showRecommendationsIsLoading, setShowRecommendationsIsLoading] =
     useState(true);

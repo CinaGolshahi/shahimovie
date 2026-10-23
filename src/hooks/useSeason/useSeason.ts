@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import tmdbApi from "../../services/tmdb";
 import type { ISeasonDetails } from "../../types/tmdb";
 
-const useSeason = (seasonNumber: number) => {
-  const { id } = useParams<{ id: string }>();
+interface IUseSeason {
+  id: string;
+  seasonNumber: number;
+}
+
+const useSeason = (props: IUseSeason) => {
+  const { id, seasonNumber } = props;
   const [season, setSeason] = useState<ISeasonDetails>();
   const [seasonIsLoading, setSeasonIsLoading] = useState<boolean>(true);
 

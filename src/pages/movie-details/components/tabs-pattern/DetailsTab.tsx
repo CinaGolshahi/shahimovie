@@ -2,9 +2,14 @@ import { Loader2 } from "lucide-react";
 import { useMovie, useMovieDirectors } from "../../../../hooks";
 import { formatCurrency, formatReleaseDate } from "../../../../utils";
 
-const DetailsTab = () => {
-  const { movie, isLoading } = useMovie();
-  const { directors } = useMovieDirectors();
+interface IDetailsTab {
+  id: string;
+}
+
+const DetailsTab = (props: IDetailsTab) => {
+  const { id } = props;
+  const { movie, isLoading } = useMovie({ id: id });
+  const { directors } = useMovieDirectors({ id: id });
 
   return (
     <>

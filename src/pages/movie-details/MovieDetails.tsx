@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 
+import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
-import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
 import { MoviesSection } from "../../components/common/movies-section";
 import {
   RatingColorFrom10,
@@ -11,25 +11,29 @@ import {
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
+import { CastTab, DetailsTab, LoadingScreen } from "./components";
+
 import {
   useCredits,
   useMovie,
   useMovieRecommendations,
   useScores,
 } from "../../hooks";
+
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
-import { CastTab, DetailsTab, LoadingScreen } from "./components";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const { movie, isLoading } = useMovie();
+
+  const { movie, isLoading } = useMovie({ id: id ?? "" });
   const { cast, isLoadingCredits } = useCredits({
+    id: id ?? "",
     mediaType: "movie",
     creditsType: "credits",
   });
   const { scores, scoresIsLoading } = useScores("movie", id ?? "");
   const { movieRecommendations, movieRecommendationsIsLoading } =
-    useMovieRecommendations();
+    useMovieRecommendations({ id: id ?? "" });
 
   if (isLoading && isLoadingCredits) {
     return <LoadingScreen />;
@@ -175,8 +179,8 @@ const MovieDetails = () => {
         <div className="w-full">
           <TabsPattern
             tabs={[
-              { label: "Details", content: <DetailsTab /> },
-              { label: "Cast", content: <CastTab /> },
+              { label: "Details", content: <DetailsTab id={`${id}`} /> },
+              { label: "Cast", content: <CastTab id={`${id}`} /> },
             ]}
           />
         </div>
