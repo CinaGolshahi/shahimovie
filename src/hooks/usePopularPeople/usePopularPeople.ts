@@ -18,7 +18,7 @@ const usePopularPeople = () => {
       setPopularPeopleIsLoading(true);
       try {
         const response = await tmdbApi.get<IPaginatedResponse<IPersonSummary>>(
-          "/discover/movie",
+          "/person/popular",
           {
             params: {
               page,
