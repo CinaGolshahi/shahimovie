@@ -1,10 +1,11 @@
 import MediaSection from "../../components/common/media-section";
-import { useMovies, useShows } from "../../hooks";
+import { useMovies, usePopularPeople, useShows } from "../../hooks";
 import HeroSlider from "./components/hero-slider";
 
 const Home = () => {
   const { movies, moviesIsLoading } = useMovies({ sortBy: "popularity.desc" });
   const { shows, showsIsLoading } = useShows({ sortBy: "popularity.desc" });
+  const { popularPeople, popularPeopleIsLoading } = usePopularPeople();
 
   return (
     <div className="flex flex-col gap-20 pbs-6 xl:pbs-0">
@@ -22,6 +23,13 @@ const Home = () => {
         link="/shows"
         loading={showsIsLoading}
         media={shows}
+      />
+
+      <MediaSection
+        title="Artists"
+        link="/artists"
+        loading={popularPeopleIsLoading}
+        media={popularPeople}
       />
     </div>
   );
