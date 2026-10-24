@@ -31,7 +31,6 @@ const App = () => {
           <Route path="/shows" element={<ShowsPage />} />
           <Route path="/show/:id" element={<ShowDetails />} />
 
-          <Route path="/search" element={<SearchPage />} />
           <Route path="/search/:search" element={<SearchPage />} />
         </Routes>
       </main>
