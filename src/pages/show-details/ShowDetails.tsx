@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
-import { ShowsSection } from "../../components/common/movies-section";
+import MediaSection from "../../components/common/media-section";
 import {
   RatingColorFrom10,
   RatingColorFrom100,
@@ -13,12 +13,7 @@ import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
-import {
-  useCredits,
-  useScores,
-  useShow,
-  useShowRecommendations,
-} from "../../hooks";
+import { useCredits, useRecommendations, useScores, useShow } from "../../hooks";
 
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 
@@ -32,8 +27,10 @@ const ShowDetails = () => {
     creditsType: "aggregate_credits",
   });
   const { scores, scoresIsLoading } = useScores("tv", id ?? "");
-  const { showRecommendations, showRecommendationsIsLoading } =
-    useShowRecommendations({ id: id ?? "" });
+  const { recommendations, recommendationsIsLoading } = useRecommendations({
+    id: id ?? "",
+    type: "tv",
+  });
 
   if (isLoadingShow) {
     return <LoadingScreen />;
@@ -202,10 +199,10 @@ const ShowDetails = () => {
           />
         </div>
 
-        <ShowsSection
+        <MediaSection
           title="Recommendations"
-          loading={showRecommendationsIsLoading}
-          shows={showRecommendations}
+          loading={recommendationsIsLoading}
+          media={recommendations}
         />
       </div>
     );

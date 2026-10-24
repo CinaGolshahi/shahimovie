@@ -1,4 +1,4 @@
-import { ShowCard, ShowCardLoader } from "../../components/shared/show-card";
+import { MediaCard, MediaCardLoader } from "../../components/shared/media-card";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import { useShows } from "../../hooks";
 
@@ -9,16 +9,16 @@ const ShowsPage = () => {
     <div className="container mx-auto flex flex-col gap-4 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
       {showsIsLoading ? (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
-          <ShowCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
         </div>
       ) : (
         <>
@@ -27,7 +27,7 @@ const ShowsPage = () => {
           />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
             {shows.map((show) => (
-              <ShowCard key={show.id} show={show} />
+              <MediaCard key={show.id} media={show} />
             ))}
           </div>
           {hasMoreShows && (

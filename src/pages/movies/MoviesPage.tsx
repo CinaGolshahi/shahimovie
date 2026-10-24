@@ -1,4 +1,4 @@
-import { MovieCard, MovieCardLoader } from "../../components/shared/movie-card";
+import { MediaCard, MediaCardLoader } from "../../components/shared/media-card";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import { useMovies } from "../../hooks";
 
@@ -11,16 +11,16 @@ const MoviesPage = () => {
     <div className="container mx-auto flex flex-col gap-4 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
       {moviesIsLoading ? (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
-          <MovieCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
+          <MediaCardLoader />
         </div>
       ) : (
         <>
@@ -29,7 +29,7 @@ const MoviesPage = () => {
           />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">
             {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MediaCard key={movie.id} media={movie} />
             ))}
           </div>
           {hasMoreMovies && (

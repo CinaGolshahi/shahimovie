@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
-import { MovieCard } from "../../components/shared/movie-card";
+import { MediaCard } from "../../components/shared/media-card";
 import SearchModal from "../../components/shared/search/SearchModal";
-import { ShowCard } from "../../components/shared/show-card";
 import { useSearch } from "../../hooks";
 
 const SearchPage = () => {
@@ -21,10 +20,10 @@ const SearchPage = () => {
             {searchResults.map((item) => (
               <>
                 {item.media_type === "movie" && (
-                  <MovieCard key={item.id} movie={item} />
+                  <MediaCard key={item.id} media={item} />
                 )}
                 {item.media_type === "tv" && (
-                  <ShowCard key={item.id} show={item} />
+                  <MediaCard key={item.id} media={item} />
                 )}
               </>
             ))}

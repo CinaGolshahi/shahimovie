@@ -1,7 +1,4 @@
-import {
-  MoviesSection,
-  ShowsSection,
-} from "../../components/common/movies-section";
+import MediaSection from "../../components/common/media-section";
 import { useMovies, useShows } from "../../hooks";
 import HeroSlider from "./components/hero-slider";
 
@@ -13,18 +10,18 @@ const Home = () => {
     <div className="flex flex-col gap-20 pbs-6 xl:pbs-0">
       <HeroSlider />
 
-      <MoviesSection
+      <MediaSection
         title="Movies"
         link="/movies"
         loading={moviesIsLoading}
-        movies={movies}
+        media={movies}
       />
 
-      <ShowsSection
+      <MediaSection
         title="TV Shows"
         link="/shows"
         loading={showsIsLoading}
-        shows={shows}
+        media={shows}
       />
     </div>
   );
