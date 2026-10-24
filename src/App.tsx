@@ -8,6 +8,7 @@ import {
   MovieDetails,
   MoviesPage,
   NotFoundPage,
+  PeoplePage,
   SearchPage,
   ShowDetails,
   ShowsPage,
@@ -30,6 +31,8 @@ const App = () => {
 
           <Route path="/shows" element={<ShowsPage />} />
           <Route path="/show/:id" element={<ShowDetails />} />
+
+          <Route path="/artists" element={<PeoplePage />} />
 
           <Route path="/search/:search" element={<SearchPage />} />
         </Routes>
