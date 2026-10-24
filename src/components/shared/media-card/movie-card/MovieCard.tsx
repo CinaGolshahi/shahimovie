@@ -4,13 +4,13 @@ import { getTmdbImageUrl, getYearFromDate } from "../../../../utils";
 import type { IMovieCardProps } from "./MovieCard.type";
 
 const MovieCard = (props: IMovieCardProps) => {
-  const { movie } = props;
+  const { movie, className } = props;
   if (movie.media_type === "movie") {
     return (
       <Link
         to={`/movie/${movie.id}`}
         key={movie.id}
-        className={`group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
+        className={`${className} group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
       >
         {movie.poster_path ? (
           <img
