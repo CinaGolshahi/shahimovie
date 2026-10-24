@@ -2,6 +2,6 @@ import type { ITVShowSummary } from "../../../../types/tmdb";
 
 interface ITVShowCardProps {
   show: ITVShowSummary;
-  className: string;
+  className?: string;
 }
 export type { ITVShowCardProps };

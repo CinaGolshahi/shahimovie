@@ -2,7 +2,7 @@ import type { IMediaSummary } from "../../../types/tmdb";
 
 interface IMediaCardProps {
   media: IMediaSummary;
-  className: string;
+  className?: string;
 }
 
 export type { IMediaCardProps };
