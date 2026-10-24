@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
+import type { IMovieSummary, IPaginatedResponse } from "../../types/tmdb";
 
 type MovieSortField = "popularity" | "primary_release_date" | "title";
 type SortDirection = "asc" | "desc";
@@ -13,7 +13,7 @@ interface IUseDiscoverMoviesOptions {
 const useMovies = (props: IUseDiscoverMoviesOptions) => {
   const { sortBy = "popularity.desc" } = props;
 
-  const [movies, setMovies] = useState<IMovie[]>([]);
+  const [movies, setMovies] = useState<IMovieSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [moviesIsLoading, setMoviesIsLoading] = useState<boolean>(true);
@@ -22,7 +22,7 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
     const fetchMovies = async () => {
       setMoviesIsLoading(true);
       try {
-        const response = await tmdbApi.get<IPaginatedResponse<IMovie>>(
+        const response = await tmdbApi.get<IPaginatedResponse<IMovieSummary>>(
           "/discover/movie",
           {
             params: {

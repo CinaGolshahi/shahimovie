@@ -1,10 +1,10 @@
-import type { IMovie, ITVShow } from "../../../types/tmdb";
+import type { IMovieSummary, ITVShow } from "../../../types/tmdb";
 
 interface IMoviesSection {
   title: string;
   link?: string;
   loading: boolean;
-  movies: IMovie[];
+  movies: IMovieSummary[];
 }
 
 interface IShowsSection {

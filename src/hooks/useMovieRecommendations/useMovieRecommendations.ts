@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMovie, IPaginatedResponse } from "../../types/tmdb";
+import type { IMovieSummary, IPaginatedResponse } from "../../types/tmdb";
 
 interface IUseMovieRecommendations {
   id: string;
@@ -8,7 +8,7 @@ interface IUseMovieRecommendations {
 
 const useMovieRecommendations = (props: IUseMovieRecommendations) => {
   const { id } = props;
-  const [movieRecommendations, setMovieRecommendations] = useState<IMovie[]>(
+  const [movieRecommendations, setMovieRecommendations] = useState<IMovieSummary[]>(
     [],
   );
   const [movieRecommendationsIsLoading, setMovieRecommendationsIsLoading] =
@@ -18,7 +18,7 @@ const useMovieRecommendations = (props: IUseMovieRecommendations) => {
     const fetchMovieRecommendations = async () => {
       setMovieRecommendationsIsLoading(true);
       try {
-        const response = await tmdbApi.get<IPaginatedResponse<IMovie>>(
+        const response = await tmdbApi.get<IPaginatedResponse<IMovieSummary>>(
           `/movie/${id}/recommendations`,
         );
         setMovieRecommendations(response.data.results);
