@@ -19,7 +19,7 @@ const PeoplePage = () => {
         items={[{ label: "Home", link: "/" }, { label: "Artists" }]}
       />
       {popularPeopleIsLoading && popularPeople.length === 0 ? (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           <WideMediaCardLoader />
           <WideMediaCardLoader />
           <WideMediaCardLoader />
@@ -35,7 +35,7 @@ const PeoplePage = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {popularPeople.map((person) => (
               <WideMediaCard key={person.id} media={person} />
             ))}
