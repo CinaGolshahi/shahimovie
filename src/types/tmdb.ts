@@ -245,18 +245,50 @@ interface ITVShowSummary {
 }
 interface IPersonSummary {
   adult: boolean;
-  gender: number;
+  gender: 0 | 1 | 2 | 3;
   id: number;
   known_for_department: string;
   name: string;
   original_name: string;
   popularity: number;
   profile_path: string | null;
+  known_for: TKnownFor[];
 }
 type IMediaSummary =
   | (IMovieSummary & { media_type: "movie" })
   | (ITVShowSummary & { media_type: "tv" })
   | (IPersonSummary & { media_type: "person" });
+
+interface IKnownForBase {
+  id: number;
+  adult: boolean;
+  backdrop_path: string | null;
+  poster_path: string | null;
+  overview: string;
+  original_language: string;
+  genre_ids: number[];
+  popularity: number;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface IKnownForMovie extends IKnownForBase {
+  media_type: "movie";
+  title: string;
+  original_title: string;
+  release_date: string;
+  video: boolean;
+}
+
+interface IKnownForTV extends IKnownForBase {
+  media_type: "tv";
+  name: string;
+  original_name: string;
+  first_air_date: string;
+  origin_country: string[];
+}
+
+type TKnownFor = IKnownForMovie | IKnownForTV;
 
 export type {
   ICastMember,
@@ -264,6 +296,9 @@ export type {
   ICrewMember,
   IExternalIds,
   IGuestStar,
+  IKnownForBase,
+  IKnownForMovie,
+  IKnownForTV,
   IMediaSummary,
   IMovie,
   IMovieSummary,
@@ -273,4 +308,5 @@ export type {
   ISeasonEpisode,
   ITVShow,
   ITVShowSummary,
+  TKnownFor,
 };
