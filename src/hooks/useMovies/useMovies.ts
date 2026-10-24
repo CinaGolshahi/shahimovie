@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMovieSummary, IPaginatedResponse } from "../../types/tmdb";
+import type {
+  IMediaSummary,
+  IMovieSummary,
+  IPaginatedResponse,
+} from "../../types/tmdb";
 
 type MovieSortField = "popularity" | "primary_release_date" | "title";
 type SortDirection = "asc" | "desc";
-export type MovieSortBy = `${MovieSortField}.${SortDirection}`;
 
 interface IUseDiscoverMoviesOptions {
-  sortBy?: MovieSortBy;
+  sortBy?: `${MovieSortField}.${SortDirection}`;
 }
 
 const useMovies = (props: IUseDiscoverMoviesOptions) => {
   const { sortBy = "popularity.desc" } = props;
 
-  const [movies, setMovies] = useState<IMovieSummary[]>([]);
+  const [movies, setMovies] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [moviesIsLoading, setMoviesIsLoading] = useState<boolean>(true);
@@ -34,7 +37,13 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
             },
           },
         );
-        setMovies((prev) => [...prev, ...response.data.results]);
+
+        const moviesWithType = response.data.results.map((movie) => ({
+          ...movie,
+          media_type: "movie" as const,
+        }));
+
+        setMovies((prev) => [...prev, ...moviesWithType]);
         setTotalPages(response.data.total_pages);
       } finally {
         setMoviesIsLoading(false);

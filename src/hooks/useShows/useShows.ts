@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IPaginatedResponse, ITVShow } from "../../types/tmdb";
+import type {
+  IMediaSummary,
+  IPaginatedResponse,
+  ITVShowSummary,
+} from "../../types/tmdb";
 
 type TvSortField = "popularity" | "first_air_date" | "original_name";
 type SortDirection = "asc" | "desc";
@@ -11,7 +15,7 @@ interface IUseDiscoverShowsOptions {
 }
 
 const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
-  const [shows, setShows] = useState<ITVShow[]>([]);
+  const [shows, setShows] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [showsIsLoading, setShowsIsLoading] = useState<boolean>(true);
@@ -20,7 +24,7 @@ const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
     const fetchShows = async () => {
       setShowsIsLoading(true);
       try {
-        const response = await tmdbApi.get<IPaginatedResponse<ITVShow>>(
+        const response = await tmdbApi.get<IPaginatedResponse<ITVShowSummary>>(
           "/discover/tv",
           {
             params: {
@@ -30,7 +34,13 @@ const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
             },
           },
         );
-        setShows((prev) => [...prev, ...response.data.results]);
+
+        const showsWithType = response.data.results.map((show) => ({
+          ...show,
+          media_type: "tv" as const,
+        }));
+
+        setShows((prev) => [...prev, ...showsWithType]);
         setTotalPages(response.data.total_pages);
       } finally {
         setShowsIsLoading(false);
