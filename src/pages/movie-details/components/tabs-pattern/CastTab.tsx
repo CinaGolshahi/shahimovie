@@ -24,9 +24,9 @@ const CastTab = (props: ICastTab) => {
       ) : (
         <>
           <div className="flex overflow-auto xl:grid xl:grid-cols-8">
-            {cast?.map((star, index) => (
+            {cast?.map((star) => (
               <Link
-                key={index}
+                key={star.id}
                 to={`/star/${star.id}`}
                 title={`${star.name}: ${star.character}`}
                 className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 xl:text-sm"

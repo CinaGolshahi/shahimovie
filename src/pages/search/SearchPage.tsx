@@ -18,13 +18,13 @@ const SearchPage = () => {
       {search ? (
         <div className="container mx-auto flex flex-col gap-4 px-4">
           <div className="grid min-h-screen grid-cols-2 gap-4 xl:grid-cols-5">
-            {searchResults.map((item, index) => (
+            {searchResults.map((item) => (
               <>
                 {item.media_type === "movie" && (
-                  <MovieCard key={index} movie={item} />
+                  <MovieCard key={item.id} movie={item} />
                 )}
                 {item.media_type === "tv" && (
-                  <ShowCard key={index} show={item} />
+                  <ShowCard key={item.id} show={item} />
                 )}
               </>
             ))}

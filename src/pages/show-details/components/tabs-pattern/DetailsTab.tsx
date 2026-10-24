@@ -35,7 +35,7 @@ const DetailsTab = (props: IDetailsTab) => {
               <span>Created By:</span>
               <span>
                 {show?.created_by.map((creator, index) => (
-                  <span key={index}>
+                  <span key={creator.id}>
                     <span>{creator.name}</span>
                     {index < show?.created_by.length - 1 && ", "}
                   </span>
@@ -55,7 +55,7 @@ const DetailsTab = (props: IDetailsTab) => {
               <span>
                 {show?.production_countries?.length
                   ? show?.production_countries.map((country, index) => (
-                      <span key={index}>
+                      <span key={country.iso_3166_1}>
                         <span>{country.name}</span>
                         {index < show?.production_countries.length - 1 && ", "}
                       </span>
@@ -68,7 +68,7 @@ const DetailsTab = (props: IDetailsTab) => {
               <span>
                 {show?.spoken_languages?.length
                   ? show?.spoken_languages.map((language, index) => (
-                      <span key={index}>
+                      <span key={language.iso_639_1}>
                         <span>{language.english_name}</span>
                         {index < show?.spoken_languages.length - 1 && ", "}
                       </span>

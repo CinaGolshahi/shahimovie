@@ -81,7 +81,7 @@ const MovieDetails = () => {
                     <p className="text-sm text-gray-300">
                       {movie?.genres &&
                         movie?.genres.map((genre, index) => (
-                          <span key={index}>
+                          <span key={genre.id}>
                             <span>{genre.name}</span>
                             {index < movie?.genres.length - 1 && ", "}
                           </span>
@@ -96,7 +96,7 @@ const MovieDetails = () => {
                       <> • </>
                       {movie?.production_countries
                         ? movie?.production_countries.map((country, index) => (
-                            <span key={index}>
+                            <span key={country.iso_3166_1}>
                               <span>{country.name}</span>
                               {index < movie?.production_countries.length - 1 &&
                                 ", "}
@@ -147,9 +147,9 @@ const MovieDetails = () => {
                 </div>
               </div>
               <div className="hidden grid-cols-8 items-stretch gap-4 xl:grid">
-                {cast?.slice(0, 8).map((artist, index) => (
+                {cast?.slice(0, 8).map((artist) => (
                   <Link
-                    key={index}
+                    key={artist.id}
                     to={`/artist/${artist.id}`}
                     className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:scale-105"
                   >

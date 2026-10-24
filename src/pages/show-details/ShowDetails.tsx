@@ -81,7 +81,7 @@ const ShowDetails = () => {
                     <p className="text-sm text-gray-300">
                       {show?.genres &&
                         show?.genres.map((genre, index) => (
-                          <span key={index}>
+                          <span key={genre.id}>
                             <span>{genre.name}</span>
                             {index < show?.genres.length - 1 && ", "}
                           </span>
@@ -107,7 +107,7 @@ const ShowDetails = () => {
                       <> • </>
                       {show?.production_countries
                         ? show?.production_countries.map((country, index) => (
-                            <span key={index}>
+                            <span key={country.iso_3166_1}>
                               <span>{country.name}</span>
                               {index < show?.production_countries.length - 1 &&
                                 ", "}
@@ -158,9 +158,9 @@ const ShowDetails = () => {
                 </div>
               </div>
               <div className="hidden grid-cols-8 items-stretch gap-4 xl:grid">
-                {cast?.slice(0, 8).map((artist, index) => (
+                {cast?.slice(0, 8).map((artist) => (
                   <Link
-                    key={index}
+                    key={artist.id}
                     to={`/artist/${artist.id}`}
                     className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:scale-105"
                   >
@@ -179,9 +179,9 @@ const ShowDetails = () => {
                       {artist.name}
                     </span>
                     <span className="line-clamp-1 text-gray-500">
-                      {artist.roles.map((item, index) => (
-                        <span key={index}>
-                          <span>{item.character}</span>
+                      {artist.roles.map((role, index) => (
+                        <span key={role.credit_id}>
+                          <span>{role.character}</span>
                           {index < artist.roles.length - 1 && " / "}
                         </span>
                       ))}

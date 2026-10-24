@@ -37,7 +37,7 @@ const DetailsTab = (props: IDetailsTab) => {
               <span>
                 {directors.length
                   ? directors.map((director, index) => (
-                      <span key={index}>
+                      <span key={director.id}>
                         <span>{director.name}</span>
                         {index < directors.length - 1 && ", "}
                       </span>
@@ -50,7 +50,7 @@ const DetailsTab = (props: IDetailsTab) => {
               <span>
                 {movie?.production_countries?.length
                   ? movie?.production_countries.map((country, index) => (
-                      <span key={index}>
+                      <span key={country.iso_3166_1}>
                         <span>{country.name}</span>
                         {index < movie?.production_countries.length - 1 && ", "}
                       </span>
@@ -63,7 +63,7 @@ const DetailsTab = (props: IDetailsTab) => {
               <span>
                 {movie?.spoken_languages?.length
                   ? movie?.spoken_languages.map((language, index) => (
-                      <span key={index}>
+                      <span key={language.iso_639_1}>
                         <span>{language.english_name}</span>
                         {index < movie?.spoken_languages.length - 1 && ", "}
                       </span>

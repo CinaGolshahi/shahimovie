@@ -24,9 +24,9 @@ const CastTab = (props: ICastTab) => {
       ) : (
         <>
           <div className="flex overflow-auto md:grid md:grid-cols-4 xl:grid-cols-8">
-            {cast?.map((artist, index) => (
+            {cast?.map((artist) => (
               <Link
-                key={index}
+                key={artist.id}
                 to={`/artist/${artist.id}`}
                 title=""
                 className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 md:w-full xl:text-sm"
@@ -46,9 +46,9 @@ const CastTab = (props: ICastTab) => {
                   {artist.name}
                 </span>
                 <span className="line-clamp-1 text-gray-500">
-                  {artist.roles.map((item, index) => (
-                    <span key={index}>
-                      <span>{item.character}</span>
+                  {artist.roles.map((role, index) => (
+                    <span key={role.credit_id}>
+                      <span>{role.character}</span>
                       {index < artist.roles.length - 1 && " / "}
                     </span>
                   ))}
