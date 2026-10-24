@@ -1,15 +1,15 @@
 import { ImageOff } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getTmdbImageUrl } from "../../../utils";
-import type IShowCardProps from "./show-card.type";
+import { getTmdbImageUrl } from "../../../../utils";
+import type { ITVShowCardProps } from "./ShowCard.type";
 
-const ShowCard = (props: IShowCardProps) => {
-  const { show, className } = props;
+const ShowCard = (props: ITVShowCardProps) => {
+  const { show } = props;
   return (
     <Link
       to={`/show/${show.id}`}
       key={show.id}
-      className={`${className} group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
+      className={`group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
     >
       {show.poster_path ? (
         <img
@@ -27,7 +27,7 @@ const ShowCard = (props: IShowCardProps) => {
           {show.name}
         </span>
         <span className="line-clamp-2 text-sm">
-          {show.overview || "Unknown"}
+          {show.overview ?? "Unknown"}
         </span>
       </div>
     </Link>
