@@ -4,7 +4,6 @@ import { MediaCard, MediaCardLoader } from "../../shared/media-card";
 import type { IMediaSection } from "./MediaSection.type";
 
 const MediaSection = ({ title, link, loading, media }: IMediaSection) => {
-  console.log(media);
   return (
     <div className="mx-auto flex w-full flex-col gap-4 bg-gray-900/50 p-4 xl:container 2xl:rounded-4xl">
       <div className="flex items-center justify-between px-2">
