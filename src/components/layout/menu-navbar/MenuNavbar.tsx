@@ -13,6 +13,11 @@ const MenuNavbar = () => {
           Shows
         </Link>
       </li>
+      <li>
+        <Link to={"/artists"} className="navbar-item">
+          Artists
+        </Link>
+      </li>
     </ul>
   );
 };
