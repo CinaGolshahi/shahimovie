@@ -3,6 +3,7 @@ import useMovie from "./useMovie";
 import useMovieDirectors from "./useMovieDirectors";
 import useMovieRecommendations from "./useMovieRecommendations";
 import useMovies from "./useMovies";
+import usePerson from "./usePerson";
 import usePopularPeople from "./usePopularPeople";
 import useRecommendations from "./useRecommendations";
 import useScores from "./useScores";
@@ -18,6 +19,7 @@ export {
   useMovieDirectors,
   useMovieRecommendations,
   useMovies,
+  usePerson,
   usePopularPeople,
   useRecommendations,
   useScores,
