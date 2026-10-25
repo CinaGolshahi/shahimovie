@@ -29,8 +29,11 @@ const WidePersonCard = (props: IWidePersonCardProps) => {
               {person.original_name}
             </span>
           )}
+          <span className="text-sm text-gray-300">
+            {person.known_for_department}
+          </span>
         </p>
-        <p className="line-clamp-3 text-gray-300">
+        <p className="line-clamp-3 text-gray-400">
           {person.known_for.map((item, index) => (
             <span key={item.id}>
               <Link
