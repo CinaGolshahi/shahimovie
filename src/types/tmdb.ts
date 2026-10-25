@@ -290,6 +290,26 @@ interface IKnownForTV extends IKnownForBase {
 
 type TKnownFor = IKnownForMovie | IKnownForTV;
 
+interface IPersonBase {
+  adult: boolean;
+  gender: 0 | 1 | 2 | 3;
+  id: number;
+  known_for_department: string;
+  name: string;
+  popularity: number;
+  profile_path: string | null;
+}
+
+interface IPerson extends IPersonBase {
+  also_known_as: string[];
+  biography: string;
+  birthday: string | null;
+  deathday: string | null;
+  homepage: string | null;
+  imdb_id: string | null;
+  place_of_birth: string | null;
+}
+
 export type {
   ICastMember,
   ICredits,
@@ -303,6 +323,7 @@ export type {
   IMovie,
   IMovieSummary,
   IPaginatedResponse,
+  IPerson,
   IPersonSummary,
   ISeasonDetails,
   ISeasonEpisode,
