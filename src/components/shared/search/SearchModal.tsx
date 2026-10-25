@@ -121,7 +121,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
               )}
               {item.media_type === "person" && (
                 <Link
-                  to={`/movie/${item.id}`}
+                  to={`/artist/${item.id}`}
                   className="flex h-full gap-4 rounded-xl p-2 transition-all delay-75 duration-300 hover:bg-gray-900"
                 >
                   {item.profile_path ? (
