@@ -33,12 +33,7 @@ const PersonCard = (props: IPersonCardProps) => {
         <p className="line-clamp-2 text-gray-300">
           {person.known_for.map((item, index) => (
             <span key={item.id}>
-              <Link
-                to={`/${item.media_type === "movie" ? "movie" : "show"}/${item.id}`}
-                className="hover:underline"
-              >
-                {item.media_type === "movie" ? item.title : item.name}
-              </Link>
+              {item.media_type === "movie" ? item.title : item.name}
               {index < person.known_for.length - 1 && ", "}
             </span>
           ))}
