@@ -4,6 +4,7 @@ import useMovieDirectors from "./useMovieDirectors";
 import useMovieRecommendations from "./useMovieRecommendations";
 import useMovies from "./useMovies";
 import usePerson from "./usePerson";
+import usePersonCombinedCredits from "./usePersonCombinedCredits";
 import usePopularPeople from "./usePopularPeople";
 import useRecommendations from "./useRecommendations";
 import useScores from "./useScores";
@@ -20,6 +21,7 @@ export {
   useMovieRecommendations,
   useMovies,
   usePerson,
+  usePersonCombinedCredits,
   usePopularPeople,
   useRecommendations,
   useScores,
