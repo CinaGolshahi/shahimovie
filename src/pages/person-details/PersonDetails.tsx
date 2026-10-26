@@ -25,7 +25,7 @@ const PersonDetails = () => {
       ) : (
         <>
           <div className="flex flex-col items-center xl:flex-row">
-            <div className="flex w-full flex-col items-center gap-2 text-center select-none xl:flex-row xl:gap-8 xl:text-start xl:items-start">
+            <div className="flex w-full flex-col items-center gap-2 text-center select-none xl:flex-row xl:items-start xl:gap-8 xl:text-start">
               <div className="aspect-2/3 w-2/3 rounded-3xl bg-gray-800 p-px xl:w-1/6">
                 {person?.profile_path ? (
                   <img
@@ -67,8 +67,12 @@ const PersonDetails = () => {
             </p>
             <div className="flex grid-cols-8 items-stretch gap-4 overflow-auto xl:grid">
               {personCombinedCreditsCast
-                ?.slice(0, 8)
-                .toSorted((a, b) => b.popularity - a.popularity)
+                ?.toSorted((a, b) => b.popularity - a.popularity)
+                .filter(
+                  (item, index, array) =>
+                    array.findIndex((other) => other.id === item.id) === index,
+                )
+                .slice(0, 8)
                 .map((item) => (
                   <Link
                     key={item.id}
@@ -89,6 +93,7 @@ const PersonDetails = () => {
                     <span className="line-clamp-1 font-semibold">
                       {item.media_type === "movie" ? item.title : item.name}
                     </span>
+                    <span>{item.media_type === "tv"}</span>
                     <span className="line-clamp-1 text-gray-500">
                       {item.character}
                     </span>
