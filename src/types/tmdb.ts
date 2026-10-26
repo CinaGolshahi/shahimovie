@@ -310,8 +310,46 @@ interface IPerson extends IPersonBase {
   place_of_birth: string | null;
 }
 
+interface ICombinedCastMovie extends IKnownForMovie {
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+interface ICombinedCastTV extends IKnownForTV {
+  character: string;
+  credit_id: string;
+  episode_count: number;
+}
+
+interface ICombinedCrewMovie extends IKnownForMovie {
+  credit_id: string;
+  department: string;
+  job: string;
+}
+
+interface ICombinedCrewTV extends IKnownForTV {
+  credit_id: string;
+  department: string;
+  job: string;
+  episode_count: number;
+}
+
+type TCombinedCast = ICombinedCastMovie | ICombinedCastTV;
+type TCombinedCrew = ICombinedCrewMovie | ICombinedCrewTV;
+
+interface IPersonCombinedCredits {
+  id: number;
+  cast: TCombinedCast[];
+  crew: TCombinedCrew[];
+}
+
 export type {
   ICastMember,
+  ICombinedCastMovie,
+  ICombinedCastTV,
+  ICombinedCrewMovie,
+  ICombinedCrewTV,
   ICredits,
   ICrewMember,
   IExternalIds,
@@ -324,10 +362,13 @@ export type {
   IMovieSummary,
   IPaginatedResponse,
   IPerson,
+  IPersonCombinedCredits,
   IPersonSummary,
   ISeasonDetails,
   ISeasonEpisode,
   ITVShow,
   ITVShowSummary,
+  TCombinedCast,
+  TCombinedCrew,
   TKnownFor,
 };
