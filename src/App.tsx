@@ -9,6 +9,7 @@ import {
   MoviesPage,
   NotFoundPage,
   PeoplePage,
+  PersonDetails,
   SearchPage,
   ShowDetails,
   ShowsPage,
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/show/:id" element={<ShowDetails />} />
 
           <Route path="/artists" element={<PeoplePage />} />
+          <Route path="/artist/:id" element={<PersonDetails />} />
 
           <Route path="/search/:search" element={<SearchPage />} />
         </Routes>
