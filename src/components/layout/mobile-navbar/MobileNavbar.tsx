@@ -1,4 +1,4 @@
-import { Clapperboard, Home, Tv, UserCircle } from "lucide-react";
+import { Clapperboard, Home, Tv, Users2 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const MobileNavbar = () => {
@@ -51,7 +51,7 @@ const MobileNavbar = () => {
         )}
       </NavLink>
       <NavLink
-        to={"/profile"}
+        to={"/artists"}
         className={({ isActive }) =>
           `${isActive ? `bg-blue-600/0 before:inset-0 before:opacity-100` : `before:inset-4 before:opacity-0`}`
         }
@@ -60,8 +60,8 @@ const MobileNavbar = () => {
           <div
             className={`${isActive ? "font-bold text-gray-50" : "text-gray-400"}`}
           >
-            <UserCircle className="size-5" />
-            <span>Profile</span>
+            <Users2 className="size-5" />
+            <span>Artists</span>
           </div>
         )}
       </NavLink>
