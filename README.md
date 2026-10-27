@@ -238,10 +238,10 @@ This project is licensed under the [MIT License](LICENSE).
 
 Coding by [Cina Golshahi](https://linktr.ee/cinagolshahi).
 
-- Telegram: https://www.t.me/shahimovie
-- Instagram: https://www.instagram.com/shahimovie
-- X: https://www.x.com/shahimovie
-- YouTube: https://www.youtube.com/@shahimovie
-- Email: shahimovie@gmail.com
+- Telegram: https://www.t.me/shahimovie_official
+- Instagram: https://www.instagram.com/shahimovie.official
+- X: https://www.x.com/shahimovie.official
+- YouTube: https://www.youtube.com/@shahimovie.official
+- Email: shahimovie.official@gmail.com
 
 Movie and TV data is provided by TMDB. Ratings are provided by OMDb.
