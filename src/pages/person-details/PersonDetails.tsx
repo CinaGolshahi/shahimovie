@@ -73,7 +73,7 @@ const PersonDetails = () => {
                   <p className="relative flex items-center ps-8 text-xl font-bold before:absolute before:inset-s-0 before:h-2 before:w-6 before:rounded-full before:bg-blue-500">
                     Known For
                   </p>
-                  <div className="flex grid-cols-8 items-stretch gap-4 overflow-auto xl:grid">
+                  <div className="flex grid-cols-10 items-stretch gap-4 overflow-auto xl:grid">
                     {personCombinedCreditsCast
                       ?.toSorted((a, b) => b.popularity - a.popularity)
                       .filter(
@@ -81,7 +81,7 @@ const PersonDetails = () => {
                           array.findIndex((other) => other.id === item.id) ===
                           index,
                       )
-                      .slice(0, 8)
+                      .slice(0, 10)
                       .map((item) => (
                         <Link
                           key={item.id}
