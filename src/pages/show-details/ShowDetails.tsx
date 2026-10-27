@@ -1,20 +1,21 @@
 import { Link, useParams } from "react-router-dom";
 
-import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
 import { Bookmark, Film, ImageOff } from "lucide-react";
 
 import MediaSection from "../../components/common/media-section";
-import {
-  RatingColorFrom10,
-  RatingColorFrom100,
-} from "../../components/common/rating-color";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
 import { CastTab, DetailsTab, LoadingScreen, SeasonsTab } from "./components";
 
-import { useCredits, useRecommendations, useScores, useShow } from "../../hooks";
+import {
+  useCredits,
+  useRecommendations,
+  useScores,
+  useShow,
+} from "../../hooks";
 
+import RattingBar from "../../components/shared/ratting-bar";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 
 const ShowDetails = () => {
@@ -112,33 +113,11 @@ const ShowDetails = () => {
                           ))
                         : "Unknown"}
                     </p>
-
-                    {scoresIsLoading ? (
-                      <div className="my-1 h-6 w-64 animate-pulse rounded-full bg-gray-50/10"></div>
-                    ) : (
-                      <div className="my-1 flex items-center gap-4 transition-all delay-75 duration-300">
-                        <div className="flex items-center gap-2">
-                          <RottenTomatoes className="size-5" />
-                          <RatingColorFrom100
-                            rating={Number(
-                              scores?.Ratings?.[1]?.Value.slice(0, -1),
-                            )}
-                          />
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Imdb className="size-5 bg-[#F5C518] fill-black" />
-                          <RatingColorFrom10
-                            rating={Number(scores?.imdbRating)}
-                          />
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <TheMovieDatabase className="size-5" />
-                          <RatingColorFrom10
-                            rating={Number(show?.vote_average.toFixed(1))}
-                          />
-                        </div>
-                      </div>
-                    )}
+                    <RattingBar
+                      scores={scores}
+                      scoresIsLoading={scoresIsLoading}
+                      tmdbScore={show?.vote_average}
+                    />
                     <p className="text-gray-200 xl:pe-36">
                       {show?.overview ?? "Unknown"}
                     </p>
