@@ -7,7 +7,7 @@ const SearchPage = () => {
   const {
     searchResults,
     hasMoreSearchResult,
-    isLoadingSearchResults,
+    searchResultsIsLoading,
     loadMoreSearchResults,
   } = useSearch(search);
 
@@ -28,10 +28,10 @@ const SearchPage = () => {
       {hasMoreSearchResult && (
         <button
           onClick={loadMoreSearchResults}
-          disabled={isLoadingSearchResults}
+          disabled={searchResultsIsLoading}
           className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
         >
-          {isLoadingSearchResults ? "Loading..." : "See More"}
+          {searchResultsIsLoading ? "Loading..." : "See More"}
         </button>
       )}
     </div>

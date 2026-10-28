@@ -8,11 +8,11 @@ interface IDetailsTab {
 
 const DetailsTab = (props: IDetailsTab) => {
   const { id } = props;
-  const { show, isLoadingShow } = useShow({ id: id });
+  const { show, showIsLoading } = useShow({ id: id });
 
   return (
     <>
-      {isLoadingShow ? (
+      {showIsLoading ? (
         <div className="flex h-20 w-full items-center justify-center">
           <Loader2 className="animate-spin stroke-blue-500 duration-300" />
         </div>

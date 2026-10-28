@@ -21,8 +21,8 @@ import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { movie, isLoading } = useMovie({ id: id ?? "" });
-  const { cast, isLoadingCredits } = useCredits({
+  const { movie, movieIsLoading } = useMovie({ id: id ?? "" });
+  const { cast, creditsIsLoading } = useCredits({
     id: id ?? "",
     mediaType: "movie",
     creditsType: "credits",
@@ -33,7 +33,7 @@ const MovieDetails = () => {
     type: "movie",
   });
 
-  if (isLoading && isLoadingCredits) {
+  if (movieIsLoading && creditsIsLoading) {
     return <LoadingScreen />;
   } else {
     return (

@@ -12,7 +12,7 @@ const SeasonsTab = (props: ISeasonTab) => {
   const { id } = props;
   const [selectedSeason, setSelectedSeason] = useState(1);
 
-  const { isLoadingShow, show } = useShow({ id: id });
+  const { showIsLoading, show } = useShow({ id: id });
   const { season, seasonIsLoading } = useSeason({
     id: id,
     seasonNumber: selectedSeason,
@@ -20,7 +20,7 @@ const SeasonsTab = (props: ISeasonTab) => {
 
   return (
     <div className="flex flex-col gap-10">
-      {isLoadingShow ? (
+      {showIsLoading ? (
         <div className="flex h-20 w-full items-center justify-center">
           <Loader2 className="animate-spin stroke-blue-500 duration-300" />
         </div>

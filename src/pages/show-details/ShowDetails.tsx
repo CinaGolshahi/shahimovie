@@ -21,7 +21,7 @@ import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 const ShowDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { show, isLoadingShow } = useShow({ id: id ?? "" });
+  const { show, showIsLoading } = useShow({ id: id ?? "" });
   const { cast } = useCredits({
     id: id ?? "",
     mediaType: "tv",
@@ -33,7 +33,7 @@ const ShowDetails = () => {
     type: "tv",
   });
 
-  if (isLoadingShow) {
+  if (showIsLoading) {
     return <LoadingScreen />;
   } else {
     return (

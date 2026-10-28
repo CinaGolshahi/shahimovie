@@ -9,7 +9,7 @@ interface ICastTab {
 
 const CastTab = (props: ICastTab) => {
   const { id } = props;
-  const { cast, isLoadingCredits } = useCredits({
+  const { cast, creditsIsLoading } = useCredits({
     id: id,
     mediaType: "tv",
     creditsType: "aggregate_credits",
@@ -17,7 +17,7 @@ const CastTab = (props: ICastTab) => {
 
   return (
     <>
-      {isLoadingCredits ? (
+      {creditsIsLoading ? (
         <div className="flex h-20 w-full items-center justify-center">
           <Loader2 className="animate-spin stroke-blue-500 duration-300" />
         </div>

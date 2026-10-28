@@ -8,12 +8,12 @@ interface IDetailsTab {
 
 const DetailsTab = (props: IDetailsTab) => {
   const { id } = props;
-  const { movie, isLoading } = useMovie({ id: id });
+  const { movie, movieIsLoading } = useMovie({ id: id });
   const { directors } = useMovieDirectors({ id: id });
 
   return (
     <>
-      {isLoading ? (
+      {movieIsLoading ? (
         <div className="flex h-20 w-full items-center justify-center">
           <Loader2 className="animate-spin stroke-blue-500 duration-300" />
         </div>
