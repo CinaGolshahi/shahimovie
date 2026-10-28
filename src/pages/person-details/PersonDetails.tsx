@@ -41,7 +41,7 @@ const PersonDetails = () => {
                           className="size-full rounded-3xl object-cover"
                         />
                       ) : (
-                        <div className="flex size-full items-center justify-center rounded-full bg-gray-800">
+                        <div className="flex size-full items-center justify-center rounded-3xl bg-gray-900">
                           <ImageOff className="size-8 stroke-gray-700" />
                         </div>
                       )}
@@ -75,7 +75,7 @@ const PersonDetails = () => {
                   </p>
                   <div className="flex grid-cols-10 items-stretch gap-4 overflow-auto xl:grid">
                     {personCombinedCreditsCast
-                      ?.toSorted((a, b) => b.popularity - a.popularity)
+                      ?.toSorted((a, b) => b.vote_count - a.vote_count)
                       .filter(
                         (item, index, array) =>
                           array.findIndex((other) => other.id === item.id) ===
@@ -95,7 +95,7 @@ const PersonDetails = () => {
                               className="aspect-2/3 w-full rounded-xl border border-gray-800 object-cover"
                             />
                           ) : (
-                            <div className="flex aspect-square w-full items-center justify-center rounded-full bg-gray-800">
+                            <div className="flex aspect-2/3 w-full items-center justify-center rounded-xl bg-gray-900">
                               <ImageOff className="size-8 stroke-gray-700" />
                             </div>
                           )}
