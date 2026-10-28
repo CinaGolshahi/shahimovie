@@ -26,6 +26,7 @@ A movie, TV show, and artist browser built with React and the TMDB API.
   - [Environment Variables](#environment-variables)
   - [Running in development](#running-in-development)
   - [Building for production](#building-for-production)
+- [Network Access](#network-access)
 - [Project Structure](#project-structure)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
@@ -117,18 +118,18 @@ On mobile, a bottom navigation bar links to Home, Movies, Shows, and Artists. On
 
 ## Tech Stack
 
-| Area | Tools |
-| --- | --- |
-| UI | React 19, TypeScript |
-| Build tool | Vite 8 |
-| Styling | Tailwind CSS 4 (`@tailwindcss/vite`), Inter font (`@fontsource/inter`) |
-| Routing | React Router DOM 7 |
-| HTTP | Axios |
-| Slider | Swiper |
-| Icons | lucide-react, @thesvg/react |
-| Analytics | @vercel/analytics |
+| Area         | Tools                                                                    |
+| ------------ | ------------------------------------------------------------------------ |
+| UI           | React 19, TypeScript                                                     |
+| Build tool   | Vite 8                                                                   |
+| Styling      | Tailwind CSS 4 (`@tailwindcss/vite`), Inter font (`@fontsource/inter`)   |
+| Routing      | React Router DOM 7                                                       |
+| HTTP         | Axios                                                                    |
+| Slider       | Swiper                                                                   |
+| Icons        | lucide-react, @thesvg/react                                              |
+| Analytics    | @vercel/analytics                                                        |
 | Code quality | ESLint, typescript-eslint, Prettier (with `prettier-plugin-tailwindcss`) |
-| Data sources | TMDB API, OMDb API |
+| Data sources | TMDB API, OMDb API                                                       |
 
 ## Getting Started
 
@@ -151,10 +152,10 @@ npm install
 
 Create a `.env` file in the project root. This file is ignored by Git.
 
-| Name | Description | Example value |
-| --- | --- | --- |
+| Name                     | Description                                                     | Example value            |
+| ------------------------ | --------------------------------------------------------------- | ------------------------ |
 | `VITE_TMDB_ACCESS_TOKEN` | TMDB read access token. Sent as a Bearer token to the TMDB API. | `your_tmdb_access_token` |
-| `VITE_OMDB_API_KEY` | OMDb API key. Used to load IMDb and Rotten Tomatoes ratings. | `your_omdb_api_key` |
+| `VITE_OMDB_API_KEY`      | OMDb API key. Used to load IMDb and Rotten Tomatoes ratings.    | `your_omdb_api_key`      |
 
 ```env
 VITE_TMDB_ACCESS_TOKEN=your_tmdb_access_token
@@ -186,6 +187,17 @@ To run the linter:
 ```bash
 npm run lint
 ```
+
+## Network Access
+
+The site loads all its data from the TMDB and OMDb APIs. In some regions, these services can be blocked or slow.
+
+If this happens:
+
+- **TMDB blocked:** pages can look empty. The site does not show an error message.
+- **OMDb blocked:** the site still works, but IMDb and Rotten Tomatoes ratings show "N/A".
+
+Before you report a bug, check that your network can reach `api.themoviedb.org` and `www.omdbapi.com`.
 
 ## Project Structure
 
