@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IMovie } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 interface IUseMovie {
   id: string;
@@ -9,23 +10,25 @@ interface IUseMovie {
 const useMovie = (props: IUseMovie) => {
   const { id } = props;
   const [movie, setMovie] = useState<IMovie>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [movieIsLoading, setMovieIsLoading] = useState(true);
+  const [movieError, setMovieError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMovieById = async () => {
-      setIsLoading(true);
+      setMovieIsLoading(true);
+      setMovieError(null);
       try {
         const response = await tmdbApi.get(`/movie/${id}`);
         setMovie(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setMovieError(getErrorMessage(error));
       } finally {
-        setIsLoading(false);
+        setMovieIsLoading(false);
       }
     };
     fetchMovieById();
   }, [id]);
-  return { movie, isLoading };
+  return { movie, movieIsLoading, movieError };
 };
 
 export default useMovie;

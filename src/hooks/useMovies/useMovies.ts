@@ -5,6 +5,7 @@ import type {
   IMovieSummary,
   IPaginatedResponse,
 } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 type MovieSortField = "popularity" | "primary_release_date" | "title";
 type SortDirection = "asc" | "desc";
@@ -19,11 +20,13 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
   const [movies, setMovies] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [moviesIsLoading, setMoviesIsLoading] = useState<boolean>(true);
+  const [moviesIsLoading, setMoviesIsLoading] = useState(true);
+  const [moviesError, setMoviesError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
       setMoviesIsLoading(true);
+      setMoviesError(null);
       try {
         const response = await tmdbApi.get<IPaginatedResponse<IMovieSummary>>(
           "/discover/movie",
@@ -45,6 +48,8 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
 
         setMovies((prev) => [...prev, ...moviesWithType]);
         setTotalPages(response.data.total_pages);
+      } catch (error) {
+        setMoviesError(getErrorMessage(error));
       } finally {
         setMoviesIsLoading(false);
       }
@@ -59,7 +64,13 @@ const useMovies = (props: IUseDiscoverMoviesOptions) => {
 
   const hasMoreMovies = page < totalPages;
 
-  return { movies, moviesIsLoading, loadMoreMovies, hasMoreMovies };
+  return {
+    movies,
+    moviesIsLoading,
+    moviesError,
+    loadMoreMovies,
+    hasMoreMovies,
+  };
 };
 
 export default useMovies;

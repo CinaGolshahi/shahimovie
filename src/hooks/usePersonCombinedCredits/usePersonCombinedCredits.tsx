@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IPersonCombinedCredits, TCombinedCast } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 interface IUsePersonCombinedCredits {
   id: string;
@@ -13,19 +14,21 @@ const usePersonCombinedCredits = (props: IUsePersonCombinedCredits) => {
   const [
     personCombinedCreditsCastIsLoading,
     setPersonCombinedCreditsCastIsLoading,
-  ] = useState<boolean>();
+  ] = useState(true);
+  const [personCombinedCreditsCastError, setPersonCombinedCreditsCastError] =
+    useState<string | null>(null);
 
   useEffect(() => {
     const fetchPersonCombinedCreditsCast = async () => {
       setPersonCombinedCreditsCastIsLoading(true);
-
+      setPersonCombinedCreditsCastError(null);
       try {
         const response = await tmdbApi.get<IPersonCombinedCredits>(
           `/person/${id}/combined_credits`,
         );
         setPersonCombinedCreditsCast(response.data.cast);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setPersonCombinedCreditsCastError(getErrorMessage(error));
       } finally {
         setPersonCombinedCreditsCastIsLoading(false);
       }
@@ -34,7 +37,11 @@ const usePersonCombinedCredits = (props: IUsePersonCombinedCredits) => {
     fetchPersonCombinedCreditsCast();
   }, [id]);
 
-  return { personCombinedCreditsCast, personCombinedCreditsCastIsLoading };
+  return {
+    personCombinedCreditsCast,
+    personCombinedCreditsCastIsLoading,
+    personCombinedCreditsCastError,
+  };
 };
 
 export default usePersonCombinedCredits;

@@ -5,6 +5,7 @@ import type {
   IPaginatedResponse,
   ITVShowSummary,
 } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 type TvSortField = "popularity" | "first_air_date" | "original_name";
 type SortDirection = "asc" | "desc";
@@ -18,11 +19,13 @@ const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
   const [shows, setShows] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [showsIsLoading, setShowsIsLoading] = useState<boolean>(true);
+  const [showsIsLoading, setShowsIsLoading] = useState(true);
+  const [showsError, setShowsError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchShows = async () => {
       setShowsIsLoading(true);
+      setShowsError(null);
       try {
         const response = await tmdbApi.get<IPaginatedResponse<ITVShowSummary>>(
           "/discover/tv",
@@ -42,6 +45,8 @@ const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
 
         setShows((prev) => [...prev, ...showsWithType]);
         setTotalPages(response.data.total_pages);
+      } catch (error) {
+        setShowsError(getErrorMessage(error));
       } finally {
         setShowsIsLoading(false);
       }
@@ -56,7 +61,7 @@ const useShows = ({ sortBy }: IUseDiscoverShowsOptions) => {
 
   const hasMoreShows = page < totalPages;
 
-  return { shows, showsIsLoading, loadMoreShows, hasMoreShows };
+  return { shows, showsIsLoading, showsError, loadMoreShows, hasMoreShows };
 };
 
 export default useShows;

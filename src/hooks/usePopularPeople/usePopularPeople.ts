@@ -5,17 +5,21 @@ import type {
   IPaginatedResponse,
   IPersonSummary,
 } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 const usePopularPeople = () => {
   const [popularPeople, setPopularPeople] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [popularPeopleIsLoading, setPopularPeopleIsLoading] =
-    useState<boolean>(true);
+  const [popularPeopleIsLoading, setPopularPeopleIsLoading] = useState(true);
+  const [popularPeopleError, setPopularPeopleError] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     const fetchPopularPeople = async () => {
       setPopularPeopleIsLoading(true);
+      setPopularPeopleError(null);
       try {
         const response = await tmdbApi.get<IPaginatedResponse<IPersonSummary>>(
           "/person/popular",
@@ -32,6 +36,8 @@ const usePopularPeople = () => {
 
         setPopularPeople((prev) => [...prev, ...popularPeopleWithType]);
         setTotalPages(response.data.total_pages);
+      } catch (error) {
+        setPopularPeopleError(getErrorMessage(error));
       } finally {
         setPopularPeopleIsLoading(false);
       }
@@ -49,6 +55,7 @@ const usePopularPeople = () => {
   return {
     popularPeople,
     popularPeopleIsLoading,
+    popularPeopleError,
     loadMorePopularPeople,
     hasMorePopularPeople,
   };

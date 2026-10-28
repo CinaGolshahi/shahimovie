@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { IMediaSummary, IPaginatedResponse } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 const useSearch = (query: string | undefined | null) => {
   const [searchResults, setSearchResults] = useState<IMediaSummary[]>([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
-  const [isLoadingSearchResults, setIsLoadingSearchResults] =
-    useState<boolean>(true);
+  const [searchResultsIsLoading, setSearchResultsIsLoading] = useState(true);
+  const [searchResultsError, setSearchResultsError] = useState<string | null>(
+    null,
+  );
   const [prevQuery, setPrevQuery] = useState(query);
 
   if (query !== prevQuery) {
@@ -20,11 +23,12 @@ const useSearch = (query: string | undefined | null) => {
   useEffect(() => {
     const fetchSearch = async () => {
       if (!query) {
-        setIsLoadingSearchResults(false);
+        setSearchResultsIsLoading(false);
         return;
       }
 
-      setIsLoadingSearchResults(true);
+      setSearchResultsIsLoading(true);
+      setSearchResultsError(null);
       try {
         const response = await tmdbApi.get<IPaginatedResponse<IMediaSummary>>(
           "/search/multi",
@@ -34,11 +38,10 @@ const useSearch = (query: string | undefined | null) => {
         );
         setSearchResults((prev) => [...prev, ...response.data.results]);
         setTotalPage(response.data.total_pages);
-        setIsLoadingSearchResults(false);
       } catch (error) {
-        console.log(error);
+        setSearchResultsError(getErrorMessage(error));
       } finally {
-        setIsLoadingSearchResults(false);
+        setSearchResultsIsLoading(false);
       }
     };
 
@@ -53,9 +56,10 @@ const useSearch = (query: string | undefined | null) => {
 
   return {
     searchResults,
+    searchResultsIsLoading,
+    searchResultsError,
     loadMoreSearchResults,
     hasMoreSearchResult,
-    isLoadingSearchResults,
   };
 };
 

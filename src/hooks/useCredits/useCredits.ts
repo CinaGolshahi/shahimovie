@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
 import type { ICastMember, ICredits, ICrewMember } from "../../types/tmdb";
+import getErrorMessage from "../../utils/get-error-message";
 
 interface ICreditsProps {
   id: string;
@@ -9,38 +10,32 @@ interface ICreditsProps {
 }
 
 const useCredits = ({ id, creditsType, mediaType }: ICreditsProps) => {
-  const [isLoadingCredits, setIsLoadingCredits] = useState<boolean>();
   const [cast, setCast] = useState<ICastMember[]>();
   const [crew, setCrew] = useState<ICrewMember[]>();
+  const [creditsIsLoading, setCreditsIsLoading] = useState(true);
+  const [creditsError, setCreditsError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCredits = async () => {
-      setIsLoadingCredits(true);
-
+      setCreditsIsLoading(true);
+      setCreditsError(null);
       try {
         const response = await tmdbApi.get<ICredits>(
           `/${mediaType}/${id}/${creditsType}`,
         );
-
-        setCast(
-          response.data.cast.toSorted(
-            (a: ICastMember, b: ICastMember) => a.order - b.order,
-          ),
-        );
+        setCast(response.data.cast.toSorted((a, b) => a.order - b.order));
         setCrew(response.data.crew);
-
-        setIsLoadingCredits(false);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setCreditsError(getErrorMessage(error));
       } finally {
-        setIsLoadingCredits(false);
+        setCreditsIsLoading(false);
       }
     };
 
     fetchCredits();
   }, [id, mediaType, creditsType]);
 
-  return { cast, crew, isLoadingCredits };
+  return { cast, crew, creditsIsLoading, creditsError };
 };
 
 export default useCredits;
