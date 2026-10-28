@@ -33,7 +33,7 @@ const MovieDetails = () => {
     type: "movie",
   });
 
-  if (movieIsLoading && creditsIsLoading) {
+  if (movieIsLoading || creditsIsLoading) {
     return <LoadingScreen />;
   } else {
     return (

@@ -26,17 +26,7 @@ const LoadingScreen = () => {
                 </div>
               </div>
             </div>
-            <div className="hidden grid-cols-10 gap-2 xl:grid">
-              <div className="flex aspect-9/16 w-full flex-col items-center gap-2 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80">
-                <div className="aspect-square w-full animate-pulse rounded-full bg-gray-800 object-cover"></div>
-                <div className="h-2 w-24 animate-pulse rounded-full bg-gray-800"></div>
-                <div className="h-2 w-16 animate-pulse rounded-full bg-gray-800"></div>
-              </div>
-              <div className="flex aspect-9/16 w-full flex-col items-center gap-2 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80">
-                <div className="aspect-square w-full animate-pulse rounded-full bg-gray-800 object-cover"></div>
-                <div className="h-2 w-24 animate-pulse rounded-full bg-gray-800"></div>
-                <div className="h-2 w-16 animate-pulse rounded-full bg-gray-800"></div>
-              </div>
+            <div className="hidden grid-cols-8 gap-2 xl:grid">
               <div className="flex aspect-9/16 w-full flex-col items-center gap-2 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80">
                 <div className="aspect-square w-full animate-pulse rounded-full bg-gray-800 object-cover"></div>
                 <div className="h-2 w-24 animate-pulse rounded-full bg-gray-800"></div>

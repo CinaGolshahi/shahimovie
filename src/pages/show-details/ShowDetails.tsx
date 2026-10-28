@@ -22,7 +22,7 @@ const ShowDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   const { show, showIsLoading } = useShow({ id: id ?? "" });
-  const { cast } = useCredits({
+  const { cast, creditsIsLoading } = useCredits({
     id: id ?? "",
     mediaType: "tv",
     creditsType: "aggregate_credits",
@@ -33,7 +33,7 @@ const ShowDetails = () => {
     type: "tv",
   });
 
-  if (showIsLoading) {
+  if (showIsLoading || creditsIsLoading) {
     return <LoadingScreen />;
   } else {
     return (
