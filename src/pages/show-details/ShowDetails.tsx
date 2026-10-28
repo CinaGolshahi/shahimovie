@@ -17,11 +17,12 @@ import {
 
 import RattingBar from "../../components/shared/ratting-bar";
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
+import NotFoundPage from "../not-found";
 
 const ShowDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { show, showIsLoading } = useShow({ id: id ?? "" });
+  const { show, showIsLoading, showError } = useShow({ id: id ?? "" });
   const { cast, creditsIsLoading } = useCredits({
     id: id ?? "",
     mediaType: "tv",
@@ -35,6 +36,8 @@ const ShowDetails = () => {
 
   if (showIsLoading || creditsIsLoading) {
     return <LoadingScreen />;
+  } else if (showError) {
+    return <NotFoundPage />;
   } else {
     return (
       <div className="flex flex-col gap-10">
