@@ -14,7 +14,7 @@ import TVShowSlide from "./components/TVShowSlide";
 import "./styles/style.css";
 
 const HeroSlider = () => {
-  const { trending, trendingIsLoading } = useTrending("week");
+  const { trending, trendingIsLoading, trendingError } = useTrending("week");
 
   return (
     <div className="container mx-auto overflow-hidden">
@@ -33,15 +33,21 @@ const HeroSlider = () => {
           loop={true}
           className="aspect-2/3 w-2/3! xl:aspect-video"
         >
-          {trending?.slice(0, 10).map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className="size-full rounded-lg bg-gray-800"
-            >
-              {item.media_type === "movie" && <MovieSlide item={item} />}
-              {item.media_type === "tv" && <TVShowSlide item={item} />}
+          {trendingError ? (
+            <SwiperSlide className="flex! size-full items-center! justify-center! rounded-lg">
+              <span className="text-xl font-bold">{trendingError}</span>
             </SwiperSlide>
-          ))}
+          ) : (
+            trending?.slice(0, 10).map((item) => (
+              <SwiperSlide
+                key={item.id}
+                className="size-full rounded-lg bg-gray-800"
+              >
+                {item.media_type === "movie" && <MovieSlide item={item} />}
+                {item.media_type === "tv" && <TVShowSlide item={item} />}
+              </SwiperSlide>
+            ))
+          )}
         </Swiper>
       )}
     </div>
