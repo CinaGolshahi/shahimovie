@@ -1,7 +1,6 @@
 import useCredits from "./useCredits";
 import useMovie from "./useMovie";
 import useMovieDirectors from "./useMovieDirectors";
-import useMovieRecommendations from "./useMovieRecommendations";
 import useMovies from "./useMovies";
 import usePerson from "./usePerson";
 import usePersonCombinedCredits from "./usePersonCombinedCredits";
