@@ -18,7 +18,6 @@ export {
   useCredits,
   useMovie,
   useMovieDirectors,
-  useMovieRecommendations,
   useMovies,
   usePerson,
   usePersonCombinedCredits,
