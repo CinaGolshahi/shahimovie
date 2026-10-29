@@ -12,68 +12,74 @@ const PersonDetails = () => {
     usePersonCombinedCredits({ id: id ?? "" });
 
   return (
-    <div className="-mt-20 flex flex-col">
-      <div
-        style={{
-          backgroundImage: `url(${getTmdbImageUrl(personCombinedCreditsCast?.[0]?.backdrop_path, "w200") ?? ""})`,
-        }}
-        className="w-full bg-cover bg-center"
-      >
-        <div className="w-full bg-linear-to-b to-gray-950 px-2 pt-24 backdrop-blur-lg backdrop-brightness-50 xl:px-0 xl:pt-16 xl:pb-10">
-          <div className="container mx-auto flex flex-col gap-2">
-            <Breadcrumb
-              items={[
-                { label: "Home", link: "/" },
-                { label: "Artists", link: "/artists" },
-                { label: `${person?.name && person.name}` },
-              ]}
-            />
-            {personIsLoading || personCombinedCreditsCastIsLoading ? (
-              <LoadingScreen />
-            ) : (
-              <>
-                <div className="flex flex-col items-center xl:flex-row">
-                  <div className="flex w-full flex-col items-center gap-2 text-center select-none xl:flex-row xl:items-start xl:gap-8 xl:text-start">
-                    <div className="aspect-2/3 w-2/3 rounded-3xl bg-gray-800 p-px xl:w-1/6">
-                      {person?.profile_path ? (
-                        <img
-                          src={`${getTmdbImageUrl(person?.profile_path, "w500")}`}
-                          className="size-full rounded-3xl object-cover"
-                        />
-                      ) : (
-                        <div className="flex size-full items-center justify-center rounded-3xl bg-gray-900">
-                          <ImageOff className="size-8 stroke-gray-700" />
-                        </div>
+    <>
+      {!personIsLoading || personCombinedCreditsCastIsLoading ? (
+        <LoadingScreen />
+      ) : (
+        <div className="-mt-20 flex flex-col gap-10">
+          <div
+            style={{
+              backgroundImage: `url(${getTmdbImageUrl(person?.profile_path, "w200") ?? ""})`,
+            }}
+            className="bg-cover bg-center bg-no-repeat"
+          >
+            <div className="bg-linear-to-b to-gray-950 pt-24 backdrop-blur-3xl backdrop-brightness-50 xl:pt-16">
+              <div className="container mx-auto flex flex-col gap-2 px-4">
+                <Breadcrumb
+                  items={[
+                    { label: "Home", link: "/" },
+                    { label: "Artists", link: "/artists" },
+                    { label: person?.name },
+                  ]}
+                />
+
+                <div className="flex w-full flex-col items-center gap-2 xl:flex-row xl:gap-8">
+                  <div className="flex aspect-2/3 w-2/3 items-center justify-center rounded-3xl bg-gray-900 outline outline-gray-900 xl:w-1/5">
+                    {person?.profile_path ? (
+                      <img
+                        src={`${getTmdbImageUrl(person.profile_path, "w500")}`}
+                        className="size-full rounded-3xl object-cover"
+                      />
+                    ) : (
+                      <ImageOff className="size-8 stroke-gray-700" />
+                    )}
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-2 text-center xl:w-2/4 xl:items-start xl:text-start">
+                    <p className="flex flex-col gap-1">
+                      <span className="text-xl font-bold xl:text-4xl">
+                        {person?.name}
+                      </span>
+                      {person?.known_for_department && (
+                        <span className="text-sm text-gray-300 italic">
+                          {person.known_for_department}
+                        </span>
                       )}
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-2 xl:w-1/2 xl:items-start xl:pt-10">
-                      <p className="flex flex-col gap-1">
-                        <span className="text-xl font-bold xl:text-4xl">
-                          {person?.name}
-                        </span>
-                        <span className="text-sm text-gray-300">
-                          {person?.known_for_department ?? ""}
-                        </span>
-                      </p>
-                      <p className="text-sm text-gray-400">
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      {person?.birthday && (
+                        <span>{formatReleaseDate(person?.birthday)}</span>
+                      )}
+
+                      {person?.place_of_birth && (
                         <span>
-                          {formatReleaseDate(person?.birthday ?? "Unknown")}
+                          <> • </>
+                          <>{person.place_of_birth}</>
+                          <> min</>
                         </span>
-                        <> • </>
-                        <span>{person?.place_of_birth ?? "Unknown"}</span>
-                      </p>
-                      <p className="line-clamp-6 text-gray-200">
-                        {person?.biography ?? "Unknown"}
-                      </p>
-                    </div>
+                      )}
+                    </p>
+
+                    {person?.biography && (
+                      <span className="text-gray-200">{person.biography}</span>
+                    )}
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2 pt-10">
+                <div className="flex flex-col gap-4 pt-2">
                   <p className="relative flex items-center ps-8 text-xl font-bold before:absolute before:inset-s-0 before:h-2 before:w-6 before:rounded-full before:bg-blue-500">
-                    Known For
+                    Top Stars
                   </p>
-                  <div className="flex grid-cols-10 items-stretch gap-4 overflow-auto xl:grid">
+                  <div className="flex grid-cols-8 items-stretch gap-4 overflow-auto xl:grid">
                     {personCombinedCreditsCast
                       ?.toSorted((a, b) => b.vote_count - a.vote_count)
                       .filter(
@@ -81,21 +87,21 @@ const PersonDetails = () => {
                           array.findIndex((other) => other.id === item.id) ===
                           index,
                       )
-                      .slice(0, 10)
+                      .slice(0, 8)
                       .map((item) => (
                         <Link
                           key={item.id}
                           to={`/${item.media_type === "movie" ? "movie" : "show"}/${item.id}`}
-                          className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                          className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
                         >
                           {item.poster_path ? (
                             <img
                               src={`${getTmdbImageUrl(item.poster_path, "w200")}`}
                               alt=""
-                              className="aspect-2/3 w-full rounded-xl border border-gray-800 object-cover"
+                              className="aspect-2/3 w-full rounded-2xl object-cover"
                             />
                           ) : (
-                            <div className="flex aspect-2/3 w-full items-center justify-center rounded-xl bg-gray-900">
+                            <div className="flex aspect-square w-full items-center justify-center rounded-full bg-gray-800">
                               <ImageOff className="size-8 stroke-gray-700" />
                             </div>
                           )}
@@ -104,7 +110,6 @@ const PersonDetails = () => {
                               ? item.title
                               : item.name}
                           </span>
-                          <span>{item.media_type === "tv"}</span>
                           <span className="line-clamp-1 text-gray-500">
                             {item.character}
                           </span>
@@ -112,12 +117,12 @@ const PersonDetails = () => {
                       ))}
                   </div>
                 </div>
-              </>
-            )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
