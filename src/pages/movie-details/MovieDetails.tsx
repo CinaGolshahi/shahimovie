@@ -37,7 +37,13 @@ const MovieDetails = () => {
   if (movieIsLoading || creditsIsLoading) {
     return <LoadingScreen />;
   } else if (movieError) {
-    return <NotFoundPage />;
+    return (
+      <NotFoundPage
+        title="Movie not found!"
+        linkTo={"/movies"}
+        linkLabel="Back to Movies"
+      />
+    );
   } else {
     return (
       <div className="flex flex-col gap-10">

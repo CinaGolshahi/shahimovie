@@ -37,7 +37,13 @@ const ShowDetails = () => {
   if (showIsLoading || creditsIsLoading) {
     return <LoadingScreen />;
   } else if (showError) {
-    return <NotFoundPage />;
+    return (
+      <NotFoundPage
+        title="Show not found!"
+        linkTo={"/shows"}
+        linkLabel="Back to Shows"
+      />
+    );
   } else {
     return (
       <div className="flex flex-col gap-10">
