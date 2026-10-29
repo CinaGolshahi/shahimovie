@@ -13,7 +13,7 @@ const PersonDetails = () => {
 
   return (
     <>
-      {!personIsLoading || personCombinedCreditsCastIsLoading ? (
+      {personIsLoading || personCombinedCreditsCastIsLoading ? (
         <LoadingScreen />
       ) : (
         <div className="-mt-20 flex flex-col gap-10">
