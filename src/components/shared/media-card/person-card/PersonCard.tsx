@@ -15,6 +15,7 @@ const PersonCard = (props: IPersonCardProps) => {
           src={`${getTmdbImageUrl(person.profile_path, "w300")}`}
           alt={`${person.name}`}
           className="size-full rounded-2xl object-cover"
+          loading="lazy"
         />
       ) : (
         <div className="flex size-full items-center justify-center">

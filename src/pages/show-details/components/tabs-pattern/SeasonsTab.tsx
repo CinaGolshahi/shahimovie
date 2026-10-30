@@ -37,6 +37,7 @@ const SeasonsTab = (props: ISeasonTab) => {
                   src={`${getTmdbImageUrl(season.poster_path, "w500")}`}
                   alt=""
                   className="aspect-2/3 w-full rounded-lg object-cover"
+                  loading="lazy"
                 />
               ) : (
                 <div className="flex aspect-2/3 w-full items-center justify-center rounded-lg bg-gray-900">
@@ -69,6 +70,7 @@ const SeasonsTab = (props: ISeasonTab) => {
                     src={`${getTmdbImageUrl(episode.still_path, "w500")}`}
                     alt=""
                     className="aspect-video w-full rounded-lg bg-gray-950 object-cover"
+                    loading="lazy"
                   />
                   {episode.episode_type === "finale" && (
                     <span className="absolute inset-e-2 bottom-2 flex items-center gap-2 rounded-full border border-gray-50/20 bg-gray-50/10 px-2 text-sm">

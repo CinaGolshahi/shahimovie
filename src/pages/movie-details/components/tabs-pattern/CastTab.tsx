@@ -36,6 +36,7 @@ const CastTab = (props: ICastTab) => {
                     src={`${getTmdbImageUrl(star.profile_path, "w200")}`}
                     alt={star.name}
                     className="aspect-2/3 w-full rounded-lg object-cover"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="flex aspect-2/3 w-full items-center justify-center rounded-lg bg-gray-800">

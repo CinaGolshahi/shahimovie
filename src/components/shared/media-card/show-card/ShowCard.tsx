@@ -16,6 +16,7 @@ const ShowCard = (props: ITVShowCardProps) => {
           src={`${getTmdbImageUrl(show.poster_path, "w500")}`}
           className="size-full rounded-2xl object-cover"
           alt=""
+          loading="lazy"
         />
       ) : (
         <div className="flex size-full items-center justify-center">

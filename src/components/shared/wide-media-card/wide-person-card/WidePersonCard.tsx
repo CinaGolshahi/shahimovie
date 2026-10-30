@@ -15,6 +15,7 @@ const WidePersonCard = (props: IWidePersonCardProps) => {
           src={`${getTmdbImageUrl(person.profile_path, "w300")}`}
           alt={`${person.name}`}
           className="aspect-2/3 w-1/3 rounded-xl object-cover"
+          loading="lazy"
         />
       ) : (
         <div className="flex aspect-2/3 w-1/3 items-center justify-center rounded-xl bg-gray-950 object-cover">
