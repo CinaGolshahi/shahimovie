@@ -1,4 +1,4 @@
-import { ChevronRight, ImageOff, X } from "lucide-react";
+import { ChevronRight, ImageOff, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setQuery(searchValue.trim());
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [searchValue]);
@@ -39,34 +39,46 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
       onClick={closeModal}
       className="fixed inset-0 z-30 flex flex-col items-center gap-4 bg-gray-950/80 px-4 pt-10 backdrop-blur-lg *:w-full xl:pt-36 xl:*:w-1/3"
     >
-      <div
+      <form
         onClick={(event) => event.stopPropagation()}
-        className="relative flex items-center"
+        className="flex items-center gap-4"
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (query && searchValue) {
+            navigate(`/search/${encodeURIComponent(query)}`);
+            closeModal?.();
+          }
+        }}
       >
-        <input
-          autoFocus
-          type="text"
-          name="searchBox"
-          id="searchBox"
-          inputMode="search"
-          placeholder="Search..."
-          value={searchValue}
-          onChange={(event) => setSearchValue(event.target.value)}
-          onKeyDown={(event) => {
-            if (event.nativeEvent.key === "Enter" && query) {
-              navigate(`/search/${encodeURIComponent(query)}`);
-              closeModal?.();
-            }
-          }}
-          className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
-        />
-        <button
-          onClick={clearSearch}
-          className="group absolute inset-e-3 cursor-pointer rounded-full p-1"
-        >
-          <X className="size-5 stroke-gray-400 transition-all duration-300 group-hover:stroke-gray-50" />
-        </button>
-      </div>
+        <div className="relative flex w-full items-center">
+          <input
+            autoFocus
+            type="text"
+            name="searchBox"
+            id="searchBox"
+            inputMode="search"
+            placeholder="Search..."
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
+            className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
+          />
+          <button
+            type="button"
+            onClick={clearSearch}
+            className={`group invisible absolute inset-e-3 cursor-pointer rounded-full p-1 opacity-0 transition-all duration-300 ${searchValue && "visible opacity-100"}`}
+          >
+            <X className="size-5 stroke-gray-400 transition-all duration-300 group-hover:stroke-gray-50" />
+          </button>
+        </div>
+        <div className="aspect-square h-full">
+          <button
+            type="submit"
+            className="flex size-full cursor-pointer items-center justify-center rounded-full bg-gray-950/80 outline-2 outline-blue-600 transition-all delay-75 duration-300 hover:bg-blue-600"
+          >
+            <Search />
+          </button>
+        </div>
+      </form>
 
       {searchResults && searchValue && (
         <div className="divide-y divide-gray-800 rounded-2xl bg-gray-950 outline-2 outline-gray-900 *:not-last:h-40 *:not-last:p-2">
