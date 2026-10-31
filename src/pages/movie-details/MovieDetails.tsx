@@ -11,9 +11,10 @@ import {
 
 import { getTmdbImageUrl, getYearFromDate } from "../../utils";
 
-import { CastTab, DetailsTab, LoadingScreen } from "./components";
+import { CastTab, DetailsTab } from "./components";
 
 import MediaSection from "../../components/common/media-section";
+import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import RattingBar from "../../components/shared/ratting-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
@@ -37,7 +38,7 @@ const MovieDetails = () => {
   return (
     <>
       {movieIsLoading || creditsIsLoading ? (
-        <LoadingScreen />
+        <MediaDetailsLoader />
       ) : (
         <div className="-mt-20 flex flex-col gap-10">
           <div
