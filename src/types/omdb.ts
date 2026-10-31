@@ -1,5 +1,5 @@
 interface IOMDbRating {
-  Source: string;
+  Source: "Internet Movie Database" | "Rotten Tomatoes";
   Value: string;
 }
 
