@@ -27,6 +27,13 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
     setQuery("");
   };
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return createPortal(
     <div
       onClick={closeModal}
