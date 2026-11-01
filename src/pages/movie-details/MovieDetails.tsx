@@ -15,7 +15,7 @@ import { CastTab, DetailsTab } from "./components";
 
 import MediaSection from "../../components/common/media-section";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
-import RattingBar from "../../components/shared/ratting-bar";
+import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
