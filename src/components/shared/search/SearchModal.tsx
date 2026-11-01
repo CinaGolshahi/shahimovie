@@ -1,4 +1,4 @@
-import { ChevronRight, ImageOff, Search, X } from "lucide-react";
+import { ChevronRight, ImageOff, Loader2, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
   const [searchValue, setSearchValue] = useState("");
   const [query, setQuery] = useState("");
 
-  const { searchResults } = useSearch(query);
+  const { searchResults, searchResultsIsLoading } = useSearch(query);
 
   const navigate = useNavigate();
 
@@ -60,27 +60,34 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
             placeholder="Search..."
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
-            className="w-full rounded-full bg-gray-950/80 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
+            className="w-full rounded-full bg-gray-950 p-4 outline-2 outline-gray-900 transition-all duration-300 focus:outline-blue-600"
           />
-          <button
-            type="button"
-            onClick={clearSearch}
-            className={`group invisible absolute inset-e-3 cursor-pointer rounded-full p-1 opacity-0 transition-all duration-300 ${searchValue && "visible opacity-100"}`}
-          >
-            <X className="size-5 stroke-gray-400 transition-all duration-300 group-hover:stroke-gray-50" />
-          </button>
+          <div className="absolute inset-e-3 size-8 p-1">
+            {searchResultsIsLoading ? (
+              <Loader2 className="size-full animate-spin stroke-blue-600" />
+            ) : (
+              <button
+                type="button"
+                onClick={clearSearch}
+                className={`group invisible cursor-pointer rounded-full opacity-0 transition-all duration-300 ${searchValue && "visible opacity-100"} `}
+              >
+                <X className="size-full stroke-gray-400 transition-all duration-300 group-hover:stroke-gray-50" />
+              </button>
+            )}
+          </div>
         </div>
         <div className="aspect-square h-full">
           <button
             type="submit"
-            className="flex size-full cursor-pointer items-center justify-center rounded-full bg-gray-950/80 outline-2 outline-blue-600 transition-all delay-75 duration-300 hover:bg-blue-600"
+            disabled={!query}
+            className="flex size-full cursor-pointer items-center justify-center rounded-full bg-gray-950 outline-2 outline-blue-600 transition-all delay-75 duration-300 hover:bg-blue-600 disabled:outline-gray-900 disabled:pointer-events-none"
           >
             <Search />
           </button>
         </div>
       </form>
 
-      {searchResults && searchValue && (
+      {!searchResultsIsLoading && searchResults.length > 0 && (
         <div className="divide-y divide-gray-800 rounded-2xl bg-gray-950 outline-2 outline-gray-900 *:not-last:h-40 *:not-last:p-2">
           {searchResults.slice(0, 3).map((item) => (
             <div key={item.id}>
