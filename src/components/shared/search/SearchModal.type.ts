@@ -1,6 +1,7 @@
+import type { Dispatch, SetStateAction } from "react";
+
 interface ISearchModal {
-  openModal?: () => void;
-  closeModal?: () => void;
+  toggleSearch: Dispatch<SetStateAction<boolean>>;
 }
 
 export type { ISearchModal };
