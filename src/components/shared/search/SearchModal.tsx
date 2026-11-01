@@ -80,7 +80,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
           <button
             type="submit"
             disabled={!query}
-            className="flex size-full cursor-pointer items-center justify-center rounded-full bg-gray-950 outline-2 outline-blue-600 transition-all delay-75 duration-300 hover:bg-blue-600 disabled:outline-gray-900 disabled:pointer-events-none"
+            className="flex size-full cursor-pointer items-center justify-center rounded-full bg-gray-950 outline-2 outline-blue-600 transition-all delay-75 duration-300 hover:bg-blue-600 disabled:pointer-events-none disabled:outline-gray-900"
           >
             <Search />
           </button>
@@ -98,7 +98,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
                 >
                   {item.poster_path ? (
                     <img
-                      src={`${getTmdbImageUrl(item.poster_path, "w500")}`}
+                      src={`${getTmdbImageUrl(item.poster_path, "w300")}`}
                       alt=""
                       className="aspect-2/3 h-full rounded-lg object-cover outline outline-gray-900"
                     />
@@ -125,7 +125,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
                 >
                   {item.poster_path ? (
                     <img
-                      src={`${getTmdbImageUrl(item.poster_path, "w500")}`}
+                      src={`${getTmdbImageUrl(item.poster_path, "w300")}`}
                       alt=""
                       className="aspect-2/3 h-full rounded-lg object-cover outline outline-gray-900"
                     />
@@ -152,7 +152,7 @@ const SearchModal = ({ closeModal }: ISearchModal) => {
                 >
                   {item.profile_path ? (
                     <img
-                      src={`${getTmdbImageUrl(item.profile_path, "w500")}`}
+                      src={`${getTmdbImageUrl(item.profile_path, "w300")}`}
                       alt=""
                       className="aspect-2/3 h-full rounded-lg object-cover outline outline-gray-900"
                     />

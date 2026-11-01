@@ -18,11 +18,11 @@ const MovieSlide = ({ item }: IMovieSlide) => {
           <picture>
             <source
               media="(min-width: 1280px)"
-              srcSet={`${getTmdbImageUrl(item.backdrop_path, "original")}`}
+              srcSet={`${getTmdbImageUrl(item.backdrop_path, "w780")}`}
             />
 
             <img
-              src={`${getTmdbImageUrl(item.poster_path, "w780")}`}
+              src={`${getTmdbImageUrl(item.poster_path, "w500")}`}
               alt={`${item.title} (${getYearFromDate(item.release_date)})`}
               className="size-full rounded-lg object-cover"
             />
@@ -30,11 +30,11 @@ const MovieSlide = ({ item }: IMovieSlide) => {
 
           <div className="absolute inset-0 hidden items-end justify-start gap-6 rounded-lg bg-linear-to-b from-transparent to-gray-950/80 p-20 pb-16 opacity-0 transition-all delay-75 duration-300 group-hover:pb-20 group-hover:opacity-100 group-hover:backdrop-blur-lg xl:flex">
             <img
-              src={`${getTmdbImageUrl(item.poster_path, "w500")}`}
+              src={`${getTmdbImageUrl(item.poster_path, "w200")}`}
               alt=""
-              className="hidden w-1/5 rounded-xl xl:block"
+              className="aspect-2/3 w-1/5 rounded-xl"
             />
-            <div className="hidden flex-col gap-2 pb-6 xl:flex">
+            <div className="flex flex-col gap-2 pb-6">
               <p className="text-4xl font-bold">{item.title}</p>
               <span className="text-2xl font-bold">{`(${getYearFromDate(item.release_date)})`}</span>
             </div>
