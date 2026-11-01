@@ -19,17 +19,24 @@ import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
+import useExternalIds from "../../hooks/useExternalIds";
 
 const ShowDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   const { show, showIsLoading } = useShow({ id: id ?? "" });
+
+  const { externalIds } = useExternalIds({ type: "tv", id: show?.id });
+  const { scores, scoresIsLoading } = useScores({
+    imdbId: externalIds?.imdb_id,
+  });
+
   const { cast, creditsIsLoading } = useCredits({
     id: id ?? "",
     mediaType: "tv",
     creditsType: "aggregate_credits",
   });
-  const { scores, scoresIsLoading } = useScores("tv", id ?? "");
+
   const { recommendations, recommendationsIsLoading } = useRecommendations({
     id: id ?? "",
     type: "tv",

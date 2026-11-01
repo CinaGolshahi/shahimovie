@@ -26,7 +26,7 @@ const MovieDetails = () => {
 
   const { movie, movieIsLoading } = useMovie({ id: id ?? "" });
 
-  const { externalIds } = useExternalIds({ type: "movie", id: id });
+  const { externalIds } = useExternalIds({ type: "movie", id: movie?.id });
   const { scores, scoresIsLoading } = useScores({
     imdbId: externalIds?.imdb_id,
   });

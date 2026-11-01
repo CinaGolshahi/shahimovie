@@ -5,7 +5,7 @@ import getErrorMessage from "../../utils/get-error-message";
 
 interface IUseExternalIds {
   type: "movie" | "tv";
-  id: string | undefined;
+  id: number | undefined;
 }
 
 const useExternalIds = (props: IUseExternalIds) => {
