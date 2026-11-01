@@ -3,7 +3,14 @@ import tmdbApi from "../../services/tmdb";
 import type { IExternalIds } from "../../types/tmdb";
 import getErrorMessage from "../../utils/get-error-message";
 
-const useExternalIds = (type: "movie" | "tv", id: string | undefined) => {
+interface IUseExternalIds {
+  type: "movie" | "tv";
+  id: string | undefined;
+}
+
+const useExternalIds = (props: IUseExternalIds) => {
+  const { type, id } = props;
+
   const [externalIds, setExternalIds] = useState<IExternalIds>();
   const [externalIdsIsLoading, setExternalIdsIsLoading] = useState(true);
   const [externalIdsError, setExternalIdsError] = useState<string | null>(null);
@@ -11,6 +18,7 @@ const useExternalIds = (type: "movie" | "tv", id: string | undefined) => {
   useEffect(() => {
     const fetchExternalIds = async () => {
       setExternalIdsIsLoading(true);
+      setExternalIdsError(null);
       try {
         const response = await tmdbApi.get<IExternalIds>(
           `/${type}/${id}/external_ids`,

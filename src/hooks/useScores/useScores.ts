@@ -2,34 +2,36 @@ import { useEffect, useState } from "react";
 import omdbApi from "../../services/omdb";
 import type { IOMDbResponse } from "../../types/omdb";
 import getErrorMessage from "../../utils/get-error-message";
-import useExternalIds from "../useExternalIds";
 
-const useScores = (type: "movie" | "tv", id: string | null | undefined) => {
-  const { externalIds } = useExternalIds(type, id ?? "");
-  const [scores, setScore] = useState<IOMDbResponse>();
-  const [scoresIsLoading, setScoreIsLoading] = useState(true);
-  const [scoresError, setScoreError] = useState<string | null>(null);
+interface IUseScores {
+  imdbId: string | undefined;
+}
+
+const useScores = (props: IUseScores) => {
+  const { imdbId } = props;
+
+  const [scores, setScores] = useState<IOMDbResponse>();
+  const [scoresIsLoading, setScoresIsLoading] = useState(true);
+  const [scoresError, setScoresError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchScores = async () => {
-      if (!externalIds) return "N/A";
-
-      setScoreIsLoading(true);
-      setScoreError(null);
+      setScoresIsLoading(true);
+      setScoresError(null);
       try {
-        const response = await omdbApi.get("/", {
-          params: { i: externalIds.imdb_id },
+        const response = await omdbApi.get<IOMDbResponse>("/", {
+          params: { i: imdbId },
         });
-        setScore(response.data);
+        setScores(response.data);
       } catch (error) {
-        setScoreError(getErrorMessage(error));
+        setScoresError(getErrorMessage(error));
       } finally {
-        setScoreIsLoading(false);
+        setScoresIsLoading(false);
       }
     };
 
     fetchScores();
-  }, [externalIds]);
+  }, [imdbId]);
 
   return { scores, scoresIsLoading, scoresError };
 };
