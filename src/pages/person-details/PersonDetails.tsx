@@ -77,7 +77,7 @@ const PersonDetails = () => {
 
                 <div className="flex flex-col gap-4 pt-2">
                   <p className="relative flex items-center ps-8 text-xl font-bold before:absolute before:inset-s-0 before:h-2 before:w-6 before:rounded-full before:bg-blue-500">
-                    Top Stars
+                    Known for
                   </p>
                   <div className="flex grid-cols-8 items-stretch gap-4 overflow-auto xl:grid">
                     {personCombinedCreditsCast
@@ -101,7 +101,7 @@ const PersonDetails = () => {
                               className="aspect-2/3 w-full rounded-2xl object-cover"
                             />
                           ) : (
-                            <div className="flex aspect-square w-full items-center justify-center rounded-full bg-gray-800">
+                            <div className="flex aspect-2/3 w-full items-center justify-center rounded-2xl bg-gray-900">
                               <ImageOff className="size-8 stroke-gray-700" />
                             </div>
                           )}
