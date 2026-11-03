@@ -1,6 +1,12 @@
-const WideMediaCardLoader = () => {
+interface IWideMediaCardLoaderProps {
+  key: number;
+}
+const WideMediaCardLoader = ({ key }: IWideMediaCardLoaderProps) => {
   return (
-    <div className="aspect-1.9/1 flex w-full gap-2 rounded-2xl bg-gray-900 p-2">
+    <div
+      key={key}
+      className="aspect-1.9/1 flex w-full gap-2 rounded-2xl bg-gray-900 p-2"
+    >
       <div className="aspect-2/3 w-1/3 animate-pulse rounded-xl bg-gray-950"></div>
       <div className="flex flex-col gap-2 py-2">
         <div className="h-4 w-32 animate-pulse rounded-full bg-gray-950"></div>

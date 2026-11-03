@@ -14,24 +14,15 @@ const PeoplePage = () => {
   } = usePopularPeople();
 
   return (
-    <div className="container mx-auto flex flex-col gap-4 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
+    <div className="container mx-auto flex flex-col gap-2 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
       <Breadcrumb
         items={[{ label: "Home", link: "/" }, { label: "Artists" }]}
       />
       {popularPeopleIsLoading && popularPeople.length === 0 ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
-          <WideMediaCardLoader />
+          {Array.from({ length: 16 }, (_, index) => (
+            <WideMediaCardLoader key={index} />
+          ))}
         </div>
       ) : (
         <>
