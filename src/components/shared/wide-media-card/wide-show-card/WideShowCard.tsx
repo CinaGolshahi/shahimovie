@@ -1,36 +1,46 @@
-import { ImageOff } from "lucide-react";
+import { ImageOff, Tv } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getTmdbImageUrl } from "../../../../utils";
 import type { ITVShowCardProps } from "./WideShowCard.type";
 
 const WideShowCard = (props: ITVShowCardProps) => {
   const { show, className } = props;
+
   return (
     <Link
       to={`/show/${show.id}`}
-      key={show.id}
-      className={`${className} group relative aspect-2/3 w-full rounded-2xl border-2 border-transparent bg-gray-900 transition-all duration-300 hover:border-blue-600`}
+      className={`${className} group relative flex aspect-video max-h-40 w-full gap-2 rounded-2xl bg-gray-900/50 p-2 outline-2 outline-gray-900/50 transition-all delay-75 duration-300 hover:outline-blue-600`}
     >
       {show.poster_path ? (
         <img
-          src={`${getTmdbImageUrl(show.poster_path, "w500")}`}
-          className="size-full rounded-2xl object-cover"
-          alt=""
-              loading="lazy"
-
+          src={`${getTmdbImageUrl(show.poster_path, "w300")}`}
+          alt={`${show.name}`}
+          className="aspect-2/3 h-full rounded-xl object-cover outline outline-gray-800"
+          loading="lazy"
         />
       ) : (
-        <div className="flex size-full items-center justify-center">
+        <div className="flex aspect-2/3 h-full items-center justify-center rounded-xl bg-gray-950 object-cover">
           <ImageOff className="size-10 stroke-gray-700" />
         </div>
       )}
-      <div className="absolute inset-0 flex flex-col items-center justify-end gap-1 rounded-2xl bg-linear-to-b from-transparent to-gray-900 p-2 text-center transition-all duration-300 xl:items-start xl:p-4 xl:pb-0 xl:text-start xl:opacity-0 xl:group-hover:pb-4 xl:group-hover:opacity-100">
-        <span className="line-clamp-2 text-sm font-bold xl:text-base">
-          {show.name}
-        </span>
-        <span className="line-clamp-2 text-sm">
-          {show.overview ?? "Unknown"}
-        </span>
+      <div className="relative flex flex-col gap-2 pt-2">
+        <p className="flex flex-col gap-0.5">
+          <span className="font-bold">
+            <Tv className="me-1 -mt-1 inline size-4" />
+            <span>
+              <span>{show.name}</span>
+            </span>
+          </span>
+          {show.name !== show.original_name && (
+            <span className="text-sm text-gray-600 italic">
+              {show.original_name}
+            </span>
+          )}
+        </p>
+
+        {show.overview && (
+          <p className="line-clamp-3 text-gray-400">{show.overview}</p>
+        )}
       </div>
     </Link>
   );
