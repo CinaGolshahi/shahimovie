@@ -22,12 +22,9 @@ const MediaSection = ({ title, link, loading, media }: IMediaSection) => {
       <div className="flex gap-4 overflow-auto md:grid md:grid-cols-3 xl:grid-cols-6">
         {loading ? (
           <>
-            <MediaCardLoader />
-            <MediaCardLoader />
-            <MediaCardLoader />
-            <MediaCardLoader />
-            <MediaCardLoader />
-            <MediaCardLoader />
+            {Array.from({ length: 6 }, (_, index) => (
+              <MediaCardLoader key={index} />
+            ))}
           </>
         ) : (
           <>
