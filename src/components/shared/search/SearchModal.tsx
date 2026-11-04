@@ -6,8 +6,8 @@ import type { ISearchModal } from "./SearchModal.type";
 import SearchResults from "./SearchResults";
 
 const SearchModal = ({ toggleSearch }: ISearchModal) => {
-  const [searchValue, setSearchValue] = useState("silo");
-  const [query, setQuery] = useState("silo");
+  const [searchValue, setSearchValue] = useState("");
+  const [query, setQuery] = useState("");
 
   const { searchResults, searchResultsIsLoading } = useSearch(query);
 
