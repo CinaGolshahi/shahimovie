@@ -9,7 +9,7 @@ interface IBreadcrumb {
 }
 const Breadcrumb = ({ items }: IBreadcrumb) => {
   return (
-    <div className="mx-auto flex w-fit items-center gap-1 rounded-full bg-gray-900/50 p-2 text-sm outline outline-gray-50/10 backdrop-blur-lg xl:m-0">
+    <div className="mx-auto flex w-fit items-center gap-1 rounded-full bg-gray-900/50 p-2 text-sm outline outline-gray-50/10 backdrop-blur-lg md:m-0">
       <p className="line-clamp-1 text-gray-400 select-none **:transition-all **:delay-75 **:duration-300 *:last:text-gray-100">
         {items.map((item, index) => (
           <span key={index}>

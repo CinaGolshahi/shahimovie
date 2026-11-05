@@ -34,9 +34,9 @@ const SearchModal = ({ toggleSearch }: ISearchModal) => {
             toggleSearch((prev) => !prev);
           });
         }}
-        className="fixed inset-0 z-30 bg-gray-950 px-4 pt-10"
+        className="fixed inset-0 z-30 bg-gray-950 px-4 pt-10 md:pt-6"
       >
-        <div className="xl:w-1/3 mx-auto flex flex-col items-center gap-4">
+        <div className="mx-auto flex flex-col items-center gap-4 md:w-2/3 2xl:w-1/3">
           <SearchForm
             searchResultsIsLoading={searchResultsIsLoading}
             toggleSearch={toggleSearch}
@@ -46,7 +46,7 @@ const SearchModal = ({ toggleSearch }: ISearchModal) => {
             setSearchValue={setSearchValue}
           />
 
-          {!searchResultsIsLoading && searchResults.length > 0 && (
+          {searchResults && (
             <SearchResults
               query={query}
               searchResults={searchResults}

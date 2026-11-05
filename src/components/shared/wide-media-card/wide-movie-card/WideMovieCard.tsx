@@ -9,7 +9,7 @@ const WideMovieCard = (props: IMovieCardProps) => {
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className={`${className} group relative flex aspect-video max-h-40 w-full gap-2 rounded-2xl bg-gray-900/50 p-2 outline-2 outline-gray-900/50 transition-all delay-75 duration-300 hover:outline-blue-600`}
+      className={`${className} group relative flex aspect-video max-h-40 w-full gap-4 rounded-2xl bg-gray-900/50 p-2 outline-2 outline-gray-900/50 transition-all delay-75 duration-300 hover:outline-blue-600`}
     >
       {movie.poster_path ? (
         <img
@@ -20,7 +20,7 @@ const WideMovieCard = (props: IMovieCardProps) => {
         />
       ) : (
         <div className="flex aspect-2/3 h-full items-center justify-center rounded-xl bg-gray-950 object-cover">
-          <ImageOff className="size-10 stroke-gray-700" />
+          <ImageOff className="size-8 stroke-gray-700" />
         </div>
       )}
       <div className="relative flex flex-col gap-2 pt-2">
