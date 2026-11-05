@@ -7,17 +7,13 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 md:pt-2">
-      <div className="container mx-auto flex h-12 items-center justify-between bg-gray-900/50 px-2 ps-3 outline outline-gray-50/10 backdrop-blur-lg *:flex md:rounded-full">
-        <div>
-          <Logo />
-        </div>
+    <header className="fixed inset-x-0 top-0 z-30 md:px-4 md:pt-2">
+      <div className="container mx-auto flex h-12 items-center justify-between rounded-b-xl bg-gray-900/50 px-2 ps-3 outline outline-gray-50/10 backdrop-blur-lg md:rounded-full">
+        <Logo />
 
-        <div>
-          <MenuNavbar />
-        </div>
+        <MenuNavbar />
 
-        <div className="relative hidden w-48 justify-end">
+        <div className="relative flex w-48 justify-end">
           <SearchTrigger toggleSearch={setIsSearchOpen} />
         </div>
 
