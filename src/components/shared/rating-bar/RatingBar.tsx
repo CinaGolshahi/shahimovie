@@ -9,17 +9,20 @@ interface IRatingBarProps {
   scores: IOMDbResponse | undefined;
   scoresIsLoading: boolean | undefined;
   tmdbScore: number | undefined;
+  className?: string;
 }
 
 const RatingBar = (props: IRatingBarProps) => {
-  const { scores, scoresIsLoading, tmdbScore } = props;
+  const { scores, scoresIsLoading, tmdbScore, className } = props;
 
   return (
     <>
       {scoresIsLoading ? (
         <div className="my-1 h-6 w-64 animate-pulse rounded-full bg-gray-50/10"></div>
       ) : (
-        <div className="my-1 flex flex-wrap items-center gap-x-4 transition-all delay-75 duration-300">
+        <div
+          className={`${className} my-1 flex flex-wrap items-center gap-x-4 transition-all delay-75 duration-300`}
+        >
           {tmdbScore !== undefined && tmdbScore > 0 && (
             <div className="flex items-center gap-2">
               <TheMovieDatabase className="size-5" />
