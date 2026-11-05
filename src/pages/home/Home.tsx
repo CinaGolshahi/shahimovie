@@ -8,7 +8,7 @@ const Home = () => {
   const { popularPeople, popularPeopleIsLoading } = usePopularPeople();
 
   return (
-    <div className="flex flex-col gap-20 pbs-6 xl:pbs-0">
+    <div className="flex flex-col gap-20 pt-10 xl:pt-0">
       <HeroSlider />
 
       <MediaSection

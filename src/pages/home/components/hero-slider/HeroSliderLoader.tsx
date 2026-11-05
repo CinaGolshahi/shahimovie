@@ -12,11 +12,14 @@ const HeroSliderLoader = () => {
       simulateTouch={false}
       keyboard={false}
       mousewheel={false}
-      className="pointer-events-none aspect-2/3 w-2/3! xl:aspect-video"
+      className="pointer-events-none aspect-2/3 w-2/3 md:aspect-video md:w-4/5 xl:w-2/3"
     >
-      <SwiperSlide className="size-full animate-pulse rounded-lg bg-gray-900"></SwiperSlide>
-      <SwiperSlide className="size-full animate-pulse rounded-lg bg-gray-900"></SwiperSlide>
-      <SwiperSlide className="size-full animate-pulse rounded-lg bg-gray-900"></SwiperSlide>
+      {Array.from({ length: 3 }, (_, index) => (
+        <SwiperSlide
+          key={index}
+          className="size-full animate-pulse rounded-lg bg-gray-900"
+        ></SwiperSlide>
+      ))}
     </Swiper>
   );
 };
