@@ -23,7 +23,7 @@ const CastTab = (props: ICastTab) => {
         </div>
       ) : (
         <>
-          <div className="flex overflow-auto md:grid md:grid-cols-4 xl:grid-cols-8">
+          <div className="flex overflow-auto md:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
             {cast?.map((artist) => (
               <Link
                 key={artist.id}

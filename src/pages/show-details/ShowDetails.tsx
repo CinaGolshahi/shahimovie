@@ -54,8 +54,8 @@ const ShowDetails = () => {
             }}
             className="bg-cover bg-center bg-no-repeat"
           >
-            <div className="bg-linear-to-b to-gray-950 pt-24 backdrop-blur-lg backdrop-brightness-50 xl:h-screen xl:pt-16">
-              <div className="container mx-auto flex flex-col gap-2 px-4">
+            <div className="bg-linear-to-b to-gray-950 pt-24 backdrop-blur-lg backdrop-brightness-50 md:pt-28 xl:h-screen xl:pt-16">
+              <div className="container mx-auto flex flex-col gap-2 px-4 md:px-2 xl:px-4">
                 <Breadcrumb
                   items={[
                     { label: "Home", link: "/" },
@@ -64,8 +64,8 @@ const ShowDetails = () => {
                   ]}
                 />
 
-                <div className="flex w-full flex-col items-center gap-2 xl:flex-row xl:gap-8">
-                  <div className="flex aspect-2/3 w-2/3 items-center justify-center rounded-3xl bg-gray-900 outline outline-gray-900 xl:w-1/5">
+                <div className="flex w-full flex-col items-center gap-2 md:flex-row md:gap-4 xl:gap-8">
+                  <div className="flex aspect-2/3 w-2/3 items-center justify-center rounded-3xl bg-gray-900 outline outline-gray-900 md:w-1/3 lg:w-1/4 xl:w-1/5">
                     {show?.poster_path ? (
                       <img
                         src={`${getTmdbImageUrl(show.poster_path, "w500")}`}
@@ -75,9 +75,9 @@ const ShowDetails = () => {
                       <ImageOff className="size-8 stroke-gray-700" />
                     )}
                   </div>
-                  <div className="flex flex-col items-center justify-center gap-2 text-center xl:w-2/4 xl:items-start xl:text-start">
+                  <div className="flex flex-col items-center justify-center gap-2 text-center md:w-2/3 md:items-start md:text-start lg:w-3/4 xl:w-2/4">
                     <p className="flex flex-col gap-1">
-                      <span className="text-xl font-bold xl:text-4xl">
+                      <span className="text-xl font-bold md:text-2xl lg:text-3xl xl:text-4xl">
                         {show?.name}
                       </span>
                       {show?.tagline && (
@@ -156,7 +156,7 @@ const ShowDetails = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 pt-4 xl:pt-8">
+                <div className="flex flex-col gap-4 pt-0 xl:pt-8">
                   <p className="relative flex items-center ps-8 text-xl font-bold before:absolute before:inset-s-0 before:h-2 before:w-6 before:rounded-full before:bg-blue-500">
                     Top Stars
                   </p>
@@ -165,7 +165,7 @@ const ShowDetails = () => {
                       <Link
                         key={artist.id}
                         to={`/artist/${artist.id}`}
-                        className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80"
+                        className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80 md:min-w-1/5 lg:min-w-1/6"
                       >
                         {artist.profile_path ? (
                           <img

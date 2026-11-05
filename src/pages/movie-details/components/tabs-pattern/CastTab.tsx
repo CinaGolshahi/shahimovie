@@ -23,13 +23,13 @@ const CastTab = (props: ICastTab) => {
         </div>
       ) : (
         <>
-          <div className="flex overflow-auto xl:grid xl:grid-cols-8">
+          <div className="flex overflow-auto md:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
             {cast?.map((star) => (
               <Link
                 key={star.id}
                 to={`/star/${star.id}`}
                 title={`${star.name}: ${star.character}`}
-                className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 xl:text-sm"
+                className="flex size-full min-w-2/5 flex-col items-center gap-1 p-2 text-center text-xs transition-all delay-75 duration-300 hover:opacity-80 md:text-sm"
               >
                 {star.profile_path ? (
                   <img

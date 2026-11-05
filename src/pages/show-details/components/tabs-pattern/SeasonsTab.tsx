@@ -25,7 +25,7 @@ const SeasonsTab = (props: ISeasonTab) => {
           <Loader2 className="animate-spin stroke-blue-500 duration-300" />
         </div>
       ) : (
-        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-5 xl:grid-cols-10">
+        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-10">
           {show?.seasons.map((season) => (
             <button
               key={season.id}
@@ -51,14 +51,14 @@ const SeasonsTab = (props: ISeasonTab) => {
       )}
 
       {seasonIsLoading ? (
-        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-2 xl:grid-cols-4">
+        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <EpisodeLoader />
           <EpisodeLoader />
           <EpisodeLoader />
           <EpisodeLoader />
         </div>
       ) : (
-        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-2 xl:grid-cols-4">
+        <div className="flex gap-4 overflow-auto md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {season?.episodes.map((episode) => (
             <div
               key={episode.id}
