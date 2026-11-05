@@ -1,6 +1,6 @@
 import { useTrending } from "../../../../hooks";
 
-import { Autoplay, EffectCards, Navigation } from "swiper/modules";
+import { Autoplay, EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -23,15 +23,14 @@ const HeroSlider = () => {
       ) : (
         <Swiper
           effect={"cards"}
-          modules={[Autoplay, EffectCards, Navigation]}
+          modules={[Autoplay, EffectCards]}
           autoplay={{
             delay: 6000,
             disableOnInteraction: true,
             pauseOnMouseEnter: true,
           }}
-          navigation={{}}
           loop={true}
-          className="aspect-2/3 w-2/3! xl:aspect-video"
+          className="aspect-2/3 w-2/3! md:aspect-video"
         >
           {trendingError ? (
             <SwiperSlide className="flex! size-full items-center! justify-center! rounded-lg">
@@ -43,8 +42,8 @@ const HeroSlider = () => {
                 key={item.id}
                 className="size-full rounded-lg bg-gray-800"
               >
-                {item.media_type === "movie" && <MovieSlide item={item} />}
-                {item.media_type === "tv" && <TVShowSlide item={item} />}
+                {item.media_type === "movie" && <MovieSlide movie={item} />}
+                {item.media_type === "tv" && <TVShowSlide show={item} />}
               </SwiperSlide>
             ))
           )}
