@@ -5,7 +5,7 @@ import { usePerson, usePersonCombinedCredits } from "../../hooks";
 import { formatReleaseDate, getTmdbImageUrl } from "../../utils";
 import LoadingScreen from "./loading-screen";
 
-const PersonDetails = () => {
+const ArtistDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { person, personIsLoading } = usePerson({ id: id ?? "" });
   const { personCombinedCreditsCast, personCombinedCreditsCastIsLoading } =
@@ -126,4 +126,4 @@ const PersonDetails = () => {
   );
 };
 
-export default PersonDetails;
+export default ArtistDetails;

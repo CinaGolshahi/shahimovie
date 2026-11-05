@@ -5,7 +5,7 @@ import {
 import Breadcrumb from "../../components/ui/breadcrumb";
 import { usePopularPeople } from "../../hooks";
 
-const PeoplePage = () => {
+const ArtistsPage = () => {
   const {
     popularPeople,
     popularPeopleIsLoading,
@@ -27,6 +27,9 @@ const PeoplePage = () => {
       ) : (
         <>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {/* {popularPeople.map((person) => (
+              <WideMediaCard key={person.id} media={person} />
+            ))} */}
             {popularPeople.map((person) => (
               <WideMediaCard key={person.id} media={person} />
             ))}
@@ -46,4 +49,4 @@ const PeoplePage = () => {
   );
 };
 
-export default PeoplePage;
+export default ArtistsPage;

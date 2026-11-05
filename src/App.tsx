@@ -4,12 +4,12 @@ import Footer from "./components/layout/footer";
 import Header from "./components/layout/header";
 import MobileNavbar from "./components/layout/mobile-navbar";
 import {
+  ArtistDetails,
+  ArtistsPage,
   Home,
   MovieDetails,
   MoviesPage,
   NotFoundPage,
-  PeoplePage,
-  PersonDetails,
   SearchPage,
   ShowDetails,
   ShowsPage,
@@ -33,8 +33,8 @@ const App = () => {
           <Route path="/shows" element={<ShowsPage />} />
           <Route path="/show/:id" element={<ShowDetails />} />
 
-          <Route path="/artists" element={<PeoplePage />} />
-          <Route path="/artist/:id" element={<PersonDetails />} />
+          <Route path="/artists" element={<ArtistsPage />} />
+          <Route path="/artist/:id" element={<ArtistDetails />} />
 
           <Route path="/search/:search" element={<SearchPage />} />
         </Routes>
