@@ -1,7 +1,7 @@
-import type { IMediaSummary } from "../../../../types/tmdb";
+import type { IMovieSummary } from "../../../../types/tmdb";
 
 interface IMovieCardProps {
-  movie: IMediaSummary;
+  movie: IMovieSummary;
   className?: string;
 }
 export type { IMovieCardProps };
