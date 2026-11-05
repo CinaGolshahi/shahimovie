@@ -18,7 +18,7 @@ const MovieSlide = ({ item }: IMovieSlide) => {
           <picture>
             <source
               media="(min-width: 1280px)"
-              srcSet={`${getTmdbImageUrl(item.backdrop_path, "w780")}`}
+              srcSet={`${getTmdbImageUrl(item.backdrop_path, "original")}`}
             />
 
             <img
