@@ -1,3 +1,3 @@
-import { CastTab, DetailsTab, SeasonsTab } from "./tabs-pattern";
+import { CastTab, SeasonsTab } from "./tabs-pattern";
 
-export { CastTab, DetailsTab, SeasonsTab };
+export { CastTab, SeasonsTab };

@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 
-import { Bookmark, ImageOff, Tv } from "lucide-react";
+import { ImageOff } from "lucide-react";
 
 import {
   useCredits,
@@ -9,16 +9,20 @@ import {
   useShow,
 } from "../../hooks";
 
-import { getTmdbImageUrl, getYearFromDate } from "../../utils";
+import {
+  formatReleaseDate,
+  getTmdbImageUrl,
+  getYearFromDate,
+} from "../../utils";
 
-import { CastTab, DetailsTab, SeasonsTab } from "./components";
+import { CastTab, SeasonsTab } from "./components";
 
 import MediaSection from "../../components/common/media-section";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
-import Button from "../../components/ui/button";
 import TabsPattern from "../../components/ui/tabs-pattern";
+import { DetailsTabs } from "../../components/ui/tabs-pattern/components";
 import useExternalIds from "../../hooks/useExternalIds";
 
 const ShowDetails = () => {
@@ -144,15 +148,6 @@ const ShowDetails = () => {
                         {show.overview}
                       </span>
                     )}
-                    <div className="flex gap-2 py-4">
-                      <Button>
-                        <Tv className="size-5" />
-                        <span className="">Trailer</span>
-                      </Button>
-                      <Button variant="btn-secondary" size="btn-squ-md">
-                        <Bookmark />
-                      </Button>
-                    </div>
                   </div>
                 </div>
 
@@ -199,7 +194,44 @@ const ShowDetails = () => {
 
           <TabsPattern
             tabs={[
-              { label: "Details", content: <DetailsTab id={`${id}`} /> },
+              {
+                label: "Details",
+                content: (
+                  <DetailsTabs
+                    items={[
+                      { label: "Status:", value: show?.status },
+                      {
+                        label: "First Air Date:",
+                        value: formatReleaseDate(show?.first_air_date),
+                      },
+                      {
+                        label: "Last Air Date:",
+                        value: formatReleaseDate(show?.last_air_date),
+                      },
+                      {
+                        label: "Created By:",
+                        value: `${show?.created_by.map((creator, index) => `${creator.name}${index < show?.created_by.length - 1 && ", "}`)}`,
+                      },
+                      {
+                        label: "Number of Seasons:",
+                        value: `${show?.number_of_seasons}`,
+                      },
+                      {
+                        label: "Number of Episodes:",
+                        value: `${show?.number_of_episodes}`,
+                      },
+                      {
+                        label: "Countries:",
+                        value: `${show?.production_countries.map((country, index) => `${country.name}${index < show?.production_countries.length - 1 ? ", " : ""}`)}`,
+                      },
+                      {
+                        label: "Languages:",
+                        value: `${show?.spoken_languages.map((language, index) => `${language.name}${index < show?.spoken_languages.length - 1 ? ", " : ""}`)}`,
+                      },
+                    ]}
+                  />
+                ),
+              },
               { label: "Seasons", content: <SeasonsTab id={`${id}`} /> },
               { label: "Cast", content: <CastTab id={`${id}`} /> },
             ]}
@@ -213,157 +245,6 @@ const ShowDetails = () => {
       )}
     </>
   );
-
-  // if (showIsLoading || creditsIsLoading) {
-  //   return <LoadingScreen />;
-  // } else if (showError) {
-  //   return (
-  //     <NotFoundPage
-  //       title="Show not found!"
-  //       linkTo={"/shows"}
-  //       linkLabel="Back to Shows"
-  //     />
-  //   );
-  // } else {
-  //   return (
-  //     <div className="flex flex-col gap-10">
-  //       <div
-  //         style={{
-  //           backgroundImage: `url(${getTmdbImageUrl(show?.backdrop_path, "w200") ?? ""})`,
-  //         }}
-  //         className="-mt-20 w-full bg-cover bg-center"
-  //       >
-  //         <div className="w-full bg-linear-to-b to-gray-950 px-2 pt-24 backdrop-blur-md backdrop-brightness-50 xl:px-0 xl:pt-16 xl:pb-10">
-  //           <div className="container mx-auto flex flex-col gap-2.5 xl:px-10">
-  //             <Breadcrumb
-  //               items={[
-  //                 { label: "Home", link: "/" },
-  //                 { label: "Shows", link: "/shows" },
-  //                 { label: show?.name },
-  //               ]}
-  //             />
-  //             <div className="flex flex-col items-center xl:flex-row">
-  //               <div className="flex flex-col items-center gap-2 text-center select-none xl:w-3/4 xl:flex-row xl:gap-8 xl:text-start">
-  //                 <div className="aspect-2/3 w-2/3 shrink-0 rounded-3xl bg-gray-800 p-px xl:w-1/3">
-  //                   {show?.poster_path ? (
-  //                     <img
-  //                       src={`${getTmdbImageUrl(show?.poster_path, "w500")}`}
-  //                       className="size-full rounded-3xl object-cover"
-  //                     />
-  //                   ) : (
-  //                     <div className="flex size-full items-center justify-center rounded-full bg-gray-800">
-  //                       <ImageOff className="size-8 stroke-gray-700" />
-  //                     </div>
-  //                   )}
-  //                 </div>
-  //                 <div className="flex flex-col items-center justify-center gap-2 px-2 xl:items-start xl:px-0">
-  //                   <p className="flex flex-col gap-1">
-  //                     <span className="text-xl font-bold xl:text-4xl">
-  //                       {show?.name}
-  //                     </span>
-  //                     <span className="text-sm text-gray-300 italic">
-  //                       {show?.tagline}
-  //                     </span>
-  //                   </p>
-  //                   <p className="text-sm text-gray-300">
-  //                     {show?.genres &&
-  //                       show?.genres.map((genre, index) => (
-  //                         <span key={genre.id}>
-  //                           <span>{genre.name}</span>
-  //                           {index < show?.genres.length - 1 && ", "}
-  //                         </span>
-  //                       ))}
-  //                   </p>
-  //                   <p className="text-sm text-gray-400">
-  //                     <span>
-  //                       {getYearFromDate(show?.first_air_date ?? "Unknown")}
-  //                     </span>
-  //                     <> • </>
-  //                     <span>
-  //                       {show?.number_of_seasons ? (
-  //                         <>
-  //                           {show.number_of_seasons}
-  //                           {show.seasons.length > 1 ? " Seasons" : " Season"}
-  //                         </>
-  //                       ) : (
-  //                         <></>
-  //                       )}
-  //                     </span>
-  //                     <> • </>
-  //                     <span>{show?.status ?? "Unknown"}</span>
-  //                     <> • </>
-  //                     {show?.production_countries
-  //                       ? show?.production_countries.map((country, index) => (
-  //                           <span key={country.iso_3166_1}>
-  //                             <span>{country.name}</span>
-  //                             {index < show?.production_countries.length - 1 &&
-  //                               ", "}
-  //                           </span>
-  //                         ))
-  //                       : "Unknown"}
-  //                   </p>
-  //                   <RattingBar
-  //                     scores={scores}
-  //                     scoresIsLoading={scoresIsLoading}
-  //                     tmdbScore={show?.vote_average}
-  //                   />
-  //                   <p className="text-gray-200 xl:pe-36">
-  //                     {show?.overview ?? "Unknown"}
-  //                   </p>
-  //                   <div className="flex gap-2 py-4">
-  //                     <Button>
-  //                       <Film className="size-5" />
-  //                       <span className="">Trailer</span>
-  //                     </Button>
-  //                     <Button variant="btn-secondary" size="btn-squ-md">
-  //                       <Bookmark />
-  //                     </Button>
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //             </div>
-  //             <div className="hidden grid-cols-8 items-stretch gap-4 xl:grid">
-  //               {cast?.slice(0, 8).map((artist) => (
-  //                 <Link
-  //                   key={artist.id}
-  //                   to={`/artist/${artist.id}`}
-  //                   className="flex aspect-2/3 w-full flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:scale-105"
-  //                 >
-  //                   {artist.profile_path ? (
-  //                     <img
-  //                       src={`${getTmdbImageUrl(artist.profile_path, "w200")}`}
-  //                       alt=""
-  //                       className="aspect-square w-full rounded-full object-cover"
-  //                     />
-  //                   ) : (
-  //                     <div className="flex aspect-square w-full items-center justify-center rounded-full bg-gray-800">
-  //                       <ImageOff className="size-8 stroke-gray-700" />
-  //                     </div>
-  //                   )}
-  //                   <span className="line-clamp-1 font-semibold">
-  //                     {artist.name}
-  //                   </span>
-  //                   <span className="line-clamp-1 text-gray-500">
-  //                     {artist.roles.map((role, index) => (
-  // <span key={role.credit_id}>
-  //   <span>{role.character}</span>
-  //   {index < artist.roles.length - 1 && " / "}
-  // </span>
-  //                     ))}
-  //                   </span>
-  //                 </Link>
-  //               ))}
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <div className="w-full">
-  //
-  //       </div>
-
-  //     </div>
-  //   );
-  // }
 };
 
 export default ShowDetails;
