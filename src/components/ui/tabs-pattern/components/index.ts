@@ -1,3 +1,3 @@
-import DetailsTabs from "./DetailsTab";
+import DetailsTab from "./DetailsTab";
 
-export { DetailsTabs };
+export { DetailsTab };

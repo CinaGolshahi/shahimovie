@@ -24,7 +24,7 @@ import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
-import { DetailsTabs } from "../../components/ui/tabs-pattern/components";
+import { DetailsTab } from "../../components/ui/tabs-pattern/components";
 import useExternalIds from "../../hooks/useExternalIds";
 
 const MovieDetails = () => {
@@ -189,7 +189,7 @@ const MovieDetails = () => {
               {
                 label: "Details",
                 content: (
-                  <DetailsTabs
+                  <DetailsTab
                     items={[
                       { label: "Status:", value: movie?.status },
                       {
