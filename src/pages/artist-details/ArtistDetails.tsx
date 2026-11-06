@@ -2,6 +2,8 @@ import { ImageOff } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import Breadcrumb from "../../components/ui/breadcrumb";
+import TabsPattern from "../../components/ui/tabs-pattern";
+import { DetailsTabs } from "../../components/ui/tabs-pattern/components";
 import { usePerson, usePersonCombinedCredits } from "../../hooks";
 import { formatReleaseDate, getTmdbImageUrl } from "../../utils";
 
@@ -122,6 +124,32 @@ const ArtistDetails = () => {
               </div>
             </div>
           </div>
+
+          <TabsPattern
+            tabs={[
+              {
+                label: "Information",
+                content: (
+                  <DetailsTabs
+                    items={[
+                      {
+                        label: "Known for Department:",
+                        value: person?.known_for_department,
+                      },
+                      {
+                        label: "Birthday:",
+                        value: formatReleaseDate(person?.birthday),
+                      },
+                      {
+                        label: "Place of Birth:",
+                        value: person?.place_of_birth,
+                      },
+                    ]}
+                  />
+                ),
+              },
+            ]}
+          />
         </div>
       )}
     </>
