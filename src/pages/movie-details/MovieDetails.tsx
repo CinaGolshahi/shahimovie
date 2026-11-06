@@ -5,25 +5,34 @@ import { ImageOff } from "lucide-react";
 import {
   useCredits,
   useMovie,
+  useMovieDirectors,
   useRecommendations,
   useScores,
 } from "../../hooks";
 
-import { getTmdbImageUrl, getYearFromDate } from "../../utils";
+import {
+  formatCurrency,
+  formatReleaseDate,
+  getTmdbImageUrl,
+  getYearFromDate,
+} from "../../utils";
 
-import { CastTab, DetailsTab } from "./components";
+import { CastTab } from "./components";
 
 import MediaSection from "../../components/common/media-section";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
+import { DetailsTabs } from "../../components/ui/tabs-pattern/components";
 import useExternalIds from "../../hooks/useExternalIds";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   const { movie, movieIsLoading } = useMovie({ id: id ?? "" });
+
+  const { directors } = useMovieDirectors({ id: `${movie?.id}` });
 
   const { externalIds } = useExternalIds({ type: "movie", id: movie?.id });
   const { scores, scoresIsLoading } = useScores({
@@ -177,7 +186,37 @@ const MovieDetails = () => {
 
           <TabsPattern
             tabs={[
-              { label: "Details", content: <DetailsTab id={`${id}`} /> },
+              {
+                label: "Details",
+                content: (
+                  <DetailsTabs
+                    items={[
+                      { label: "Status:", value: movie?.status },
+                      {
+                        label: "Release Date:",
+                        value: formatReleaseDate(movie?.release_date),
+                      },
+                      { label: "Runtime:", value: `${movie?.runtime}` },
+                      {
+                        label: "Director:",
+                        value: `${directors.map((director, index) => `${director.name}${index < directors.length - 1 && ", "}`)}`,
+                      },
+                      {
+                        label: "Countries:",
+                        value: `${movie?.production_countries.map((director, index) => `${director.name}${index < directors.length - 1 && ", "}`)}`,
+                      },
+                      {
+                        label: "Budget:",
+                        value: `${formatCurrency(movie?.budget)}`,
+                      },
+                      {
+                        label: "Collection:",
+                        value: movie?.belongs_to_collection?.name,
+                      },
+                    ]}
+                  />
+                ),
+              },
               { label: "Cast", content: <CastTab id={`${id}`} /> },
             ]}
           />
