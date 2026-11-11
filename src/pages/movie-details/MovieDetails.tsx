@@ -196,14 +196,15 @@ const MovieDetails = () => {
                         label: "Release Date:",
                         value: formatReleaseDate(movie?.release_date),
                       },
-                      { label: "Runtime:", value: `${movie?.runtime}` },
+                      { label: "Runtime:", value: `${movie?.runtime} min` },
                       {
                         label: "Director:",
                         value: `${directors.map((director, index) => `${director.name}${index < directors.length - 1 && ", "}`)}`,
                       },
                       {
                         label: "Countries:",
-                        value: `${movie?.production_countries.map((director, index) => `${director.name}${index < directors.length - 1 && ", "}`)}`,
+                        value: `${movie?.production_countries.map((country) => ` ${country.name}`)}`,
+                        // value: `${movie?.production_countries.map((country, index) => `${country.name}${index < movie.production_countries.length - 1 && ", "}`)}`,
                       },
                       {
                         label: "Budget:",
@@ -211,7 +212,7 @@ const MovieDetails = () => {
                       },
                       {
                         label: "Collection:",
-                        value: movie?.belongs_to_collection?.name,
+                        value: movie?.belongs_to_collection?.name || "N/A",
                       },
                     ]}
                   />
