@@ -66,7 +66,6 @@ const ArtistDetails = () => {
                         <span>
                           <> • </>
                           <>{person.place_of_birth}</>
-                          <> min</>
                         </span>
                       )}
                     </p>
