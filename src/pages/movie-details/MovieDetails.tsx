@@ -62,7 +62,7 @@ const MovieDetails = () => {
             }}
             className="bg-cover bg-center bg-no-repeat"
           >
-            <div className="bg-linear-to-b to-gray-950 pt-24 backdrop-blur-lg backdrop-brightness-50 md:pt-28 xl:h-screen xl:pt-16">
+            <div className="bg-linear-to-b to-gray-950 pt-24 backdrop-blur-lg backdrop-brightness-50 md:pt-28 xl:pt-16">
               <div className="container mx-auto flex flex-col gap-2 px-4 md:px-2 xl:px-4">
                 <Breadcrumb
                   items={[
