@@ -123,32 +123,6 @@ const ArtistDetails = () => {
               </div>
             </div>
           </div>
-
-          <TabsPattern
-            tabs={[
-              {
-                label: "Information",
-                content: (
-                  <DetailsTab
-                    items={[
-                      {
-                        label: "Known for Department:",
-                        value: person?.known_for_department,
-                      },
-                      {
-                        label: "Birthday:",
-                        value: formatReleaseDate(person?.birthday),
-                      },
-                      {
-                        label: "Place of Birth:",
-                        value: person?.place_of_birth,
-                      },
-                    ]}
-                  />
-                ),
-              },
-            ]}
-          />
         </div>
       )}
     </>
