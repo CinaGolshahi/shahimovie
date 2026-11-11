@@ -2,8 +2,6 @@ import { ImageOff } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import Breadcrumb from "../../components/ui/breadcrumb";
-import TabsPattern from "../../components/ui/tabs-pattern";
-import { DetailsTab } from "../../components/ui/tabs-pattern/components";
 import { usePerson, usePersonCombinedCredits } from "../../hooks";
 import { formatReleaseDate, getTmdbImageUrl } from "../../utils";
 
