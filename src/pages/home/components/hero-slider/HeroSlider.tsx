@@ -1,6 +1,6 @@
 import { useTrending } from "../../../../hooks";
 
-import { Autoplay, EffectCards } from "swiper/modules";
+import { Autoplay, EffectCards, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -23,12 +23,13 @@ const HeroSlider = () => {
       ) : (
         <Swiper
           effect={"cards"}
-          modules={[Autoplay, EffectCards]}
+          modules={[Autoplay, EffectCards, Navigation]}
           autoplay={{
             delay: 6000,
             disableOnInteraction: true,
             pauseOnMouseEnter: true,
           }}
+          navigation={{}}
           loop={true}
           className="aspect-2/3 w-2/3 md:aspect-video md:w-4/5 xl:w-2/3"
         >
