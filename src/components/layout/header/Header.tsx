@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchModal, SearchTrigger } from "../../shared/search";
 import Logo from "../../ui/logo";
 import MenuNavbar from "../menu-navbar/MenuNavbar";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        setIsSearchOpen((prev) => !prev);
+      }
+    });
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-30 md:px-4 md:pt-2">
