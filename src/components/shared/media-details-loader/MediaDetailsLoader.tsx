@@ -1,6 +1,6 @@
 const MediaDetailsLoader = () => {
   return (
-    <div className="fixed inset-0 flex flex-col gap-2 bg-gray-950 pt-16 *:container *:mx-auto xl:h-screen">
+    <div className="fixed inset-0 flex flex-col gap-2 bg-gray-950 px-4 pt-16 *:container *:mx-auto md:px-2 xl:h-screen xl:px-4">
       <div className="flex justify-center md:justify-start">
         <div className="h-10 w-56 animate-pulse rounded-full bg-gray-900"></div>
       </div>
