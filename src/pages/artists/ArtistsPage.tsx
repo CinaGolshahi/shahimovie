@@ -38,7 +38,7 @@ const ArtistsPage = () => {
             <button
               onClick={loadMorePopularPeople}
               disabled={popularPeopleIsLoading}
-              className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
+              className="w-full cursor-pointer rounded-xl bg-blue-600 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
             >
               {popularPeopleIsLoading ? "Loading..." : "See More"}
             </button>

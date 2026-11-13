@@ -161,7 +161,7 @@ const Footer = () => {
           <Link
             to={"https://linktr.ee/cinagolshahi"}
             target="_blank"
-            className="text-blue-500 hover:underline"
+            className="text-blue-600 hover:underline"
           >
             Cina Golshahi
           </Link>

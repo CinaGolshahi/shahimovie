@@ -18,7 +18,7 @@ const SearchResults = (props: ISearchResultsProps) => {
           ))}
           <Link
             to={`/search/${query}`}
-            className="flex items-center justify-center px-4 py-2 transition-all delay-75 duration-300 hover:text-blue-500"
+            className="flex items-center justify-center px-4 py-2 transition-all delay-75 duration-300 hover:text-blue-600"
           >
             <span>Find more</span>
             <ChevronRight className="mt-0.5 size-5" />

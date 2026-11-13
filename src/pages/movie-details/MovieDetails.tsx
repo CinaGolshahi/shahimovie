@@ -149,7 +149,7 @@ const MovieDetails = () => {
                 </div>
 
                 <div className="flex flex-col gap-4 pt-0 xl:pt-8">
-                  <p className="relative flex items-center ps-8 text-xl font-bold before:absolute before:inset-s-0 before:h-2 before:w-6 before:rounded-full before:bg-blue-500">
+                  <p className="relative flex items-center ps-8 text-xl font-bold before:absolute before:inset-s-0 before:h-2 before:w-6 before:rounded-full before:bg-blue-600">
                     Top Stars
                   </p>
                   <div className="flex grid-cols-8 items-stretch gap-4 overflow-auto xl:grid">

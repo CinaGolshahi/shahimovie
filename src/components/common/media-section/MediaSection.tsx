@@ -11,7 +11,7 @@ const MediaSection = ({ title, link, loading, media }: IMediaSection) => {
         {link && (
           <Link
             to={link}
-            className="flex items-center gap-0.5 text-blue-500 hover:underline"
+            className="flex items-center gap-0.5 text-blue-600 hover:underline"
           >
             <span>See more</span>
             <ChevronRight className="mt-0.5 size-5" />

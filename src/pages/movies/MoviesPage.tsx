@@ -27,7 +27,7 @@ const MoviesPage = () => {
             <button
               onClick={loadMoreMovies}
               disabled={moviesIsLoading}
-              className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
+              className="w-full cursor-pointer rounded-xl bg-blue-600 py-3 disabled:cursor-not-allowed disabled:bg-blue-900"
             >
               {moviesIsLoading ? "Loading..." : "See More"}
             </button>

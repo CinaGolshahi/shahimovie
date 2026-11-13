@@ -22,7 +22,7 @@ const SeasonsTab = (props: ISeasonTab) => {
     <div className="flex flex-col gap-10">
       {showIsLoading ? (
         <div className="flex h-20 w-full items-center justify-center">
-          <Loader2 className="animate-spin stroke-blue-500 duration-300" />
+          <Loader2 className="animate-spin stroke-blue-600 duration-300" />
         </div>
       ) : (
         <div className="flex gap-4 overflow-auto md:grid md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-10">
