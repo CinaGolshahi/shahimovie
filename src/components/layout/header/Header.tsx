@@ -11,7 +11,7 @@ const Header = () => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         startTransition(() => {
-          setIsSearchOpen((prev) => !prev);
+          setIsSearchOpen(true);
         });
       }
     };

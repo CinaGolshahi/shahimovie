@@ -31,14 +31,14 @@ const SearchModal = ({ toggleSearch }: ISearchModal) => {
       <div
         onClick={() => {
           startTransition(() => {
-            toggleSearch((prev) => !prev);
+            toggleSearch(false);
           });
         }}
         onKeyDown={(event) => {
           event.key === "Escape" &&
             (event.preventDefault(),
             startTransition(() => {
-              toggleSearch((prev) => !prev);
+              toggleSearch(false);
             }));
         }}
         className="fixed inset-0 z-30 bg-gray-950 px-4 pt-10 md:pt-6"
