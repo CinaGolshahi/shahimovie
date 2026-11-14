@@ -9,7 +9,7 @@ const ShowCard = (props: ITVShowCardProps) => {
     <Link
       to={`/show/${show.id}`}
       key={show.id}
-      className={`${className} group relative aspect-2/3 w-full rounded-2xl bg-gray-900 p-0.5 transition-all duration-300 hover:border-blue-600`}
+      className={`${className} group relative aspect-2/3 w-full overflow-hidden rounded-2xl bg-gray-900 p-0.5 transition-all duration-300`}
     >
       {show.poster_path ? (
         <img
@@ -30,7 +30,7 @@ const ShowCard = (props: ITVShowCardProps) => {
         </span>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-1 px-3 py-2 text-gray-500 md:hidden">
+      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-1 px-3 py-2 text-gray-500 transition-all duration-300 xl:group-hover:invisible xl:group-hover:-bottom-1 xl:group-hover:opacity-0">
         <div>
           <Tv className="size-4" />
         </div>

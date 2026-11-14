@@ -10,7 +10,7 @@ const PersonCard = (props: IPersonCardProps) => {
     <Link
       to={`/artist/${person.id}`}
       key={person.id}
-      className={`${className} group relative aspect-2/3 w-full rounded-2xl bg-gray-900 p-0.5 transition-all duration-300 hover:border-blue-600`}
+      className={`${className} group relative aspect-2/3 w-full overflow-hidden rounded-2xl bg-gray-900 p-0.5 transition-all duration-300`}
     >
       {person.profile_path ? (
         <img
@@ -27,11 +27,6 @@ const PersonCard = (props: IPersonCardProps) => {
       <div className="absolute inset-0 flex flex-col items-start justify-end gap-1 rounded-2xl bg-linear-to-b from-transparent to-gray-950 p-4 opacity-0 transition-all duration-300 group-hover:pb-4 group-hover:opacity-100 xl:pb-0">
         <p className="flex flex-col">
           <span className="line-clamp-2 font-bold">{person.name}</span>
-          {person.name !== person.original_name && (
-            <span className="text-sm text-gray-300">
-              {person.original_name}
-            </span>
-          )}
         </p>
         {person.known_for_department && (
           <span className="text-sm text-gray-400 italic">
