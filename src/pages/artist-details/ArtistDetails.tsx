@@ -4,6 +4,8 @@ import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import { usePerson, usePersonCombinedCredits } from "../../hooks";
 import { formatReleaseDate, getTmdbImageUrl } from "../../utils";
+import TabsPattern from "../../components/ui/tabs-pattern";
+import { Filmography } from "../../components/ui/tabs-pattern/components";
 
 const ArtistDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -121,6 +123,17 @@ const ArtistDetails = () => {
               </div>
             </div>
           </div>
+
+          <TabsPattern
+            tabs={[
+              {
+                label: "Filmography",
+                content: (
+                  <Filmography filmography={personCombinedCreditsCast} />
+                ),
+              },
+            ]}
+          />
         </div>
       )}
     </>
