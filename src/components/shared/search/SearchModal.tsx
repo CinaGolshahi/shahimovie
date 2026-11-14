@@ -52,8 +52,7 @@ const SearchModal = ({ toggleSearch }: ISearchModal) => {
             searchValue={searchValue}
             setSearchValue={setSearchValue}
           />
-
-          {searchResults && (
+          {searchResults.length > 0 && (
             <SearchResults
               query={query}
               searchResults={searchResults}
