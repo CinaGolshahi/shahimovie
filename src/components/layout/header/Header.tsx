@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 import { SearchModal, SearchTrigger } from "../../shared/search";
 import Logo from "../../ui/logo";
 import MenuNavbar from "../menu-navbar/MenuNavbar";
@@ -7,11 +7,20 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    document.addEventListener("keydown", (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-        setIsSearchOpen((prev) => !prev);
+        event.preventDefault();
+        startTransition(() => {
+          setIsSearchOpen((prev) => !prev);
+        });
       }
-    });
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   return (

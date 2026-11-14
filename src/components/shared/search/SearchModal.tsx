@@ -34,6 +34,13 @@ const SearchModal = ({ toggleSearch }: ISearchModal) => {
             toggleSearch((prev) => !prev);
           });
         }}
+        onKeyDown={(event) => {
+          event.key === "Escape" &&
+            (event.preventDefault(),
+            startTransition(() => {
+              toggleSearch((prev) => !prev);
+            }));
+        }}
         className="fixed inset-0 z-30 bg-gray-950 px-4 pt-10 md:pt-6"
       >
         <div className="mx-auto flex flex-col items-center gap-4 md:w-2/3 2xl:w-1/3">
