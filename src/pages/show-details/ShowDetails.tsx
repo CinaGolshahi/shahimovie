@@ -222,7 +222,7 @@ const ShowDetails = () => {
                       },
                       {
                         label: "Countries:",
-                        value: `${show?.production_countries.map((country, index) => `${country.name}${index < show?.production_countries.length - 1 ? ", " : ""}`)}`,
+                        value: `${show?.production_countries.map((country) => ` ${country.name}`)}`,
                       },
                       {
                         label: "Languages:",

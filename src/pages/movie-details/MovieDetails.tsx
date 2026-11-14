@@ -204,7 +204,6 @@ const MovieDetails = () => {
                       {
                         label: "Countries:",
                         value: `${movie?.production_countries.map((country) => ` ${country.name}`)}`,
-                        // value: `${movie?.production_countries.map((country, index) => `${country.name}${index < movie.production_countries.length - 1 && ", "}`)}`,
                       },
                       {
                         label: "Budget:",
