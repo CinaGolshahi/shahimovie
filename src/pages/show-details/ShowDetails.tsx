@@ -15,14 +15,17 @@ import {
   getYearFromDate,
 } from "../../utils";
 
-import { CastTab, SeasonsTab } from "./components";
+import { SeasonsTab } from "./components";
 
 import MediaSection from "../../components/common/media-section";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
-import { DetailsTab } from "../../components/ui/tabs-pattern/components";
+import {
+  CastTab,
+  DetailsTab,
+} from "../../components/ui/tabs-pattern/components";
 import useExternalIds from "../../hooks/useExternalIds";
 
 const ShowDetails = () => {
@@ -233,7 +236,12 @@ const ShowDetails = () => {
                 ),
               },
               { label: "Seasons", content: <SeasonsTab id={`${id}`} /> },
-              { label: "Cast", content: <CastTab id={`${id}`} /> },
+              {
+                label: "Cast",
+                content: (
+                  <CastTab cast={cast} creditsIsLoading={creditsIsLoading} />
+                ),
+              },
             ]}
           />
           <MediaSection

@@ -17,7 +17,7 @@ import {
   getYearFromDate,
 } from "../../utils";
 
-import { CastTab } from "./components";
+import { CastTab } from "../../components/ui/tabs-pattern/components";
 
 import MediaSection from "../../components/common/media-section";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
@@ -217,7 +217,12 @@ const MovieDetails = () => {
                   />
                 ),
               },
-              { label: "Cast", content: <CastTab id={`${id}`} /> },
+              {
+                label: "Cast",
+                content: (
+                  <CastTab cast={cast} creditsIsLoading={creditsIsLoading} />
+                ),
+              },
             ]}
           />
 

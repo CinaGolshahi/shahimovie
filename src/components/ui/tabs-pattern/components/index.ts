@@ -1,3 +1,4 @@
 import DetailsTab from "./DetailsTab";
+import CastTab from "./CastTab";
 
-export { DetailsTab };
+export { DetailsTab, CastTab };
