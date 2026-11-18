@@ -104,33 +104,22 @@ const MovieDetails = () => {
                           </span>
                         ))}
                     </p>
-                    <p className="text-sm text-gray-400">
+                    <p className="flex gap-6 text-sm text-gray-400 *:relative *:inline-flex *:items-center *:not-first:before:absolute *:not-first:before:-inset-s-4 *:not-first:before:size-1.5 *:not-first:before:rounded-full *:not-first:before:bg-gray-400">
                       {movie?.release_date && (
                         <span>{getYearFromDate(movie?.release_date)}</span>
                       )}
 
-                      {movie?.runtime && (
-                        <span>
-                          <> • </>
-                          <>{movie.runtime}</>
-                          <> min</>
-                        </span>
-                      )}
+                      {movie?.runtime && <span>{movie?.runtime} min</span>}
+
                       {movie?.production_countries && (
                         <span>
-                          <> • </>
-                          <>
-                            {movie?.production_countries.map(
-                              (country, index) => (
-                                <span key={country.iso_3166_1}>
-                                  <span>{country.name}</span>
-                                  {index <
-                                    movie?.production_countries.length - 1 &&
-                                    ", "}
-                                </span>
-                              ),
-                            )}
-                          </>
+                          {movie?.production_countries.map((country, index) => (
+                            <span key={country.iso_3166_1}>
+                              <span>{country.name}</span>
+                              {index < movie?.production_countries.length - 1 &&
+                                ", "}
+                            </span>
+                          ))}
                         </span>
                       )}
                     </p>
