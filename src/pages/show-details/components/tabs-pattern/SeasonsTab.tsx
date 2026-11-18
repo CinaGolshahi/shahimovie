@@ -1,7 +1,11 @@
 import { ImageOff, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useSeason, useShow } from "../../../../hooks";
-import { formatReleaseDate, getTmdbImageUrl } from "../../../../utils";
+import {
+  formatReleaseDate,
+  formatRuntime,
+  getTmdbImageUrl,
+} from "../../../../utils";
 import EpisodeLoader from "./EpisodeLoader";
 
 interface ISeasonTab {
@@ -100,7 +104,9 @@ const SeasonsTab = (props: ISeasonTab) => {
                     <span>E{episode.episode_number}</span>
                   </span>
                 )}
-                {episode.runtime && <span>{episode.runtime} min</span>}
+                {episode.runtime && (
+                  <span>{formatRuntime(episode.runtime)} min</span>
+                )}
                 {episode.air_date && (
                   <span>{formatReleaseDate(episode.air_date)}</span>
                 )}

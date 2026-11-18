@@ -13,6 +13,7 @@ import {
 import {
   formatCurrency,
   formatReleaseDate,
+  formatRuntime,
   getTmdbImageUrl,
   getYearFromDate,
 } from "../../utils";
@@ -109,7 +110,9 @@ const MovieDetails = () => {
                         <span>{getYearFromDate(movie?.release_date)}</span>
                       )}
 
-                      {movie?.runtime && <span>{movie?.runtime} min</span>}
+                      {movie?.runtime && (
+                        <span>{formatRuntime(movie.runtime)}</span>
+                      )}
 
                       {movie?.production_countries && (
                         <span>
@@ -186,7 +189,10 @@ const MovieDetails = () => {
                         label: "Release Date:",
                         value: formatReleaseDate(movie?.release_date),
                       },
-                      { label: "Runtime:", value: `${movie?.runtime} min` },
+                      {
+                        label: "Runtime:",
+                        value: `${formatRuntime(movie?.runtime)}`,
+                      },
                       {
                         label: "Director:",
                         value: `${directors.map((director, index) => `${director.name}${index < directors.length - 1 && ", "}`)}`,
