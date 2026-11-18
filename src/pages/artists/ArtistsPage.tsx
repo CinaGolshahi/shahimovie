@@ -15,6 +15,7 @@ const ArtistsPage = () => {
 
   return (
     <div className="container mx-auto flex flex-col gap-2 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
+      <title>Artists | Shahi</title>
       <Breadcrumb
         items={[{ label: "Home", link: "/" }, { label: "Artists" }]}
       />

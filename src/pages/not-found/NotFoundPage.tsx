@@ -13,6 +13,7 @@ const NotFoundPage = (props: INotFoundPageProps) => {
 
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center gap-10 bg-gray-950 py-16 xl:flex-row">
+      <title>Page not found</title>
       <div>
         <img src={NotFoundVector} alt="" className="size-72 xl:size-96" />
       </div>

@@ -55,6 +55,7 @@ const ShowDetails = () => {
         <MediaDetailsLoader />
       ) : (
         <div className="-mt-20 flex flex-col gap-10">
+          <title>{show?.name ?? "Shahi"}</title>
           <div
             style={{
               backgroundImage: `url(${getTmdbImageUrl(show?.backdrop_path, "w200") ?? ""})`,

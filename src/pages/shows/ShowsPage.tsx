@@ -7,6 +7,7 @@ const ShowsPage = () => {
 
   return (
     <div className="container mx-auto flex flex-col gap-2 p-2 pt-6 xl:-mt-4 xl:px-8 xl:pt-0">
+      <title>Shows | Shahi</title>
       <Breadcrumb items={[{ label: "Home", link: "/" }, { label: "Shows" }]} />
       {showsIsLoading && shows.length === 0 ? (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-5">

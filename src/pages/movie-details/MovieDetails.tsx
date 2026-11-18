@@ -56,6 +56,7 @@ const MovieDetails = () => {
         <MediaDetailsLoader />
       ) : (
         <div className="-mt-20 flex flex-col gap-10">
+          <title>{movie?.title ?? "Shahi"}</title>
           <div
             style={{
               backgroundImage: `url(${getTmdbImageUrl(movie?.backdrop_path, "w200") ?? ""})`,
