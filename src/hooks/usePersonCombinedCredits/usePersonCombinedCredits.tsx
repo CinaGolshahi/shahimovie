@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IPersonCombinedCredits, TCombinedCast } from "../../types/tmdb";
+import type {
+  IPersonCombinedCredits,
+  TCombinedCast,
+  TCombinedCrew,
+} from "../../types/tmdb";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUsePersonCombinedCredits {
@@ -11,6 +15,9 @@ const usePersonCombinedCredits = (props: IUsePersonCombinedCredits) => {
   const { id } = props;
   const [personCombinedCreditsCast, setPersonCombinedCreditsCast] =
     useState<TCombinedCast[]>();
+  const [personCombinedCreditsCrew, setPersonCombinedCreditsCrew] =
+    useState<TCombinedCrew[]>();
+
   const [
     personCombinedCreditsCastIsLoading,
     setPersonCombinedCreditsCastIsLoading,
@@ -27,6 +34,7 @@ const usePersonCombinedCredits = (props: IUsePersonCombinedCredits) => {
           `/person/${id}/combined_credits`,
         );
         setPersonCombinedCreditsCast(response.data.cast);
+        setPersonCombinedCreditsCrew(response.data.crew);
       } catch (error) {
         setPersonCombinedCreditsCastError(getErrorMessage(error));
       } finally {
@@ -39,6 +47,7 @@ const usePersonCombinedCredits = (props: IUsePersonCombinedCredits) => {
 
   return {
     personCombinedCreditsCast,
+    personCombinedCreditsCrew,
     personCombinedCreditsCastIsLoading,
     personCombinedCreditsCastError,
   };
