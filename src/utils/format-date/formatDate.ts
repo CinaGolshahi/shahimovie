@@ -1,4 +1,4 @@
-const formatReleaseDate = (dateString: string | null | undefined): string => {
+const formatDate = (dateString: string | null | undefined): string => {
   if (!dateString) return "N/A";
 
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -7,4 +7,4 @@ const formatReleaseDate = (dateString: string | null | undefined): string => {
     day: "numeric",
   });
 };
-export default formatReleaseDate;
+export default formatDate;

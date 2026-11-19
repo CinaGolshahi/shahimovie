@@ -12,7 +12,7 @@ import {
 
 import {
   formatCurrency,
-  formatReleaseDate,
+  formatDate,
   formatRuntime,
   getTmdbImageUrl,
   getYearFromDate,
@@ -187,7 +187,7 @@ const MovieDetails = () => {
                       { label: "Status:", value: movie?.status },
                       {
                         label: "Release Date:",
-                        value: formatReleaseDate(movie?.release_date),
+                        value: formatDate(movie?.release_date),
                       },
                       {
                         label: "Runtime:",

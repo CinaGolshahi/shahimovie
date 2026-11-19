@@ -9,11 +9,7 @@ import {
   useShow,
 } from "../../hooks";
 
-import {
-  formatReleaseDate,
-  getTmdbImageUrl,
-  getYearFromDate,
-} from "../../utils";
+import { formatDate, getTmdbImageUrl, getYearFromDate } from "../../utils";
 
 import { SeasonsTab } from "./components";
 
@@ -206,11 +202,11 @@ const ShowDetails = () => {
                       { label: "Status:", value: show?.status },
                       {
                         label: "First Air Date:",
-                        value: formatReleaseDate(show?.first_air_date),
+                        value: formatDate(show?.first_air_date),
                       },
                       {
                         label: "Last Air Date:",
-                        value: formatReleaseDate(show?.last_air_date),
+                        value: formatDate(show?.last_air_date),
                       },
                       {
                         label: "Created By:",

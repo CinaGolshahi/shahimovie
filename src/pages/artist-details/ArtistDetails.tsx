@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
 import { Filmography } from "../../components/ui/tabs-pattern/components";
 import { usePerson, usePersonCombinedCredits } from "../../hooks";
-import { formatReleaseDate, getTmdbImageUrl } from "../../utils";
+import { formatDate, getTmdbImageUrl } from "../../utils";
 
 const ArtistDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -62,7 +62,7 @@ const ArtistDetails = () => {
                     </p>
                     <p className="text-sm text-gray-400">
                       {person?.birthday && (
-                        <span>{formatReleaseDate(person?.birthday)}</span>
+                        <span>{formatDate(person?.birthday)}</span>
                       )}
 
                       {person?.place_of_birth && (
