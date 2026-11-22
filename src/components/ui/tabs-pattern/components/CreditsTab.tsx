@@ -1,6 +1,6 @@
 import { ImageOff } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { TCombinedCast, TCombinedCrew } from "../../../../types/tmdb";
+import type { TCombinedCast, TCombinedCrew } from "../../../../types";
 import { getTmdbImageUrl } from "../../../../utils";
 
 interface ICreditsTabProps {

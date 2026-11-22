@@ -1,4 +1,4 @@
-import type { ITVShowSummary } from "../../../../types/tmdb";
+import type { ITVShowSummary } from "../../../../types";
 
 interface ITVShowCardProps {
   show: ITVShowSummary;

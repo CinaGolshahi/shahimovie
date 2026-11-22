@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import omdbApi from "../../services/omdb";
-import type { IOMDbResponse } from "../../types/omdb";
+import type { IOMDbResponse } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUseScores {

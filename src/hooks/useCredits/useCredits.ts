@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { ICastMember, ICredits, ICrewMember } from "../../types/tmdb";
+import type { ICastMember, ICredits, ICrewMember } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface ICreditsProps {

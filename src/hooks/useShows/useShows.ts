@@ -4,7 +4,7 @@ import type {
   IMediaSummary,
   IPaginatedResponse,
   ITVShowSummary,
-} from "../../types/tmdb";
+} from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 type TvSortField = "popularity" | "first_air_date" | "original_name";

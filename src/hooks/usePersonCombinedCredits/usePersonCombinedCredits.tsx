@@ -4,7 +4,7 @@ import type {
   IPersonCombinedCredits,
   TCombinedCast,
   TCombinedCrew,
-} from "../../types/tmdb";
+} from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUsePersonCombinedCredits {

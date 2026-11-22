@@ -7,7 +7,7 @@ import type {
   IMediaSummary,
   IMovie,
   IMovieWithExtras,
-} from "../../types/tmdb";
+} from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 const useMovie = (id: string | undefined) => {

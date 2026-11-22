@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IExternalIds } from "../../types/tmdb";
+import type { IExternalIds } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUseExternalIds {

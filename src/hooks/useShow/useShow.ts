@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { ITVShow } from "../../types/tmdb";
+import type { ITVShow } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUseShow {

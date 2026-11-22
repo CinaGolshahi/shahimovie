@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { ISeasonDetails } from "../../types/tmdb";
+import type { ISeasonDetails } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUseSeason {

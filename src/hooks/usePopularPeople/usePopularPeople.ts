@@ -4,7 +4,7 @@ import type {
   IMediaSummary,
   IPaginatedResponse,
   IPersonSummary,
-} from "../../types/tmdb";
+} from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 const usePopularPeople = () => {

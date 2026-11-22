@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMediaSummary, IPaginatedResponse } from "../../types/tmdb";
+import type { IMediaSummary, IPaginatedResponse } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 const useTrending = (type: "week" | "day") => {

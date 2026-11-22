@@ -4,7 +4,7 @@ import type {
   IMediaSummary,
   IMovieSummary,
   IPaginatedResponse,
-} from "../../types/tmdb";
+} from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 type MovieSortField = "popularity" | "primary_release_date" | "title";

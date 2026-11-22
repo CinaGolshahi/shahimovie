@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IPerson } from "../../types/tmdb";
+import type { IPerson } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
 interface IUsePerson {

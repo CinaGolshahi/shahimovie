@@ -1,6 +1,6 @@
 import { ImageOff, Tv } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { ITVShowSummary } from "../../../../../types/tmdb";
+import type { ITVShowSummary } from "../../../../../types";
 import { getTmdbImageUrl, getYearFromDate } from "../../../../../utils";
 
 interface ITVShowSlide {

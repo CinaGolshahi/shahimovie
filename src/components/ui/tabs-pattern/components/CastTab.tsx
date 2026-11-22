@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import type { ICastMember } from "../../../../types/tmdb";
-import { getTmdbImageUrl } from "../../../../utils";
 import { ImageOff } from "lucide-react";
+import { Link } from "react-router-dom";
+import type { ICastMember } from "../../../../types";
+import { getTmdbImageUrl } from "../../../../utils";
 
 interface ICastTabProps {
   cast: ICastMember[] | undefined;

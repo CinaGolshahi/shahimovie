@@ -1,6 +1,6 @@
 import { Film, ImageOff } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { IMovieSummary } from "../../../../../types/tmdb";
+import type { IMovieSummary } from "../../../../../types";
 import { getTmdbImageUrl, getYearFromDate } from "../../../../../utils";
 
 interface IMovieSlide {

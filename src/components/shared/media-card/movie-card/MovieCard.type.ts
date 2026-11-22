@@ -1,4 +1,4 @@
-import type { IMovieSummary } from "../../../../types/tmdb";
+import type { IMovieSummary } from "../../../../types";
 
 interface IMovieCardProps {
   movie: IMovieSummary;

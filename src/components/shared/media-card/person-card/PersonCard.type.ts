@@ -1,4 +1,4 @@
-import type { IPersonSummary } from "../../../../types/tmdb";
+import type { IPersonSummary } from "../../../../types";
 
 interface IPersonCardProps {
   person: IPersonSummary;

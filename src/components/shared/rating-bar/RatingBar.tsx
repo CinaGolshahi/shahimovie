@@ -1,5 +1,5 @@
 import { Imdb, RottenTomatoes, TheMovieDatabase } from "@thesvg/react";
-import type { IOMDbResponse } from "../../../types/omdb";
+import type { IOMDbResponse } from "../../../types";
 import {
   RatingColorFrom10,
   RatingColorFrom100,

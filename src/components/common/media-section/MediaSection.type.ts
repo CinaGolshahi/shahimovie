@@ -1,4 +1,4 @@
-import type { IMediaSummary } from "../../../types/tmdb";
+import type { IMediaSummary } from "../../../types";
 
 interface IMediaSection {
   title: string;
