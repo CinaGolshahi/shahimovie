@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
 import { Filmography } from "../../components/ui/tabs-pattern/components";
 import { usePerson, usePersonCombinedCredits } from "../../hooks";
-import { formatDate, getTmdbImageUrl } from "../../utils";
+import { formatDate, getAge, getTmdbImageUrl } from "../../utils";
 
 const ArtistDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -62,7 +62,12 @@ const ArtistDetails = () => {
                     </p>
                     <p className="flex gap-6 text-sm text-gray-400 *:relative *:inline-flex *:items-center *:not-first:before:absolute *:not-first:before:-inset-s-3.5 *:not-first:before:size-1 *:not-first:before:rounded-full *:not-first:before:bg-gray-300">
                       {person?.birthday && (
-                        <span>{formatDate(person?.birthday)}</span>
+                        <>
+                          <span>{formatDate(person?.birthday)}</span>
+                          <span>
+                            {getAge(person.birthday, person.deathday)}
+                          </span>
+                        </>
                       )}
 
                       {person?.place_of_birth && (
