@@ -60,16 +60,13 @@ const ArtistDetails = () => {
                         </span>
                       )}
                     </p>
-                    <p className="text-sm text-gray-400">
+                    <p className="flex gap-6 text-sm text-gray-400 *:relative *:inline-flex *:items-center *:not-first:before:absolute *:not-first:before:-inset-s-3.5 *:not-first:before:size-1 *:not-first:before:rounded-full *:not-first:before:bg-gray-300">
                       {person?.birthday && (
                         <span>{formatDate(person?.birthday)}</span>
                       )}
 
                       {person?.place_of_birth && (
-                        <span>
-                          <> • </>
-                          <>{person.place_of_birth}</>
-                        </span>
+                        <span>{person.place_of_birth}</span>
                       )}
                     </p>
 
