@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import tmdbApi from "../../services/tmdb";
-import type { IMovie } from "../../types/tmdb";
+import type {
+  ICastMember,
+  ICrewMember,
+  IExternalIds,
+  IMediaSummary,
+  IMovie,
+  IMovieWithExtras,
+} from "../../types/tmdb";
 import getErrorMessage from "../../utils/get-error-message";
 
-interface IUseMovie {
-  id: string;
-}
-
-const useMovie = (props: IUseMovie) => {
-  const { id } = props;
+const useMovie = (id: string | undefined) => {
   const [movie, setMovie] = useState<IMovie>();
+  const [externalIds, setExternalIds] = useState<IExternalIds>();
+  const [cast, setCast] = useState<ICastMember[]>();
+  const [crew, setCrew] = useState<ICrewMember[]>();
+  const [recommendations, setRecommendations] = useState<IMediaSummary[]>([]);
+
   const [movieIsLoading, setMovieIsLoading] = useState(true);
   const [movieError, setMovieError] = useState<string | null>(null);
 
@@ -18,8 +25,19 @@ const useMovie = (props: IUseMovie) => {
       setMovieIsLoading(true);
       setMovieError(null);
       try {
-        const response = await tmdbApi.get(`/movie/${id}`);
-        setMovie(response.data);
+        const response = await tmdbApi.get<IMovieWithExtras>(`/movie/${id}`, {
+          params: {
+            append_to_response: "credits,external_ids,recommendations",
+          },
+        });
+        const { credits, external_ids, recommendations, ...movieData } =
+          response.data;
+
+        setMovie(movieData);
+        setExternalIds(external_ids);
+        setCast(credits.cast.toSorted((a, b) => a.order - b.order));
+        setCrew(credits.crew);
+        setRecommendations(recommendations.results);
       } catch (error) {
         setMovieError(getErrorMessage(error));
       } finally {
@@ -28,7 +46,15 @@ const useMovie = (props: IUseMovie) => {
     };
     fetchMovieById();
   }, [id]);
-  return { movie, movieIsLoading, movieError };
+  return {
+    movie,
+    cast,
+    crew,
+    externalIds,
+    recommendations,
+    movieIsLoading,
+    movieError,
+  };
 };
 
 export default useMovie;

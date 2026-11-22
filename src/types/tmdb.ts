@@ -61,6 +61,12 @@ interface IMovie {
   vote_count: number;
 }
 
+type IMovieWithExtras = IMovie & {
+  credits: ICredits;
+  external_ids: IExternalIds;
+  recommendations: IPaginatedResponse<IMediaSummary>;
+};
+
 interface IRole {
   credit_id: string;
   character: string;
@@ -360,6 +366,7 @@ export type {
   IMediaSummary,
   IMovie,
   IMovieSummary,
+  IMovieWithExtras,
   IPaginatedResponse,
   IPerson,
   IPersonCombinedCredits,

@@ -2,13 +2,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { ImageOff } from "lucide-react";
 
-import {
-  useCredits,
-  useMovie,
-  useMovieDirectors,
-  useRecommendations,
-  useScores,
-} from "../../hooks";
+import { useMovie, useMovieDirectors, useScores } from "../../hooks";
 
 import {
   formatCurrency,
@@ -26,34 +20,22 @@ import RattingBar from "../../components/shared/rating-bar";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
 import { DetailsTab } from "../../components/ui/tabs-pattern/components";
-import useExternalIds from "../../hooks/useExternalIds";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { movie, movieIsLoading } = useMovie({ id: id ?? "" });
+  const { movie, cast, recommendations, externalIds, movieIsLoading } =
+    useMovie(id);
 
   const { directors } = useMovieDirectors({ id: `${movie?.id}` });
 
-  const { externalIds } = useExternalIds({ type: "movie", id: movie?.id });
   const { scores, scoresIsLoading } = useScores({
     imdbId: externalIds?.imdb_id,
   });
 
-  const { cast, creditsIsLoading } = useCredits({
-    id: id ?? "",
-    mediaType: "movie",
-    creditsType: "credits",
-  });
-
-  const { recommendations, recommendationsIsLoading } = useRecommendations({
-    id: id ?? "",
-    type: "movie",
-  });
-
   return (
     <>
-      {movieIsLoading || creditsIsLoading ? (
+      {movieIsLoading ? (
         <MediaDetailsLoader />
       ) : (
         <div className="-mt-20 flex flex-col gap-10">
@@ -216,7 +198,7 @@ const MovieDetails = () => {
               {
                 label: "Cast",
                 content: (
-                  <CastTab cast={cast} creditsIsLoading={creditsIsLoading} />
+                  <CastTab cast={cast} creditsIsLoading={movieIsLoading} />
                 ),
               },
             ]}
@@ -224,7 +206,7 @@ const MovieDetails = () => {
 
           <MediaSection
             title="Recommendation"
-            loading={recommendationsIsLoading}
+            loading={movieIsLoading}
             media={recommendations}
           />
         </div>
