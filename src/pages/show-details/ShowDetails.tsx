@@ -210,7 +210,7 @@ const ShowDetails = () => {
                       },
                       {
                         label: "Created By:",
-                        value: `${show?.created_by.map((creator, index) => `${creator.name}${index < show?.created_by.length - 1 && ", "}`)}`,
+                        value: `${show?.created_by.map((creator) => ` ${creator.name}`)}`,
                       },
                       {
                         label: "Number of Seasons:",
