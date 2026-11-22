@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import MediaDetailsLoader from "../../components/shared/media-details-loader";
 import Breadcrumb from "../../components/ui/breadcrumb";
 import TabsPattern from "../../components/ui/tabs-pattern";
-import { Filmography } from "../../components/ui/tabs-pattern/components";
+import { CreditsTab } from "../../components/ui/tabs-pattern/components";
 import { usePerson, usePersonCombinedCredits } from "../../hooks";
 import { formatDate, getAge, getTmdbImageUrl } from "../../utils";
 
@@ -88,75 +88,79 @@ const ArtistDetails = () => {
                     Known for
                   </p>
                   <div className="flex grid-cols-8 items-stretch gap-4 overflow-auto xl:grid">
-                    {person?.known_for_department === "Acting" &&
-                      personCombinedCreditsCast
-                        ?.toSorted((a, b) => b.vote_count - a.vote_count)
-                        .filter(
-                          (item, index, array) =>
-                            array.findIndex((other) => other.id === item.id) ===
-                            index,
-                        )
-                        .slice(0, 8)
-                        .map((item) => (
-                          <Link
-                            key={item.id}
-                            to={`/${item.media_type === "movie" ? "movie" : "show"}/${item.id}`}
-                            className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80 md:min-w-1/5 lg:min-w-1/6"
-                          >
-                            {item.poster_path ? (
-                              <img
-                                src={`${getTmdbImageUrl(item.poster_path, "w200")}`}
-                                alt=""
-                                className="aspect-2/3 w-full rounded-2xl object-cover"
-                              />
-                            ) : (
-                              <div className="flex aspect-2/3 w-full items-center justify-center rounded-2xl bg-gray-900">
-                                <ImageOff className="size-8 stroke-gray-700" />
-                              </div>
-                            )}
-                            <span className="line-clamp-1 font-semibold">
-                              {item.media_type === "movie"
-                                ? item.title
-                                : item.name}
-                            </span>
-                            <span className="line-clamp-1 text-gray-500">
-                              {item.character}
-                            </span>
-                          </Link>
-                        ))}
-                    {person?.known_for_department === "Directing" &&
-                      personCombinedCreditsCrew
-                        ?.toSorted((a, b) => b.vote_count - a.vote_count)
-                        .filter(
-                          (item, index, array) =>
-                            array.findIndex((other) => other.id === item.id) ===
-                            index,
-                        )
-                        .slice(0, 8)
-                        .map((item) => (
-                          <Link
-                            key={item.id}
-                            to={`/${item.media_type === "movie" ? "movie" : "show"}/${item.id}`}
-                            className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80 md:min-w-1/5 lg:min-w-1/6"
-                          >
-                            {item.poster_path ? (
-                              <img
-                                src={`${getTmdbImageUrl(item.poster_path, "w200")}`}
-                                alt=""
-                                className="aspect-2/3 w-full rounded-2xl object-cover"
-                              />
-                            ) : (
-                              <div className="flex aspect-2/3 w-full items-center justify-center rounded-2xl bg-gray-900">
-                                <ImageOff className="size-8 stroke-gray-700" />
-                              </div>
-                            )}
-                            <span className="line-clamp-1 font-semibold">
-                              {item.media_type === "movie"
-                                ? item.title
-                                : item.name}
-                            </span>
-                          </Link>
-                        ))}
+                    {person?.known_for_department === "Acting"
+                      ? personCombinedCreditsCast
+                          ?.toSorted((a, b) => b.vote_count - a.vote_count)
+                          .filter(
+                            (item, index, array) =>
+                              array.findIndex(
+                                (other) => other.id === item.id,
+                              ) === index,
+                          )
+                          .slice(0, 8)
+                          .map((item) => (
+                            <Link
+                              key={item.id}
+                              to={`/${item.media_type === "movie" ? "movie" : "show"}/${item.id}`}
+                              className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80 md:min-w-1/5 lg:min-w-1/6"
+                            >
+                              {item.poster_path ? (
+                                <img
+                                  src={`${getTmdbImageUrl(item.poster_path, "w200")}`}
+                                  alt=""
+                                  className="aspect-2/3 w-full rounded-2xl object-cover"
+                                />
+                              ) : (
+                                <div className="flex aspect-2/3 w-full items-center justify-center rounded-2xl bg-gray-900">
+                                  <ImageOff className="size-8 stroke-gray-700" />
+                                </div>
+                              )}
+                              <span className="line-clamp-1 font-semibold">
+                                {item.media_type === "movie"
+                                  ? item.title
+                                  : item.name}
+                              </span>
+                              <span className="line-clamp-1 text-gray-500">
+                                {item.character}
+                              </span>
+                            </Link>
+                          ))
+                      : personCombinedCreditsCrew
+                          ?.toSorted((a, b) => b.vote_count - a.vote_count)
+                          .filter(
+                            (item, index, array) =>
+                              array.findIndex(
+                                (other) => other.id === item.id,
+                              ) === index,
+                          )
+                          .slice(0, 8)
+                          .map((item) => (
+                            <Link
+                              key={item.id}
+                              to={`/${item.media_type === "movie" ? "movie" : "show"}/${item.id}`}
+                              className="flex aspect-2/3 w-full min-w-1/3 flex-col items-center gap-1 rounded-2xl p-2 text-center text-sm transition-all delay-75 duration-300 hover:opacity-80 md:min-w-1/5 lg:min-w-1/6"
+                            >
+                              {item.poster_path ? (
+                                <img
+                                  src={`${getTmdbImageUrl(item.poster_path, "w200")}`}
+                                  alt=""
+                                  className="aspect-2/3 w-full rounded-2xl object-cover"
+                                />
+                              ) : (
+                                <div className="flex aspect-2/3 w-full items-center justify-center rounded-2xl bg-gray-900">
+                                  <ImageOff className="size-8 stroke-gray-700" />
+                                </div>
+                              )}
+                              <span className="line-clamp-1 font-semibold">
+                                {item.media_type === "movie"
+                                  ? item.title
+                                  : item.name}
+                              </span>
+                              <span className="line-clamp-1 text-gray-500">
+                                {item.job}
+                              </span>
+                            </Link>
+                          ))}
                   </div>
                 </div>
               </div>
@@ -166,9 +170,15 @@ const ArtistDetails = () => {
           <TabsPattern
             tabs={[
               {
-                label: "Filmography",
+                label: `${person?.known_for_department === "Acting" ? "Filmography" : "Credits"}`,
                 content: (
-                  <Filmography filmography={personCombinedCreditsCast} />
+                  <CreditsTab
+                    Credits={
+                      person?.known_for_department === "Acting"
+                        ? personCombinedCreditsCast
+                        : personCombinedCreditsCrew
+                    }
+                  />
                 ),
               },
             ]}

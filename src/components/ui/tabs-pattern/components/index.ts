@@ -1,5 +1,5 @@
-import DetailsTab from "./DetailsTab";
 import CastTab from "./CastTab";
-import Filmography from "./Filmography";
+import CreditsTab from "./CreditsTab";
+import DetailsTab from "./DetailsTab";
 
-export { DetailsTab, CastTab, Filmography };
+export { CastTab, CreditsTab, DetailsTab };

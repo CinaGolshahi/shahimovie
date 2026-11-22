@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
-import type { TCombinedCast } from "../../../../types/tmdb";
-import { getTmdbImageUrl } from "../../../../utils";
 import { ImageOff } from "lucide-react";
+import { Link } from "react-router-dom";
+import type { TCombinedCast, TCombinedCrew } from "../../../../types/tmdb";
+import { getTmdbImageUrl } from "../../../../utils";
 
-interface IFilmographyProps {
-  filmography: TCombinedCast[] | undefined;
+interface ICreditsTabProps {
+  Credits: TCombinedCast[] | TCombinedCrew[] | undefined;
 }
 
-const Filmography = (props: IFilmographyProps) => {
-  const { filmography } = props;
+const Credits = (props: ICreditsTabProps) => {
+  const { Credits } = props;
   return (
     <>
       <div className="flex overflow-auto md:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-        {filmography
-          ?.toSorted((a, b) => b.vote_count - a.vote_count)
+        {Credits?.toSorted((a, b) => b.vote_count - a.vote_count)
           .filter(
             (item, index, array) =>
               array.findIndex((other) => other.id === item.id) === index,
@@ -39,7 +38,7 @@ const Filmography = (props: IFilmographyProps) => {
                 {item.media_type === "movie" ? item.title : item.name}
               </span>
               <span className="line-clamp-1 text-gray-500">
-                {item.character}
+                {"character" in item ? item.character : item.job}
               </span>
             </Link>
           ))}
@@ -48,4 +47,4 @@ const Filmography = (props: IFilmographyProps) => {
   );
 };
 
-export default Filmography;
+export default Credits;
