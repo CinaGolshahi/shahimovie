@@ -3,13 +3,7 @@ import omdbApi from "../../services/omdb";
 import type { IOMDbResponse } from "../../types";
 import getErrorMessage from "../../utils/get-error-message";
 
-interface IUseScores {
-  imdbId: string | undefined;
-}
-
-const useScores = (props: IUseScores) => {
-  const { imdbId } = props;
-
+const useScores = (imdbId: string | undefined) => {
   const [scores, setScores] = useState<IOMDbResponse>();
   const [scoresIsLoading, setScoresIsLoading] = useState(true);
   const [scoresError, setScoresError] = useState<string | null>(null);

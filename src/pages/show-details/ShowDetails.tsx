@@ -34,16 +34,7 @@ const ShowDetails = () => {
     imdbId: externalIds?.imdb_id,
   });
 
-  const { cast, creditsIsLoading } = useCredits({
-    id: id ?? "",
-    mediaType: "tv",
-    creditsType: "aggregate_credits",
-  });
-
-  const { recommendations, recommendationsIsLoading } = useRecommendations({
-    id: id ?? "",
-    type: "tv",
-  });
+  const { scores, scoresIsLoading } = useScores(externalIds?.imdb_id);
 
   return (
     <>

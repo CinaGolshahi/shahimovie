@@ -29,9 +29,7 @@ const MovieDetails = () => {
 
   const { directors } = useMovieDirectors({ id: `${movie?.id}` });
 
-  const { scores, scoresIsLoading } = useScores({
-    imdbId: externalIds?.imdb_id,
-  });
+  const { scores, scoresIsLoading } = useScores(externalIds?.imdb_id);
 
   return (
     <>
