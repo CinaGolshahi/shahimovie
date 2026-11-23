@@ -12,7 +12,7 @@ const SeasonsTab = (props: ISeasonTab) => {
   const { id } = props;
   const [selectedSeason, setSelectedSeason] = useState(1);
 
-  const { showIsLoading, show } = useShow({ id: id });
+  const { showIsLoading, show } = useShow(id);
   const { season, seasonIsLoading } = useSeason({
     id: id,
     seasonNumber: selectedSeason,

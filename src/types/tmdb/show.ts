@@ -4,7 +4,8 @@ import type {
   IProductionCountry,
   ISpokenLanguage,
 } from "./common";
-import type { ICreatedBy, ICrewMember, IGuestStar } from "./credits";
+import type { ICreatedBy, ICredits, ICrewMember, IGuestStar } from "./credits";
+import type { IMediaSummary } from "./media";
 
 export interface IEpisode {
   id: number;
@@ -109,3 +110,9 @@ export interface ITVShowSummary {
   vote_average: number;
   vote_count: number;
 }
+
+export type ITVShowWithExtras = ITVShow & {
+  aggregate_credits: ICredits;
+  external_ids: import("./common").IExternalIds;
+  recommendations: import("./common").IPaginatedResponse<IMediaSummary>;
+};

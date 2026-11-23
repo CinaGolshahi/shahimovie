@@ -2,12 +2,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { ImageOff } from "lucide-react";
 
-import {
-  useCredits,
-  useRecommendations,
-  useScores,
-  useShow,
-} from "../../hooks";
+import { useScores, useShow } from "../../hooks";
 
 import { formatDate, getTmdbImageUrl, getYearFromDate } from "../../utils";
 
@@ -22,23 +17,18 @@ import {
   CastTab,
   DetailsTab,
 } from "../../components/ui/tabs-pattern/components";
-import useExternalIds from "../../hooks/useExternalIds";
 
 const ShowDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { show, showIsLoading } = useShow({ id: id ?? "" });
-
-  const { externalIds } = useExternalIds({ type: "tv", id: show?.id });
-  const { scores, scoresIsLoading } = useScores({
-    imdbId: externalIds?.imdb_id,
-  });
+  const { show, cast, externalIds, recommendations, showIsLoading } =
+    useShow(id);
 
   const { scores, scoresIsLoading } = useScores(externalIds?.imdb_id);
 
   return (
     <>
-      {showIsLoading || creditsIsLoading ? (
+      {showIsLoading ? (
         <MediaDetailsLoader />
       ) : (
         <div className="-mt-20 flex flex-col gap-10">
@@ -227,14 +217,14 @@ const ShowDetails = () => {
               {
                 label: "Cast",
                 content: (
-                  <CastTab cast={cast} creditsIsLoading={creditsIsLoading} />
+                  <CastTab cast={cast} creditsIsLoading={showIsLoading} />
                 ),
               },
             ]}
           />
           <MediaSection
             title="Recommendations"
-            loading={recommendationsIsLoading}
+            loading={showIsLoading}
             media={recommendations}
           />
         </div>
