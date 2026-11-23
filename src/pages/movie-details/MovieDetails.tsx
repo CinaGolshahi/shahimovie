@@ -8,6 +8,7 @@ import {
   formatCurrency,
   formatDate,
   formatRuntime,
+  getDirectors,
   getTmdbImageUrl,
   getYearFromDate,
 } from "../../utils";
@@ -24,7 +25,7 @@ import { DetailsTab } from "../../components/ui/tabs-pattern/components";
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { movie, cast, recommendations, externalIds, movieIsLoading } =
+  const { movie, cast, crew, recommendations, externalIds, movieIsLoading } =
     useMovie(id);
 
   const { scores, scoresIsLoading } = useScores(externalIds?.imdb_id);
@@ -170,6 +171,10 @@ const MovieDetails = () => {
                       {
                         label: "Runtime:",
                         value: `${formatRuntime(movie?.runtime)}`,
+                      },
+                      {
+                        label: "Directors:",
+                        value: `${getDirectors(crew)}`,
                       },
                       {
                         label: "Countries:",
