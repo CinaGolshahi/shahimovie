@@ -1,6 +1,4 @@
-import useCredits from "./useCredits";
 import useMovie from "./useMovie";
-import useMovieDirectors from "./useMovieDirectors";
 import useMovies from "./useMovies";
 import usePerson from "./usePerson";
 import usePersonCombinedCredits from "./usePersonCombinedCredits";
@@ -14,9 +12,7 @@ import useShows from "./useShows";
 import useTrending from "./useTrending";
 
 export {
-  useCredits,
   useMovie,
-  useMovieDirectors,
   useMovies,
   usePerson,
   usePersonCombinedCredits,

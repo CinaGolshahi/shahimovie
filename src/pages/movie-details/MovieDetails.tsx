@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { ImageOff } from "lucide-react";
 
-import { useMovie, useMovieDirectors, useScores } from "../../hooks";
+import { useMovie, useScores } from "../../hooks";
 
 import {
   formatCurrency,
@@ -26,8 +26,6 @@ const MovieDetails = () => {
 
   const { movie, cast, recommendations, externalIds, movieIsLoading } =
     useMovie(id);
-
-  const { directors } = useMovieDirectors({ id: `${movie?.id}` });
 
   const { scores, scoresIsLoading } = useScores(externalIds?.imdb_id);
 
@@ -172,10 +170,6 @@ const MovieDetails = () => {
                       {
                         label: "Runtime:",
                         value: `${formatRuntime(movie?.runtime)}`,
-                      },
-                      {
-                        label: "Director:",
-                        value: `${directors.map((director, index) => `${director.name}${index < directors.length - 1 && ", "}`)}`,
                       },
                       {
                         label: "Countries:",
