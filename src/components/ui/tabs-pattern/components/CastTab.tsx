@@ -38,7 +38,7 @@ const CastTab = (props: ICastTabProps) => {
                   {member.name}
                 </span>
                 <span className="line-clamp-1 text-gray-500">
-                  {member.character ||
+                  {member.character ??
                     member.roles.map((role, index) => (
                       <span key={role.credit_id}>
                         <span>{role.character}</span>
