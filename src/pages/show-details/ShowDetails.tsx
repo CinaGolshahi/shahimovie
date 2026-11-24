@@ -61,7 +61,7 @@ const ShowDetails = () => {
                     )}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 text-center md:w-2/3 md:items-start md:text-start lg:w-3/4 xl:w-2/4">
-                    <p className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1">
                       <span className="text-xl font-bold md:text-2xl lg:text-3xl xl:text-4xl">
                         {show?.name}
                       </span>
@@ -70,8 +70,8 @@ const ShowDetails = () => {
                           {show.tagline}
                         </span>
                       )}
-                    </p>
-                    <p className="text-sm text-gray-300">
+                    </div>
+                    <div className="text-sm text-gray-300">
                       {show?.genres &&
                         show?.genres.map((genre, index) => (
                           <span key={genre.id}>
@@ -79,34 +79,26 @@ const ShowDetails = () => {
                             {index < show?.genres.length - 1 && ", "}
                           </span>
                         ))}
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      {show?.first_air_date && (
-                        <span>
-                          <>{getYearFromDate(show?.first_air_date)}</>
-                          {"=>"}
-                          <>{getYearFromDate(show?.last_air_date)}</>
-                          {" • "}
-                        </span>
-                      )}
-
-                      {show?.seasons && (
-                        <span>
-                          <>{show.seasons.length}</>
-                          <>
+                    </div>
+                    <div className="flex flex-col flex-wrap items-center justify-center gap-x-6 text-sm text-gray-400 sm:flex-row">
+                      <p className="flex gap-6 *:not-first:relative *:not-first:flex *:not-first:items-center *:not-first:before:absolute *:not-first:before:-inset-s-4 *:not-first:before:size-1.5 *:not-first:before:rounded-full *:not-first:before:bg-gray-400">
+                        {show?.first_air_date && (
+                          <span>
+                            {getYearFromDate(show?.first_air_date)}
+                            {"=>"}
+                            {getYearFromDate(show?.last_air_date)}
+                          </span>
+                        )}
+                        {show?.seasons && (
+                          <span>
+                            {show.seasons.length}
                             {show.seasons.length > 1 ? " Seasons" : " Season"}
-                          </>
-                          {" • "}
-                        </span>
-                      )}
-                      {show?.status && (
-                        <span>
-                          <>{show.status}</>
-                          {" • "}
-                        </span>
-                      )}
+                          </span>
+                        )}
+                        {show?.status && <span>{show.status}</span>}
+                      </p>
                       {show?.production_countries && (
-                        <span>
+                        <span className="sm:relative sm:flex sm:items-center sm:before:absolute sm:before:-inset-s-4 sm:before:size-1.5 sm:before:rounded-full sm:before:bg-gray-400">
                           {show?.production_countries.map((country, index) => (
                             <span key={country.iso_3166_1}>
                               <span>{country.name}</span>
@@ -116,7 +108,7 @@ const ShowDetails = () => {
                           ))}
                         </span>
                       )}
-                    </p>
+                    </div>
 
                     <RattingBar
                       scores={scores}

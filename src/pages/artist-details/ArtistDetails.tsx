@@ -50,7 +50,7 @@ const ArtistDetails = () => {
                     )}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-2 text-center md:w-2/3 md:items-start md:text-start lg:w-3/4 xl:w-2/4">
-                    <p className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1">
                       <span className="text-xl font-bold md:text-2xl lg:text-3xl xl:text-4xl">
                         {person?.name}
                       </span>
@@ -59,21 +59,23 @@ const ArtistDetails = () => {
                           {person.known_for_department}
                         </span>
                       )}
-                    </p>
-                    <p className="flex gap-6 text-sm text-gray-400 *:relative *:inline-flex *:items-center *:not-first:before:absolute *:not-first:before:-inset-s-4 *:not-first:before:size-1.5 *:not-first:before:rounded-full *:not-first:before:bg-gray-400">
+                    </div>
+                    <div className="flex flex-col flex-wrap items-center justify-center gap-x-6 text-sm text-gray-400 sm:flex-row">
                       {person?.birthday && (
-                        <>
+                        <p className="flex gap-6">
                           <span>{formatDate(person?.birthday)}</span>
-                          <span>
+                          <span className="relative flex items-center before:absolute before:-inset-s-4 before:size-1.5 before:rounded-full before:bg-gray-400">
                             {getAge(person.birthday, person.deathday)}
                           </span>
-                        </>
+                        </p>
                       )}
 
                       {person?.place_of_birth && (
-                        <span>{person.place_of_birth}</span>
+                        <span className="sm:relative sm:flex sm:items-center sm:before:absolute sm:before:-inset-s-4 sm:before:size-1.5 sm:before:rounded-full sm:before:bg-gray-400">
+                          {person.place_of_birth}
+                        </span>
                       )}
-                    </p>
+                    </div>
 
                     {person?.biography && (
                       <span className="line-clamp-10 text-gray-200">
