@@ -1,5 +1,5 @@
 interface IMediaCardLoaderProps {
-  key: number;
+  key: number | undefined;
 }
 const MediaCardLoader = ({ key }: IMediaCardLoaderProps) => {
   return (
