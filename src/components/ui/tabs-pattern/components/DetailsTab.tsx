@@ -9,7 +9,7 @@ interface IDetailsTabProps {
 const DetailsTab = (props: IDetailsTabProps) => {
   const { items } = props;
   return (
-    <div className="grid grid-cols-1 gap-y-1 divide-gray-800 *:flex *:items-center *:justify-between *:gap-2 *:text-end **:first:text-gray-50 **:last:text-gray-400 md:*:px-4 lg:grid-cols-2 xl:grid-cols-3 xl:divide-x">
+    <div className="grid grid-cols-1 gap-y-1 divide-y divide-gray-800 *:flex *:items-center *:justify-between *:gap-2 *:py-2 *:text-end *:not-last:border-b-gray-800 **:first:text-gray-50 **:last:text-gray-400 md:*:px-4 lg:grid-cols-2 lg:divide-y-0 lg:*:py-0 xl:grid-cols-3 xl:divide-x">
       {items.map((item) => (
         <p key={item.label}>
           <span>{item.label}</span>
